@@ -472,6 +472,7 @@ static int __init walt_init_ops(void)
 }
 late_initcall(walt_init_ops);
 
+#ifdef CONFIG_CFS_BANDWIDTH
 void walt_inc_cfs_cumulative_runnable_avg(struct cfs_rq *cfs_rq,
 		struct task_struct *p)
 {
@@ -487,6 +488,7 @@ void walt_dec_cfs_cumulative_runnable_avg(struct cfs_rq *cfs_rq,
 	cfs_rq->cumulative_runnable_avg -= p->ravg.demand;
 #endif
 }
+#endif
 
 #ifdef CONFIG_SCHED_HISI_WALT_WINDOW_SIZE_TUNABLE
 static int __init set_walt_ravg_window(char *str)
