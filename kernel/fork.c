@@ -1745,9 +1745,7 @@ static __latent_entropy struct task_struct *copy_process(
 	init_task_vip_info(p);
 #endif
 
-#ifdef CONFIG_CPU_FREQ_TIMES
 	cpufreq_task_times_init(p);
-#endif
 
 	/* Perform scheduler related setup. Assign this task to a CPU. */
 	retval = sched_fork(clone_flags, p);
@@ -1988,9 +1986,7 @@ bad_fork_cleanup_audit:
 bad_fork_cleanup_perf:
 	perf_event_free_task(p);
 bad_fork_cleanup_policy:
-#ifdef CONFIG_CPU_FREQ_TIMES
 	cpufreq_task_times_exit(p);
-#endif
 #ifdef CONFIG_NUMA
 	mpol_put(p->mempolicy);
 bad_fork_cleanup_threadgroup_lock:
