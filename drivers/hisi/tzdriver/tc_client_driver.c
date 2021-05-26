@@ -652,14 +652,22 @@ static int tee_calc_task_hash(unsigned char *digest, bool cfc_rehash, struct tas
 	int locked = 1;
 #endif
 	int rc;
-	struct {
+	struct sdesc {
 		struct shash_desc shash;
-		char ctx[crypto_shash_descsize(g_tee_shash_tfm)];
-	} desc;
+		char ctx[];
+	};
+	struct sdesc *desc;
 
 	if (NULL == digest) {
 		tloge("tee hash: input param is error!\n");
 		return -2;
+	}
+
+	desc = kmalloc(sizeof(struct shash_desc)
+			+ crypto_shash_descsize(g_tee_shash_tfm), GFP_KERNEL);
+	if (!desc) {
+		TCERR("alloc desc failed\n");
+		return -ENOMEM;
 	}
 
 	mm = get_task_mm(S);
@@ -668,25 +676,28 @@ static int tee_calc_task_hash(unsigned char *digest, bool cfc_rehash, struct tas
 
 		sret = memset_s(digest, MAX_SHA_256_SZ, 0,
 				MAX_SHA_256_SZ);
-		if (EOK != sret)
-			return -2;
+		if (EOK != sret) {
+			rc = -2;
+			goto out;
+		}
 
 		if (cfc_is_enabled && cfc_rehash)
 			CFC_SEND_DATA(tee_calc_task_hash_fix_val, 0);
 
-		return 0;
+		rc = 0;
+		goto out;
 	}
 
 	start_code = mm->start_code;
 	end_code   = mm->end_code;
 	code_size = end_code - start_code;
 
-	desc.shash.tfm = g_tee_shash_tfm;
-	desc.shash.flags = 0;
+	desc->shash.tfm = g_tee_shash_tfm;
+	desc->shash.flags = 0;
 
-	rc = crypto_shash_init(&desc.shash);
+	rc = crypto_shash_init(&desc->shash);
 	if (rc != 0)
-		return rc;
+		goto out;
 
         down_read(&mm->mmap_sem);
 	while (start_code < end_code) {
@@ -718,7 +729,7 @@ static int tee_calc_task_hash(unsigned char *digest, bool cfc_rehash, struct tas
 		}
 
 		in_size = (code_size > PAGE_SIZE) ? PAGE_SIZE : code_size;
-		rc = crypto_shash_update(&desc.shash, ptr_base, in_size);
+		rc = crypto_shash_update(&desc->shash, ptr_base, in_size);
 		if (rc) {
 			kunmap_atomic(ptr_base);
 			put_page(ptr_page);
@@ -733,12 +744,15 @@ static int tee_calc_task_hash(unsigned char *digest, bool cfc_rehash, struct tas
         up_read(&mm->mmap_sem);
 	mmput(mm);
 	if (!rc) {
-		rc = crypto_shash_final(&desc.shash, digest);
+		rc = crypto_shash_final(&desc->shash, digest);
 
 		if (rc || !cfc_is_enabled || !cfc_rehash)
-			return rc;
-		rc = tee_cfc_rehash(&desc.shash, digest);
+			goto out;
+		rc = tee_cfc_rehash(&desc->shash, digest);
 	}
+
+out:
+	kfree(desc);
 	return rc;
 }
 
