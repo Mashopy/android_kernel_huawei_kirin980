@@ -35,11 +35,11 @@ struct cmdword reboot_reason_map[] = {
 
 
 /*
- * º¯ÊýÃû: bbox_check_edition
- * º¯Êý²ÎÊý:
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: bbox_check_edition
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:
  *     void
- * ·µ»ØÖµ:
- *     unsigned int:	·µ»Ø°æ±¾ÐÅÏ¢
+ * ï¿½ï¿½ï¿½ï¿½Öµ:
+ *     unsigned int:	ï¿½ï¿½ï¿½Ø°æ±¾ï¿½ï¿½Ï¢
  *				0x01        EDITION_USER
  *				0x02        EDITION_INTERNAL_BETA
  *				0x03        EDITION_OVERSEA_BETA
@@ -667,25 +667,6 @@ u32 rdr_get_reboot_type(void)
 	return g_reboot_type;
 }
 
-static int __init early_parse_reboot_reason_cmdline(char *reboot_reason_cmdline)
-{
-	int i;
-
-	memset(g_reboot_reason, 0x0, RDR_REBOOT_REASON_LEN);
-	memcpy(g_reboot_reason, reboot_reason_cmdline, RDR_REBOOT_REASON_LEN - 1);
-
-	for (i = 0; (u32)i < get_reboot_reason_map_size(); i++) {
-		if (!strncmp((char *)reboot_reason_map[i].name, g_reboot_reason, RDR_REBOOT_REASON_LEN)) {
-			g_reboot_type = reboot_reason_map[i].num;
-			break;
-		}
-	}
-	BB_PRINT_PN("[%s][%s][%d]\n", __func__, g_reboot_reason, g_reboot_type);
-	return 0;
-}
-
-early_param("reboot_reason", early_parse_reboot_reason_cmdline);
-
 void *bbox_vmap(phys_addr_t paddr, size_t size)
 {
 	int i;
@@ -749,13 +730,13 @@ EXPORT_SYMBOL(hisi_bbox_unmap);
 
 /*******************************************************************************
 Function:       bbox_save_done
-Description:	Ã¿´ÎÒì³£¶ÔÓ¦µÄlogÄ¿Â¼±£´æÍê±Ïºó£¬ÐèÒªµ÷ÓÃ´Ëº¯Êý±íÊ¾Õâ¸öÄ¿Â¼ÒÑ¾­
-		¼ÇÂ¼Íê±ÏÁË£¬logserver¿ÉÒÔ½«Æä´ò°üÉÏ´«ÁË¡£
-Input:	logpath:Òì³£¶ÔÓ¦µÄ±£´ælogµÄÄ¿Â¼£»
-		step:Òì³£log±£´æµ½ÁËÄÄÒ»²½£¬ÊÇ·ñ»¹ÐèÒª¼ÌÐøÊ¹ÓÃµÄ±ê¼Ç£»
+Description:	Ã¿ï¿½ï¿½ï¿½ì³£ï¿½ï¿½Ó¦ï¿½ï¿½logÄ¿Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïºï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½Ã´Ëºï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ä¿Â¼ï¿½Ñ¾ï¿½
+		ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½Ë£ï¿½logserverï¿½ï¿½ï¿½Ô½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½Ë¡ï¿½
+Input:	logpath:ï¿½ì³£ï¿½ï¿½Ó¦ï¿½Ä±ï¿½ï¿½ï¿½logï¿½ï¿½Ä¿Â¼ï¿½ï¿½
+		step:ï¿½ì³£logï¿½ï¿½ï¿½æµ½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ÃµÄ±ï¿½Ç£ï¿½
 Output:		    NA
 Return:		    NA
-Other:          used by rdr_core.c¡¢rdr_hisi_ap_adapter.c
+Other:          used by rdr_core.cï¿½ï¿½rdr_hisi_ap_adapter.c
 ********************************************************************************/
 void bbox_save_done(char *logpath, u32 step)
 {
@@ -773,14 +754,14 @@ void bbox_save_done(char *logpath, u32 step)
 	BB_PRINT_PN("logpath is [%s], step is [%d]\n", logpath, step);
 	if (BBOX_SAVE_STEP_DONE == step) {
 
-		/*×éºÏdoneÎÄ¼þµÄ¾ø¶ÔÂ·¾¶£¬×÷Îªsys_mkdirµÄ²ÎÊý */
+		/*ï¿½ï¿½ï¿½doneï¿½Ä¼ï¿½ï¿½Ä¾ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªsys_mkdirï¿½Ä²ï¿½ï¿½ï¿½ */
 		memset(path, 0, PATH_MAXLEN);
 		memcpy(path, logpath, strlen(logpath));
 		strncat(path, BBOX_SAVE_DONE_FILENAME,
 			((PATH_MAXLEN - 1) - strlen(path)));
 
 
-		/*ÔÚÊ±¼ä´ÁÄ¿Â¼ÏÂÃæ´´½¨doneÎÄ¼þ */
+		/*ï¿½ï¿½Ê±ï¿½ï¿½ï¿½Ä¿Â¼ï¿½ï¿½ï¿½æ´´ï¿½ï¿½doneï¿½Ä¼ï¿½ */
 		fd = sys_open(path, O_CREAT | O_WRONLY, FILE_LIMIT);
 		if (fd < 0) {
 			BB_PRINT_ERR("sys_mkdir [%s] error, fd is [%d]\n", path,
@@ -789,7 +770,7 @@ void bbox_save_done(char *logpath, u32 step)
 		}
 		sys_close(fd);
 
-		/*¸ù¾ÝÈ¨ÏÞÒªÇó£¬hisi_logsÄ¿Â¼¼°×ÓÄ¿Â¼Èº×éµ÷ÕûÎªroot-system */
+		/*ï¿½ï¿½ï¿½ï¿½È¨ï¿½ï¿½Òªï¿½ï¿½hisi_logsÄ¿Â¼ï¿½ï¿½ï¿½ï¿½Ä¿Â¼Èºï¿½ï¿½ï¿½ï¿½ï¿½Îªroot-system */
 		ret =
 		    (int)bbox_chown((const char __user *)path, ROOT_UID,
 				    SYSTEM_GID, false);

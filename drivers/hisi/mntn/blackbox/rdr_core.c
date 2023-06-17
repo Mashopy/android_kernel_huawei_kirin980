@@ -204,8 +204,8 @@ void rdr_module_dump(struct rdr_exception_info_s *p_exce_info, char *path, u32 m
 
 	BB_PRINT_PN("rdr_notify_module_dump done. return mask=[0x%x]\n", mask);
 
-	/* maskµÄÖµÊÇ¸ù¾Ýp_exce_info->e_notify_core_mask»ñµÃµÄ,
-	 * µ±maskÎª0Ê±, ²»×ßRDR¿ò¼Üµ¼³öLOGµÄÁ÷³Ì. È·ÈÏÈË:Áõº£Áú
+	/* maskï¿½ï¿½Öµï¿½Ç¸ï¿½ï¿½ï¿½p_exce_info->e_notify_core_maskï¿½ï¿½Ãµï¿½,
+	 * ï¿½ï¿½maskÎª0Ê±, ï¿½ï¿½ï¿½ï¿½RDRï¿½ï¿½Üµï¿½ï¿½ï¿½LOGï¿½ï¿½ï¿½ï¿½ï¿½ï¿½. È·ï¿½ï¿½ï¿½ï¿½:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	if (mask != 0) {
 		while (wait_dumplog_timeout > 0) {
@@ -239,19 +239,19 @@ void rdr_module_dump(struct rdr_exception_info_s *p_exce_info, char *path, u32 m
 			if (mask != RDR_HIFI)
 				rdr_save_cur_baseinfo(path);
 
-			/* Èç¹ûÕâ´ÎÒì³£ÐèÒª¸´Î»È«ÏµÍ³£¬Ôò±íÊ¾log±£´æ»¹Î´Íê³É */
+			/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì³£ï¿½ï¿½Òªï¿½ï¿½Î»È«ÏµÍ³ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾logï¿½ï¿½ï¿½æ»¹Î´ï¿½ï¿½ï¿½ */
 			if ((p_exce_info->e_reset_core_mask & RDR_AP) &&
 				need_save_mntndump_log(p_exce_info->e_exce_type)) {
-				/* ¸´Î»ÖØÆôºó»¹ÓÐÒ»²¿·ÖlogÐèÒª±£´æ */
+				/* ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½logï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ */
 				bbox_save_done(path, BBOX_SAVE_STEP1);
 			} else {
-				/* ´ËÒì³£Ä¿Â¼ÏÂµÄËùÓÐlog¶¼±£´æÍê±Ï */
+				/* ï¿½ï¿½ï¿½ì³£Ä¿Â¼ï¿½Âµï¿½ï¿½ï¿½ï¿½ï¿½logï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 				bbox_save_done(path, BBOX_SAVE_STEP_DONE);
 			}
 
 			if (!in_atomic() && !irqs_disabled()
 				&& !in_irq()) {
-				/* È·±£Ö®Ç°µÄËùÓÐÎÄ¼þÏµÍ³Ïà¹Ø²Ù×÷¶¼ÄÜÍê³É */
+				/* È·ï¿½ï¿½Ö®Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ÏµÍ³ï¿½ï¿½Ø²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 				sys_sync();
 			}
 		}
@@ -340,7 +340,7 @@ void rdr_syserr_process(struct rdr_syserr_param_s *p)
 		return;
 	}
 
-	/*Èç¹û´Ë´ÎÒì³£ÐèÒª¸´Î»È«ÏµÍ³£¬ÔòÐèÒªÏòpmu¼Ä´æÆ÷ÖÐ¼ÇÂ¼¸´Î»Ô­Òò£¬·ñÔòÖ»Ð´Èëhistory.logÖÐ */
+	/*ï¿½ï¿½ï¿½ï¿½Ë´ï¿½ï¿½ì³£ï¿½ï¿½Òªï¿½ï¿½Î»È«ÏµÍ³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½pmuï¿½Ä´ï¿½ï¿½ï¿½ï¿½Ð¼ï¿½Â¼ï¿½ï¿½Î»Ô­ï¿½ò£¬·ï¿½ï¿½ï¿½Ö»Ð´ï¿½ï¿½history.logï¿½ï¿½ */
 	if (p_exce_info->e_reset_core_mask & RDR_AP) {
 		record_exce_type(p_exce_info);
 	}
@@ -457,7 +457,7 @@ static int rdr_main_thread_body(void *arg)
 					    ("invalid prio[%d], current modid [0x%x]\n",
 					     p_exce_info->e_process_priority,
 					     e_cur->modid);
-				/* ²éÕÒÁ´±íÖÐËùÓÐÒÑ½ÓÊÕÒì³£ÖÐ´¦ÀíÓÅÏÈ¼¶×î¸ßµÄÒ»¸ö */
+				/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ½ï¿½ï¿½ï¿½ï¿½ì³£ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½ï¿½ï¿½ßµï¿½Ò»ï¿½ï¿½ */
 				if (p_exce_info->e_process_priority < e_priority) {
 					BB_PRINT_PN
 					    ("current prio[%d], current modid [0x%x]\n",
@@ -527,7 +527,6 @@ bool rdr_init_done()
 static s32 __init rdr_init(void)
 {
 	struct task_struct *rdr_main = NULL;
-	struct task_struct *rdr_bootcheck = NULL;
 	struct task_struct *rdr_cleartext = NULL;
 	struct sched_param   param;
 	int ret;
@@ -562,14 +561,6 @@ static s32 __init rdr_init(void)
 	param.sched_priority = BBOX_RT_PRIORITY;
 	if (sched_setscheduler(rdr_main, SCHED_FIFO, &param)) {
 		BB_PRINT_ERR("sched_setscheduler rdr_bootcheck_thread faild.\n");
-		kthread_stop(rdr_main);
-		wake_lock_destroy(&blackbox_wl);
-		return -1;
-	}
-	rdr_bootcheck =
-	    kthread_run(rdr_bootcheck_thread_body, NULL, "bbox_bootcheck");
-	if (!rdr_bootcheck) {
-		BB_PRINT_ERR("create thread rdr_bootcheck_thread faild.\n");
 		kthread_stop(rdr_main);
 		wake_lock_destroy(&blackbox_wl);
 		return -1;
