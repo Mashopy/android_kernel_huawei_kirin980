@@ -110,7 +110,7 @@ oal_void wlan_pm_init_device_ready(struct wlan_pm_s    *pst_wlan_pm)
 
 oal_uint32 wlan_pm_wait_device_ready(struct wlan_pm_s    *pst_wlan_pm)
 {
-    /* µÈ´ýhostÏÂ°ë²¿³õÊ¼»¯Íê³É */
+    /* ï¿½È´ï¿½hostï¿½Â°ë²¿ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ */
     return oal_wait_for_completion_timeout(&pst_wlan_pm->st_device_ready, (oal_uint32)OAL_MSECS_TO_JIFFIES(HOST_WAIT_BOTTOM_INIT_TIMEOUT));
 }
 
@@ -177,9 +177,9 @@ struct wlan_pm_s*  wlan_pm_init(oal_void)
     pst_wlan_pm->pst_sdio->pst_pm_callback = &gst_wlan_pm_callback;
 
     pst_wlan_pm->ul_wlan_pm_enable          = OAL_FALSE;
-    pst_wlan_pm->ul_apmode_allow_pm_flag    = OAL_TRUE;  /* Ä¬ÈÏÔÊÐíÏÂµç */
+    pst_wlan_pm->ul_apmode_allow_pm_flag    = OAL_TRUE;  /* Ä¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½ */
 
-    /*work queue³õÊ¼»¯*/
+    /*work queueï¿½ï¿½Ê¼ï¿½ï¿½*/
     pst_wlan_pm->pst_pm_wq = oal_create_singlethread_workqueue("wlan_pm_wq");
     if (!pst_wlan_pm->pst_pm_wq)
     {
@@ -192,10 +192,10 @@ struct wlan_pm_s*  wlan_pm_init(oal_void)
     OAL_INIT_WORK(&pst_wlan_pm->st_sleep_work,  wlan_pm_sleep_work);
     OAL_INIT_WORK(&pst_wlan_pm->st_freq_adjust_work,  wlan_pm_freq_adjust_work);
 
-    /*³õÊ¼»¯Ð¾Æ¬×Ô¼ìwork*/
+    /*ï¿½ï¿½Ê¼ï¿½ï¿½Ð¾Æ¬ï¿½Ô¼ï¿½work*/
     OAL_INIT_WORK(&pst_wlan_pm->st_ram_reg_test_work,  wlan_device_mem_check_work);
 
-    /*sleep timer³õÊ¼»¯*/
+    /*sleep timerï¿½ï¿½Ê¼ï¿½ï¿½*/
     init_timer(&pst_wlan_pm->st_watchdog_timer);
     pst_wlan_pm->st_watchdog_timer.data        = (unsigned long)pst_wlan_pm;
     pst_wlan_pm->st_watchdog_timer.function    = (void *)wlan_pm_wdg_timeout;
@@ -204,7 +204,7 @@ struct wlan_pm_s*  wlan_pm_init(oal_void)
     pst_wlan_pm->ul_packet_cnt                 = 0;
 
 
-    /*sleep timer³õÊ¼»¯*/
+    /*sleep timerï¿½ï¿½Ê¼ï¿½ï¿½*/
     init_timer(&pst_wlan_pm->st_deepsleep_delay_timer);
     pst_wlan_pm->st_deepsleep_delay_timer.data        = (unsigned long)pst_wlan_pm;
     pst_wlan_pm->st_deepsleep_delay_timer.function    = (void *)wlan_pm_deepsleep_delay_timeout_02;
@@ -383,7 +383,7 @@ oal_int32 wlan_pm_open(oal_void)
             return OAL_FAIL;
         }
 
-        /* Èç¹ûÐ£×¼ÏÂ·¢³É¹¦ÔòµÈ´ýdevice ready£»·ñÔò¼ÌÐø´ò¿ªwifi */
+        /* ï¿½ï¿½ï¿½Ð£×¼ï¿½Â·ï¿½ï¿½É¹ï¿½ï¿½ï¿½È´ï¿½device readyï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½wifi */
         if (OAL_SUCC == g_pst_custom_process_func.p_custom_cali_func())
         {
             if(0 == wlan_pm_wait_device_ready(pm_data->pst_wlan_pm_info))
@@ -412,7 +412,7 @@ oal_int32 wlan_pm_open(oal_void)
 
     frw_timer_sys_start();
 
-    /*½«timeoutÖµ»Ö¸´ÎªÄ¬ÈÏÖµ£¬²¢Æô¶¯¶¨Ê±Æ÷*/
+    /*ï¿½ï¿½timeoutÖµï¿½Ö¸ï¿½ÎªÄ¬ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½*/
     wlan_pm_set_timeout(WLAN_SLEEP_DEFAULT_CHECK_CNT);
 
     mutex_unlock(&pm_data->host_mutex);
@@ -836,7 +836,7 @@ wakeup_fail:
     DECLARE_DFT_TRACE_KEY_INFO("wlan_wakeup_fail",OAL_DFT_TRACE_FAIL);
     uc_wakeup_err_count++;
 
-    /* pm»½ÐÑÊ§°Ü³¬³öÃÅÏÞ£¬Æô¶¯dfrÁ÷³Ì */
+    /* pmï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ£ï¿½ï¿½ï¿½ï¿½ï¿½dfrï¿½ï¿½ï¿½ï¿½ */
     if (WLAN_WAKEUP_FAIL_MAX_TIMES < uc_wakeup_err_count)
     {
         OAM_ERROR_LOG1(0, OAM_SF_PWR,"Now ready to enter DFR process after [%d]times wlan_wakeup_fail!", uc_wakeup_err_count);
@@ -889,7 +889,7 @@ oal_uint  wlan_pm_open_bcpu(oal_void)
         return OAL_FAIL;
     }
 
-     /*Í¨¹ýsdioÅäÖÃÃüÁî£¬½â¸´Î»BCPU*/
+     /*Í¨ï¿½ï¿½sdioï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½î£¬ï¿½â¸´Î»BCPU*/
     OAM_WARNING_LOG0(0, OAM_SF_PWR,"sdio open BCPU");
 
     hcc_tx_transfer_lock(hcc_get_default_handler());
@@ -917,7 +917,7 @@ oal_uint  wlan_pm_open_bcpu(oal_void)
     ul_ret = oal_sdio_send_msg(pst_wlan_pm->pst_sdio, H2D_MSG_RESET_BCPU);
     if(OAL_SUCC == ul_ret)
     {
-        /*µÈ´ýdeviceÖ´ÐÐÃüÁî*/
+        /*ï¿½È´ï¿½deviceÖ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
         up(&pst_wlan_pm->pst_sdio->gpio_rx_sema);
         ul_ret =  oal_wait_for_completion_timeout(&pst_wlan_pm->st_open_bcpu_done, (oal_uint32)OAL_MSECS_TO_JIFFIES(WLAN_OPEN_BCPU_WAIT_TIMEOUT));
         if(0 == ul_ret)
@@ -1039,7 +1039,7 @@ int32 wlan_pm_close_done_callback(void *data)
 
     OAM_WARNING_LOG0(0, OAM_SF_PWR,"wlan_pm_close_done_callback !");
 
-    /*¹Ø±ÕRXÍ¨µÀ£¬·ÀÖ¹SDIO RX thread¼ÌÐø·ÃÎÊSDIO*/
+    /*ï¿½Ø±ï¿½RXÍ¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¹SDIO RX threadï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½SDIO*/
     oal_disable_sdio_state(oal_get_sdio_default_handler(), OAL_SDIO_RX);
 
     pst_wlan_pm->ul_close_done_callback++;
@@ -1119,7 +1119,7 @@ void wlan_pm_sleep_work(oal_work_stru *pst_worker)
         return ;
    }
 
-   /*Ð­ÒéÕ»»Øµ÷»ñÈ¡ÊÇ·ñpauseµÍ¹¦ºÄ*/
+   /*Ð­ï¿½ï¿½Õ»ï¿½Øµï¿½ï¿½ï¿½È¡ï¿½Ç·ï¿½pauseï¿½Í¹ï¿½ï¿½ï¿½*/
    if(pst_wlan_pm->st_wifi_srv_handler.p_wifi_srv_get_pm_pause_func)
    {
        ul_wifi_pause_pm = pst_wlan_pm->st_wifi_srv_handler.p_wifi_srv_get_pm_pause_func();
@@ -1211,7 +1211,7 @@ void wlan_pm_sleep_work(oal_work_stru *pst_worker)
 
    pst_wlan_pm->ul_sleep_stage = SLEEP_CMD_SND;
 
-   /*¼ÌÐø³ÖËø500ms, ·ÀÖ¹ÏµÍ³Æµ·±½øÈëÍË³öPM*/
+   /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½500ms, ï¿½ï¿½Ö¹ÏµÍ³Æµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë³ï¿½PM*/
    oal_wake_lock(&pst_wlan_pm->st_deepsleep_wakelock);
    mod_timer(&pst_wlan_pm->st_deepsleep_delay_timer, jiffies + msecs_to_jiffies(WLAN_WAKELOCK_HOLD_TIME));
 
@@ -1235,7 +1235,7 @@ fail_sleep:
     wlan_pm_feed_wdg();
     hcc_tx_transfer_unlock(hcc_get_default_handler());
 
-    /* pm»½ÐÑÊ§°Ü³¬³öÃÅÏÞ£¬Æô¶¯dfrÁ÷³Ì */
+    /* pmï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ£ï¿½ï¿½ï¿½ï¿½ï¿½dfrï¿½ï¿½ï¿½ï¿½ */
     if (WLAN_WAKEUP_FAIL_MAX_TIMES < uc_fail_sleep_count)
     {
         OAM_ERROR_LOG1(0, OAM_SF_PWR,"Now ready to enter DFR process after [%d]times wlan_sleep_fail!", uc_fail_sleep_count);
@@ -1391,13 +1391,13 @@ void wlan_pm_wdg_timeout(struct wlan_pm_s *pm_data)
     }
 #endif
 
-    /*ºÍµ÷Æµ¹²ÓÃÒ»¸ötimer£¬µÍ¹¦ºÄ¹Ø±ÕÊ±timer²»»áÍ£*/
+    /*ï¿½Íµï¿½Æµï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½timerï¿½ï¿½ï¿½Í¹ï¿½ï¿½Ä¹Ø±ï¿½Ê±timerï¿½ï¿½ï¿½ï¿½Í£*/
     if(pm_data->ul_wlan_pm_enable)
     {
 		if(0 == pm_data->ul_packet_cnt)
 		{
 			pm_data->ul_wdg_timeout_curr_cnt++;
-			if((pm_data->ul_wdg_timeout_curr_cnt == pm_data->ul_wdg_timeout_cnt))
+			if(pm_data->ul_wdg_timeout_curr_cnt == pm_data->ul_wdg_timeout_cnt)
 			{
                 if(0 != wlan_pm_work_submit(pm_data, &pm_data->st_sleep_work))
                 {
@@ -1405,7 +1405,7 @@ void wlan_pm_wdg_timeout(struct wlan_pm_s *pm_data)
                 }
                 else
                 {
-                    /*Ìá½»ÁËsleep workºó£¬¶¨Ê±Æ÷²»ÖØÆô£¬±ÜÃâÖØ¸´Ìá½»sleep work*/
+                    /*ï¿½á½»ï¿½ï¿½sleep workï¿½ó£¬¶ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¸ï¿½ï¿½á½»sleep work*/
                     pm_data->ul_sleep_work_submit++;
                     return;
                 }
@@ -1504,7 +1504,7 @@ oal_int32 wlan_pm_poweroff_cmd(oal_void)
     ret =  oal_sdio_send_msg(pst_wlan_pm->pst_sdio,H2D_MSG_PM_WLAN_OFF);
     if(OAL_SUCC == ret)
     {
-        /*µÈ´ýdeviceÖ´ÐÐÃüÁî*/
+        /*ï¿½È´ï¿½deviceÖ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
         msleep(20);
         if(0==board_get_wlan_wkup_gpio_val())
         {
@@ -1569,7 +1569,7 @@ oal_int32 wlan_pm_shutdown_bcpu_cmd(oal_void)
     ret =  oal_sdio_send_msg(pst_wlan_pm->pst_sdio,H2D_MSG_PM_BCPU_OFF);
     if(OAL_SUCC == ret)
     {
-        /*µÈ´ýdeviceÖ´ÐÐÃüÁî*/
+        /*ï¿½È´ï¿½deviceÖ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
         ul_ret = oal_wait_for_completion_timeout(&pst_wlan_pm->st_close_bcpu_done, (oal_uint32)OAL_MSECS_TO_JIFFIES(WLAN_POWEROFF_ACK_WAIT_TIMEOUT));
         if(0 == ul_ret)
         {
