@@ -34,7 +34,6 @@
 		if (PLAT_LOG_INFO <= g_plat_loglevel) \
 		{ \
 			printk(KERN_DEBUG KBUILD_MODNAME ":I]%s]" s,__func__, ## args);\
-			CHR_LOG(CHR_LOG_INFO, CHR_LOG_TAG_PLAT, s, ##args); \
 		} \
 	}while(0)
 
@@ -42,7 +41,6 @@
 		if (PLAT_LOG_INFO <= g_plat_loglevel) \
 		{ \
 			printk(KERN_DEBUG KBUILD_MODNAME ":S]%s]" s,__func__, ## args); \
-			CHR_LOG(CHR_LOG_INFO, CHR_LOG_TAG_PLAT, s, ##args); \
 		} \
 	}while(0)
 
@@ -50,7 +48,6 @@
 		if (PLAT_LOG_WARNING <= g_plat_loglevel) \
 		{ \
 			printk(KERN_WARNING KBUILD_MODNAME ":W]%s]" s,__func__, ## args);\
-			CHR_LOG(CHR_LOG_WARN, CHR_LOG_TAG_PLAT, s, ##args); \
 		} \
 	}while(0)
 
@@ -58,7 +55,6 @@
 		if (PLAT_LOG_ERR <= g_plat_loglevel) \
 		{ \
 			printk(KERN_ERR KBUILD_MODNAME ":E]%s]" s,__func__, ## args); \
-			CHR_LOG(CHR_LOG_ERROR, CHR_LOG_TAG_PLAT, s, ##args); \
 		} \
 	}while(0)
 
@@ -66,7 +62,6 @@
 		if (PLAT_LOG_ALERT <= g_plat_loglevel) \
 		{ \
 			printk(KERN_ALERT KBUILD_MODNAME ":ALERT]%s]" s,__func__, ## args); \
-			CHR_LOG(CHR_LOG_ERROR, CHR_LOG_TAG_PLAT, s, ##args); \
 		} \
 	}while(0)
 
