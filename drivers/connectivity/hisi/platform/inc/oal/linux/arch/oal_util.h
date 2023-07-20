@@ -11,7 +11,7 @@ extern "C" {
 
 
 /*****************************************************************************
-  1 ÆäËûÍ·ÎÄ¼þ°üº¬
+  1 ï¿½ï¿½ï¿½ï¿½Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 /*lint -e322*/
 #include <linux/compiler.h>
@@ -37,9 +37,9 @@ extern "C" {
 /*lint +e322*/
 
 /*****************************************************************************
-  2 ºê¶¨Òå
+  2 ï¿½ê¶¨ï¿½ï¿½
 *****************************************************************************/
-/* 32×Ö½ÚÐò´óÐ¡¶Ë×ª»» */
+/* 32ï¿½Ö½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½×ªï¿½ï¿½ */
 #define OAL_SWAP_BYTEORDER_32(_val)        \
         ((((_val) & 0x000000FF) << 24) +     \
         (((_val) & 0x0000FF00) << 8) +       \
@@ -48,14 +48,14 @@ extern "C" {
 
 #define OAL_CONST                                   const
 
-/* »ñÈ¡CORE ID */
+/* ï¿½ï¿½È¡CORE ID */
 #if (_PRE_MULTI_CORE_MODE_OFFLOAD_DMAC == _PRE_MULTI_CORE_MODE)
 #define OAL_GET_CORE_ID()    (0)
-#else                                   /* ·Çoffload¼Ü¹¹ */
+#else                                   /* ï¿½ï¿½offloadï¿½Ü¹ï¿½ */
 #ifdef _PRE_WLAN_FEATURE_SMP_SUPPORT
 #define OAL_GET_CORE_ID()    smp_processor_id()
 #else
-#define OAL_GET_CORE_ID()    (0)        /* Ö÷Òª¸øE5Æ½Ì¨Ê¹ÓÃ */
+#define OAL_GET_CORE_ID()    (0)        /* ï¿½ï¿½Òªï¿½ï¿½E5Æ½Ì¨Ê¹ï¿½ï¿½ */
 #endif
 #endif
 
@@ -69,16 +69,16 @@ typedef struct file              oal_file_stru;
 #define OAL_FUNC_NAME           __func__
 #define OAL_RET_ADDR            __builtin_return_address(0)
 
-/* ½«¼¸¸ö×Ö·û´®°´ÕÕÖ¸¶¨¸ñÊ½ºÏ³ÉÒ»¸ö×Ö·û´® */
+/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½Ê½ï¿½Ï³ï¿½Ò»ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ */
 #define OAL_SPRINTF             snprintf
 
-/* ÄÚ´æ¶ÁÆÁÕÏ */
+/* ï¿½Ú´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 #define OAL_RMB()               rmb()
 
-/* ÄÚ´æÐ´ÆÁÕÏ */
+/* ï¿½Ú´ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ */
 #define OAL_WMB()               wmb()
 
-/* ÄÚ´æÆÁÕÏ */
+/* ï¿½Ú´ï¿½ï¿½ï¿½ï¿½ï¿½ */
 #define OAL_MB()                mb()
 
 #define OAL_OFFSET_OF          offsetof
@@ -99,7 +99,7 @@ typedef struct file              oal_file_stru;
 
 #define OAL_VSPRINTF            vsnprintf
 
-/* E5Æ½Ì¨ÃèÊö·ûÓÃ£¬×¢Òâ£¬host²àÆ½Ì¨²»Í¬£¬MEM_BASE_ADDRÐèÒªÐÞ¸Ä */
+/* E5Æ½Ì¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½×¢ï¿½â£¬hostï¿½ï¿½Æ½Ì¨ï¿½ï¿½Í¬ï¿½ï¿½MEM_BASE_ADDRï¿½ï¿½Òªï¿½Þ¸ï¿½ */
 #if(_PRE_TARGET_PRODUCT_TYPE_E5 == _PRE_CONFIG_TARGET_PRODUCT)
 extern oal_uint32 gul_dscr_fstvirt_addr;
 extern oal_uint32 gul_dscr_fstphy_addr;
@@ -119,7 +119,7 @@ extern oal_uint32 gul_dscr_fstphy_addr;
 #define OAL_DSCR_PHY_TO_VIRT(_phy_addr)     phys_to_virt((_phy_addr) + OAL_PLAT_MEM_BASE_ADDR)
 #endif
 
-/* ÎïÀíµØÖ·ºÍÐéÄâµØÖ·Ö®¼äµÄ×ª»»,×÷ÎªnetbufÓÃ */
+/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·Ö®ï¿½ï¿½ï¿½×ªï¿½ï¿½,ï¿½ï¿½Îªnetbufï¿½ï¿½ */
 #define OAL_VIRT_TO_PHY_ADDR(_virt_addr)            (virt_to_phys(_virt_addr) - OAL_PLAT_MEM_BASE_ADDR)
 #define OAL_PHY_TO_VIRT_ADDR(_phy_addr)             phys_to_virt((_phy_addr) + OAL_PLAT_MEM_BASE_ADDR)
 
@@ -150,41 +150,41 @@ typedef struct kobject              oal_kobject;
 /* hi1102-cb for sys interface  51/02 */
 
 /*****************************************************************************
-  3 Ã¶¾Ù¶¨Òå
+  3 Ã¶ï¿½Ù¶ï¿½ï¿½ï¿½
 *****************************************************************************/
 
 /*****************************************************************************
-  4 È«¾Ö±äÁ¿ÉùÃ÷
-*****************************************************************************/
-
-
-/*****************************************************************************
-  5 ÏûÏ¢Í·¶¨Òå
+  4 È«ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 
 
 /*****************************************************************************
-  6 ÏûÏ¢¶¨Òå
+  5 ï¿½ï¿½Ï¢Í·ï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 
 
 /*****************************************************************************
-  7 STRUCT¶¨Òå
+  6 ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 
 
 /*****************************************************************************
-  8 UNION¶¨Òå
+  7 STRUCTï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 
 
 /*****************************************************************************
-  9 OTHERS¶¨Òå
+  8 UNIONï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 
 
 /*****************************************************************************
-  10 º¯ÊýÉùÃ÷
+  9 OTHERSï¿½ï¿½ï¿½ï¿½
+*****************************************************************************/
+
+
+/*****************************************************************************
+  10 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 
 /* #define random_ether_addr(addr) eth_random_addr(addr) */
@@ -279,7 +279,7 @@ OAL_STATIC OAL_INLINE oal_file_stru* oal_file_write(oal_file_stru *file, oal_int
 
     i_ret = file->f_op->write(file, pc_string, ul_length, &file->f_pos);
 
-    return OAL_SUCC;
+    return file;
 }
 
 
@@ -480,7 +480,7 @@ OAL_STATIC OAL_INLINE unsigned long long oal_simple_strtoull(const oal_int8 *cp,
 
 OAL_STATIC OAL_INLINE oal_int  oal_strtol(OAL_CONST oal_int8 *pc_nptr, oal_int8 **ppc_endptr, oal_int32 l_base)
 {
-    /* Ìø¹ý¿Õ¸ñ */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½Õ¸ï¿½ */
     while (' ' == (*pc_nptr))
     {
         pc_nptr++;
@@ -515,7 +515,7 @@ OAL_STATIC OAL_INLINE oal_uint32  oal_kallsyms_lookup_name(OAL_CONST oal_uint8 *
 OAL_STATIC OAL_INLINE oal_void oal_dump_stack(oal_void)
 {
 #if(_PRE_CONFIG_TARGET_PRODUCT != _PRE_TARGET_PRODUCT_TYPE_WS835DMB)
-    //835²úÆ·µ÷ÓÃdump_stack»á´¥·¢ÏµÍ³ÖØÆô
+    //835ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½dump_stackï¿½á´¥ï¿½ï¿½ÏµÍ³ï¿½ï¿½ï¿½ï¿½
     dump_stack();
 #endif
 }
