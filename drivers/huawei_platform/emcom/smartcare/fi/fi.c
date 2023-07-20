@@ -20,16 +20,16 @@ fi_ctx g_fi_ctx;
 	static struct nf_hook_ops fi_nfhooks[] = {
 #endif
 	{
-		.hook        = fi_hook_out,                 /* »Øµ÷º¯Êý */
-		.pf          = PF_INET,                     /* nfÐ­ÒéÁ´ */
-		.hooknum     = NF_INET_LOCAL_OUT,           /* ±íÊ¾±¾»ú·¢³öµÄ±¨ÎÄ */
-		.priority    = NF_IP_PRI_FILTER - 1,        /* ÓÅÏÈ¼¶ */
+		.hook        = fi_hook_out,                 /* ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½ */
+		.pf          = PF_INET,                     /* nfÐ­ï¿½ï¿½ï¿½ï¿½ */
+		.hooknum     = NF_INET_LOCAL_OUT,           /* ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ */
+		.priority    = NF_IP_PRI_FILTER - 1,        /* ï¿½ï¿½ï¿½È¼ï¿½ */
 	},
 	{
-		.hook        = fi_hook_in,                  /* »Øµ÷º¯Êý */
-		.pf          = PF_INET,                     /* nfÐ­ÒéÁ´ */
-		.hooknum     = NF_INET_LOCAL_IN,            /* ±íÊ¾Ä¿±êµØÖ·ÊÇ±¾»úµÄ±¨ÎÄ */
-		.priority    = NF_IP_PRI_FILTER - 1,        /* ÓÅÏÈ¼¶ */
+		.hook        = fi_hook_in,                  /* ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½ */
+		.pf          = PF_INET,                     /* nfÐ­ï¿½ï¿½ï¿½ï¿½ */
+		.hooknum     = NF_INET_LOCAL_IN,            /* ï¿½ï¿½Ê¾Ä¿ï¿½ï¿½ï¿½Ö·ï¿½Ç±ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½ï¿½ */
+		.priority    = NF_IP_PRI_FILTER - 1,        /* ï¿½ï¿½ï¿½È¼ï¿½ */
 	},
 };
 
@@ -75,17 +75,17 @@ void fi_register_nf_hook(void)
 {
 	int ret = 0;
 
-	/* ¼ÓËø */
+	/* ï¿½ï¿½ï¿½ï¿½ */
 	mutex_lock(&(g_fi_ctx.nf_mutex));
 
-	/* Èç¹ûÒÑ¾­´æÔÚ¹³×Óº¯Êý£¬¾Í²»ÔÙ×¢²á */
+	/* ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½Ú¹ï¿½ï¿½Óºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í²ï¿½ï¿½ï¿½×¢ï¿½ï¿½ */
 	if (g_fi_ctx.nf_exist == FI_TRUE)
 	{
 		mutex_unlock(&(g_fi_ctx.nf_mutex));
 		return;
 	}
 
-	/* ×¢²ánetfilter¹³×Óº¯Êý */
+	/* ×¢ï¿½ï¿½netfilterï¿½ï¿½ï¿½Óºï¿½ï¿½ï¿½ */
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(4,14,1)
 	ret = nf_register_net_hooks(&init_net, fi_nfhooks, ARRAY_SIZE(fi_nfhooks));
 #else
@@ -93,25 +93,25 @@ void fi_register_nf_hook(void)
 #endif
 	if (ret == 0)
 	{
-		/* Èç¹û×¢²á³É¹¦£¬ÐèÒªÉèÖÃ±ê¼Ç */
+		/* ï¿½ï¿½ï¿½×¢ï¿½ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½Ã±ï¿½ï¿½ */
 		g_fi_ctx.nf_exist = FI_TRUE;
 
-		/* ÓÐ¹³×Ó¾ÍÓÐ¶¨Ê±Æ÷ */
+		/* ï¿½Ð¹ï¿½ï¿½Ó¾ï¿½ï¿½Ð¶ï¿½Ê±ï¿½ï¿½ */
 		g_fi_ctx.tm.expires = jiffies + HZ / FI_TIMER_INTERVAL;
 		add_timer(&g_fi_ctx.tm);
 	}
 
-	/* ¾¡¿ìÊÍ·ÅËø */
+	/* ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½ */
 	mutex_unlock(&(g_fi_ctx.nf_mutex));
 
-	/* ÊÍ·ÅËøÖ®ºóÔÙ¼ÇÂ¼ÈÕÖ¾ */
+	/* ï¿½Í·ï¿½ï¿½ï¿½Ö®ï¿½ï¿½ï¿½Ù¼ï¿½Â¼ï¿½ï¿½Ö¾ */
 	if (ret)
 	{
 		FI_LOGE(" : FI register nf hooks failed, ret=%d", ret);
 	}
 	else
 	{
-		FI_LOGD(" : FI register nf hooks successfully. FI version %s %s.", __DATE__, __TIME__);
+		FI_LOGD(" : FI register nf hooks successfully");
 	}
 
 	return;
@@ -120,24 +120,24 @@ void fi_register_nf_hook(void)
 
 void fi_unregister_nf_hook(void)
 {
-	/* ¼ÓËø */
+	/* ï¿½ï¿½ï¿½ï¿½ */
 	mutex_lock(&(g_fi_ctx.nf_mutex));
 
-	/* Èç¹û²»´æÔÚ¹³×Óº¯Êý£¬Ö±½Ó·µ»Ø*/
+	/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¹ï¿½ï¿½Óºï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½Ó·ï¿½ï¿½ï¿½*/
 	if (g_fi_ctx.nf_exist == FI_FALSE)
 	{
 		mutex_unlock(&(g_fi_ctx.nf_mutex));
 		return;
 	}
 
-	/* É¾³ýnetfilter¹³×Óº¯Êý */
+	/* É¾ï¿½ï¿½netfilterï¿½ï¿½ï¿½Óºï¿½ï¿½ï¿½ */
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(4,14,1)
 	nf_unregister_net_hooks(&init_net, fi_nfhooks, ARRAY_SIZE(fi_nfhooks));
 #else
 	nf_unregister_hooks(fi_nfhooks, ARRAY_SIZE(fi_nfhooks));
 #endif
 
-	/* É¾³ý¶¨Ê±Æ÷, ¶¨Ê±Æ÷Óë¹³×Óº¯ÊýÍ¬Ê±´æÔÚÍ¬Ê±É¾³ý */
+	/* É¾ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½, ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ë¹³ï¿½Óºï¿½ï¿½ï¿½Í¬Ê±ï¿½ï¿½ï¿½ï¿½Í¬Ê±É¾ï¿½ï¿½ */
 	del_timer(&g_fi_ctx.tm);
 
 	g_fi_ctx.nf_exist = FI_FALSE;
@@ -159,7 +159,7 @@ fi_app_info *fi_find_appinfo(uint32_t uid)
 		return NULL;
 	}
 
-	/* ²éÕÒuid */
+	/* ï¿½ï¿½ï¿½ï¿½uid */
 	for (i = 0; i < FI_APPID_MAX; i++)
 	{
 		if (g_fi_ctx.appinfo[i].uid == uid)
@@ -181,7 +181,7 @@ static uint32_t fi_find_appid(uint32_t uid)
 		return FI_APPID_NULL;
 	}
 
-	/* Ö»ÔÚappidminºÍappidmaxµÄ·¶Î§ÄÚ²éÕÒ£¬±ÜÃâÈ«±í±éÀú£¬ÌáÉýÐÔÄÜ */
+	/* Ö»ï¿½ï¿½appidminï¿½ï¿½appidmaxï¿½Ä·ï¿½Î§ï¿½Ú²ï¿½ï¿½Ò£ï¿½ï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 	for (i = g_fi_ctx.appidmin; i <= g_fi_ctx.appidmax; i++)
 	{
 		if ((g_fi_ctx.appinfo[i].uid == uid) && (g_fi_ctx.appinfo[i].valid))
@@ -198,19 +198,19 @@ static inline int fi_pkt_check(struct sk_buff *skb, int dir)
 {
 	struct iphdr *iph = ip_hdr(skb);
 
-	/* Ö»¹Ø×¢ip±¨ÎÄ */
+	/* Ö»ï¿½ï¿½×¢ipï¿½ï¿½ï¿½ï¿½ */
 	if (!iph || skb->len <= FI_MIN_IP_PKT_LEN)
 	{
 		return FI_FAILURE;
 	}
 
-	/* Ö»¹Ø×¢ipv4µÄ±¨ÎÄ */
+	/* Ö»ï¿½ï¿½×¢ipv4ï¿½Ä±ï¿½ï¿½ï¿½ */
 	if (iph->version != FI_IP_VER_4)
 	{
 		return FI_FAILURE;
 	}
 
-	/* ²»¹Ø×¢»·»Ø½Ó¿ÚµÄ±¨ÎÄ */
+	/* ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½ï¿½Ø½Ó¿ÚµÄ±ï¿½ï¿½ï¿½ */
 	if ((*(uint8_t *)&(iph->saddr) == FI_LOOP_ADDR) ||
 	    (*(uint8_t *)&(iph->daddr) == FI_LOOP_ADDR))
 	{
@@ -242,8 +242,8 @@ static inline int fi_pkt_check(struct sk_buff *skb, int dir)
 
 static inline int fi_parse_mptcp(fi_pkt *pktinfo, struct tcphdr *tcph, uint32_t hdrlen)
 {
-	uint8_t   optkind = 0;      /* tcpÑ¡ÐÍµÄÀàÐÍ */
-	uint8_t   optlen  = 0;      /* tcpÑ¡ÏîµÄ³¤¶È */
+	uint8_t   optkind = 0;      /* tcpÑ¡ï¿½Íµï¿½ï¿½ï¿½ï¿½ï¿½ */
+	uint8_t   optlen  = 0;      /* tcpÑ¡ï¿½ï¿½Ä³ï¿½ï¿½ï¿½ */
 	uint32_t  leftlen = hdrlen - sizeof(struct tcphdr);
 	uint8_t  *leftdata = (uint8_t *)tcph + sizeof(struct tcphdr);
 	uint32_t *seqack;
@@ -257,38 +257,38 @@ static inline int fi_parse_mptcp(fi_pkt *pktinfo, struct tcphdr *tcph, uint32_t 
 		leftdata += FI_TCP_OPT_HDR_LEN;
 		leftlen  -= FI_TCP_OPT_HDR_LEN;
 
-		/* ÕÒµ½mptcpÑ¡Ïî */
+		/* ï¿½Òµï¿½mptcpÑ¡ï¿½ï¿½ */
 		if (optkind == FI_TCP_OPT_MPTCP)
 		{
 			break;
 		}
 	}
 
-	/* ²»ÊÇmptcp±¨ÎÄ */
+	/* ï¿½ï¿½ï¿½ï¿½mptcpï¿½ï¿½ï¿½ï¿½ */
 	if (optkind != FI_TCP_OPT_MPTCP)
 	{
 		return FI_SUCCESS;
 	}
 
-	/* ¿ªÊ¼½âÎömptcpÑ¡Ïî, Ê×ÏÈ¼ì²éÊý¾Ý³¤¶È */
+	/* ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½mptcpÑ¡ï¿½ï¿½, ï¿½ï¿½ï¿½È¼ï¿½ï¿½ï¿½ï¿½ï¿½Ý³ï¿½ï¿½ï¿½ */
 	if ((leftlen + 2 < optlen) || (optlen < FI_MPTCP_DSS_MINLEN))
 	{
-		/* ºöÂÔÑ¡Ïî´íÎó */
+		/* ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½ï¿½ */
 		return FI_SUCCESS;
 	}
 
-	/* ±ØÐëÊÇdssÑ¡ÐÍ */
+	/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½dssÑ¡ï¿½ï¿½ */
 	mptcpdss = (fi_mptcp_dss *)leftdata;
 	if (mptcpdss->subtype != FI_MPTCP_SUBTYPE_DSS)
 	{
 		return FI_SUCCESS;
 	}
 
-	/* ¿Û³ýdssÊ×²¿³¤¶È */
+	/* ï¿½Û³ï¿½dssï¿½×²ï¿½ï¿½ï¿½ï¿½ï¿½ */
 	leftdata += sizeof(fi_mptcp_dss);
 	leftlen  -= sizeof(fi_mptcp_dss);
 
-	/* ÔÙ´Î¼ÆËã²¢¼ì²édssÓ¦¸ÃÓÐµÄ³¤¶È */
+	/* ï¿½Ù´Î¼ï¿½ï¿½ã²¢ï¿½ï¿½ï¿½dssÓ¦ï¿½ï¿½ï¿½ÐµÄ³ï¿½ï¿½ï¿½ */
 	optlen = sizeof(uint32_t) * (mptcpdss->seq8 + mptcpdss->seqpre +
 	                             mptcpdss->ack8 + mptcpdss->ackpre);
 	if (leftlen < optlen)
@@ -296,12 +296,12 @@ static inline int fi_parse_mptcp(fi_pkt *pktinfo, struct tcphdr *tcph, uint32_t 
 		return FI_SUCCESS;
 	}
 
-	/* µ½ÕâÀï£¬ËµÃ÷Ò»¶¨¿ÉÒÔÌáÈ¡µ½seq»òack£¬µ«ÓÐµÄ±¨ÎÄ²»º¬seq£¬ËùÒÔÏÈÖÃÁã */
+	/* ï¿½ï¿½ï¿½ï¿½ï¿½ï£¬Ëµï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½seqï¿½ï¿½ackï¿½ï¿½ï¿½ï¿½ï¿½ÐµÄ±ï¿½ï¿½Ä²ï¿½ï¿½ï¿½seqï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 	pktinfo->seq = 0;
 	pktinfo->ack = 0;
 	pktinfo->mptcp = FI_TRUE;
 
-	/* ÌáÈ¡ack */
+	/* ï¿½ï¿½È¡ack */
 	if (mptcpdss->ackpre && (leftlen >= sizeof(uint32_t)))
 	{
 		seqack = (uint32_t *)leftdata;
@@ -310,7 +310,7 @@ static inline int fi_parse_mptcp(fi_pkt *pktinfo, struct tcphdr *tcph, uint32_t 
 		leftdata += sizeof(uint32_t);
 		leftlen  -= sizeof(uint32_t);
 
-		/* Èç¹ûÊÇ8×Ö½ÚµÄack£¬Ö»È¡µÍ4×Ö½Ú¾ÍÐÐÁË */
+		/* ï¿½ï¿½ï¿½ï¿½ï¿½8ï¿½Ö½Úµï¿½ackï¿½ï¿½Ö»È¡ï¿½ï¿½4ï¿½Ö½Ú¾ï¿½ï¿½ï¿½ï¿½ï¿½ */
 		if (mptcpdss->ack8 && (leftlen >= sizeof(uint32_t)))
 		{
 			seqack = (uint32_t *)leftdata;
@@ -321,7 +321,7 @@ static inline int fi_parse_mptcp(fi_pkt *pktinfo, struct tcphdr *tcph, uint32_t 
 		}
 	}
 
-	/* ÌáÈ¡seq */
+	/* ï¿½ï¿½È¡seq */
 	if (mptcpdss->seqpre && (leftlen >= sizeof(uint32_t)))
 	{
 		seqack = (uint32_t *)leftdata;
@@ -330,7 +330,7 @@ static inline int fi_parse_mptcp(fi_pkt *pktinfo, struct tcphdr *tcph, uint32_t 
 		leftdata += sizeof(uint32_t);
 		leftlen  -= sizeof(uint32_t);
 
-		/* Èç¹ûÊÇ8×Ö½ÚµÄseq£¬Ö»È¡µÍ4×Ö½Ú¾ÍÐÐÁË */
+		/* ï¿½ï¿½ï¿½ï¿½ï¿½8ï¿½Ö½Úµï¿½seqï¿½ï¿½Ö»È¡ï¿½ï¿½4ï¿½Ö½Ú¾ï¿½ï¿½ï¿½ï¿½ï¿½ */
 		if (mptcpdss->seq8 && (leftlen >= sizeof(uint32_t)))
 		{
 			seqack = (uint32_t *)leftdata;
@@ -353,17 +353,17 @@ static inline int fi_pkt_parse(fi_pkt *pktinfo, struct sk_buff *skb, int dir)
 	unsigned int   iphlen = 0;      /* ip header len */
 	unsigned int   l4hlen = 0;      /* tcp/udp header len */
 
-	/* ÒÑÔÚÉÏÎÄ×ö¹ý»ù±¾¼ì²é£¬±¨ÎÄÒ»¶¨ÎªIP±¨ÎÄ£¬³¤¶ÈÒ»¶¨´óÓÚ20 */
+	/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½é£¬ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ÎªIPï¿½ï¿½ï¿½Ä£ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½20 */
 	iph    = ip_hdr(skb);
 	iphlen = iph->ihl * FI_IP_HDR_LEN_BASE;
 
-	/* UDP±¨ÎÄ½âÎö */
+	/* UDPï¿½ï¿½ï¿½Ä½ï¿½ï¿½ï¿½ */
 	if (iph->protocol == FI_IPPROTO_UDP)
 	{
 		udph   = udp_hdr(skb);
 		l4hlen = sizeof(struct udphdr);
 
-		/* ¼ì²éskbÖÐ±¨ÎÄµÄ³¤¶È */
+		/* ï¿½ï¿½ï¿½skbï¿½Ð±ï¿½ï¿½ÄµÄ³ï¿½ï¿½ï¿½ */
 		if (skb->len < iphlen + l4hlen + skb->data_len)
 		{
 			return FI_FAILURE;
@@ -375,13 +375,13 @@ static inline int fi_pkt_parse(fi_pkt *pktinfo, struct sk_buff *skb, int dir)
 		pktinfo->sport = ntohs(udph->source);
 		pktinfo->dport = ntohs(udph->dest);
 	}
-	/* ²»ÊÇUDPÔòÒ»¶¨ÊÇTCP */
+	/* ï¿½ï¿½ï¿½ï¿½UDPï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½TCP */
 	else
 	{
 		tcph   = tcp_hdr(skb);
 		l4hlen = tcph->doff * FI_TCP_HDR_LEN_BASE;
 
-		/* ¼ì²éskbÖÐ±¨ÎÄµÄ³¤¶È */
+		/* ï¿½ï¿½ï¿½skbï¿½Ð±ï¿½ï¿½ÄµÄ³ï¿½ï¿½ï¿½ */
 		if (skb->len < iphlen + l4hlen + skb->data_len)
 		{
 			return FI_FAILURE;
@@ -401,7 +401,7 @@ static inline int fi_pkt_parse(fi_pkt *pktinfo, struct sk_buff *skb, int dir)
 		}
 	}
 
-	/* Ö»¹Ø×¢¶Ë¿Ú´óÓÚ1023µÄ */
+	/* Ö»ï¿½ï¿½×¢ï¿½Ë¿Ú´ï¿½ï¿½ï¿½1023ï¿½ï¿½ */
 	if ((pktinfo->sport < FI_BATTLE_START_PORT_MIN) ||
 	    (pktinfo->dport < FI_BATTLE_START_PORT_MIN))
 	{
@@ -421,13 +421,13 @@ static inline int fi_pkt_parse(fi_pkt *pktinfo, struct sk_buff *skb, int dir)
 
 void fi_timer_callback(unsigned long arg)
 {
-	/* ÀÏ»¯Á÷±í */
+	/* ï¿½Ï»ï¿½ï¿½ï¿½ï¿½ï¿½ */
 	fi_flow_age();
 
-	/* ¶¨ÆÚ·¢ËÍrtt, ¸üÐÂÓÎÏ·×´Ì¬ */
+	/* ï¿½ï¿½ï¿½Ú·ï¿½ï¿½ï¿½rtt, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï·×´Ì¬ */
 	fi_rtt_timer();
 
-	/* ¶¨Ê±Æ÷ÏÂ´Î´¥·¢µÄÊ±¼ä */
+	/* ï¿½ï¿½Ê±ï¿½ï¿½ï¿½Â´Î´ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ */
 	mod_timer(&g_fi_ctx.tm, jiffies + HZ / FI_TIMER_INTERVAL);
 
 	return;
@@ -438,7 +438,7 @@ static bool fi_streq(char *data, uint32_t datalen, char *str)
 {
 	uint32_t strLen = strlen(str);
 
-	/* data×Ö·û´®ºóÓÐ¶àÓàµÄ'\0' */
+	/* dataï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½'\0' */
 	if (datalen >= strLen + 1)
 	{
 		if (!memcmp(data, str, strLen + 1))
@@ -446,7 +446,7 @@ static bool fi_streq(char *data, uint32_t datalen, char *str)
 			return FI_TRUE;
 		}
 	}
-	/* data²»ÊÇÒÔ'\0'½áÎ² */
+	/* dataï¿½ï¿½ï¿½ï¿½ï¿½ï¿½'\0'ï¿½ï¿½Î² */
 	else if (datalen == strLen)
 	{
 		if (!memcmp(data, str, strLen))
@@ -481,10 +481,10 @@ static void fi_appid_shrink(void)
 {
 	uint32_t i;
 
-	/* appidminÏòÇ°ÒÆ */
+	/* appidminï¿½ï¿½Ç°ï¿½ï¿½ */
 	for (i = g_fi_ctx.appidmin; (i <= g_fi_ctx.appidmax) && (i < FI_APPID_MAX); i++)
 	{
-		/* validÎª¼Ù±íÊ¾¸ÃÓÎÏ·ÒÑÍË³ö */
+		/* validÎªï¿½Ù±ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ï¿½ï¿½Ë³ï¿½ */
 		if (!(g_fi_ctx.appinfo[i].valid))
 		{
 			g_fi_ctx.appidmin = i;
@@ -495,10 +495,10 @@ static void fi_appid_shrink(void)
 		}
 	}
 
-	/* appidmaxÏòºóÒÆ */
+	/* appidmaxï¿½ï¿½ï¿½ï¿½ï¿½ */
 	for (i = g_fi_ctx.appidmax; (i >= g_fi_ctx.appidmin) && (i > 0); i--)
 	{
-		/* validÎª¼Ù±íÊ¾¸ÃÓÎÏ·ÒÑÍË³ö */
+		/* validÎªï¿½Ù±ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ï¿½ï¿½Ë³ï¿½ */
 		if (!(g_fi_ctx.appinfo[i].valid))
 		{
 			g_fi_ctx.appidmax = i;
@@ -509,7 +509,7 @@ static void fi_appid_shrink(void)
 		}
 	}
 
-	/* ËµÃ÷ÒÑ¾­Ã»ÓÐappidÁË */
+	/* Ëµï¿½ï¿½ï¿½Ñ¾ï¿½Ã»ï¿½ï¿½appidï¿½ï¿½ */
 	i = g_fi_ctx.appidmin;
 	if ((g_fi_ctx.appidmin == g_fi_ctx.appidmax) && !(g_fi_ctx.appinfo[i].valid))
 	{
@@ -584,7 +584,7 @@ static void fi_proc_applaunch(void *data, int32_t len)
 	fi_app_info *appinfo;
 	uint32_t appid;
 
-	/* ²ÎÊý¼ì²é */
+	/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 	if ((!data) || (len < sizeof(fi_msg_applaunch)))
 	{
 		FI_LOGE(" : FI illegal data length %d in FI app launch", len);
@@ -594,7 +594,7 @@ static void fi_proc_applaunch(void *data, int32_t len)
 	msg  = (fi_msg_applaunch *)data;
 	len -= sizeof(fi_msg_applaunch);
 
-	/* ½«×Ö·û´®ÐÎÊ½µÄappname×ª»¯Îªappid */
+	/* ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½appname×ªï¿½ï¿½Îªappid */
 	appid = fi_appname_to_appid(msg->appname, len);
 	if (!FI_APPID_VALID(appid))
 	{
@@ -604,10 +604,10 @@ static void fi_proc_applaunch(void *data, int32_t len)
 
 	fi_appid_add(appid);
 
-	/* ´´½¨nf¹³×Ó, Èç¹ûÒÑ¾­´æÔÚ¾Í²»ÔÙÔö¼Ó */
+	/* ï¿½ï¿½ï¿½ï¿½nfï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½Ú¾Í²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 	fi_register_nf_hook();
 
-	/* ¿ªÊ¼¸³Öµ */
+	/* ï¿½ï¿½Ê¼ï¿½ï¿½Öµ */
 	appinfo = &g_fi_ctx.appinfo[appid];
 	appinfo->appid = appid;
 	appinfo->uid   = msg->uid;
@@ -627,7 +627,7 @@ static void fi_proc_appstatus(void *data, int32_t len)
 	fi_app_info *appinfo;
 	uint32_t appid;
 
-	/* ²ÎÊý¼ì²é */
+	/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 	if ((!data) || (len < sizeof(fi_msg_appstatus)))
 	{
 		FI_LOGE(" : FI illegal data length %d in FI set app status", len);
@@ -646,34 +646,34 @@ static void fi_proc_appstatus(void *data, int32_t len)
 
 	FI_LOGI(" : FI recv app status appid=%u, appstatus=%u", appid, msg->appstatus);
 
-	/* ÐèÒª¸üÐÂÒ»ÏÂuid£¬¼ÇÂ¼appµ±Ç°µÄ×´Ì¬ */
+	/* ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½uidï¿½ï¿½ï¿½ï¿½Â¼appï¿½ï¿½Ç°ï¿½ï¿½×´Ì¬ */
 	appinfo = &g_fi_ctx.appinfo[appid];
 	appinfo->uid = msg->uid;
 	appinfo->appstatus = msg->appstatus;
 
-	/* Èç¹ûÊÇÓÎÏ·ÍË³ö */
+	/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½Ë³ï¿½ */
 	if (msg->appstatus == GAME_SDK_STATE_DIE)
 	{
 		fi_gamectx *gamectx;
 
-		/* ²»ÒªÇå³ýuid, ÆäËüÄÚºËÏß³Ì¿ÉÄÜ»¹»áÓÃµ½, ½«±ê¼ÇÖÃÎªfalse¼´¿É */
+		/* ï¿½ï¿½Òªï¿½ï¿½ï¿½uid, ï¿½ï¿½ï¿½ï¿½ï¿½Úºï¿½ï¿½ß³Ì¿ï¿½ï¿½Ü»ï¿½ï¿½ï¿½ï¿½Ãµï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªfalseï¿½ï¿½ï¿½ï¿½ */
 		appinfo->valid = FI_FALSE;
 
 		gamectx = g_fi_ctx.gamectx + appid;
 
-		/* ·¢ËÍ¶ÔÕ½½áÊø */
+		/* ï¿½ï¿½ï¿½Í¶ï¿½Õ½ï¿½ï¿½ï¿½ï¿½ */
 		if (FI_BATTLING(gamectx->appstatus))
 		{
 			fi_rtt_status(gamectx->appid, FI_STATUS_BATTLE_STOP);
 		}
 
-		/* Çå³ýrtt»º´æ */
+		/* ï¿½ï¿½ï¿½rttï¿½ï¿½ï¿½ï¿½ */
 		memset(gamectx, 0, sizeof(fi_gamectx));
 
-		/* ÊÕËõappid·¶Î§ */
+		/* ï¿½ï¿½ï¿½ï¿½appidï¿½ï¿½Î§ */
 		fi_appid_shrink();
 
-		/* Èç¹ûÃ»ÓÐappid, ÔòÉ¾³ýnf¹³×Ó */
+		/* ï¿½ï¿½ï¿½Ã»ï¿½ï¿½appid, ï¿½ï¿½É¾ï¿½ï¿½nfï¿½ï¿½ï¿½ï¿½ */
 		if (FI_HAS_NO_APPID(g_fi_ctx))
 		{
 			fi_unregister_nf_hook();
@@ -699,7 +699,7 @@ void fi_reflect_status(int32_t event, uint8_t *data, uint16_t len)
 
 	msg = (fi_msg_appstatus *)data;
 
-	/* Èç¹ûÊÇÓÎÏ·¼ÓÔØ£¬ÏûÏ¢ÀàÐÍ¹Ì¶¨ÎªGAME_SDK_STATE_FOREGROUND */
+	/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ï¿½ï¿½Ø£ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½Í¹Ì¶ï¿½ÎªGAME_SDK_STATE_FOREGROUND */
 	if (event == NETLINK_EMCOM_DK_SMARTCARE_FI_APP_LAUNCH)
 	{
 		status = GAME_SDK_STATE_FOREGROUND;
@@ -713,7 +713,7 @@ void fi_reflect_status(int32_t event, uint8_t *data, uint16_t len)
 		return;
 	}
 
-	/* ÉÏ±¨ÓÎÏ·×´Ì¬ */
+	/* ï¿½Ï±ï¿½ï¿½ï¿½Ï·×´Ì¬ */
 	report.uid = msg->uid;
 	report.status = status;
 	report.apptype = FI_APP_TYPE_GAME;
@@ -729,15 +729,15 @@ void fi_event_process(int32_t event, uint8_t *pdata, uint16_t len)
 {
 	FI_LOGD(" : FI received cmd %d, datalen %u.", event, len);
 
-	/* ¸ù¾Ý²»Í¬µÄÏûÏ¢id½øÐÐ²»Í¬µÄ´¦Àí */
+	/* ï¿½ï¿½ï¿½Ý²ï¿½Í¬ï¿½ï¿½ï¿½ï¿½Ï¢idï¿½ï¿½ï¿½Ð²ï¿½Í¬ï¿½Ä´ï¿½ï¿½ï¿½ */
 	switch (event)
 	{
-		/* ÓÎÏ·Æô¶¯ */
+		/* ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½ */
 		case NETLINK_EMCOM_DK_SMARTCARE_FI_APP_LAUNCH:
 			fi_proc_applaunch(pdata, len);
 			break;
 
-		/* ÓÎÏ·×´Ì¬±ä»¯ */
+		/* ï¿½ï¿½Ï·×´Ì¬ï¿½ä»¯ */
 		case NETLINK_EMCOM_DK_SMARTCARE_FI_APP_STATUS:
 			fi_proc_appstatus(pdata, len);
 			break;
@@ -747,7 +747,7 @@ void fi_event_process(int32_t event, uint8_t *pdata, uint16_t len)
 			break;
 	}
 
-	/* ½«ÓÎÏ·×´Ì¬±ä»¯ÏûÏ¢Í¬Ê±·¢ËÍµ½framework */
+	/* ï¿½ï¿½ï¿½ï¿½Ï·×´Ì¬ï¿½ä»¯ï¿½ï¿½Ï¢Í¬Ê±ï¿½ï¿½ï¿½Íµï¿½framework */
 	fi_reflect_status(event, pdata, len);
 
 	return;
@@ -771,13 +771,13 @@ static void fi_hook(struct sk_buff *skb, int dir)
 		return;
 	}
 
-	/* ¹ýÂË³öipv4 udp&tcp */
+	/* ï¿½ï¿½ï¿½Ë³ï¿½ipv4 udp&tcp */
 	if (fi_pkt_check(skb, dir) != FI_SUCCESS)
 	{
 		return;
 	}
 
-	/* ÉÏÐÐ±¨ÎÄÍ¨¹ýuid¹ýÂË£¬ÏÂÐÐ±¨ÎÄ»ñÈ¡²»µ½uid, Í¨¹ýÁ÷±í¹ýÂË */
+	/* ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½Í¨ï¿½ï¿½uidï¿½ï¿½ï¿½Ë£ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½Ä»ï¿½È¡ï¿½ï¿½ï¿½ï¿½uid, Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 	if (dir == FI_DIR_UP)
 	{
 		sk = skb->sk;
@@ -786,7 +786,7 @@ static void fi_hook(struct sk_buff *skb, int dir)
 			return;
 		}
 
-		/* tcpÉÏÐÐ±¨ÎÄ»¹ÐèÒª¼ì²éµ±Ç°Á¬½Ó×´Ì¬ */
+		/* tcpï¿½ï¿½ï¿½Ð±ï¿½ï¿½Ä»ï¿½ï¿½ï¿½Òªï¿½ï¿½éµ±Ç°ï¿½ï¿½ï¿½ï¿½×´Ì¬ */
 		if ((iph->protocol == FI_IPPROTO_TCP) &&
 		    (sk->sk_state != TCP_ESTABLISHED))
 		{
@@ -795,7 +795,7 @@ static void fi_hook(struct sk_buff *skb, int dir)
 
 		kuid = sock_i_uid(sk);
 
-		/* Ö»´¦ÀíÓÎÏ·±¨ÎÄ, Í¨¹ýuid¹ýÂË */
+		/* Ö»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½, Í¨ï¿½ï¿½uidï¿½ï¿½ï¿½ï¿½ */
 		appid = fi_find_appid(kuid.val);
 		if (!FI_APPID_VALID(appid))
 		{
@@ -805,7 +805,7 @@ static void fi_hook(struct sk_buff *skb, int dir)
 		addflow = FI_TRUE;
 	}
 
-	/* ±¨ÎÄ½âÎö, Ö»¹Ø×¢¶Ë¿Ú´óÓÚ1023µÄ */
+	/* ï¿½ï¿½ï¿½Ä½ï¿½ï¿½ï¿½, Ö»ï¿½ï¿½×¢ï¿½Ë¿Ú´ï¿½ï¿½ï¿½1023ï¿½ï¿½ */
 	if (fi_pkt_parse(&pktinfo, skb, dir) != FI_SUCCESS)
 	{
 		return;
@@ -816,7 +816,7 @@ static void fi_hook(struct sk_buff *skb, int dir)
 
 	fi_flow_lock();
 
-	/* ÉÏÐÐ±¨ÎÄ²éÕÒ»ò´´½¨Á÷, ÏÂÐÐ±¨ÎÄ½ö½ö²éÕÒÁ÷ */
+	/* ï¿½ï¿½ï¿½Ð±ï¿½ï¿½Ä²ï¿½ï¿½Ò»ò´´½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½Ð±ï¿½ï¿½Ä½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 	flow = fi_flow_get(&pktinfo, head, addflow);
 	if (flow == NULL)
 	{
@@ -833,7 +833,7 @@ static void fi_hook(struct sk_buff *skb, int dir)
 		appid = flow->flowctx.appid;
 	}
 
-	/* fiÖ÷Èë¿Ú */
+	/* fiï¿½ï¿½ï¿½ï¿½ï¿½ */
 	fi_rtt_entrance(&pktinfo, &(flow->flowctx), appid);
 	fi_flow_unlock();
 
@@ -875,7 +875,7 @@ void fi_para_init(void)
 
 void fi_init(void)
 {
-	/* ³õÊ¼»¯Ä£¿éÔËÐÐ²ÎÊý */
+	/* ï¿½ï¿½Ê¼ï¿½ï¿½Ä£ï¿½ï¿½ï¿½ï¿½ï¿½Ð²ï¿½ï¿½ï¿½ */
 	fi_para_init();
 
 	FI_LOGI(" : FI init kernel module successfully, mem used %lu",
@@ -887,10 +887,10 @@ void fi_init(void)
 
 void fi_deinit(void)
 {
-	/* É¾³ýnf×¢²áµÄ¹³×Óº¯Êý, É¾³ý¶¨Ê±Æ÷ */
+	/* É¾ï¿½ï¿½nf×¢ï¿½ï¿½Ä¹ï¿½ï¿½Óºï¿½ï¿½ï¿½, É¾ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ */
 	fi_unregister_nf_hook();
 
-	/* Çå¿ÕÁ÷±í */
+	/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 	fi_flow_clear();
 
 	FI_LOGI(" : FI deinit kernel module successfully");
