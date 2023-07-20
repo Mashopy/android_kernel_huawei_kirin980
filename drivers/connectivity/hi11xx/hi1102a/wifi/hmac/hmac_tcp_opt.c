@@ -634,8 +634,9 @@ oal_tcp_ack_type_enum_uint8  hmac_tcp_opt_tx_get_tcp_ack_type_index(oal_netbuf_s
 }
 
 
-oal_uint16 hmac_tcp_opt_tx_tcp_ack_filter(void *pst_hmac_vap, hmac_tcp_opt_queue type,hcc_chan_type dir, oal_netbuf_head_stru *head)
+oal_uint16 hmac_tcp_opt_tx_tcp_ack_filter(void *hmac_vap, hmac_tcp_opt_queue type,hcc_chan_type dir, oal_netbuf_head_stru *head)
 {
+    hmac_vap_stru                   *pst_hmac_vap;
     oal_netbuf_stru                 *skb;
     oal_netbuf_head_stru            head_t;
     oal_uint8                      uc_tcp_stream_index;
@@ -672,6 +673,7 @@ oal_uint16 hmac_tcp_opt_tx_tcp_ack_filter(void *pst_hmac_vap, hmac_tcp_opt_queue
     }
     oal_netbuf_head_init(&head_t);
 
+    pst_hmac_vap = (hmac_vap_stru *)hmac_vap;
     while(!!(skb = oal_netbuf_delist(head)))
     {
         if(hmac_tcp_opt_tcp_ack_filter(skb, pst_hmac_vap, dir))

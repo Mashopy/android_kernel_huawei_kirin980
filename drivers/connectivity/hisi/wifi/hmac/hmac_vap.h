@@ -11,7 +11,7 @@ extern "C" {
 
 
 /*****************************************************************************
-  1 ÆäËûÍ·ÎÄ¼þ°üº¬
+  1 ï¿½ï¿½ï¿½ï¿½Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 #include "oal_ext_if.h"
 #include "mac_vap.h"
@@ -30,7 +30,7 @@ extern "C" {
 #define THIS_FILE_ID OAM_FILE_ID_HMAC_VAP_H
 
 /*****************************************************************************
-  2 ºê¶¨Òå
+  2 ï¿½ê¶¨ï¿½ï¿½
 *****************************************************************************/
 #ifdef _PRE_WLAN_DFT_STAT
 #define   HMAC_VAP_DFT_STATS_PKT_INCR(_member, _cnt)        ((_member) += (_cnt))
@@ -48,10 +48,10 @@ extern "C" {
 #define  HMAC_HIPRIV_ACK_BUF_SIZE  3
 #endif
 /*****************************************************************************
-  3 Ã¶¾Ù¶¨Òå
+  3 Ã¶ï¿½Ù¶ï¿½ï¿½ï¿½
 *****************************************************************************/
 /*****************************************************************************
-    ³õÊ¼»¯vapÌØÐÔÃ¶¾Ù
+    ï¿½ï¿½Ê¼ï¿½ï¿½vapï¿½ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½
 *****************************************************************************/
 typedef enum
 {
@@ -64,28 +64,23 @@ typedef oal_uint8 hmac_addba_mode_enum_uint8;
 
 
 /*****************************************************************************
-  4 È«¾Ö±äÁ¿ÉùÃ÷
+  4 È«ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 
 
 /*****************************************************************************
-  5 ÏûÏ¢Í·¶¨Òå
+  5 ï¿½ï¿½Ï¢Í·ï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 
 
 /*****************************************************************************
-  6 ÏûÏ¢¶¨Òå
+  6 ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 
 
 /*****************************************************************************
-  7 STRUCT¶¨Òå
+  7 STRUCTï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
-/* ÉùÃ÷hmac_vap ½á¹¹Ìå¶¨Òå */
-struct hmac_vap_tag;
-typedef struct hmac_vap_tag hmac_vap_stru;
-
-
 typedef struct
 {
     oal_dlist_head_stru st_timeout_head;
@@ -112,43 +107,43 @@ typedef struct
 }hmac_cfg_qos_map_param_stru;
 #endif
 
-/*ÐÞ¸Ä´Ë½á¹¹ÌåÐèÒªÍ¬²½Í¨ÖªSDT£¬·ñÔòÉÏ±¨ÎÞ·¨½âÎö*/
+/*ï¿½Þ¸Ä´Ë½á¹¹ï¿½ï¿½ï¿½ï¿½ÒªÍ¬ï¿½ï¿½Í¨ÖªSDTï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ï¿½Þ·ï¿½ï¿½ï¿½ï¿½ï¿½*/
 typedef struct
 {
 
     /***************************************************************************
-                                ÊÕËÍ°üÍ³¼Æ
+                                ï¿½ï¿½ï¿½Í°ï¿½Í³ï¿½ï¿½
     ***************************************************************************/
-    /* ·¢ÍùlanµÄÊý¾Ý°üÍ³¼Æ */
-    oal_uint32  ul_rx_pkt_to_lan;                               /* ½ÓÊÕÁ÷³Ì·¢ÍùÒÔÌ«ÍøµÄÊý¾Ý°üÊýÄ¿£¬MSDU */
-    oal_uint32  ul_rx_bytes_to_lan;                             /* ½ÓÊÕÁ÷³Ì·¢ÍùÒÔÌ«ÍøµÄ×Ö½ÚÊý */
+    /* ï¿½ï¿½ï¿½ï¿½lanï¿½ï¿½ï¿½ï¿½ï¿½Ý°ï¿½Í³ï¿½ï¿½ */
+    oal_uint32  ul_rx_pkt_to_lan;                               /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì·ï¿½ï¿½ï¿½ï¿½ï¿½Ì«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý°ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½MSDU */
+    oal_uint32  ul_rx_bytes_to_lan;                             /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì·ï¿½ï¿½ï¿½ï¿½ï¿½Ì«ï¿½ï¿½ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½ */
 
    /***************************************************************************
-                                ·¢ËÍ°üÍ³¼Æ
+                                ï¿½ï¿½ï¿½Í°ï¿½Í³ï¿½ï¿½
     ***************************************************************************/
-   /* ´Ólan½ÓÊÕµ½µÄÊý¾Ý°üÍ³¼Æ */
-   oal_uint32  ul_tx_pkt_num_from_lan;                         /* ´Ólan¹ýÀ´µÄ°üÊýÄ¿,MSDU */
-   oal_uint32  ul_tx_bytes_from_lan;                           /* ´Ólan¹ýÀ´µÄ×Ö½ÚÊý */
+   /* ï¿½ï¿½lanï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý°ï¿½Í³ï¿½ï¿½ */
+   oal_uint32  ul_tx_pkt_num_from_lan;                         /* ï¿½ï¿½lanï¿½ï¿½ï¿½ï¿½ï¿½Ä°ï¿½ï¿½ï¿½Ä¿,MSDU */
+   oal_uint32  ul_tx_bytes_from_lan;                           /* ï¿½ï¿½lanï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½ */
 
 }hmac_vap_query_stats_stru;
-/*×°±¸²âÊÔ*/
+/*×°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 typedef struct
 {
-    oal_uint32                       ul_rx_pkct_succ_num;                       /*½ÓÊÕÊý¾Ý°üÊý*/
-    oal_uint32                       ul_dbb_num;                                /*DBB°æ±¾ºÅ*/
-    oal_uint32                       ul_check_fem_pa_status;                    /*femºÍpaÊÇ·ñÉÕ»Ù±êÖ¾*/
+    oal_uint32                       ul_rx_pkct_succ_num;                       /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý°ï¿½ï¿½ï¿½*/
+    oal_uint32                       ul_dbb_num;                                /*DBBï¿½æ±¾ï¿½ï¿½*/
+    oal_uint32                       ul_check_fem_pa_status;                    /*femï¿½ï¿½paï¿½Ç·ï¿½ï¿½Õ»Ù±ï¿½Ö¾*/
     oal_int16                        s_rx_rssi;
-    oal_bool_enum_uint8              uc_get_dbb_completed_flag;                 /*»ñÈ¡DBB°æ±¾ºÅ³É¹¦ÉÏ±¨±êÖ¾*/
-    oal_bool_enum_uint8              uc_check_fem_pa_flag;                      /*femºÍpaÊÇ·ñÉÕ»ÙÉÏ±¨±êÖ¾*/
-    oal_bool_enum_uint8              uc_get_rx_pkct_flag;                       /*½ÓÊÕÊý¾Ý°üÉÏ±¨±êÖ¾Î»*/
-    oal_bool_enum_uint8              uc_lte_gpio_check_flag;                    /*½ÓÊÕÊý¾Ý°üÉÏ±¨±êÖ¾Î»*/
-    oal_bool_enum_uint8              uc_report_efuse_reg_flag;              /*efuse ¼Ä´æÆ÷¶ÁÈ¡*/
+    oal_bool_enum_uint8              uc_get_dbb_completed_flag;                 /*ï¿½ï¿½È¡DBBï¿½æ±¾ï¿½Å³É¹ï¿½ï¿½Ï±ï¿½ï¿½ï¿½Ö¾*/
+    oal_bool_enum_uint8              uc_check_fem_pa_flag;                      /*femï¿½ï¿½paï¿½Ç·ï¿½ï¿½Õ»ï¿½ï¿½Ï±ï¿½ï¿½ï¿½Ö¾*/
+    oal_bool_enum_uint8              uc_get_rx_pkct_flag;                       /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý°ï¿½ï¿½Ï±ï¿½ï¿½ï¿½Ö¾Î»*/
+    oal_bool_enum_uint8              uc_lte_gpio_check_flag;                    /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý°ï¿½ï¿½Ï±ï¿½ï¿½ï¿½Ö¾Î»*/
+    oal_bool_enum_uint8              uc_report_efuse_reg_flag;              /*efuse ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½È¡*/
     oal_uint8                        uc_ant_status : 4,
                                      uc_get_ant_flag : 4;
 }hmac_atcmdsrv_get_stats_stru;
 
 #ifdef _PRE_WLAN_FEATURE_EQUIPMENT_TEST
-/*51×°±¸²âÊÔ hiprivÃüÁî»ØÏÔ*/
+/*51×°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ hiprivï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 typedef struct
 {
     oal_uint8                   auc_data[HMAC_HIPRIV_ACK_BUF_SIZE];
@@ -172,37 +167,37 @@ typedef enum _hmac_tcp_opt_queue_
 } hmac_tcp_opt_queue;
 
 #ifdef _PRE_WLAN_TCP_OPT
-typedef oal_uint16 (* hmac_trans_cb_func)(hmac_vap_stru *pst_hmac_device, hmac_tcp_opt_queue type,hcc_chan_type dir, oal_netbuf_head_stru* data);
-/*tcp_ackÓÅ»¯*/
+typedef oal_uint16 (* hmac_trans_cb_func)(void *pst_hmac_device, hmac_tcp_opt_queue type,hcc_chan_type dir, oal_netbuf_head_stru* data);
+/*tcp_ackï¿½Å»ï¿½*/
 typedef struct
 {
     struct wlan_perform_tcp      hmac_tcp_ack;
     struct wlan_perform_tcp_list hmac_tcp_ack_list;
     wlan_perform_tcp_impls       filter_info;
-    hmac_trans_cb_func           filter[HMAC_TCP_OPT_QUEUE_BUTT];	//¹ýÂË´¦Àí¹³×Óº¯Êý
-    oal_uint64                   all_ack_count[HMAC_TCP_OPT_QUEUE_BUTT];	//¶ªÆúµÄTCP ACKÍ³¼Æ
-    oal_uint64                   drop_count[HMAC_TCP_OPT_QUEUE_BUTT];	//¶ªÆúµÄTCP ACKÍ³¼Æ
+    hmac_trans_cb_func           filter[HMAC_TCP_OPT_QUEUE_BUTT];	//ï¿½ï¿½ï¿½Ë´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óºï¿½ï¿½ï¿½
+    oal_uint64                   all_ack_count[HMAC_TCP_OPT_QUEUE_BUTT];	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½TCP ACKÍ³ï¿½ï¿½
+    oal_uint64                   drop_count[HMAC_TCP_OPT_QUEUE_BUTT];	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½TCP ACKÍ³ï¿½ï¿½
     oal_netbuf_head_stru         data_queue[HMAC_TCP_OPT_QUEUE_BUTT];
     oal_spin_lock_stru           data_queue_lock[HMAC_TCP_OPT_QUEUE_BUTT];
 }hmac_tcp_ack_stru;
 #endif
 
 #ifdef _PRE_WLAN_FEATURE_HILINK
-/* ¼ÇÂ¼ÌÞ³ýÍø¿¨ÐÅÏ¢½á¹¹Ìå */
+/* ï¿½ï¿½Â¼ï¿½Þ³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½á¹¹ï¿½ï¿½ */
 typedef struct
 {
-    oal_uint8  auc_user_mac_addr[6];     /* ±£´æÒÑÉ¾³ýÓÃ»§µÄMACµØÖ· */
+    oal_uint8  auc_user_mac_addr[6];     /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½MACï¿½ï¿½Ö· */
     oal_uint8  auc_rev[2];
 }hmac_fbt_disable_user_info_stru;
 
-/* ¼ÇÂ¼¿ìËÙÇÐ»»ÐÅÏ¢µÄ½á¹¹Ìå */
+/* ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½Ï¢ï¿½Ä½á¹¹ï¿½ï¿½ */
 typedef struct
 {
-    oal_uint8  uc_fbt_mode;              /* ÅäÖÃ¿ìËÙÇÐ»»ÔËÐÐµÄÄ£Ê½¡£0£º±íÊ¾¹Ø±Õ£¬1£º±íÊ¾¿ªÆôAC¼¯ÖÐ¿ØÖÆ */
-    oal_uint8  uc_disabled_user_cnt;     /* ¼ÇÂ¼½ûÖ¹Á¬½ÓÁÐ±íµ±Ç°ÓÃ»§µÄ¸öÊý */
+    oal_uint8  uc_fbt_mode;              /* ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½ï¿½Ðµï¿½Ä£Ê½ï¿½ï¿½0ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½Ø±Õ£ï¿½1ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ACï¿½ï¿½ï¿½Ð¿ï¿½ï¿½ï¿½ */
+    oal_uint8  uc_disabled_user_cnt;     /* ï¿½ï¿½Â¼ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½Ç°ï¿½Ã»ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½ */
     oal_uint8  auc_rev[2];
-    hmac_fbt_disable_user_info_stru ast_fbt_disable_connect_user_list[HMAC_FBT_MAX_USER_NUM];  /* ±£´æ32¸ö½ûÖ¹Á¬½ÓÓÃ»§µÄÐÅÏ¢£¬32¸ö×ÊÔ´²»¹»£¬ÔÝÊ±Ö§³Ö3¸öÓÃ»§ */
-    frw_timeout_stru st_timer;           /* ÒÑ¹ØÁªÓÃ»§ÉÏ±¨ÕìÌý½á¹ûÊ¹ÓÃµÄ¶¨Ê±Æ÷ */
+    hmac_fbt_disable_user_info_stru ast_fbt_disable_connect_user_list[HMAC_FBT_MAX_USER_NUM];  /* ï¿½ï¿½ï¿½ï¿½32ï¿½ï¿½ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½32ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±Ö§ï¿½ï¿½3ï¿½ï¿½ï¿½Ã»ï¿½ */
+    frw_timeout_stru st_timer;           /* ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ï±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ÃµÄ¶ï¿½Ê±ï¿½ï¿½ */
 }hmac_fbt_mgmt_stru;
 #endif
 
@@ -238,65 +233,65 @@ typedef  struct
 #define hmac_vap_psta_in_rep(vap)   (!oal_dlist_is_empty(&(vap)->st_psta.st_hash_entry))
 #endif
 
-/* hmac vap½á¹¹Ìå */
-/* ÔÚÏò´Ë½á¹¹ÌåÖÐÔö¼Ó³ÉÔ±µÄÊ±ºò£¬Çë±£³ÖÕû¸ö½á¹¹Ìå8×Ö½Ú¶ÔÆë*/
+/* hmac vapï¿½á¹¹ï¿½ï¿½ */
+/* ï¿½ï¿½ï¿½ï¿½Ë½á¹¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó³ï¿½Ô±ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ë±£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½á¹¹ï¿½ï¿½8ï¿½Ö½Ú¶ï¿½ï¿½ï¿½*/
 typedef struct hmac_vap_tag
 {
-    /* ap sta¹«¹²×Ö¶Î */
-    oal_net_device_stru            *pst_net_device;                             /* VAP¶ÔÓ¦µÄnet_devices */
-    oal_uint8                       auc_name[OAL_IF_NAME_SIZE];                 /* VAPÃû×Ö*/
-    hmac_vap_cfg_priv_stru          st_cfg_priv;                                /* wal hmacÅäÖÃÍ¨ÐÅ½Ó¿Ú */
+    /* ap staï¿½ï¿½ï¿½ï¿½ï¿½Ö¶ï¿½ */
+    oal_net_device_stru            *pst_net_device;                             /* VAPï¿½ï¿½Ó¦ï¿½ï¿½net_devices */
+    oal_uint8                       auc_name[OAL_IF_NAME_SIZE];                 /* VAPï¿½ï¿½ï¿½ï¿½*/
+    hmac_vap_cfg_priv_stru          st_cfg_priv;                                /* wal hmacï¿½ï¿½ï¿½ï¿½Í¨ï¿½Å½Ó¿ï¿½ */
 
-    oal_spin_lock_stru              st_lock_state;                              /* Êý¾ÝÃæºÍ¿ØÖÆÃæ¶ÔVAP×´Ì¬½øÐÐ»¥³â */
-    oal_uint16                      us_user_nums_max;                           /* VAPÏÂ¿É¹Ò½ÓµÄ×î´óÓÃ»§¸öÊý */
-    oal_uint8                       uc_classify_tid;                            /* ½öÔÚ»ùÓÚvapµÄÁ÷·ÖÀàÊ¹ÄÜºóÓÐÐ§ */
-    wlan_auth_alg_enum_uint8        en_auth_mode;                               /* ÈÏÖ¤Ëã·¨ */
+    oal_spin_lock_stru              st_lock_state;                              /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½VAP×´Ì¬ï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½ */
+    oal_uint16                      us_user_nums_max;                           /* VAPï¿½Â¿É¹Ò½Óµï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ */
+    oal_uint8                       uc_classify_tid;                            /* ï¿½ï¿½ï¿½Ú»ï¿½ï¿½ï¿½vapï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Üºï¿½ï¿½ï¿½Ð§ */
+    wlan_auth_alg_enum_uint8        en_auth_mode;                               /* ï¿½ï¿½Ö¤ï¿½ã·¨ */
 
     oal_mgmt_tx_stru                st_mgmt_tx;
     frw_timeout_stru                st_mgmt_timer;
     hmac_mgmt_timeout_param_stru    st_mgmt_timetout_param;
 
-    frw_timeout_stru                st_scan_timeout;                            /* vap·¢ÆðÉ¨ÃèÊ±£¬»áÆô¶¯¶¨Ê±Æ÷£¬×ö³¬Ê±±£»¤´¦Àí */
+    frw_timeout_stru                st_scan_timeout;                            /* vapï¿½ï¿½ï¿½ï¿½É¨ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 
     hmac_addba_mode_enum_uint8      en_addba_mode;
 #ifdef _PRE_WLAN_FEATURE_WMMAC
-    oal_uint8                       uc_ts_dialog_token;                         /* TS»á»°´´½¨Î±Ëæ»úÖµ */
+    oal_uint8                       uc_ts_dialog_token;                         /* TSï¿½á»°ï¿½ï¿½ï¿½ï¿½Î±ï¿½ï¿½ï¿½Öµ */
 #else
     oal_uint8                       uc_resv1;
 #endif //_PRE_WLAN_FEATURE_WMMAC
-    oal_uint8                       uc_80211i_mode;                             /* Ö¸Ê¾µ±Ç°µÄ·½Ê½Ê±WPA»¹ÊÇWPA2, bit0 = 1,WPA; bit1 = 1, RSN */
-    oal_uint8                       uc_ba_dialog_token;                         /* BA»á»°´´½¨Î±Ëæ»úÖµ */
+    oal_uint8                       uc_80211i_mode;                             /* Ö¸Ê¾ï¿½ï¿½Ç°ï¿½Ä·ï¿½Ê½Ê±WPAï¿½ï¿½ï¿½ï¿½WPA2, bit0 = 1,WPA; bit1 = 1, RSN */
+    oal_uint8                       uc_ba_dialog_token;                         /* BAï¿½á»°ï¿½ï¿½ï¿½ï¿½Î±ï¿½ï¿½ï¿½Öµ */
 #ifdef _PRE_WLAN_FEATURE_PROXYSTA
     hmac_psta_stru                  st_psta;
 #endif
 #ifdef _PRE_WLAN_FEATURE_CUSTOM_SECURITY
-    mac_blacklist_info_stru         st_blacklist_info;                          /* ºÚÃûµ¥ÐÅÏ¢ */
-    mac_isolation_info_stru         st_isolation_info;                          /* ÓÃ»§¸ôÀëÐÅÏ¢ */
+    mac_blacklist_info_stru         st_blacklist_info;                          /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ */
+    mac_isolation_info_stru         st_isolation_info;                          /* ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ */
 #endif
 #ifdef _PRE_WLAN_FEATURE_11D
-    oal_bool_enum_uint8             en_updata_rd_by_ie_switch;                  /*ÊÇ·ñ¸ù¾Ý¹ØÁªµÄap¸úÐÂ×Ô¼ºµÄ¹ú¼ÒÂë*/
+    oal_bool_enum_uint8             en_updata_rd_by_ie_switch;                  /*ï¿½Ç·ï¿½ï¿½ï¿½Ý¹ï¿½ï¿½ï¿½ï¿½ï¿½apï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½Ä¹ï¿½ï¿½ï¿½ï¿½ï¿½*/
     oal_uint8                       auc_resv2[3];
 #endif
 #ifdef _PRE_WLAN_FEATURE_P2P
-    oal_net_device_stru            *pst_p2p0_net_device;                        /* Ö¸Ïòp2p0 net device */
-    oal_net_device_stru            *pst_del_net_device;                         /* Ö¸ÏòÐèÒªÍ¨¹ýcfg80211 ½Ó¿ÚÉ¾³ýµÄ net device */
-    oal_work_stru                   st_del_virtual_inf_worker;                  /* É¾³ýnet_device ¹¤×÷¶ÓÁÐ */
+    oal_net_device_stru            *pst_p2p0_net_device;                        /* Ö¸ï¿½ï¿½p2p0 net device */
+    oal_net_device_stru            *pst_del_net_device;                         /* Ö¸ï¿½ï¿½ï¿½ï¿½ÒªÍ¨ï¿½ï¿½cfg80211 ï¿½Ó¿ï¿½É¾ï¿½ï¿½ï¿½ï¿½ net device */
+    oal_work_stru                   st_del_virtual_inf_worker;                  /* É¾ï¿½ï¿½net_device ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 #endif
 #ifdef _PRE_WLAN_FEATURE_HS20
     hmac_cfg_qos_map_param_stru     st_cfg_qos_map_param;
 #endif
 #if (_PRE_MULTI_CORE_MODE_OFFLOAD_DMAC != _PRE_MULTI_CORE_MODE)
-    oal_netbuf_head_stru            st_tx_queue_head[2];                        /* 2¸ö·¢ËÍ¶ÓÁÐ£¬2¸öÏß³Ìpinpon²Ù×÷ */
+    oal_netbuf_head_stru            st_tx_queue_head[2];                        /* 2ï¿½ï¿½ï¿½ï¿½ï¿½Í¶ï¿½ï¿½Ð£ï¿½2ï¿½ï¿½ï¿½ß³ï¿½pinponï¿½ï¿½ï¿½ï¿½ */
     oal_uint8                       uc_in_queue_id;
     oal_uint8                       uc_out_queue_id;
     oal_uint8                       auc_resv3[2];
-    oal_atomic                      ul_tx_event_num;                            /* frw·¢°üÊÂ¼þµÄ¸öÊý */
-    oal_uint32                      ul_tx_quata;                                /* ·¢°üÅä¶î£¬·½±ãÅäÖÃ */
+    oal_atomic                      ul_tx_event_num;                            /* frwï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½ */
+    oal_uint32                      ul_tx_quata;                                /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½î£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     oal_spin_lock_stru              st_smp_lock;
 #endif
 
 #ifdef _PRE_WLAN_FEATURE_ALWAYS_TX
-    oal_uint8                       bit_init_flag:1;                            /* ³£·¢¹Ø±ÕÔÙ´Î´ò¿ª±êÖ¾ */
+    oal_uint8                       bit_init_flag:1;                            /* ï¿½ï¿½ï¿½ï¿½ï¿½Ø±ï¿½ï¿½Ù´Î´ò¿ª±ï¿½Ö¾ */
     oal_uint8                       bit_ack_policy:1;                           /* ack policy: 0:normal ack 1:normal ack */
     oal_uint8                       bit_reserved:6;
     oal_uint8                       auc_resv4[3];
@@ -304,7 +299,7 @@ typedef struct hmac_vap_tag
 #ifdef _PRE_WLAN_FEATURE_ROAM
     oal_uint32                     *pul_roam_info;
 #endif  //_PRE_WLAN_FEATURE_ROAM
-    /* ×é²¥×ªµ¥²¥×Ö¶Î */
+    /* ï¿½é²¥×ªï¿½ï¿½ï¿½ï¿½ï¿½Ö¶ï¿½ */
 #ifdef _PRE_WLAN_FEATURE_MCAST
     oal_void                        *pst_m2u;
 #endif
@@ -316,10 +311,10 @@ typedef struct hmac_vap_tag
     oal_uint8                       auc_resv[1];
 #endif
 
-    /* sta¶ÀÓÐ×Ö¶Î */
+    /* staï¿½ï¿½ï¿½ï¿½ï¿½Ö¶ï¿½ */
     oal_uint8                       bit_sta_protocol_cfg    :   1;
-	oal_uint8                       bit_protocol_fall       :   1;              /* ½µÐ­Òé±êÖ¾Î» */
-    oal_uint8                       bit_reassoc_flag        :   1;             /* ¹ØÁª¹ý³ÌÖÐÅÐ¶ÏÊÇ·ñÎªÖØ¹ØÁª¶¯×÷ */
+	oal_uint8                       bit_protocol_fall       :   1;              /* ï¿½ï¿½Ð­ï¿½ï¿½ï¿½Ö¾Î» */
+    oal_uint8                       bit_reassoc_flag        :   1;             /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½Ç·ï¿½Îªï¿½Ø¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 #ifdef _PRE_WLAN_FEATURE_11K
     oal_uint8                       bit_11k_enable          :   1;
     oal_uint8                       bit_11v_enable          :   1;
@@ -328,60 +323,60 @@ typedef struct hmac_vap_tag
 #else
     oal_uint8                       bit_resv                :   5;
 #endif //_PRE_WLAN_FEATURE_11K
-    oal_int8                        ac_desired_country[3];                      /* Òª¼ÓÈëµÄAPµÄ¹ú¼Ò×Ö·û´®£¬Ç°Á½¸ö×Ö½ÚÎª¹ú¼Ò×ÖÄ¸£¬µÚÈý¸öÎª\0 */
+    oal_int8                        ac_desired_country[3];                      /* Òªï¿½ï¿½ï¿½ï¿½ï¿½APï¿½Ä¹ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½Ö½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª\0 */
     oal_uint32                      ul_asoc_req_ie_len;
     oal_uint8                      *puc_asoc_req_ie_buff;
 
-    oal_uint8                       uc_wmm_cap;                                 /* ±£´æÓëSTA¹ØÁªµÄAPÊÇ·ñÖ§³ÖwmmÄÜÁ¦ÐÅÏ¢ */
+    oal_uint8                       uc_wmm_cap;                                 /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½STAï¿½ï¿½ï¿½ï¿½ï¿½ï¿½APï¿½Ç·ï¿½Ö§ï¿½ï¿½wmmï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ */
 #ifdef _PRE_WLAN_FEATURE_HS20
-    oal_uint8                       uc_is_interworking;                         /* ±£´æÓëSTA¹ØÁªµÄAPÊÇ·ñÖ§³ÖinterworkingÄÜÁ¦ */
+    oal_uint8                       uc_is_interworking;                         /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½STAï¿½ï¿½ï¿½ï¿½ï¿½ï¿½APï¿½Ç·ï¿½Ö§ï¿½ï¿½interworkingï¿½ï¿½ï¿½ï¿½ */
     oal_uint8                       auc_resv51[3];
 #endif
 #ifdef _PRE_WLAN_FEATURE_STA_PM
-    oal_uint8                       uc_cfg_sta_pm_manual;                           /* ÊÖ¶¯ÉèÖÃsta pm modeµÄ±êÖ¾ */
+    oal_uint8                       uc_cfg_sta_pm_manual;                           /* ï¿½Ö¶ï¿½ï¿½ï¿½ï¿½ï¿½sta pm modeï¿½Ä±ï¿½Ö¾ */
 #else
     oal_uint8                       auc_resv5[1];
 #endif
-    oal_uint16                      us_rx_timeout[WLAN_WME_AC_BUTT];            /* ²»Í¬ÒµÎñÖØÅÅÐò³¬Ê±Ê±¼ä */
-    oal_uint16                      us_del_timeout;                             /* ¶à³¤Ê±¼ä³¬Ê±É¾³ýba»á»° Èç¹ûÊÇ0Ôò²»É¾³ý */
-    mac_cfg_mode_param_stru         st_preset_para;                             /* STAÐ­Òé±ä¸üÊ±±ä¸üÇ°µÄÐ­ÒéÄ£Ê½ */
-    oal_uint8                       auc_supp_rates[WLAN_MAX_SUPP_RATES];        /* Ö§³ÖµÄËÙÂÊ¼¯ */
-    oal_uint8                       uc_rs_nrates;   /* ËÙÂÊ¸öÊý */
+    oal_uint16                      us_rx_timeout[WLAN_WME_AC_BUTT];            /* ï¿½ï¿½Í¬Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±Ê±ï¿½ï¿½ */
+    oal_uint16                      us_del_timeout;                             /* ï¿½à³¤Ê±ï¿½ä³¬Ê±É¾ï¿½ï¿½baï¿½á»° ï¿½ï¿½ï¿½ï¿½ï¿½0ï¿½ï¿½É¾ï¿½ï¿½ */
+    mac_cfg_mode_param_stru         st_preset_para;                             /* STAÐ­ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½Ç°ï¿½ï¿½Ð­ï¿½ï¿½Ä£Ê½ */
+    oal_uint8                       auc_supp_rates[WLAN_MAX_SUPP_RATES];        /* Ö§ï¿½Öµï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ */
+    oal_uint8                       uc_rs_nrates;   /* ï¿½ï¿½ï¿½Ê¸ï¿½ï¿½ï¿½ */
 
-    oal_uint8                       uc_auth_cnt;                                    /* ¼ÇÂ¼STA·¢Æð¹ØÁªµÄ´ÎÊý */
+    oal_uint8                       uc_auth_cnt;                                    /* ï¿½ï¿½Â¼STAï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½ */
     oal_uint8                       uc_asoc_cnt;
     oal_uint8                       auc_resv56[2];
 
     oal_dlist_head_stru             st_pmksa_list_head;
 
-	/* ÐÅÏ¢ÉÏ±¨ */
-    oal_wait_queue_head_stru         query_wait_q;                              /*²éÑ¯µÈ´ý¶ÓÁÐ*/
+	/* ï¿½ï¿½Ï¢ï¿½Ï±ï¿½ */
+    oal_wait_queue_head_stru         query_wait_q;                              /*ï¿½ï¿½Ñ¯ï¿½È´ï¿½ï¿½ï¿½ï¿½ï¿½*/
     oal_station_info_stru            station_info;
-    station_info_extend_stru         st_station_info_extend;                    /*CHR2.0Ê¹ÓÃµÄSTAÍ³¼ÆÐÅÏ¢*/
-    oal_bool_enum_uint8              station_info_query_completed_flag;         /*²éÑ¯½áÊø±êÖ¾£¬OAL_TRUE£¬²éÑ¯½áÊø£¬OAL_FALSE£¬²éÑ¯Î´½áÊø*/
-    oal_int16                        s_free_power;                              /* µ×Ôë */
+    station_info_extend_stru         st_station_info_extend;                    /*CHR2.0Ê¹ï¿½Ãµï¿½STAÍ³ï¿½ï¿½ï¿½ï¿½Ï¢*/
+    oal_bool_enum_uint8              station_info_query_completed_flag;         /*ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½OAL_TRUEï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½OAL_FALSEï¿½ï¿½ï¿½ï¿½Ñ¯Î´ï¿½ï¿½ï¿½ï¿½*/
+    oal_int16                        s_free_power;                              /* ï¿½ï¿½ï¿½ï¿½ */
     oal_uint8                        auc_resv6[1];
-    oal_int32                        center_freq;                               /* ÖÐÐÄÆµµã */
+    oal_int32                        center_freq;                               /* ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½ */
     hmac_atcmdsrv_get_stats_stru     st_atcmdsrv_get_status;
 
-    oal_proc_dir_entry_stru         *pst_proc_dir;                              /* vap¶ÔÓ¦µÄprocÄ¿Â¼ */
+    oal_proc_dir_entry_stru         *pst_proc_dir;                              /* vapï¿½ï¿½Ó¦ï¿½ï¿½procÄ¿Â¼ */
 
 #ifdef _PRE_WLAN_DFT_STAT
-    /*Í³¼ÆÐÅÏ¢+ÐÅÏ¢ÉÏ±¨ÐÂÔö×Ö¶Î£¬ÐÞ¸ÄÕâ¸ö×Ö¶Î£¬±ØÐëÐÞ¸ÄSDT²ÅÄÜ½âÎöÕýÈ·*/
+    /*Í³ï¿½ï¿½ï¿½ï¿½Ï¢+ï¿½ï¿½Ï¢ï¿½Ï±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¶Î£ï¿½ï¿½Þ¸ï¿½ï¿½ï¿½ï¿½ï¿½Ö¶Î£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸ï¿½SDTï¿½ï¿½ï¿½Ü½ï¿½ï¿½ï¿½ï¿½ï¿½È·*/
     hmac_vap_query_stats_stru        st_query_stats;
 #endif
 #ifdef _PRE_WLAN_FEATURE_EDCA_OPT_AP
-    frw_timeout_stru                 st_edca_opt_timer;                         /* edca²ÎÊýµ÷Õû¶¨Ê±Æ÷ */
-    oal_uint32                       ul_edca_opt_time_ms;                       /* edca²ÎÊýµ÷Õû¼ÆÊ±Æ÷ÖÜÆÚ */
-    oal_uint8                        uc_edca_opt_flag_ap;                       /* apÄ£Ê½ÏÂÊÇ·ñÊ¹ÄÜedcaÓÅ»¯ÌØÐÔ */
-    oal_uint8                        uc_edca_opt_flag_sta;                      /* staÄ£Ê½ÏÂÊÇ·ñÊ¹ÄÜedcaÓÅ»¯ÌØÐÔ */
-    oal_uint8                        uc_edca_opt_weight_sta;                    /* µ÷ÕûbeaconÖÐedca²ÎÊýµÄÈ¨ÖØ£¬×î´óÖµÎª 3*/
+    frw_timeout_stru                 st_edca_opt_timer;                         /* edcaï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ */
+    oal_uint32                       ul_edca_opt_time_ms;                       /* edcaï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
+    oal_uint8                        uc_edca_opt_flag_ap;                       /* apÄ£Ê½ï¿½ï¿½ï¿½Ç·ï¿½Ê¹ï¿½ï¿½edcaï¿½Å»ï¿½ï¿½ï¿½ï¿½ï¿½ */
+    oal_uint8                        uc_edca_opt_flag_sta;                      /* staÄ£Ê½ï¿½ï¿½ï¿½Ç·ï¿½Ê¹ï¿½ï¿½edcaï¿½Å»ï¿½ï¿½ï¿½ï¿½ï¿½ */
+    oal_uint8                        uc_edca_opt_weight_sta;                    /* ï¿½ï¿½ï¿½ï¿½beaconï¿½ï¿½edcaï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¨ï¿½Ø£ï¿½ï¿½ï¿½ï¿½ÖµÎª 3*/
     oal_uint8                        auc_resv7[1];
 #endif
 
-    oal_uint32                        aul_40M_intol_user_bitmap[MAC_DEV_MAX_40M_INTOL_USER_BITMAP_LEN];        /* apÏÂ¹ØÁªµÄ40M intolerantµÄsta bitmap */
-    frw_timeout_stru                  st_40M_recovery_timer;                    /* 40M»Ö¸´¶¨Ê±Æ÷ */
-    wlan_channel_bandwidth_enum_uint8 en_40M_bandwidth;                         /* ¼ÇÂ¼apÔÚÇÐ»»µ½20MÖ®Ç°µÄËÙÂÊ */
+    oal_uint32                        aul_40M_intol_user_bitmap[MAC_DEV_MAX_40M_INTOL_USER_BITMAP_LEN];        /* apï¿½Â¹ï¿½ï¿½ï¿½ï¿½ï¿½40M intolerantï¿½ï¿½sta bitmap */
+    frw_timeout_stru                  st_40M_recovery_timer;                    /* 40Mï¿½Ö¸ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ */
+    wlan_channel_bandwidth_enum_uint8 en_40M_bandwidth;                         /* ï¿½ï¿½Â¼apï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½20MÖ®Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 
 #ifdef _PRE_WLAN_TCP_OPT
     hmac_tcp_ack_stru          st_hamc_tcp_ack[HCC_DIR_COUNT];
@@ -399,8 +394,8 @@ typedef struct hmac_vap_tag
     oal_bool_enum_uint8               en_tx_aggr_on;
     oal_bool_enum_uint8               en_ampdu_tx_on_switch;
 #ifdef _PRE_WLAN_FEATURE_AMPDU_VAP
-    oal_uint8                         uc_rx_ba_session_num;                   /* ¸ÃvapÏÂ£¬rx BA»á»°µÄÊýÄ¿ */
-    oal_uint8                         uc_tx_ba_session_num;                   /* ¸ÃvapÏÂ£¬tx BA»á»°µÄÊýÄ¿ */
+    oal_uint8                         uc_rx_ba_session_num;                   /* ï¿½ï¿½vapï¿½Â£ï¿½rx BAï¿½á»°ï¿½ï¿½ï¿½ï¿½Ä¿ */
+    oal_uint8                         uc_tx_ba_session_num;                   /* ï¿½ï¿½vapï¿½Â£ï¿½tx BAï¿½á»°ï¿½ï¿½ï¿½ï¿½Ä¿ */
     oal_uint8                         auc_resv9[2];
 #endif
 
@@ -408,43 +403,43 @@ typedef struct hmac_vap_tag
     mac_h2d_protection_stru          st_prot;
 #endif
 #ifdef _PRE_WLAN_FEATURE_STA_PM
-    frw_timeout_stru                 st_ps_sw_timer;                             /* µÍ¹¦ºÄ¿ª¹Ø */
+    frw_timeout_stru                 st_ps_sw_timer;                             /* ï¿½Í¹ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ */
 #endif
 
-#ifdef _PRE_WLAN_FEATURE_TX_CLASSIFY_LAN_TO_WLAN                                /* ÒµÎñÊ¶±ð¹¦ÄÜ¿ª¹Ø */
+#ifdef _PRE_WLAN_FEATURE_TX_CLASSIFY_LAN_TO_WLAN                                /* Òµï¿½ï¿½Ê¶ï¿½ï¿½ï¿½Ü¿ï¿½ï¿½ï¿½ */
     oal_uint8                        uc_tx_traffic_classify_flag;
     oal_uint8                        auc_resv10[3];
 #endif
 
 #ifdef _PRE_WLAN_FEATURE_HILINK
-    hmac_fbt_mgmt_stru               st_fbt_mgmt;                               /* ¼ÇÂ¼fbtÅäÖÃÐÅÏ¢¡¢½ûÖ¹Á¬½ÓÁÐ±í */
+    hmac_fbt_mgmt_stru               st_fbt_mgmt;                               /* ï¿½ï¿½Â¼fbtï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ */
 #endif
 
 #ifdef _PRE_WLAN_FEATURE_EQUIPMENT_TEST
     hmac_hipriv_ack_stats_stru       st_hipriv_ack_stats;
 #endif
 #ifdef _PRE_WLAN_FEATURE_SMARTANT
-    oal_bool_enum_uint8             en_ant_info_query_completed_flag;           /*²éÑ¯½áÊø±êÖ¾£¬OAL_TRUE£¬²éÑ¯½áÊø£¬OAL_FALSE£¬²éÑ¯Î´½áÊø*/
-    oal_bool_enum_uint8             en_double_ant_switch_query_completed_flag;  /*²éÑ¯½áÊø±êÖ¾£¬OAL_TRUE£¬²éÑ¯½áÊø£¬OAL_FALSE£¬²éÑ¯Î´½áÊø*/
+    oal_bool_enum_uint8             en_ant_info_query_completed_flag;           /*ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½OAL_TRUEï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½OAL_FALSEï¿½ï¿½ï¿½ï¿½Ñ¯Î´ï¿½ï¿½ï¿½ï¿½*/
+    oal_bool_enum_uint8             en_double_ant_switch_query_completed_flag;  /*ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½OAL_TRUEï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½OAL_FALSEï¿½ï¿½ï¿½ï¿½Ñ¯Î´ï¿½ï¿½ï¿½ï¿½*/
     oal_uint8                       auc_rsv[2];
     oal_uint32                      ul_double_ant_switch_ret;
 #endif
-    mac_vap_stru                    st_vap_base_info;                           /* MAC vap£¬Ö»ÄÜ·ÅÔÚ×îºó! */
+    mac_vap_stru                    st_vap_base_info;                           /* MAC vapï¿½ï¿½Ö»ï¿½Ü·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½! */
 }hmac_vap_stru;
 
 /*****************************************************************************
-  8 UNION¶¨Òå
+  8 UNIONï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 
 
 /*****************************************************************************
-  9 OTHERS¶¨Òå
+  9 OTHERSï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 
 
 
 /*****************************************************************************
-  10 º¯ÊýÉùÃ÷
+  10 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 extern oal_uint32  hmac_vap_destroy(hmac_vap_stru *pst_vap);
 extern oal_uint32  hmac_vap_init(
