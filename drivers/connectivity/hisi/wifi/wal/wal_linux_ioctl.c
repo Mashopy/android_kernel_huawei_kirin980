@@ -2949,7 +2949,7 @@ oal_bool_enum hwifi_config_init_nvram_main(oal_net_device_stru *pst_cfg_net_dev)
     if (OAL_PTR_NULL == pst_nvram_params)
     {
         OAM_ERROR_LOG0(0, OAM_SF_ANY, "{hwifi_config_init_nvram_main::alloc nvram params mem fail, return null ptr!}\r\n");
-        return OAL_FAIL;
+        return OAL_FALSE;
     }
     /* �ṹ�����鸳ֵ */
     for(uc_idx = 0; uc_idx < NUM_OF_NV_MAX_TXPOWER; ++uc_idx)
@@ -2976,7 +2976,7 @@ oal_bool_enum hwifi_config_init_nvram_main(oal_net_device_stru *pst_cfg_net_dev)
         OAM_ERROR_LOG0(0, OAM_SF_ANY, "{hwifi_config_init_nvram_main::one or more params not correct, check value in dts file or nvram!}\r\n");
         /* �ͷ�pst_nvram_params�ڴ� */
         OAL_MEM_FREE(pst_nvram_params, OAL_TRUE);
-        return OAL_FAIL;
+        return OAL_FALSE;
     }
 
     WAL_WRITE_MSG_HDR_INIT(&st_write_msg, WLAN_CFGID_SET_CUS_NVRAM_PARAM, ul_offset + OAL_SIZEOF(oal_int32));
@@ -2995,13 +2995,13 @@ oal_bool_enum hwifi_config_init_nvram_main(oal_net_device_stru *pst_cfg_net_dev)
         OAM_ERROR_LOG1(0, OAM_SF_ANY, "{hwifi_config_init_nvram_main::return err code [%d]!}\r\n", l_ret);
         /* �ͷ�pst_nvram_params�ڴ� */
         OAL_MEM_FREE(pst_nvram_params, OAL_TRUE);
-        return OAL_FAIL;
+        return OAL_FALSE;
     }
 
     /* �ͷ�pst_nvram_params�ڴ� */
     OAL_MEM_FREE(pst_nvram_params, OAL_TRUE);
 
-    return OAL_SUCC;
+    return OAL_TRUE;
 }
 
 oal_uint32 hwifi_config_init_dts_main(oal_net_device_stru *pst_cfg_net_dev)

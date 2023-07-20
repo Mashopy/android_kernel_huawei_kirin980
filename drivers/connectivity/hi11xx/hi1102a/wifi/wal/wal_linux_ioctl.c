@@ -3186,9 +3186,9 @@ oal_bool_enum hwifi_config_init_nvram_main(oal_net_device_stru *pst_cfg_net_dev)
     if (OAL_UNLIKELY(OAL_SUCC != l_ret))
     {
         OAM_ERROR_LOG1(0, OAM_SF_ANY, "{hwifi_config_init_nvram_main::return err code [%d]!}\r\n", l_ret);
-        return OAL_FAIL;
+        return OAL_FALSE;
     }
-    return OAL_SUCC;
+    return OAL_TRUE;
 }
 
 oal_uint32 hwifi_config_init_dts_main(oal_net_device_stru *pst_cfg_net_dev)
