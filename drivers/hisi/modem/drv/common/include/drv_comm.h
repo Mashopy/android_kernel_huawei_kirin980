@@ -54,7 +54,7 @@ typedef void                VOID;
 #endif
 /*lint --e(761) */
 /*************************GLOBAL BEGIN*****************************/
-/* »ù±¾Êý¾ÝÀàÐÍ¶¨Òå */
+/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¶ï¿½ï¿½ï¿½ */
 #ifndef _WIN32_COMPILE
 typedef signed long long    BSP_S64;
 #else
@@ -71,7 +71,7 @@ typedef unsigned long long  BSP_U64;
 #else
 typedef double              BSP_U64;
 #endif
-typedef unsigned int        BSP_U32;
+#include "osl_types.h"
 typedef unsigned short      BSP_U16;
 typedef unsigned char       BSP_U8;
 
@@ -185,8 +185,8 @@ typedef BSP_VOID (*VOIDFUNCPTR)(BSP_U32);/*lint !e761*/
 #endif
 
 
-/* ´íÎóÂëºê¶¨Òå */
-#define BSP_ERR_MODULE_OFFSET (0x1000)    /* ·ÀÖ¹ºÍÏµÍ³µÄ´íÎóÂëÖØµþ */
+/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê¶¨ï¿½ï¿½ */
+#define BSP_ERR_MODULE_OFFSET (0x1000)    /* ï¿½ï¿½Ö¹ï¿½ï¿½ÏµÍ³ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½ */
 #define BSP_DEF_ERR( mod, errid) \
     ((((BSP_U32) mod + BSP_ERR_MODULE_OFFSET) << 16) | (errid))
 
@@ -214,33 +214,33 @@ typedef BSP_VOID (*VOIDFUNCPTR)(BSP_U32);/*lint !e761*/
 
 
 /*****************************************************************************
-  1 GU²àÇý¶¯¶ÔÍâ½Ó¿Ú£¬GUPortingÏîÄ¿Ìí¼Ó.
+  1 GUï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¿Ú£ï¿½GUPortingï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½.
 *****************************************************************************/
 
 /*****************************************************************************
-  2 ºê¶¨Òå
+  2 ï¿½ê¶¨ï¿½ï¿½
 *****************************************************************************/
 
 #define DRV_OK                          (0)
 #define DRV_ERROR                       (-1)
 #define DRV_INTERFACE_RSLT_OK           (0)
 
-/* »ù±¾Êý¾ÝÀàÐÍ¶¨Òå */
+/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¶ï¿½ï¿½ï¿½ */
 typedef unsigned long (*pFUNCPTR2)( unsigned long ulPara1, unsigned long ulPara2);
 
-/* ÉÏÐÐÏßÂ·ÊÕ°üº¯ÊýÖ¸Õë */
+/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½Õ°ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ */
 typedef BSP_VOID (*UpLinkRxFunc)(BSP_U8 *buf, BSP_U32 len);
 
-/* °ü·â×°ÊÍ·Åº¯ÊýÖ¸Õë */
+/* ï¿½ï¿½ï¿½ï¿½×°ï¿½Í·Åºï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ */
 typedef BSP_VOID (*FreePktEncap)(BSP_VOID *PktEncap);
 
-/* GMACµ÷ÓÃÕßÃ¶¾Ù */
+/* GMACï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½ */
 typedef enum tagGMAC_OWNER_E
 {
-    GMAC_OWNER_VXWORKS = 0, /* VxworksÍøÂçÐ­ÒéÕ» */
-    GMAC_OWNER_PS,          /* LTEÍøÂçÐ­ÒéÕ» */
+    GMAC_OWNER_VXWORKS = 0, /* Vxworksï¿½ï¿½ï¿½ï¿½Ð­ï¿½ï¿½Õ» */
+    GMAC_OWNER_PS,          /* LTEï¿½ï¿½ï¿½ï¿½Ð­ï¿½ï¿½Õ» */
     GMAC_OWNER_MSP,         /* MSP */
-    GMAC_OWNER_MAX          /* ±ß½çÖµ */
+    GMAC_OWNER_MAX          /* ï¿½ß½ï¿½Öµ */
 }GMAC_OWNER_E;
 
 typedef enum tagWDT_TIMEOUT_E
