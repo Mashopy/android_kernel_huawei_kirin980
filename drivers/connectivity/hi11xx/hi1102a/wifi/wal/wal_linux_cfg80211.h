@@ -11,7 +11,7 @@ extern "C" {
 
 
 /*****************************************************************************
-  1 ÆäËûÍ·ÎÄ¼þ°üº¬
+  1 ï¿½ï¿½ï¿½ï¿½Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 #include "oal_ext_if.h"
 #include "oal_types.h"
@@ -24,11 +24,11 @@ extern "C" {
 #undef  THIS_FILE_ID
 #define THIS_FILE_ID OAM_FILE_ID_WAL_LINUX_CFG80211_H
 /*****************************************************************************
-  2 ºê¶¨Òå
+  2 ï¿½ê¶¨ï¿½ï¿½
 *****************************************************************************/
 #define     WAL_MAX_SCAN_TIME_PER_CHANNEL  400
 
-#define     WAL_MAX_SCAN_TIME_PER_SCAN_REQ (5 * 1000)      /* wpa_sÏÂ·¢É¨ÃèÇëÇó£¬³¬Ê±Ê±¼äÎª5s£¬µ¥Î»Îªms */
+#define     WAL_MAX_SCAN_TIME_PER_SCAN_REQ (5 * 1000)      /* wpa_sï¿½Â·ï¿½É¨ï¿½ï¿½ï¿½ï¿½ï¿½ó£¬³ï¿½Ê±Ê±ï¿½ï¿½Îª5sï¿½ï¿½ï¿½ï¿½Î»Îªms */
 
 /* channel index and frequence */
 #define WAL_MIN_CHANNEL_2G      1
@@ -48,10 +48,10 @@ extern "C" {
 /* channel nums */
 #define WAL_SCAN_CHANNEL_MAX_NUM ((WAL_MAX_CHANNEL_2G - WAL_MIN_CHANNEL_2G + 1) + (WAL_MAX_CHANNEL_4_9G - WAL_MIN_CHANNEL_5G + 1))
 
-/* wiphy ½á¹¹Ìå³õÊ¼»¯±äÁ¿ */
+/* wiphy ï¿½á¹¹ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 //#define WAL_MAX_PROBED_SSID_NUM     1
 #define WAL_MAX_SCAN_IE_LEN        1000
-/* 802.11n HT ÄÜÁ¦ÑÚÂë */
+/* 802.11n HT ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 #define IEEE80211_HT_CAP_LDPC_CODING        0x0001
 #define IEEE80211_HT_CAP_SUP_WIDTH_20_40    0x0002
 #define IEEE80211_HT_CAP_SM_PS          0x000C
@@ -114,16 +114,16 @@ extern "C" {
 #define IEEE80211_STYPE_DEAUTH          0x00C0
 #define IEEE80211_STYPE_ACTION          0x00D0
 
-#define WAL_COOKIE_ARRAY_SIZE           8       /* ²ÉÓÃ8bit µÄmap ×÷Îª±£´æcookie µÄË÷Òý×´Ì¬ */
-#define WAL_MGMT_TX_TIMEOUT_MSEC        100     /* WAL ·¢ËÍ¹ÜÀíÖ¡³¬Ê±Ê±¼ä */
-#define WAL_MGMT_TX_RETRY_CNT           8       /* WAL ·¢ËÍ¹ÜÀíÖ¡×î´óÖØ´«´ÎÊý */
+#define WAL_COOKIE_ARRAY_SIZE           8       /* ï¿½ï¿½ï¿½ï¿½8bit ï¿½ï¿½map ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½cookie ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ */
+#define WAL_MGMT_TX_TIMEOUT_MSEC        100     /* WAL ï¿½ï¿½ï¿½Í¹ï¿½ï¿½ï¿½Ö¡ï¿½ï¿½Ê±Ê±ï¿½ï¿½ */
+#define WAL_MGMT_TX_RETRY_CNT           8       /* WAL ï¿½ï¿½ï¿½Í¹ï¿½ï¿½ï¿½Ö¡ï¿½ï¿½ï¿½ï¿½Ø´ï¿½ï¿½ï¿½ï¿½ï¿½ */
 
 #define IEEE80211_FCTL_FTYPE            0x000c
 #define IEEE80211_FCTL_STYPE            0x00f0
 #define IEEE80211_FTYPE_MGMT            0x0000
 
-#define WAL_GET_STATION_THRESHOLD        1000 /* ¹Ì¶¨Ê±¼äÄÚÔÊÐíÒ»´ÎÅ×ÊÂ¼þ¶ÁDMAC RSSI */
-#define WAL_VOWIFI_GET_STATION_THRESHOLD 200  /*ÁÁÆÁÇÒvowifiÕýÔÚÊ¹ÓÃÊ±*/
+#define WAL_GET_STATION_THRESHOLD        1000 /* ï¿½Ì¶ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½DMAC RSSI */
+#define WAL_VOWIFI_GET_STATION_THRESHOLD 200  /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½vowifiï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½Ê±*/
 
 typedef struct cookie_arry
 {
@@ -138,7 +138,37 @@ typedef struct cookie_arry
     .hw_value       = (_rateid),                                \
     .flags          = (_flags),                                 \
 }
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,7,0))
+#define CHAN2G(_channel, _freq, _flags)  \
+{                       \
+    .band                   = NL80211_BAND_2GHZ,          \
+    .center_freq            = (_freq),                      \
+    .hw_value               = (_channel),                   \
+    .flags                  = (_flags),                     \
+    .max_antenna_gain       = 0,                            \
+    .max_power              = 30,                           \
+}
 
+#define CHAN5G(_channel, _flags) \
+{                                              \
+    .band                   = NL80211_BAND_5GHZ,          \
+    .center_freq            = 5000 + (5 * (_channel)),      \
+    .hw_value               = (_channel),                   \
+    .flags                  = (_flags),                     \
+    .max_antenna_gain       = 0,                            \
+    .max_power              = 30,                           \
+}
+
+#define CHAN4_9G(_channel, _flags) \
+{                                              \
+    .band                   = NL80211_BAND_5GHZ,          \
+    .center_freq            = 4000 + (5 * (_channel)),      \
+    .hw_value               = (_channel),                   \
+    .flags                  = (_flags),                     \
+    .max_antenna_gain       = 0,                            \
+    .max_power              = 30,                           \
+}
+#else
 #define CHAN2G(_channel, _freq, _flags)  \
 {                       \
     .band                   = IEEE80211_BAND_2GHZ,          \
@@ -168,6 +198,7 @@ typedef struct cookie_arry
     .max_antenna_gain       = 0,                            \
     .max_power              = 30,                           \
 }
+#endif
 
 #elif (_PRE_OS_VERSION_WIN32 == _PRE_OS_VERSION)
 
@@ -222,13 +253,13 @@ typedef struct cookie_arry
 
 #define WAL_MAX_WAIT_TIME 3000
 /*****************************************************************************
-  3 Ã¶¾Ù¶¨Òå
+  3 Ã¶ï¿½Ù¶ï¿½ï¿½ï¿½
 *****************************************************************************/
 
 
 
 /*****************************************************************************
-  4 È«¾Ö±äÁ¿ÉùÃ÷
+  4 È«ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 extern oal_workqueue_stru  *g_pst_del_virtual_inf_workqueue;
 #if (_PRE_OS_VERSION_WIN32 == _PRE_OS_VERSION)
@@ -237,33 +268,33 @@ extern oal_uint8 g_uc_vowifi_report_cnt;
 
 
 /*****************************************************************************
-  5 ÏûÏ¢Í·¶¨Òå
+  5 ï¿½ï¿½Ï¢Í·ï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 
 
 /*****************************************************************************
-  6 ÏûÏ¢¶¨Òå
+  6 ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 
 
 /*****************************************************************************
-  7 STRUCT¶¨Òå
+  7 STRUCTï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 
 /*****************************************************************************
-  8 UNION¶¨Òå
-*****************************************************************************/
-
-
-/*****************************************************************************
-  9 OTHERS¶¨Òå
+  8 UNIONï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 
 
 /*****************************************************************************
-  10 º¯ÊýÉùÃ÷
+  9 OTHERSï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
-        /* ´Ë´¦02¼ÓÔØkoÊ±³öÏÖ£¬ÕÒ²»µ½·ûºÅµÄ´íÎó£¬´ýºóÐø½â¾ö TBD */
+
+
+/*****************************************************************************
+  10 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+*****************************************************************************/
+        /* ï¿½Ë´ï¿½02ï¿½ï¿½ï¿½ï¿½koÊ±ï¿½ï¿½ï¿½Ö£ï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÅµÄ´ï¿½ï¿½ó£¬´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ TBD */
 
 OAL_STATIC OAL_INLINE oal_uint32 oal_ieee80211_is_probe_resp(oal_uint16 fc)
 {
@@ -276,7 +307,7 @@ extern oal_void  wal_cfg80211_exit(oal_void);
 extern oal_uint32  wal_cfg80211_init(oal_void);
 
 extern oal_uint32  wal_cfg80211_init_evt_handle(frw_event_mem_stru *pst_event_mem);
-#if (_PRE_CONFIG_TARGET_PRODUCT != _PRE_TARGET_PRODUCT_TYPE_E5)  //E5µÈhostapdÊÊÅäºóÍ³Ò»µ÷ÊÔ
+#if (_PRE_CONFIG_TARGET_PRODUCT != _PRE_TARGET_PRODUCT_TYPE_E5)  //E5ï¿½ï¿½hostapdï¿½ï¿½ï¿½ï¿½ï¿½Í³Ò»ï¿½ï¿½ï¿½ï¿½
 extern oal_uint32  wal_cfg80211_mgmt_tx_status(frw_event_mem_stru *pst_event_mem);
 #endif
 
