@@ -7,7 +7,7 @@ extern "C" {
 #endif
 
 /*****************************************************************************
-  1 Í·ÎÄ¼þ°üº¬
+  1 Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 #include "oam_main.h"
 #include "oam_log.h"
@@ -19,7 +19,7 @@ extern "C" {
 #define THIS_FILE_ID OAM_FILE_ID_OAM_LOG_C
 
 /*****************************************************************************
-  2 È«¾Ö±äÁ¿¶¨Òå
+  2 È«ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 #ifdef _PRE_DEBUG_MODE
     oam_tx_complete_stat_stru   g_ast_tx_complete_stat[WLAN_DEVICE_SUPPORT_MAX_NUM_SPEC];
@@ -33,7 +33,7 @@ static char* g_loglevel_string[OAM_LOG_LEVEL_BUTT] ;
 
 
 /*****************************************************************************
-  3 º¯ÊýÊµÏÖ
+  3 ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
 *****************************************************************************/
 
 
@@ -49,7 +49,7 @@ oal_int32 OAL_PRINT2KERNEL(
     oal_int32   l_ret;
     oal_int8    pc_buf[OAM_LOG_PRINT_DATA_LENGTH];
 
-    /* ½«Ñ¹Ëõ²ÎÊý½âÎö³Éµ¥¸ö²ÎÊý */
+    /* ï¿½ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Éµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     oal_uint8                   uc_vap_id       = (ul_para>>24)&0xf;
     oal_uint16                  us_file_no      = ul_para&0xffff;
     oam_log_level_enum_uint8    clog_level      = (ul_para>>28)&0xf;
@@ -247,13 +247,13 @@ oam_ratelimit_output_enum_uint8 oam_log_ratelimit(oam_ratelimit_type_enum_uint8 
 
     pst_ratelimit = &g_st_oam_mng_ctx.st_log_ctx.st_ratelimit[en_ratelimit_type];
 
-    //ÅÐ¶ÏÁ÷¿Ø¿ª¹Ø×´Ì¬
+    //ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½Ø¿ï¿½ï¿½ï¿½×´Ì¬
     if (OAL_SWITCH_OFF == pst_ratelimit->en_ratelimit_switch)
     {
         return OAM_RATELIMIT_OUTPUT;
     }
 
-    //Èô¼ä¸ôÎª0 ±íÃ÷²»Á÷¿Ø
+    //ï¿½ï¿½ï¿½ï¿½ï¿½Îª0 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     if (0 == pst_ratelimit->ul_interval)
     {
         return OAM_RATELIMIT_OUTPUT;
@@ -261,13 +261,13 @@ oam_ratelimit_output_enum_uint8 oam_log_ratelimit(oam_ratelimit_type_enum_uint8 
 
     oal_spin_lock_irq_save(&pst_ratelimit->spin_lock, &ui_flags);
 
-    //¼ÇÂ¼µÚÒ»ÌõÈÕÖ¾µÄµ±Ç°Ê±¼ä
+    //ï¿½ï¿½Â¼ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½Äµï¿½Ç°Ê±ï¿½ï¿½
     if (0 == pst_ratelimit->ul_begin)
     {
         pst_ratelimit->ul_begin = OAL_TIME_JIFFY;
     }
 
-    //ÆðÊ±Ê±¼ä+¼ä¸ôÔÚµ±Ç°Ê±¼äÖ®Ç°£¬±íÃ÷¼ä¸ôÊ±¼äÒÑ¾­³¬Ê±£¬ÐèÒªÖØÐÂ¼ÆÊýÁË
+    //ï¿½ï¿½Ê±Ê±ï¿½ï¿½+ï¿½ï¿½ï¿½ï¿½Úµï¿½Ç°Ê±ï¿½ï¿½Ö®Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½
     if (oal_time_is_before(pst_ratelimit->ul_begin + pst_ratelimit->ul_interval))
     {
         pst_ratelimit->ul_begin   = 0;
@@ -275,14 +275,14 @@ oam_ratelimit_output_enum_uint8 oam_log_ratelimit(oam_ratelimit_type_enum_uint8 
         pst_ratelimit->ul_missed  = 0;
     }
 
-    /* ÈôÎ´³¬Ê±£¬ÅÐ¶Ïµ±Ç°Ê±¼äÖÜÆÚÄÚÒÑÊä³öÈÕÖ¾¼ÆÊýÊÇ·ñ´ïµ½ÏÞÖÆÊä³öÊý */
-    /* Î´´ïµ½ÏÞÖÆµÄÊä³öÈÕÖ¾¸öÊý£¬¼ÌÐøÊä³ö */
+    /* ï¿½ï¿½Î´ï¿½ï¿½Ê±ï¿½ï¿½ï¿½Ð¶Ïµï¿½Ç°Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ïµ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
+    /* Î´ï¿½ïµ½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     if (pst_ratelimit->ul_burst && (pst_ratelimit->ul_burst > pst_ratelimit->ul_printed))
     {
         pst_ratelimit->ul_printed++;
         en_ret = OAM_RATELIMIT_OUTPUT;
     }
-    /* ´ïµ½ÏÞÖÆµÄÊä³öÈÕÖ¾¸öÊý£¬²»Êä³ö£»´ýÏÂÒ»¸öÖÜÆÚÔÙÊä³ö */
+    /* ï¿½ïµ½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     else
     {
         pst_ratelimit->ul_missed++;
@@ -327,10 +327,10 @@ oal_uint32 oam_log_set_vap_level(oal_uint8 uc_vap_id, oam_log_level_enum_uint8 e
         return OAL_ERR_CODE_CONFIG_EXCEED_SPEC;
     }
 
-    /* ÉèÖÃµ±Ç°VAPµÄÈÕÖ¾¼¶±ð */
+    /* ï¿½ï¿½ï¿½Ãµï¿½Ç°VAPï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½ */
     g_st_oam_mng_ctx.st_log_ctx.st_vap_log_info.aen_vap_log_level[uc_vap_id] = en_log_level;
 
-    /* Í¬Ê±ÉèÖÃµ±Ç°VAPÏÂËùÓÐÌØÐÔÈÕÖ¾¼¶±ð */
+    /* Í¬Ê±ï¿½ï¿½ï¿½Ãµï¿½Ç°VAPï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½ */
     for (en_feature_idx = 0; en_feature_idx < OAM_SOFTWARE_FEATURE_BUTT; en_feature_idx++)
     {
         oam_log_set_feature_level(uc_vap_id, en_feature_idx, en_log_level);
@@ -473,19 +473,19 @@ OAL_STATIC oal_uint32  oam_log_format_string(
     oal_uint8            auc_feature_name[OAM_FEATURE_NAME_ABBR_LEN] = {0};
     oal_int8            *pac_print_format[] =
     {
-        "¡¾LOG=%s¡¿:Tick=%lu, FileId=%d, LineNo=%d, VAP=%d, FeatureName=%s, \"%s\", \r\n",
-        "¡¾LOG=%s¡¿:Tick=%lu, FileId=%d, LineNo=%d, VAP=%d, FeatureName=%s, \"%s\", %lu \r\n",
-        "¡¾LOG=%s¡¿:Tick=%lu, FileId=%d, LineNo=%d, VAP=%d, FeatureName=%s, \"%s\", %lu, %lu \r\n",
-        "¡¾LOG=%s¡¿:Tick=%lu, FileId=%d, LineNo=%d, VAP=%d, FeatureName=%s, \"%s\", %lu, %lu, %lu \r\n",
-        "¡¾LOG=%s¡¿:Tick=%lu, FileId=%d, LineNo=%d, VAP=%d, FeatureName=%s, \"%s\", %lu, %lu, %lu, %lu \r\n"
+        "LOG=%s:Tick=%lu, FileId=%d, LineNo=%d, VAP=%d, FeatureName=%s, \"%s\", \r\n",
+        "LOG=%s:Tick=%lu, FileId=%d, LineNo=%d, VAP=%d, FeatureName=%s, \"%s\", %lu \r\n",
+        "LOG=%s:Tick=%lu, FileId=%d, LineNo=%d, VAP=%d, FeatureName=%s, \"%s\", %lu, %lu \r\n",
+        "LOG=%s:Tick=%lu, FileId=%d, LineNo=%d, VAP=%d, FeatureName=%s, \"%s\", %lu, %lu, %lu \r\n",
+        "LOG=%s:Tick=%lu, FileId=%d, LineNo=%d, VAP=%d, FeatureName=%s, \"%s\", %lu, %lu, %lu, %lu \r\n"
      };
 
-    /* »ñÈ¡ÏµÍ³TICKÖµ */
+    /* ï¿½ï¿½È¡ÏµÍ³TICKÖµ */
     ul_tick = (oal_uint32)OAL_TIME_GET_STAMP_MS();
 
     oam_get_feature_name(en_feature_id, auc_feature_name, OAL_SIZEOF(auc_feature_name));
 
-    /* ¸ù¾Ý²ÎÊý¸öÊý,½«LOGÐÅÏ¢±£´æµ½ac_file_dataÖÐ */
+    /* ï¿½ï¿½ï¿½Ý²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½LOGï¿½ï¿½Ï¢ï¿½ï¿½ï¿½æµ½ac_file_dataï¿½ï¿½ */
     switch (uc_param_cnt)
     {
         case 0:
@@ -539,10 +539,10 @@ OAL_STATIC oal_void  oam_set_log_info_stru(
 {
     oal_uint32                      ul_tick;
 
-    /* »ñÈ¡ÏµÍ³TICKÖµ */
+    /* ï¿½ï¿½È¡ÏµÍ³TICKÖµ */
     ul_tick = (oal_uint32)OAL_TIME_GET_STAMP_MS();
 
-    /* ÎªÈÕÖ¾½á¹¹ÌåÕûÊý³ÉÔ±¸³Öµ */
+    /* Îªï¿½ï¿½Ö¾ï¿½á¹¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½Öµ */
     pst_log_info->st_vap_log_level.bit_vap_id       = uc_vap_id;
     pst_log_info->st_vap_log_level.bit_log_level    = en_log_level;
     pst_log_info->us_file_id                        = us_file_id;
@@ -555,28 +555,28 @@ OAL_STATIC oal_void  oam_set_log_info_stru(
     pst_log_info->al_param[3]                       = l_param4;
 }
 
-#if ((_PRE_OS_VERSION_WIN32 == _PRE_OS_VERSION)||(_PRE_OS_VERSION_WIN32_RAW == _PRE_OS_VERSION)) /* UTÐèÒª²¿·Ö½Ó¿Ú½øÐÐ²âÊÔ */
+#if ((_PRE_OS_VERSION_WIN32 == _PRE_OS_VERSION)||(_PRE_OS_VERSION_WIN32_RAW == _PRE_OS_VERSION)) /* UTï¿½ï¿½Òªï¿½ï¿½ï¿½Ö½Ó¿Ú½ï¿½ï¿½Ð²ï¿½ï¿½ï¿½ */
 
 OAL_STATIC oal_uint32  oam_log_check_param(
                 oal_uint8                           uc_vap_id,
                 oam_feature_enum_uint8              en_feature_id,
                 oam_log_level_enum_uint8            en_log_level)
 {
-    /* ÅÐ¶ÏVAPÊÇ·ñºÏÀí */
+    /* ï¿½Ð¶ï¿½VAPï¿½Ç·ï¿½ï¿½ï¿½ï¿½ */
     if (OAL_UNLIKELY(uc_vap_id >= WLAN_VAP_SUPPORT_MAX_NUM_LIMIT))
     {
         OAM_IO_PRINTK("invalid uc_vap_id[%d]. \r\n", uc_vap_id);
         return OAL_ERR_CODE_CONFIG_EXCEED_SPEC;
     }
 
-    /* ÅÐ¶ÏÌØÐÔIDµÄºÏÀíÐÔ */
+    /* ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½IDï¿½Äºï¿½ï¿½ï¿½ï¿½ï¿½ */
     if (OAL_UNLIKELY(en_feature_id >= OAM_SOFTWARE_FEATURE_BUTT))
     {
         OAM_IO_PRINTK("invalid en_feature_id[%d]. \r\n", en_feature_id);
         return OAL_ERR_CODE_CONFIG_EXCEED_SPEC;
     }
 
-    /* ÅÐ¶Ï´òÓ¡¼¶±ðµÄºÏÀíÐÔ */
+    /* ï¿½Ð¶Ï´ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½Äºï¿½ï¿½ï¿½ï¿½ï¿½ */
     if (OAL_UNLIKELY(en_log_level >= OAM_LOG_LEVEL_BUTT))
     {
         OAM_IO_PRINTK("invalid en_log_level[%d]. \r\n", en_log_level);
@@ -666,35 +666,35 @@ OAL_STATIC oal_uint32  oam_log_switch_check(
         return OAL_ERR_CODE_PTR_NULL;
     }
 
-     /* VAP±àºÅ¡¢Ä£¿éIDºÍ´òÓ¡¼¶±ð²ÎÊý¼ì²é */
+     /* VAPï¿½ï¿½Å¡ï¿½Ä£ï¿½ï¿½IDï¿½Í´ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     ul_rslt = oam_log_check_param(uc_vap_id, en_feature_id, en_log_level);
     if (OAL_SUCC != ul_rslt)
     {
         return ul_rslt;
     }
 
-    /* »ñÈ¡È«¾ÖÈÕÖ¾¿ª¹Ø */
+    /* ï¿½ï¿½È¡È«ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½ */
     oam_log_get_global_switch(&en_log_switch);
     if (OAL_SWITCH_OFF == en_log_switch)
     {
         return OAL_SUCC;
     }
 
-    /* »ñÈ¡VAPÈÕÖ¾¿ª¹Ø */
+    /* ï¿½ï¿½È¡VAPï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½ */
     oam_log_get_vap_switch(uc_vap_id, &en_log_switch);
     if (OAL_SWITCH_OFF == en_log_switch)
     {
         return OAL_SUCC;
     }
 
-    /* »ñÈ¡ÌØÐÔÈÕÖ¾¼¶±ð */
+    /* ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½ */
     oam_log_get_feature_level(uc_vap_id, en_feature_id, &en_log_cfg_level);
     if (en_log_level > en_log_cfg_level)
     {
         return OAL_SUCC;
     }
 
-    /* ÈÕÖ¾¼¶±ð´óÓÚµÈÓÚÌØÐÔÈÕÖ¾¼¶±ð£¬Ôò·ûºÏÈÕÖ¾Êä³öÌõ¼þ */
+    /* ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     *pen_log_switch = OAL_SWITCH_ON;
 
     return OAL_SUCC;
@@ -716,7 +716,7 @@ OAL_STATIC oal_uint32  oam_log_print_to_console(
                 oal_int32                        l_param3,
                 oal_int32                        l_param4)
 {
-    oal_int8    ac_print_buff[OAM_PRINT_FORMAT_LENGTH]; /* ÓÃÓÚ±£´æÐ´Èëµ½ÎÄ¼þÖÐµÄ¸ñÊ½ */
+    oal_int8    ac_print_buff[OAM_PRINT_FORMAT_LENGTH]; /* ï¿½ï¿½ï¿½Ú±ï¿½ï¿½ï¿½Ð´ï¿½ëµ½ï¿½Ä¼ï¿½ï¿½ÐµÄ¸ï¿½Ê½ */
 
     oam_log_format_string(ac_print_buff,
                           OAM_PRINT_FORMAT_LENGTH,
@@ -752,7 +752,7 @@ oal_uint32  oam_log_print_to_file(
                 oal_int32                        l_param4)
 {
 #ifdef _PRE_WIFI_DMT
-    oal_int8    ac_output_data[OAM_PRINT_FORMAT_LENGTH]; /* ÓÃÓÚ±£´æÐ´Èëµ½ÎÄ¼þÖÐµÄ¸ñÊ½ */
+    oal_int8    ac_output_data[OAM_PRINT_FORMAT_LENGTH]; /* ï¿½ï¿½ï¿½Ú±ï¿½ï¿½ï¿½Ð´ï¿½ëµ½ï¿½Ä¼ï¿½ï¿½ÐµÄ¸ï¿½Ê½ */
     oal_uint32  ul_ret;
 
     oam_log_format_string(ac_output_data,
@@ -808,7 +808,7 @@ OAL_STATIC oal_uint32  oam_log_print_to_sdt(
                           l_param3,
                           l_param4);
 
-    /* WARNINGºÍERROR¼¶±ðÁ÷¿Ø */
+    /* WARNINGï¿½ï¿½ERRORï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     if ((OAM_LOG_LEVEL_INFO != en_log_level)
         && (OAM_RATELIMIT_NOT_OUTPUT == oam_log_ratelimit(OAM_RATELIMIT_TYPE_LOG)))
     {
@@ -849,8 +849,8 @@ OAL_STATIC oal_uint32  oam_log_print_n_param(oal_uint32                       ul
         return OAL_ERR_CODE_PTR_NULL;
     }
 
-#if 0   /* ÈÕÖ¾Êä³ö¼ì²é·ÅÔÚºêÊµÏÖÖÐ */
-    /* ÅÐ¶ÏÊÇ·ñÂú×ãÈÕÖ¾Êä³öÌõ¼þ */
+#if 0   /* ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úºï¿½Êµï¿½ï¿½ï¿½ï¿½ */
+    /* ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     oam_log_switch_check(uc_vap_id, en_feature_id, en_log_level, &en_log_switch);
     if (OAL_SWITCH_OFF == en_log_switch)
     {
@@ -858,11 +858,11 @@ OAL_STATIC oal_uint32  oam_log_print_n_param(oal_uint32                       ul
     }
 #endif
 
-    /* ÈôÊä³öÌõ¼þÂú×ã£¬ÅÐ¶ÏÊä³ö·½Ïò */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã£¬ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     oam_get_output_type(&en_output_type);
     switch (en_output_type)
     {
-        /* Êä³öÖÁ¿ØÖÆÌ¨ */
+        /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¨ */
         case OAM_OUTPUT_TYPE_CONSOLE:
             ul_ret = oam_log_print_to_console(uc_vap_id,
                                                en_feature_id,
@@ -877,7 +877,7 @@ OAL_STATIC oal_uint32  oam_log_print_n_param(oal_uint32                       ul
                                                l_param4);
             break;
 
-        /* Êä³öÖÁÎÄ¼þÏµÍ³ÖÐ */
+        /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ÏµÍ³ï¿½ï¿½ */
         case OAM_OUTPUT_TYPE_FS:
             ul_ret =  oam_log_print_to_file(uc_vap_id,
                                             en_feature_id,
@@ -892,7 +892,7 @@ OAL_STATIC oal_uint32  oam_log_print_n_param(oal_uint32                       ul
                                             l_param4);
             break;
 
-        /* Êä³öÖÁPC²àµ÷²â¹¤¾ßÆ½Ì¨ */
+        /* ï¿½ï¿½ï¿½ï¿½ï¿½PCï¿½ï¿½ï¿½ï¿½â¹¤ï¿½ï¿½Æ½Ì¨ */
         case OAM_OUTPUT_TYPE_SDT:
             ul_ret =  oam_log_print_to_sdt(uc_vap_id,
                                            en_feature_id,
@@ -907,7 +907,7 @@ OAL_STATIC oal_uint32  oam_log_print_n_param(oal_uint32                       ul
 
             break;
 
-        /* ÎÞÐ§ÅäÖÃ */
+        /* ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½ */
         default:
             ul_ret = OAL_ERR_CODE_INVALID_CONFIG;
             break;
@@ -1023,7 +1023,7 @@ OAL_STATIC oal_uint32  oam_log_printk(
                 const oal_int8                  *pc_func_name,
                 oal_int8                        *pc_args_buf)
 {
-    oal_int8    ac_output_data[OAM_PRINT_FORMAT_LENGTH]; /* ÓÃÓÚ±£´æÐ´Èëµ½ÎÄ¼þÖÐµÄ¸ñÊ½ */
+    oal_int8    ac_output_data[OAM_PRINT_FORMAT_LENGTH]; /* ï¿½ï¿½ï¿½Ú±ï¿½ï¿½ï¿½Ð´ï¿½ëµ½ï¿½Ä¼ï¿½ï¿½ÐµÄ¸ï¿½Ê½ */
     oal_int8    ac_printk_format[] = {"Tick=%lu, FileId=%d, LineNo=%d, FuncName::%s, \"%s\"\r\n"};
     oal_uint32  ul_tick;
 
@@ -1055,7 +1055,7 @@ oal_uint32  oam_log_console_printk(
         return OAL_ERR_CODE_PTR_NULL;
     }
 
-    /* Á÷¿ØÅÐ¶Ï */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ */
     if (OAM_RATELIMIT_NOT_OUTPUT == oam_log_ratelimit(OAM_RATELIMIT_TYPE_PRINTK))
     {
         return OAL_SUCC;
@@ -1112,7 +1112,7 @@ oal_uint32  oam_log_init(oal_void)
 
     oam_log_param_init();
 
-    /* ÈÕÖ¾È«¾Ö¿ª¹ØÄ¬ÈÏÎª¿ª */
+    /* ï¿½ï¿½Ö¾È«ï¿½Ö¿ï¿½ï¿½ï¿½Ä¬ï¿½ï¿½Îªï¿½ï¿½ */
     ul_ret = oam_log_set_global_switch(OAL_SWITCH_ON);
 
     if (OAL_SUCC != ul_ret)
@@ -1120,17 +1120,17 @@ oal_uint32  oam_log_init(oal_void)
         return ul_ret;
     }
 
-    /* VAP¼¶±ðÈÕÖ¾ÉèÖÃ */
+    /* VAPï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½ */
     for (uc_vap_idx = 0; uc_vap_idx < WLAN_VAP_SUPPORT_MAX_NUM_LIMIT; uc_vap_idx++)
     {
-        /* ÉèÖÃVAPÈÕÖ¾¿ª¹Ø */
+        /* ï¿½ï¿½ï¿½ï¿½VAPï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½ */
         ul_ret += oam_log_set_vap_switch(uc_vap_idx, OAL_SWITCH_ON);
 
-        /* ÉèÖÃVAPÈÕÖ¾¼¶±ð */
+        /* ï¿½ï¿½ï¿½ï¿½VAPï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½ */
         ul_ret += oam_log_set_vap_level(uc_vap_idx, OAM_LOG_DEFAULT_LEVEL);
 
 #if defined(_PRE_PRODUCT_ID_HI110X_DEV)
-        /* ÉèÖÃfeature´òÓ¡¼¶±ð */
+        /* ï¿½ï¿½ï¿½ï¿½featureï¿½ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½ */
         ul_ret += oam_log_set_feature_level(uc_vap_idx, OAM_SF_WPA, OAM_LOG_LEVEL_INFO);
 #endif
         if (OAL_SUCC != ul_ret)
@@ -1139,7 +1139,7 @@ oal_uint32  oam_log_init(oal_void)
         }
     }
 
-    /* printkÈÕÖ¾Á÷¿Ø³õÊ¼»¯ */
+    /* printkï¿½ï¿½Ö¾ï¿½ï¿½ï¿½Ø³ï¿½Ê¼ï¿½ï¿½ */
     ul_ret = oam_log_ratelimit_init();
 
     return ul_ret;
@@ -1162,7 +1162,7 @@ oal_uint32 oam_exception_record(oal_uint8 uc_vap_id, oam_excp_type_enum_uint8 en
 
     g_st_oam_mng_ctx.st_exception_ctx[uc_vap_id].ast_excp_record_tbl[en_excp_id].ul_record_cnt++;
 
-    /* ÒÑË¢ÐÂ£¬¿ÉÉÏ±¨ */
+    /* ï¿½ï¿½Ë¢ï¿½Â£ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ */
     g_st_oam_mng_ctx.st_exception_ctx[uc_vap_id].en_status = OAM_EXCP_STATUS_REFRESHED;
 
     g_st_oam_mng_ctx.st_exception_ctx[uc_vap_id].ast_excp_record_tbl[en_excp_id].en_status = OAM_EXCP_STATUS_REFRESHED;
@@ -1352,7 +1352,7 @@ oal_void oam_exception_stat_handler(oal_uint8 en_moduleid, oal_uint8 uc_vap_idx)
     {
         case OM_WIFI:
         {
-            /* µ±Ç°VAPÒì³£Í³¼ÆÎª0 */
+            /* ï¿½ï¿½Ç°VAPï¿½ì³£Í³ï¿½ï¿½Îª0 */
             if (OAM_EXCP_STATUS_REFRESHED != g_st_oam_mng_ctx.st_exception_ctx[uc_vap_idx].en_status)
             {
             }
@@ -1362,7 +1362,7 @@ oal_void oam_exception_stat_handler(oal_uint8 en_moduleid, oal_uint8 uc_vap_idx)
 
                 for (en_excp_idx = 0; en_excp_idx < OAM_EXCP_TYPE_BUTT; en_excp_idx++)
                 {
-                    /* ¼ÇÂ¼ÊýÒÑË¢ÐÂ */
+                    /* ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½Ë¢ï¿½ï¿½ */
                     if (OAM_EXCP_STATUS_REFRESHED == pst_excp_record[en_excp_idx].en_status)
                     {
                         oam_exception_stat_report(uc_vap_idx, en_excp_idx, pst_excp_record[en_excp_idx].ul_record_cnt);
@@ -1370,7 +1370,7 @@ oal_void oam_exception_stat_handler(oal_uint8 en_moduleid, oal_uint8 uc_vap_idx)
                     }
                 }
 
-                /* ÒÑÉÏ±¨£¬ÖÃ³õÊ¼×´Ì¬ */
+                /* ï¿½ï¿½ï¿½Ï±ï¿½ï¿½ï¿½ï¿½Ã³ï¿½Ê¼×´Ì¬ */
                 g_st_oam_mng_ctx.st_exception_ctx[uc_vap_idx].en_status = OAM_EXCP_STATUS_INIT;
             }
         }

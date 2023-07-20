@@ -9,7 +9,7 @@ extern "C" {
 
 
 /*****************************************************************************
-  1 Í·ÎÄ¼þ°üº¬
+  1 Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 #include "oal_net.h"
 #include "mac_frame.h"
@@ -42,7 +42,7 @@ extern "C" {
 #endif
 
 /*****************************************************************************
-  2 È«¾Ö±äÁ¿¶¨Òå
+  2 È«ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 #if (_PRE_OS_VERSION_WIN32 == _PRE_OS_VERSION)
 
@@ -55,7 +55,7 @@ oal_sock_stru g_st_sock;
 #endif
 
 /*****************************************************************************
-  3 º¯ÊýÊµÏÖ
+  3 ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
 *****************************************************************************/
 
 /*lint -e695*/
@@ -137,25 +137,25 @@ oal_void  oal_netbuf_get_txtid(oal_netbuf_stru *pst_buf, oal_uint8 *puc_tos)
 	oal_tcp_header_stru    *pst_tcp;
 #endif
 
-    /* »ñÈ¡ÒÔÌ«ÍøÍ· */
+    /* ï¿½ï¿½È¡ï¿½ï¿½Ì«ï¿½ï¿½Í· */
     pst_ether_header = (oal_ether_header_stru *)oal_netbuf_data(pst_buf);
 
     switch (pst_ether_header->us_ether_type)
     {
-        /*lint -e778*//* ÆÁ±ÎInfo -- Constant expression evaluates to 0 in operation '&' */
+        /*lint -e778*//* ï¿½ï¿½ï¿½ï¿½Info -- Constant expression evaluates to 0 in operation '&' */
         case OAL_HOST2NET_SHORT(ETHER_TYPE_IP):
-            /* ´ÓIP TOS×Ö¶ÎÑ°ÕÒÓÅÏÈ¼¶ */
+            /* ï¿½ï¿½IP TOSï¿½Ö¶ï¿½Ñ°ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½ */
             /*----------------------------------------------------------------------
-                tosÎ»¶¨Òå
+                tosÎ»ï¿½ï¿½ï¿½ï¿½
              ----------------------------------------------------------------------
             | bit7~bit5 | bit4 |  bit3  |  bit2  |   bit1   | bit0 |
-            | °üÓÅÏÈ¼¶  | Ê±ÑÓ | ÍÌÍÂÁ¿ | ¿É¿¿ÐÔ | ´«Êä³É±¾ | ±£Áô |
+            | ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½  | Ê±ï¿½ï¿½ | ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ | ï¿½É¿ï¿½ï¿½ï¿½ | ï¿½ï¿½ï¿½ï¿½É±ï¿½ | ï¿½ï¿½ï¿½ï¿½ |
              ----------------------------------------------------------------------*/
-            pst_ip = (oal_ip_header_stru *)(pst_ether_header + 1);      /* Æ«ÒÆÒ»¸öÒÔÌ«ÍøÍ·£¬È¡ipÍ· */
+            pst_ip = (oal_ip_header_stru *)(pst_ether_header + 1);      /* Æ«ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ì«ï¿½ï¿½Í·ï¿½ï¿½È¡ipÍ· */
 
             uc_tid = pst_ip->uc_tos >> WLAN_IP_PRI_SHIFT;
 #ifdef _PRE_WLAN_FEATURE_SCHEDULE
-            /* ¶ÔÓÚchariotÐÅÁî±¨ÎÄ½øÐÐÌØÊâ´¦Àí£¬·ÀÖ¹¶ÏÁ÷ */
+            /* ï¿½ï¿½ï¿½ï¿½chariotï¿½ï¿½ï¿½î±¨ï¿½Ä½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â´¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ */
             if (pst_ip->uc_protocol == MAC_TCP_PROTOCAL)
             {
                 pst_tcp = (oal_tcp_header_stru *)(pst_ip + 1);
@@ -170,14 +170,14 @@ oal_void  oal_netbuf_get_txtid(oal_netbuf_stru *pst_buf, oal_uint8 *puc_tos)
             break;
 
         case OAL_HOST2NET_SHORT(ETHER_TYPE_IPV6):
-            /* ´ÓIPv6 traffic class×Ö¶Î»ñÈ¡ÓÅÏÈ¼¶ */
+            /* ï¿½ï¿½IPv6 traffic classï¿½Ö¶Î»ï¿½È¡ï¿½ï¿½ï¿½È¼ï¿½ */
             /*----------------------------------------------------------------------
-                IPv6°üÍ· Ç°32Îª¶¨Òå
+                IPv6ï¿½ï¿½Í· Ç°32Îªï¿½ï¿½ï¿½ï¿½
              -----------------------------------------------------------------------
-            | °æ±¾ºÅ | traffic class   | Á÷Á¿±êÊ¶ |
+            | ï¿½æ±¾ï¿½ï¿½ | traffic class   | ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¶ |
             | 4bit   | 8bit(Í¬ipv4 tos)|  20bit   |
             -----------------------------------------------------------------------*/
-            ul_ipv6_hdr = *((oal_uint32 *)(pst_ether_header + 1));  /* Æ«ÒÆÒ»¸öÒÔÌ«ÍøÍ·£¬È¡ipÍ· */
+            ul_ipv6_hdr = *((oal_uint32 *)(pst_ether_header + 1));  /* Æ«ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ì«ï¿½ï¿½Í·ï¿½ï¿½È¡ipÍ· */
 
             ul_pri = (OAL_NET2HOST_LONG(ul_ipv6_hdr) & WLAN_IPV6_PRIORITY_MASK) >> WLAN_IPV6_PRIORITY_SHIFT;
 
@@ -196,18 +196,18 @@ oal_void  oal_netbuf_get_txtid(oal_netbuf_stru *pst_buf, oal_uint8 *puc_tos)
 #endif
 
         case OAL_HOST2NET_SHORT(ETHER_TYPE_VLAN):
-            /* »ñÈ¡vlan tagµÄÓÅÏÈ¼¶ */
+            /* ï¿½ï¿½È¡vlan tagï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½ */
             pst_vlan_ethhdr = (oal_vlan_ethhdr_stru *)oal_netbuf_data(pst_buf);
 
             /*------------------------------------------------------------------
-                802.1Q(VLAN) TCI(tag control information)Î»¶¨Òå
+                802.1Q(VLAN) TCI(tag control information)Î»ï¿½ï¿½ï¿½ï¿½
              -------------------------------------------------------------------
             |Priority | DEI  | Vlan Identifier |
             | 3bit    | 1bit |      12bit      |
              ------------------------------------------------------------------*/
             us_vlan_tci = OAL_NET2HOST_SHORT(pst_vlan_ethhdr->h_vlan_TCI);
 
-            uc_tid = us_vlan_tci >> OAL_VLAN_PRIO_SHIFT;    /* ÓÒÒÆ13Î»£¬ÌáÈ¡¸ß3Î»ÓÅÏÈ¼¶ */
+            uc_tid = us_vlan_tci >> OAL_VLAN_PRIO_SHIFT;    /* ï¿½ï¿½ï¿½ï¿½13Î»ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½3Î»ï¿½ï¿½ï¿½È¼ï¿½ */
 
             break;
 
@@ -216,7 +216,7 @@ oal_void  oal_netbuf_get_txtid(oal_netbuf_stru *pst_buf, oal_uint8 *puc_tos)
             break;
     }
 
-    /* ³ö²Î¸³Öµ */
+    /* ï¿½ï¿½ï¿½Î¸ï¿½Öµ */
     *puc_tos = uc_tid;
 
     return;
@@ -251,7 +251,7 @@ oal_bool_enum_uint8 oal_netbuf_is_icmp(oal_ip_header_stru  *pst_ip_hdr)
     oal_uint8  uc_protocol;
     uc_protocol = pst_ip_hdr->uc_protocol;
 
-    /* ICMP±¨ÎÄ¼ì²é */
+    /* ICMPï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ */
     if( MAC_ICMP_PROTOCAL == uc_protocol )
     {
         return OAL_TRUE;
@@ -270,7 +270,7 @@ oal_bool_enum_uint8 oal_netbuf_is_tcp_ack6(oal_ipv6hdr_stru  *pst_ipv6hdr)
     oal_uint32              ul_tcp_hdr_len;
 
     pst_tcp_hdr     = (oal_tcp_header_stru *)(pst_ipv6hdr + 1);
-    ul_ip_pkt_len   = OAL_NET2HOST_SHORT(pst_ipv6hdr->payload_len); /*ipv6 ¾»ÔØºÉ, ipv6±¨ÎÄÍ·²¿¹Ì¶¨Îª40×Ö½Ú */
+    ul_ip_pkt_len   = OAL_NET2HOST_SHORT(pst_ipv6hdr->payload_len); /*ipv6 ï¿½ï¿½ï¿½Øºï¿½, ipv6ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½Ì¶ï¿½Îª40ï¿½Ö½ï¿½ */
     ul_tcp_hdr_len  = (OAL_HIGH_HALF_BYTE(pst_tcp_hdr->uc_offset)) << 2;
 
     if (ul_tcp_hdr_len == ul_ip_pkt_len)
@@ -298,37 +298,37 @@ oal_uint16 oal_netbuf_select_queue(oal_netbuf_stru *pst_buf)
     oal_uint8               uc_tos;
     oal_uint8               us_queue = WLAN_NORMAL_QUEUE;
 
-    /* »ñÈ¡ÒÔÌ«ÍøÍ· */
+    /* ï¿½ï¿½È¡ï¿½ï¿½Ì«ï¿½ï¿½Í· */
     pst_ether_header = (oal_ether_header_stru *)oal_netbuf_data(pst_buf);
 
     switch (pst_ether_header->us_ether_type)
     {
-        /*lint -e778*//* ÆÁ±ÎInfo -- Constant expression evaluates to 0 in operation '&' */
+        /*lint -e778*//* ï¿½ï¿½ï¿½ï¿½Info -- Constant expression evaluates to 0 in operation '&' */
         case OAL_HOST2NET_SHORT(ETHER_TYPE_IP):
 
-            pst_ip = (oal_ip_header_stru *)(pst_ether_header + 1);      /* Æ«ÒÆÒ»¸öÒÔÌ«ÍøÍ·£¬È¡ipÍ· */
+            pst_ip = (oal_ip_header_stru *)(pst_ether_header + 1);      /* Æ«ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ì«ï¿½ï¿½Í·ï¿½ï¿½È¡ipÍ· */
 
-            /* ¶Ôudp±¨ÎÄÇø·ÖqosÈë¶Ó */
+            /* ï¿½ï¿½udpï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½qosï¿½ï¿½ï¿½ */
             if (MAC_UDP_PROTOCAL == pst_ip->uc_protocol)
             {
-                /* ´ÓIP TOS×Ö¶ÎÑ°ÕÒÓÅÏÈ¼¶ */
+                /* ï¿½ï¿½IP TOSï¿½Ö¶ï¿½Ñ°ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½ */
                 /*----------------------------------------------------------------------
-                    tosÎ»¶¨Òå
+                    tosÎ»ï¿½ï¿½ï¿½ï¿½
                  ----------------------------------------------------------------------
                 | bit7~bit5 | bit4 |  bit3  |  bit2  |   bit1   | bit0 |
-                | °üÓÅÏÈ¼¶  | Ê±ÑÓ | ÍÌÍÂÁ¿ | ¿É¿¿ÐÔ | ´«Êä³É±¾ | ±£Áô |
+                | ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½  | Ê±ï¿½ï¿½ | ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ | ï¿½É¿ï¿½ï¿½ï¿½ | ï¿½ï¿½ï¿½ï¿½É±ï¿½ | ï¿½ï¿½ï¿½ï¿½ |
                  ----------------------------------------------------------------------*/
                 uc_tos = pst_ip->uc_tos >> WLAN_IP_PRI_SHIFT;
                 us_queue = WLAN_TOS_TO_HCC_QUEUE(uc_tos);
 
-                /* Èç¹ûÊÇDHCPÖ¡£¬Ôò½øÈëDATA_HIGH_QUEUE */
+                /* ï¿½ï¿½ï¿½ï¿½ï¿½DHCPÖ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½DATA_HIGH_QUEUE */
                 pst_udp_hdr = (oal_udp_header_stru *)(pst_ip + 1);
                 if ((0 == (pst_ip->us_frag_off & 0xFF1F)) && (OAL_TRUE == oal_netbuf_is_dhcp_port(pst_udp_hdr)))
                 {
                     us_queue = WLAN_DATA_VIP_QUEUE;
                 }
             }
-            else if (MAC_TCP_PROTOCAL == pst_ip->uc_protocol) /* Çø·ÖTCP ackÓëTCP data±¨ÎÄ */
+            else if (MAC_TCP_PROTOCAL == pst_ip->uc_protocol) /* ï¿½ï¿½ï¿½ï¿½TCP ackï¿½ï¿½TCP dataï¿½ï¿½ï¿½ï¿½ */
             {
                 if (OAL_TRUE == oal_netbuf_is_tcp_ack(pst_ip))
                 {
@@ -343,23 +343,23 @@ oal_uint16 oal_netbuf_select_queue(oal_netbuf_stru *pst_buf)
 
         case OAL_HOST2NET_SHORT(ETHER_TYPE_IPV6):
 
-            /* ´ÓIPv6 traffic class×Ö¶Î»ñÈ¡ÓÅÏÈ¼¶ */
+            /* ï¿½ï¿½IPv6 traffic classï¿½Ö¶Î»ï¿½È¡ï¿½ï¿½ï¿½È¼ï¿½ */
             /*----------------------------------------------------------------------
-                IPv6°üÍ· Ç°32Îª¶¨Òå
+                IPv6ï¿½ï¿½Í· Ç°32Îªï¿½ï¿½ï¿½ï¿½
              -----------------------------------------------------------------------
-            | °æ±¾ºÅ | traffic class   | Á÷Á¿±êÊ¶ |
+            | ï¿½æ±¾ï¿½ï¿½ | traffic class   | ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¶ |
             | 4bit   | 8bit(Í¬ipv4 tos)|  20bit   |
             -----------------------------------------------------------------------*/
-            pst_ipv6    = (oal_ipv6hdr_stru *)(pst_ether_header + 1); /* Æ«ÒÆÒ»¸öÒÔÌ«ÍøÍ·£¬È¡ipÍ· */
+            pst_ipv6    = (oal_ipv6hdr_stru *)(pst_ether_header + 1); /* Æ«ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ì«ï¿½ï¿½Í·ï¿½ï¿½È¡ipÍ· */
             ul_ipv6_hdr = (*(oal_uint32 *)pst_ipv6);
 
-            if (MAC_UDP_PROTOCAL == pst_ipv6->nexthdr) /* UDP±¨ÎÄ */
+            if (MAC_UDP_PROTOCAL == pst_ipv6->nexthdr) /* UDPï¿½ï¿½ï¿½ï¿½ */
             {
                 ul_pri = (OAL_NET2HOST_LONG(ul_ipv6_hdr) & WLAN_IPV6_PRIORITY_MASK) >> WLAN_IPV6_PRIORITY_SHIFT;
                 uc_tos = (oal_uint8)(ul_pri >> WLAN_IP_PRI_SHIFT);
                 us_queue = WLAN_TOS_TO_HCC_QUEUE(uc_tos);
             }
-            else if (MAC_TCP_PROTOCAL == pst_ipv6->nexthdr) /* TCP±¨ÎÄ */
+            else if (MAC_TCP_PROTOCAL == pst_ipv6->nexthdr) /* TCPï¿½ï¿½ï¿½ï¿½ */
             {
                 if (OAL_TRUE == oal_netbuf_is_tcp_ack6(pst_ipv6))
                 {
@@ -371,7 +371,7 @@ oal_uint16 oal_netbuf_select_queue(oal_netbuf_stru *pst_buf)
                 }
             }
 
-            /* Èç¹ûÊÇDHCPV6Ö¡£¬Ôò½øÈëWLAN_DATA_VIP_QUEUE¶ÓÁÐ»º´æ */
+            /* ï¿½ï¿½ï¿½ï¿½ï¿½DHCPV6Ö¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½WLAN_DATA_VIP_QUEUEï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½ */
             else if (OAL_TRUE == oal_netbuf_is_dhcp6((oal_ipv6hdr_stru *)(pst_ether_header + 1)))
             {
                 us_queue = WLAN_DATA_VIP_QUEUE;
@@ -379,16 +379,16 @@ oal_uint16 oal_netbuf_select_queue(oal_netbuf_stru *pst_buf)
             break;
 
         case OAL_HOST2NET_SHORT(ETHER_TYPE_PAE):
-            /* Èç¹ûÊÇEAPOLÖ¡£¬Ôò½øÈëVO¶ÓÁÐ·¢ËÍ */
+            /* ï¿½ï¿½ï¿½ï¿½ï¿½EAPOLÖ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½VOï¿½ï¿½ï¿½Ð·ï¿½ï¿½ï¿½ */
             us_queue = WLAN_DATA_VIP_QUEUE;
             break;
 
-        /* TDLSÖ¡´¦Àí£¬½¨Á´±£»¤£¬Èë¸ßÓÅÏÈ¼¶TID¶ÓÁÐ */
+        /* TDLSÖ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½TIDï¿½ï¿½ï¿½ï¿½ */
         case OAL_HOST2NET_SHORT(ETHER_TYPE_TDLS):
             us_queue = WLAN_DATA_VIP_QUEUE;
             break;
 
-        /* PPPOEÖ¡´¦Àí£¬½¨Á´±£»¤(·¢ÏÖ½×¶Î, »á»°½×¶Î)£¬Èë¸ßÓÅÏÈ¼¶TID¶ÓÁÐ */
+        /* PPPOEÖ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½Ö½×¶ï¿½, ï¿½á»°ï¿½×¶ï¿½)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½TIDï¿½ï¿½ï¿½ï¿½ */
         case OAL_HOST2NET_SHORT(ETHER_TYPE_PPP_DISC):
         case OAL_HOST2NET_SHORT(ETHER_TYPE_PPP_SES):
             us_queue = WLAN_DATA_VIP_QUEUE;
@@ -402,18 +402,18 @@ oal_uint16 oal_netbuf_select_queue(oal_netbuf_stru *pst_buf)
 
         case OAL_HOST2NET_SHORT(ETHER_TYPE_VLAN):
 
-            /* »ñÈ¡vlan tagµÄÓÅÏÈ¼¶ */
+            /* ï¿½ï¿½È¡vlan tagï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½ */
             pst_vlan_ethhdr = (oal_vlan_ethhdr_stru *)oal_netbuf_data(pst_buf);
 
             /*------------------------------------------------------------------
-                802.1Q(VLAN) TCI(tag control information)Î»¶¨Òå
+                802.1Q(VLAN) TCI(tag control information)Î»ï¿½ï¿½ï¿½ï¿½
              -------------------------------------------------------------------
             |Priority | DEI  | Vlan Identifier |
             | 3bit    | 1bit |      12bit      |
              ------------------------------------------------------------------*/
             us_vlan_tci = OAL_NET2HOST_SHORT(pst_vlan_ethhdr->h_vlan_TCI);
 
-            uc_tos = us_vlan_tci >> OAL_VLAN_PRIO_SHIFT;    /* ÓÒÒÆ13Î»£¬ÌáÈ¡¸ß3Î»ÓÅÏÈ¼¶ */
+            uc_tos = us_vlan_tci >> OAL_VLAN_PRIO_SHIFT;    /* ï¿½ï¿½ï¿½ï¿½13Î»ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½3Î»ï¿½ï¿½ï¿½È¼ï¿½ */
             us_queue = WLAN_TOS_TO_HCC_QUEUE(uc_tos);
 
             break;
@@ -434,11 +434,11 @@ oal_module_symbol(oal_netbuf_select_queue);
 
 #endif
 
-#if 0 /* hi1102 Çý¶¯Generic´´½¨²»³É¹¦£¬´Ë·½°¸ºóÐøÔÙ¶¨Î» */
+#if 0 /* hi1102 ï¿½ï¿½ï¿½ï¿½Genericï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½ï¿½Ë·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù¶ï¿½Î» */
 
 #if (_PRE_OS_VERSION_LINUX == _PRE_OS_VERSION)
-/*netlink attributes ¿ÉÒÔÍ¨¹ýÃ¶¾ÙË÷ÒýÕÒµ½¶ÔÓ¦µÄÀàÐÍ
-*ÓÃ»§¿Õ¼äÓ¦ÓÃ³ÌÐòÒª´«µÝÕâÑùµÄÐÅÏ¢*/
+/*netlink attributes ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+*ï¿½Ã»ï¿½ï¿½Õ¼ï¿½Ó¦ï¿½Ã³ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢*/
 enum
 {
     DOC_EXMPL_A_UNSPEC,
@@ -447,7 +447,7 @@ enum
 };
 #define DOC_EXMPL_A_MAX (__DOC_EXMPL_A_MAX - 1)
 
-/*atribute policy¾ÍÊÇ¶¨Òå¸÷¸öÊôÐÔµÄ¾ßÌåÀàÐÍ£¬²Î¼ûnet/netlink.h*/
+/*atribute policyï¿½ï¿½ï¿½Ç¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÔµÄ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½ï¿½Î¼ï¿½net/netlink.h*/
 static struct nla_policy doc_exmpl_genl_policy[DOC_EXMPL_A_MAX + 1] = {
         [DOC_EXMPL_A_MSG] = {.type = NLA_NUL_STRING},
 };
@@ -456,8 +456,8 @@ static struct nla_policy doc_exmpl_genl_policy[DOC_EXMPL_A_MAX + 1] = {
 
 struct genl_info g_st_info;
 
-//generic netlink family ¶¨Òå
-static struct genl_family doc_exmpl_genl_family = {// 1 ¶¨Òåfamily
+//generic netlink family ï¿½ï¿½ï¿½ï¿½
+static struct genl_family doc_exmpl_genl_family = {// 1 ï¿½ï¿½ï¿½ï¿½family
         .id = GENL_ID_GENERATE,
         .hdrsize = 0,
         .name = "HiSi_WIFI_EXCP",
@@ -466,7 +466,7 @@ static struct genl_family doc_exmpl_genl_family = {// 1 ¶¨Òåfamily
         .maxattr = DOC_EXMPL_A_MAX,
 };
 
-/*¶¨ÒåÃüÁîÀàÐÍ£¬ÓÃ»§¿Õ¼äÒÔ´ËÀ´±íÃ÷ÐèÒªÖ´ÐÐµÄÃüÁî*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½ï¿½Ã»ï¿½ï¿½Õ¼ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÖ´ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½*/
 enum
 {
     DOC_EXMPL_C_UNSPEC,
@@ -475,7 +475,7 @@ enum
 };
 #define DOC_EXMPL_C_MAX (__DOC_EXMPL_C_MAX - 1)
 
-//echo command handler,½ÓÊÕÒ»¸ömsg²¢»Ø¸´
+//echo command handler,ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½msgï¿½ï¿½ï¿½Ø¸ï¿½
 int doc_exmpl_echo(struct sk_buff *skb2, struct genl_info *info)
 {
     struct nlattr *na;
@@ -488,7 +488,7 @@ int doc_exmpl_echo(struct sk_buff *skb2, struct genl_info *info)
 
     oal_memcopy(&g_st_info, info, OAL_SIZEOF(*info));
 
-    //¶ÔÓÚÃ¿¸öÊôÐÔ£¬genl_infoµÄÓòattrs¿ÉÒÔË÷Òýµ½¾ßÌå½á¹¹£¬ÀïÃæÓÐpayload
+    //ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½Ô£ï¿½genl_infoï¿½ï¿½ï¿½ï¿½attrsï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½á¹¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½payload
     na = info->attrs[DOC_EXMPL_A_MSG];
     if(na)
     {
@@ -507,7 +507,7 @@ int doc_exmpl_echo(struct sk_buff *skb2, struct genl_info *info)
     if(!skb)
         goto error;
 
-    /*¹¹½¨ÏûÏ¢Í·£¬º¯ÊýÔ­ÐÍÊÇ
+    /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô­ï¿½ï¿½ï¿½ï¿½
     genlmsg_put(struct sk_buff *,int pid,int seq_number,
             struct genl_family *,int flags,u8 command_index);
     */
@@ -518,13 +518,13 @@ int doc_exmpl_echo(struct sk_buff *skb2, struct genl_info *info)
             goto error;
     }
 
-    //Ìî³ä¾ßÌåµÄnetlink attribute:DOC_EXMPL_A_MSG£¬ÕâÊÇÊµ¼ÊÒª´«µÄÊý¾Ý
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½netlink attribute:DOC_EXMPL_A_MSGï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     rc = nla_put_string(skb, DOC_EXMPL_A_MSG, "This is a msg from kernel space!");
     if(rc != OAL_SUCC)
     goto error;
 
-    genlmsg_end(skb,msg_hdr);//ÏûÏ¢¹¹½¨Íê³É
-    //µ¥²¥·¢ËÍ¸øÓÃ»§¿Õ¼äµÄÄ³¸ö½ø³Ì
+    genlmsg_end(skb,msg_hdr);//ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ï¿½Ã»ï¿½ï¿½Õ¼ï¿½ï¿½Ä³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     rc = genlmsg_unicast(genl_info_net(info), skb, info->snd_portid);
     if(rc != OAL_SUCC)
     {
@@ -539,8 +539,8 @@ int doc_exmpl_echo(struct sk_buff *skb2, struct genl_info *info)
         return OAL_SUCC;
 }
 
-//½«ÃüÁîcommand echoºÍ¾ßÌåµÄhandler¶ÔÓ¦ÆðÀ´
-static struct genl_ops doc_exmpl_genl_ops_echo = {// 2 ¶¨Òåoperation
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½command echoï¿½Í¾ï¿½ï¿½ï¿½ï¿½handlerï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½
+static struct genl_ops doc_exmpl_genl_ops_echo = {// 2 ï¿½ï¿½ï¿½ï¿½operation
         .cmd = DOC_EXMPL_C_ECHO,
         .flags = 0,
         .policy = doc_exmpl_genl_policy,
@@ -548,18 +548,18 @@ static struct genl_ops doc_exmpl_genl_ops_echo = {// 2 ¶¨Òåoperation
         .dumpit = NULL,
 };
 
-//ÄÚºËÈë¿Ú£¬×¢²ágeneric netlink family/operations
+//ï¿½Úºï¿½ï¿½ï¿½Ú£ï¿½×¢ï¿½ï¿½generic netlink family/operations
 oal_int genKernel_init(oal_void)
 {
     int rc;
     printk("apr--->Generic Netlink Example Module inserted.\n");
 
-    rc = genl_register_family(&doc_exmpl_genl_family);// 3 ×¢²áfamily
+    rc = genl_register_family(&doc_exmpl_genl_family);// 3 ×¢ï¿½ï¿½family
     if (rc != OAL_SUCC)
     {
         goto failure;
     }
-    rc = genl_register_ops(&doc_exmpl_genl_family, &doc_exmpl_genl_ops_echo);// 4 ×¢²áoperation
+    rc = genl_register_ops(&doc_exmpl_genl_family, &doc_exmpl_genl_ops_echo);// 4 ×¢ï¿½ï¿½operation
     if (rc != OAL_SUCC)
     {
         printk("apr--->Register ops: %i\n",rc);
@@ -595,15 +595,15 @@ oal_void genKernel_exit(oal_void)
 
 
 /**
-* genl_msg_send_to_user - Í¨¹ýgeneric netlink·¢ËÍÊý¾Ýµ½netlink
+* genl_msg_send_to_user - Í¨ï¿½ï¿½generic netlinkï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ýµï¿½netlink
 *
-* @data: ·¢ËÍÊý¾Ý»º´æ
-* @len:  Êý¾Ý³¤¶È µ¥Î»£ºbyte
-* @pid:  ·¢ËÍµ½µÄ¿Í»§¶Ëpid <span style="color:#FF0000;"><strong>Õâ¸öpidÒª´ÓÓÃ»§¿Õ¼ä·¢À´Êý¾Ý´¥·¢µÄdoitÖÐµÄinfo->snd_pid²ÎÊý»ñµÃ</strong></span>
+* @data: ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý»ï¿½ï¿½ï¿½
+* @len:  ï¿½ï¿½ï¿½Ý³ï¿½ï¿½ï¿½ ï¿½ï¿½Î»ï¿½ï¿½byte
+* @pid:  ï¿½ï¿½ï¿½Íµï¿½ï¿½Ä¿Í»ï¿½ï¿½ï¿½pid <span style="color:#FF0000;"><strong>ï¿½ï¿½ï¿½pidÒªï¿½ï¿½ï¿½Ã»ï¿½ï¿½Õ¼ä·¢ï¿½ï¿½ï¿½ï¿½ï¿½Ý´ï¿½ï¿½ï¿½ï¿½ï¿½doitï¿½Ðµï¿½info->snd_pidï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</strong></span>
 *
 * return:
-*    0:       ³É¹¦
-*    -1:      Ê§°Ü
+*    0:       ï¿½É¹ï¿½
+*    -1:      Ê§ï¿½ï¿½
 */
 oal_int genl_msg_send_to_user(oal_void *data, oal_int i_len)
 {
@@ -616,7 +616,7 @@ oal_int genl_msg_send_to_user(oal_void *data, oal_int i_len)
     if(!skb)
         goto error;
 
-    /*¹¹½¨ÏûÏ¢Í·£¬º¯ÊýÔ­ÐÍÊÇ
+    /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô­ï¿½ï¿½ï¿½ï¿½
     genlmsg_put(struct sk_buff *,int pid,int seq_number,
             struct genl_family *,int flags,u8 command_index);
     */
@@ -627,13 +627,13 @@ oal_int genl_msg_send_to_user(oal_void *data, oal_int i_len)
             goto error;
     }
 
-    //Ìî³ä¾ßÌåµÄnetlink attribute:DOC_EXMPL_A_MSG£¬ÕâÊÇÊµ¼ÊÒª´«µÄÊý¾Ý
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½netlink attribute:DOC_EXMPL_A_MSGï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     rc = nla_put_string(skb, DOC_EXMPL_A_MSG, data);
     if(rc != OAL_SUCC)
         goto error;
 
-    genlmsg_end(skb,msg_hdr);//ÏûÏ¢¹¹½¨Íê³É
-    //µ¥²¥·¢ËÍ¸øÓÃ»§¿Õ¼äµÄÄ³¸ö½ø³Ì
+    genlmsg_end(skb,msg_hdr);//ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ï¿½Ã»ï¿½ï¿½Õ¼ï¿½ï¿½Ä³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     rc = genlmsg_unicast(genl_info_net(&g_st_info), skb, g_st_info.snd_portid);
     if(rc != OAL_SUCC)
     {
@@ -668,7 +668,7 @@ oal_int genl_msg_send_to_user(oal_void *data, oal_int i_len)
 oal_module_symbol(genKernel_init);
 oal_module_symbol(genKernel_exit);
 
-#endif /* hi1102 Çý¶¯Generic´´½¨²»³É¹¦£¬´Ë·½°¸ºóÐøÔÙ¶¨Î» */
+#endif /* hi1102 ï¿½ï¿½ï¿½ï¿½Genericï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½ï¿½Ë·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù¶ï¿½Î» */
 
 #if (_PRE_OS_VERSION_LINUX == _PRE_OS_VERSION) && defined (_PRE_WLAN_FEATURE_DFR)
 
@@ -729,7 +729,7 @@ void dev_netlink_rev(oal_netbuf_stru *skb)
     if (pst_skb->len >= OAL_NLMSG_SPACE(0))
     {
         pst_nlh = oal_nlmsg_hdr(pst_skb);
-        /* ¼ì²â±¨ÎÄ³¤¶ÈÕýÈ·ÐÔ */
+        /* ï¿½ï¿½â±¨ï¿½Ä³ï¿½ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½ */
         if (!OAL_NLMSG_OK(pst_nlh, pst_skb->len))
         {
             OAL_IO_PRINT("[ERROR]invaild netlink buff data packge data len = :%u,skb_buff data len = %u\n",
@@ -738,7 +738,7 @@ void dev_netlink_rev(oal_netbuf_stru *skb)
             return;
         }
         ul_len   = OAL_NLMSG_PAYLOAD(pst_nlh, 0);
-        /* ºóÐøÐèÒª¿½±´sizeof(st_msg_hdr),¹ÊÅÐ¶ÏÖ® */
+        /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½sizeof(st_msg_hdr),ï¿½ï¿½ï¿½Ð¶ï¿½Ö® */
         if (ul_len <= OAL_EXCP_DATA_BUF_LEN && ul_len >= sizeof(st_msg_hdr))
         {
             oal_memcopy(dev_excp_handler_data.data, OAL_NLMSG_DATA(pst_nlh), ul_len);
@@ -786,7 +786,7 @@ oal_int32 dev_netlink_create(void)
         return -OAL_EFAIL;
     }
 
-    OAL_IO_PRINT("WIFI DFR:suceed to create netlink socket£¬%p \n", dev_excp_handler_data.nlsk);
+    OAL_IO_PRINT("WIFI DFR:suceed to create netlink sockets %p \n", dev_excp_handler_data.nlsk);
     return OAL_SUCC;
 }
 

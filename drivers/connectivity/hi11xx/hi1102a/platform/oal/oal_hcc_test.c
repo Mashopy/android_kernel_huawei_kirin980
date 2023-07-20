@@ -782,7 +782,7 @@ OAL_STATIC  oal_uint64 hcc_test_utilization_ratio_gen(oal_uint64 payload_size,oa
     return ret;
 }
 
-/*Í³¼Æ·¢ËÍ·½ÏòµÄ¶ª°üÂÊ£¬½ÓÊÕ·½ÏòÄ¬ÈÏ²»¶ª°ü*/
+/*Í³ï¿½Æ·ï¿½ï¿½Í·ï¿½ï¿½ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½Ê£ï¿½ï¿½ï¿½ï¿½Õ·ï¿½ï¿½ï¿½Ä¬ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½*/
 OAL_STATIC  oal_uint32 hcc_test_tx_pkt_loss_gen(oal_uint32 tx_pkts,oal_uint32 actual_tx_pkts)
 {
     oal_uint32 ul_loss;
@@ -810,7 +810,7 @@ OAL_STATIC oal_int32 hcc_test_rcvd(struct hcc_handler * hcc, oal_uint8 stype, hc
     {
         oal_int32 filter_flag = 0;
 
-        /*¼ÆËã×Ü¹²Êý¾Ý°ü³¤¶È*/
+        /*ï¿½ï¿½ï¿½ï¿½ï¿½Ü¹ï¿½ï¿½ï¿½ï¿½Ý°ï¿½ï¿½ï¿½ï¿½ï¿½*/
         if(OAL_UNLIKELY(OAL_NETBUF_LEN(pst_netbuf)!= g_hcc_test_event->test_data.pkt_len))
         {
             if(printk_ratelimit())
@@ -846,7 +846,7 @@ OAL_STATIC oal_int32 hcc_test_rcvd(struct hcc_handler * hcc, oal_uint8 stype, hc
 
         if(!filter_flag)
         {
-            /*filter_flag=1 Ê±½ÓÊÕµÄÊý¾Ý°ü²»·ûºÏÒªÇó£¬Ôò¹ýÂËµô*/
+            /*filter_flag=1 Ê±ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½Ý°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½*/
             g_hcc_test_event->test_data.pkt_rcvd++;
             g_hcc_test_event->test_data.total_rcvd_bytes += OAL_NETBUF_LEN(pst_netbuf);
             g_hcc_test_event->last_time= ktime_get();
@@ -1012,7 +1012,7 @@ OAL_STATIC oal_int32 hcc_test_rx_start(oal_uint16 start_cmd)
 
     g_hcc_test_event->last_time= ktime_get();
 
-    /*µÈ´ý»ØÀ´µÄCMDÃüÁî*/
+    /*ï¿½È´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½CMDï¿½ï¿½ï¿½ï¿½*/
     ret = wait_for_completion_interruptible(&g_hcc_test_event->test_trans_done);
     if(ret < 0)
     {
@@ -1136,7 +1136,7 @@ OAL_STATIC oal_int32 hcc_test_normal_start(oal_uint16 start_cmd)
     g_hcc_test_event->last_time= ktime_get();
 
 retry:
-    /*µÈ´ý»ØÀ´µÄCMDÃüÁî*/
+    /*ï¿½È´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½CMDï¿½ï¿½ï¿½ï¿½*/
     ret = wait_for_completion_interruptible_timeout(&g_hcc_test_event->test_trans_done,OAL_MSECS_TO_JIFFIES(5000));
     if(ret < 0)
     {
@@ -1258,13 +1258,13 @@ ssize_t hcc_test_print_thoughput(char*buf, oal_uint32 buf_len)
     ret +=  snprintf(buf + ret,  hcc_test_get_buf_remain_len(buf_len, ret), "PayloadRcvd %llu bytes, ActualRecv  %llu bytes\n",
                                                             g_hcc_test_event->test_data.total_rcvd_bytes,
                                                             g_hcc_test_event->test_data.trans_info.total_d2h_trans_bytes);
-    /*SDIOÍ¨µÀÀûÓÃÂÊ*/
-    ret +=  snprintf(buf + ret,  hcc_test_get_buf_remain_len(buf_len, ret), "Hcc Utilization Ratio %llu ¡ë\n",
+    /*SDIOÍ¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
+    ret +=  snprintf(buf + ret,  hcc_test_get_buf_remain_len(buf_len, ret), "Hcc Utilization Ratio %llu\n",
                             hcc_test_utilization_ratio_gen(g_hcc_test_event->test_data.total_sent_bytes + g_hcc_test_event->test_data.total_rcvd_bytes,
                                                             g_hcc_test_event->test_data.trans_info.total_h2d_trans_bytes +
                                                              g_hcc_test_event->test_data.trans_info.total_d2h_trans_bytes));
-    /*·¢ËÍ·½ÏòµÄ¶ª°üÂÊ*/
-    ret +=  snprintf(buf + ret,  hcc_test_get_buf_remain_len(buf_len, ret), "TxPackageLoss %u ¡ë, pkt_sent: %d actual_tx_pkts: %u\n",
+    /*ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ï¿½*/
+    ret +=  snprintf(buf + ret,  hcc_test_get_buf_remain_len(buf_len, ret), "TxPackageLoss %u, pkt_sent: %d actual_tx_pkts: %u\n",
                                     hcc_test_tx_pkt_loss_gen(g_hcc_test_event->test_data.pkt_sent,g_hcc_test_event->test_data.trans_info.actual_tx_pkts),
                                     g_hcc_test_event->test_data.pkt_sent,
                                     g_hcc_test_event->test_data.trans_info.actual_tx_pkts);
@@ -2090,7 +2090,7 @@ oal_int32 hcc_test_current_bus_chan(oal_int32 pkt_len,
         return ret;
     }
 
-    /*ÏÂ·¢¹Ì¶¨ÆµÂÊµÄÃüÁî*/
+    /*ï¿½Â·ï¿½ï¿½Ì¶ï¿½Æµï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½*/
     ret = hcc_test_fix_wcpu_freq();
     if(ret)
     {
@@ -2099,7 +2099,7 @@ oal_int32 hcc_test_current_bus_chan(oal_int32 pkt_len,
         return ret;
     }
 
-    /*µçÑ¹À­Æ«*/
+    /*ï¿½ï¿½Ñ¹ï¿½ï¿½Æ«*/
     hcc_bus_voltage_bias_init(hcc_get_current_110x_bus());
 
 retry:
@@ -2127,7 +2127,7 @@ retry:
 
     if(min_throught > 0)
     {
-        /*ÍÌÍÂÂÊÃÅÏÞ£¬µ±Ð¡ÓÚ×îÐ¡ÖµÊ±£¬ÈÏÎªÐÔÄÜÊ§°Ü*/
+        /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ£ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½Ð¡ÖµÊ±ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½*/
         if(g_hcc_test_event->test_data.throughput  < (oal_uint64)min_throught)
         {
             retry_times++;
@@ -2169,7 +2169,7 @@ retry:
     return OAL_SUCC;
 }
 
-/*²âÊÔWIFIÍ¨µÀÊÇ·ñÁ¬Í¨*/
+/*ï¿½ï¿½ï¿½ï¿½WIFIÍ¨ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Í¨*/
 oal_int32 conn_test_wifi_chan_loop(char *param)
 {
     oal_int32 ret;
@@ -2204,7 +2204,7 @@ oal_int32 conn_test_wifi_chan_loop(char *param)
 
         if(HCC_BUS_PCIE != pst_bus->bus_type)
         {
-            /*³¢ÊÔÇÐ»»µ½PCIE*/
+            /*ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½PCIE*/
             ret = hcc_switch_bus(HCC_CHIP_110X_DEV, HCC_BUS_PCIE);
             if(ret)
             {
@@ -2265,7 +2265,7 @@ oal_int32 conn_test_wifi_chan_loop(char *param)
 
         if(HCC_BUS_SDIO != pst_bus->bus_type)
         {
-            /*³¢ÊÔÇÐ»»µ½SDIO*/
+            /*ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½SDIO*/
             ret = hcc_switch_bus(HCC_CHIP_110X_DEV, HCC_BUS_SDIO);
             if(ret)
             {

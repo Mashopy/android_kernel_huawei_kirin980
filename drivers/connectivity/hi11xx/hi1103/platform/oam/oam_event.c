@@ -8,7 +8,7 @@ extern "C" {
 
 
 /*****************************************************************************
-  1 Í·ÎÄ¼þ°üº¬
+  1 Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 #include "oam_event.h"
 #include "oam_main.h"
@@ -19,11 +19,11 @@ extern "C" {
 #define THIS_FILE_ID   OAM_FILE_ID_OAM_EVENT_C
 
 /*****************************************************************************
-  2 È«¾Ö±äÁ¿¶¨Òå
+  2 È«ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 
 /*****************************************************************************
-  3 º¯ÊýÊµÏÖ
+  3 ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
 *****************************************************************************/
 
 oal_switch_enum_uint8  oam_report_data_get_global_switch_etc(oam_ota_frame_direction_type_enum_uint8 en_direction)
@@ -49,7 +49,7 @@ OAL_STATIC oal_uint32  oam_report_data_set_global_switch(
         return OAL_ERR_CODE_ARRAY_OVERFLOW;
     }
 
-    /* ÏÈ¼ì²éµ¥²¥Êý¾ÝÖ¡ÊÇ·ñÓÐÓÃ»§ÒÑ¾­´ò¿ªÁË */
+    /* ï¿½È¼ï¿½éµ¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¡ï¿½Ç·ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ */
     for (us_usr_idx = 0; us_usr_idx < WLAN_USER_MAX_USER_LIMIT; us_usr_idx++)
     {
         if ((OAL_SWITCH_ON == g_st_oam_mng_ctx_etc.st_user_track_ctx.ast_80211_ucast_data_ctx[us_usr_idx][en_direction].en_frame_cb_switch)
@@ -61,7 +61,7 @@ OAL_STATIC oal_uint32  oam_report_data_set_global_switch(
         }
     }
 
-    /* ÔÙ¼ì²é×é²¥Êý¾ÝÖ¡ÊÇ·ñ¿ª¹Ø´ò¿ªÁË */
+    /* ï¿½Ù¼ï¿½ï¿½ï¿½é²¥ï¿½ï¿½ï¿½ï¿½Ö¡ï¿½Ç·ñ¿ª¹Ø´ï¿½ï¿½ï¿½ */
     if ((OAL_SWITCH_ON == g_st_oam_mng_ctx_etc.st_user_track_ctx.ast_80211_mcast_data_ctx[en_direction].en_frame_cb_switch)
         || (OAL_SWITCH_ON == g_st_oam_mng_ctx_etc.st_user_track_ctx.ast_80211_mcast_data_ctx[en_direction].en_frame_content_switch)
         || (OAL_SWITCH_ON == g_st_oam_mng_ctx_etc.st_user_track_ctx.ast_80211_mcast_data_ctx[en_direction].en_frame_dscr_switch))
@@ -147,7 +147,7 @@ oal_uint32  oam_report_80211_mcast_set_switch_etc(
         return OAL_ERR_CODE_INVALID_CONFIG;
     }
 
-    /* Îª×é²¥¹ÜÀíÖ¡ÉèÖÃ¿ª¹Ø */
+    /* Îªï¿½é²¥ï¿½ï¿½ï¿½ï¿½Ö¡ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ */
     if (OAM_USER_TRACK_FRAME_TYPE_MGMT == en_frame_type)
     {
         g_st_oam_mng_ctx_etc.st_user_track_ctx.ast_80211_mcast_mgmt_ctx[en_mcast_direction].en_frame_content_switch = en_frame_switch;
@@ -160,7 +160,7 @@ oal_uint32  oam_report_80211_mcast_set_switch_etc(
         g_st_oam_mng_ctx_etc.st_user_track_ctx.ast_80211_mcast_data_ctx[en_mcast_direction].en_frame_cb_switch = en_cb_switch;
         g_st_oam_mng_ctx_etc.st_user_track_ctx.ast_80211_mcast_data_ctx[en_mcast_direction].en_frame_dscr_switch = en_dscr_switch;
 
-        /* ÉèÖÃ×Ü¿ª¹Ø */
+        /* ï¿½ï¿½ï¿½ï¿½ï¿½Ü¿ï¿½ï¿½ï¿½ */
         oam_report_data_set_global_switch(en_mcast_direction);
     }
 
@@ -241,17 +241,17 @@ oal_uint32  oam_report_80211_ucast_set_switch_etc(
 
     if (OAM_USER_TRACK_FRAME_TYPE_MGMT == en_frame_type)
     {
-        g_st_oam_mng_ctx_etc.st_user_track_ctx.ast_80211_ucast_mgmt_ctx[us_user_idx][en_ucast_direction].en_frame_content_switch = en_frame_switch;/* [false alarm]:ÒÑ×ö½çÏÞÅÐ¶Ï£¬²»»áÔ½½ç*/
-        g_st_oam_mng_ctx_etc.st_user_track_ctx.ast_80211_ucast_mgmt_ctx[us_user_idx][en_ucast_direction].en_frame_cb_switch = en_cb_switch;/* [false alarm]:ÒÑ×ö½çÏÞÅÐ¶Ï£¬²»»áÔ½½ç*/
-        g_st_oam_mng_ctx_etc.st_user_track_ctx.ast_80211_ucast_mgmt_ctx[us_user_idx][en_ucast_direction].en_frame_dscr_switch = en_dscr_switch;/* [false alarm]:ÒÑ×ö½çÏÞÅÐ¶Ï£¬²»»áÔ½½ç*/
+        g_st_oam_mng_ctx_etc.st_user_track_ctx.ast_80211_ucast_mgmt_ctx[us_user_idx][en_ucast_direction].en_frame_content_switch = en_frame_switch;/* [false alarm]:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶Ï£ï¿½ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ï¿½*/
+        g_st_oam_mng_ctx_etc.st_user_track_ctx.ast_80211_ucast_mgmt_ctx[us_user_idx][en_ucast_direction].en_frame_cb_switch = en_cb_switch;/* [false alarm]:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶Ï£ï¿½ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ï¿½*/
+        g_st_oam_mng_ctx_etc.st_user_track_ctx.ast_80211_ucast_mgmt_ctx[us_user_idx][en_ucast_direction].en_frame_dscr_switch = en_dscr_switch;/* [false alarm]:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶Ï£ï¿½ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ï¿½*/
     }
     else
     {
-        g_st_oam_mng_ctx_etc.st_user_track_ctx.ast_80211_ucast_data_ctx[us_user_idx][en_ucast_direction].en_frame_content_switch = en_frame_switch;/* [false alarm]:ÒÑ×ö½çÏÞÅÐ¶Ï£¬²»»áÔ½½ç*/
-        g_st_oam_mng_ctx_etc.st_user_track_ctx.ast_80211_ucast_data_ctx[us_user_idx][en_ucast_direction].en_frame_cb_switch = en_cb_switch;/* [false alarm]:ÒÑ×ö½çÏÞÅÐ¶Ï£¬²»»áÔ½½ç*/
-        g_st_oam_mng_ctx_etc.st_user_track_ctx.ast_80211_ucast_data_ctx[us_user_idx][en_ucast_direction].en_frame_dscr_switch = en_dscr_switch;/* [false alarm]:ÒÑ×ö½çÏÞÅÐ¶Ï£¬²»»áÔ½½ç*/
+        g_st_oam_mng_ctx_etc.st_user_track_ctx.ast_80211_ucast_data_ctx[us_user_idx][en_ucast_direction].en_frame_content_switch = en_frame_switch;/* [false alarm]:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶Ï£ï¿½ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ï¿½*/
+        g_st_oam_mng_ctx_etc.st_user_track_ctx.ast_80211_ucast_data_ctx[us_user_idx][en_ucast_direction].en_frame_cb_switch = en_cb_switch;/* [false alarm]:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶Ï£ï¿½ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ï¿½*/
+        g_st_oam_mng_ctx_etc.st_user_track_ctx.ast_80211_ucast_data_ctx[us_user_idx][en_ucast_direction].en_frame_dscr_switch = en_dscr_switch;/* [false alarm]:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶Ï£ï¿½ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ï¿½*/
 
-        /* ÉèÖÃ×Ü¿ª¹Ø */
+        /* ï¿½ï¿½ï¿½ï¿½ï¿½Ü¿ï¿½ï¿½ï¿½ */
         oam_report_data_set_global_switch(en_ucast_direction);
     }
     return OAL_SUCC;
@@ -290,15 +290,15 @@ oal_uint32  oam_report_80211_ucast_get_switch_etc(
 
     if (OAM_USER_TRACK_FRAME_TYPE_MGMT == en_frame_type)
     {
-        *pen_frame_switch = g_st_oam_mng_ctx_etc.st_user_track_ctx.ast_80211_ucast_mgmt_ctx[us_user_idx][en_ucast_direction].en_frame_content_switch;/* [false alarm]:ÒÑ×ö½çÏÞÅÐ¶Ï£¬²»»áÔ½½ç*/
-        *pen_cb_switch    = g_st_oam_mng_ctx_etc.st_user_track_ctx.ast_80211_ucast_mgmt_ctx[us_user_idx][en_ucast_direction].en_frame_cb_switch;/* [false alarm]:ÒÑ×ö½çÏÞÅÐ¶Ï£¬²»»áÔ½½ç*/
-        *pen_dscr_switch  = g_st_oam_mng_ctx_etc.st_user_track_ctx.ast_80211_ucast_mgmt_ctx[us_user_idx][en_ucast_direction].en_frame_dscr_switch;/* [false alarm]:ÒÑ×ö½çÏÞÅÐ¶Ï£¬²»»áÔ½½ç*/
+        *pen_frame_switch = g_st_oam_mng_ctx_etc.st_user_track_ctx.ast_80211_ucast_mgmt_ctx[us_user_idx][en_ucast_direction].en_frame_content_switch;/* [false alarm]:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶Ï£ï¿½ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ï¿½*/
+        *pen_cb_switch    = g_st_oam_mng_ctx_etc.st_user_track_ctx.ast_80211_ucast_mgmt_ctx[us_user_idx][en_ucast_direction].en_frame_cb_switch;/* [false alarm]:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶Ï£ï¿½ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ï¿½*/
+        *pen_dscr_switch  = g_st_oam_mng_ctx_etc.st_user_track_ctx.ast_80211_ucast_mgmt_ctx[us_user_idx][en_ucast_direction].en_frame_dscr_switch;/* [false alarm]:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶Ï£ï¿½ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ï¿½*/
     }
     else
     {
-        *pen_frame_switch = g_st_oam_mng_ctx_etc.st_user_track_ctx.ast_80211_ucast_data_ctx[us_user_idx][en_ucast_direction].en_frame_content_switch;/* [false alarm]:ÒÑ×ö½çÏÞÅÐ¶Ï£¬²»»áÔ½½ç*/
-        *pen_cb_switch    = g_st_oam_mng_ctx_etc.st_user_track_ctx.ast_80211_ucast_data_ctx[us_user_idx][en_ucast_direction].en_frame_cb_switch;/* [false alarm]:ÒÑ×ö½çÏÞÅÐ¶Ï£¬²»»áÔ½½ç*/
-        *pen_dscr_switch  = g_st_oam_mng_ctx_etc.st_user_track_ctx.ast_80211_ucast_data_ctx[us_user_idx][en_ucast_direction].en_frame_dscr_switch;/* [false alarm]:ÒÑ×ö½çÏÞÅÐ¶Ï£¬²»»áÔ½½ç*/
+        *pen_frame_switch = g_st_oam_mng_ctx_etc.st_user_track_ctx.ast_80211_ucast_data_ctx[us_user_idx][en_ucast_direction].en_frame_content_switch;/* [false alarm]:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶Ï£ï¿½ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ï¿½*/
+        *pen_cb_switch    = g_st_oam_mng_ctx_etc.st_user_track_ctx.ast_80211_ucast_data_ctx[us_user_idx][en_ucast_direction].en_frame_cb_switch;/* [false alarm]:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶Ï£ï¿½ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ï¿½*/
+        *pen_dscr_switch  = g_st_oam_mng_ctx_etc.st_user_track_ctx.ast_80211_ucast_data_ctx[us_user_idx][en_ucast_direction].en_frame_dscr_switch;/* [false alarm]:ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶Ï£ï¿½ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ï¿½*/
     }
 
     return OAL_SUCC;
@@ -516,13 +516,13 @@ OAL_STATIC oal_uint32  oam_event_format_string(
         return OAL_ERR_CODE_PTR_NULL;
     }
 
-    /* »ñÈ¡ÏµÍ³TICKÖµ */
+    /* ï¿½ï¿½È¡ÏµÍ³TICKÖµ */
     ul_tick = (oal_uint32)OAL_TIME_GET_STAMP_MS();
 
-    /* ¸ñÊ½»¯Êä³öÄÚÈÝ */
+    /* ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     OAL_SPRINTF(pac_output_data,
                 ul_data_len,
-                "¡¾EVENT¡¿:Tick=%u, VAP=%d, ModId=%d, EVENT TYPE=%u\r\n",
+                "EVENT:Tick=%u, VAP=%d, ModId=%d, EVENT TYPE=%u\r\n",
                 ul_tick,
                 uc_vap_id,
                 en_mod,
@@ -537,7 +537,7 @@ OAL_STATIC oal_uint32  oam_event_print_to_std(
                 oam_module_id_enum_uint16   en_mod,
                 oam_event_type_enum_uint16  en_event_type)
 {
-    oal_int8   ac_output_data[OAM_PRINT_FORMAT_LENGTH];    /* ÓÃÓÚ±£´æÐ´Èëµ½ÎÄ¼þÖÐµÄÄÚÈÝ */
+    oal_int8   ac_output_data[OAM_PRINT_FORMAT_LENGTH];    /* ï¿½ï¿½ï¿½Ú±ï¿½ï¿½ï¿½Ð´ï¿½ëµ½ï¿½Ä¼ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½ */
     oal_uint32 ul_rslt;
 
     ul_rslt = oam_event_format_string(ac_output_data,
@@ -568,7 +568,7 @@ OAL_STATIC oal_uint32  oam_event_print_to_file(
                 oam_event_type_enum_uint16  en_event_type)
 {
 #ifdef _PRE_WIFI_DMT
-    oal_int8   ac_output_data[OAM_PRINT_FORMAT_LENGTH];  /* ÓÃÓÚ±£´æÐ´Èëµ½ÎÄ¼þÖÐµÄÄÚÈÝ */
+    oal_int8   ac_output_data[OAM_PRINT_FORMAT_LENGTH];  /* ï¿½ï¿½ï¿½Ú±ï¿½ï¿½ï¿½Ð´ï¿½ëµ½ï¿½Ä¼ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½ */
     oal_uint32 ul_rslt;
 
     ul_rslt = oam_event_format_string(ac_output_data,
@@ -612,10 +612,10 @@ OAL_STATIC oal_uint32  oam_event_print_to_sdt(
 
     OAL_MEMZERO(&st_event, OAL_SIZEOF(oam_event_stru));
 
-    /* »ñÈ¡ÏµÍ³Ê±¼ä */
+    /* ï¿½ï¿½È¡ÏµÍ³Ê±ï¿½ï¿½ */
     ul_tick = (oal_uint32)OAL_TIME_GET_STAMP_MS();
 
-    /* ÌîÐ´event½á¹¹Ìå */
+    /* ï¿½ï¿½Ð´eventï¿½á¹¹ï¿½ï¿½ */
     st_event.st_event_hdr.ul_tick        = ul_tick;
     st_event.st_event_hdr.uc_vap_id      = uc_vap_id;
     st_event.st_event_hdr.en_module      = en_mod;
@@ -626,7 +626,7 @@ OAL_STATIC oal_uint32  oam_event_print_to_sdt(
                 (const oal_void *)puc_string,
                  OAM_EVENT_INFO_MAX_LEN);
 
-    /* ½«eventÐÅÏ¢¸´ÖÆµ½netbufÉÏ±¨¸øSDT,Í·²¿Ô¤Áô8×Ö½Ú£¬Î²²¿Ô¤Áô1×Ö½Ú£¬¸øsdt_drvÓÃ */
+    /* ï¿½ï¿½eventï¿½ï¿½Ï¢ï¿½ï¿½ï¿½Æµï¿½netbufï¿½Ï±ï¿½ï¿½ï¿½SDT,Í·ï¿½ï¿½Ô¤ï¿½ï¿½8ï¿½Ö½Ú£ï¿½Î²ï¿½ï¿½Ô¤ï¿½ï¿½1ï¿½Ö½Ú£ï¿½ï¿½ï¿½sdt_drvï¿½ï¿½ */
     pst_netbuf = oam_alloc_data2sdt_etc(OAM_EVENT_STRU_SIZE);
     if (OAL_PTR_NULL == pst_netbuf)
     {
@@ -637,7 +637,7 @@ OAL_STATIC oal_uint32  oam_event_print_to_sdt(
                 (const oal_void *)&st_event,
                 OAM_EVENT_STRU_SIZE);
 
-    /* ÅÐ¶Ïsdt·¢ËÍÏûÏ¢¶ÓÁÐÊÇ·ñÒÑÂú£¬ÈôÂúÊä³öÖÁ´®¿Ú */
+    /* ï¿½Ð¶ï¿½sdtï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     ul_ret = oam_report_data2sdt_etc(pst_netbuf, OAM_DATA_TYPE_EVENT, OAM_PRIMID_TYPE_OUTPUT_CONTENT);
 
     return ul_ret;
@@ -668,13 +668,13 @@ oal_uint32  oam_event_report_etc(
         return OAL_ERR_CODE_PTR_NULL;
     }
 
-    /* ¼ì²éeventÉÏ±¨×Ü¿ª¹ØÊÇ·ñ´ò¿ª */
+    /* ï¿½ï¿½ï¿½eventï¿½Ï±ï¿½ï¿½Ü¿ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ */
     if (OAL_SWITCH_OFF == g_st_oam_mng_ctx_etc.ast_event_ctx[uc_vap_id].en_event_switch)
     {
         return OAL_SUCC;
     }
 
-    /* ¼ì²é¾ßÌåÄ³Ò»ÖÖeventÉÏ±¨¿ª¹ØÊÇ·ñ´ò¿ª */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä³Ò»ï¿½ï¿½eventï¿½Ï±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ */
     if (OAL_SWITCH_OFF == g_st_oam_mng_ctx_etc.ast_specific_event_ctx[uc_vap_id].aen_specific_event_switch[en_event_type])
     {
         return OAL_SUCC;
@@ -682,18 +682,18 @@ oal_uint32  oam_event_report_etc(
 
     switch (g_st_oam_mng_ctx_etc.en_output_type)
     {
-        /* Êä³öÖÁ¿ØÖÆÌ¨ */
+        /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¨ */
         case OAM_OUTPUT_TYPE_CONSOLE:
             ul_rslt = oam_event_print_to_std(uc_vap_id, en_mod, en_event_type);
 
             break;
 
-        /* Êä³öÖÁÎÄ¼þÏµÍ³ÖÐ */
+        /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ÏµÍ³ï¿½ï¿½ */
         case OAM_OUTPUT_TYPE_FS:
             ul_rslt = oam_event_print_to_file(uc_vap_id, en_mod, en_event_type);
             break;
 
-        /* Êä³öÖÁPC²àµ÷²â¹¤¾ßÆ½Ì¨ */
+        /* ï¿½ï¿½ï¿½ï¿½ï¿½PCï¿½ï¿½ï¿½ï¿½â¹¤ï¿½ï¿½Æ½Ì¨ */
         case OAM_OUTPUT_TYPE_SDT:
             ul_rslt = oam_event_print_to_sdt(puc_mac_hdr_addr,
                                              uc_vap_id, en_mod,
@@ -702,7 +702,7 @@ oal_uint32  oam_event_report_etc(
 
             break;
 
-        /* ÎÞÐ§ÅäÖÃ */
+        /* ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½ */
         default:
             ul_rslt = OAL_ERR_CODE_INVALID_CONFIG;
 
@@ -726,10 +726,10 @@ oal_uint32  oam_event_init_etc(oal_void)
 #if 0
     oal_uint32 ul_otatype_loop;
 #endif
-    /* ³õÊ¼»¯ËùÓÐVAPÄ¬ÈÏEVENT¹¦ÄÜÎª¿ª */
+    /* ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½VAPÄ¬ï¿½ï¿½EVENTï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ */
     for (ul_vapid_loop = 0; ul_vapid_loop < WLAN_VAP_SUPPORT_MAX_NUM_LIMIT; ul_vapid_loop++)
     {
-        /* ÉèÖÃEVENT×Ü¿ª¹Ø */
+        /* ï¿½ï¿½ï¿½ï¿½EVENTï¿½Ü¿ï¿½ï¿½ï¿½ */
 #if (_PRE_PRODUCT_ID == _PRE_PRODUCT_ID_HI1151)
         ul_rslt = oam_event_set_switch_etc((oal_uint8)ul_vapid_loop, OAL_SWITCH_OFF);
 #else
@@ -741,23 +741,23 @@ oal_uint32  oam_event_init_etc(oal_void)
             return ul_rslt;
         }
 
-        /* ÉèÖÃ¾ßÌåÄ³Ò»ÖÖEVENTµÄ¿ª¹Ø */
+        /* ï¿½ï¿½ï¿½Ã¾ï¿½ï¿½ï¿½Ä³Ò»ï¿½ï¿½EVENTï¿½Ä¿ï¿½ï¿½ï¿½ */
         for (ul_eventtype_loop = 0; ul_eventtype_loop < OAM_EVENT_TYPE_BUTT; ul_eventtype_loop++)
         {
             oam_event_set_specific_type_switch_etc((oal_uint8)ul_vapid_loop, OAL_SWITCH_ON, (oal_uint16)ul_eventtype_loop);
         }
 
-        /* ÄÚ²¿Å×ÊÂ¼þeventÐèÒª¹Ø±Õ */
+        /* ï¿½Ú²ï¿½ï¿½ï¿½ï¿½Â¼ï¿½eventï¿½ï¿½Òªï¿½Ø±ï¿½ */
         oam_event_set_specific_type_switch_etc((oal_uint8)ul_vapid_loop, OAL_SWITCH_OFF, OAM_EVENT_INTERNAL);
         oam_event_set_specific_type_switch_etc((oal_uint8)ul_vapid_loop, OAL_SWITCH_OFF, OAM_EVENT_USER_INFO_CHANGE);
 
-        /* ÉèÖÃbeacon´òÓ¡¿ª¹ØÎª¹Ø±Õ */
+        /* ï¿½ï¿½ï¿½ï¿½beaconï¿½ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½Îªï¿½Ø±ï¿½ */
         oam_ota_set_beacon_switch_etc((oal_uint8)ul_vapid_loop, OAL_SWITCH_OFF);
-        /* ÉèÖÃrxÃèÊö·û´òÓ¡¿ª¹ØÎª¹Ø±Õ */
+        /* ï¿½ï¿½ï¿½ï¿½rxï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½Îªï¿½Ø±ï¿½ */
         oam_ota_set_rx_dscr_switch_etc((oal_uint8)ul_vapid_loop, OAL_SWITCH_OFF);
     }
 
-    /* ÉèÖÃµ¥ÓÃ»§¸ú×ÙÏà¹ØµÄËùÓÐ¿ª¹Ø */
+    /* ï¿½ï¿½ï¿½Ãµï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½Ð¿ï¿½ï¿½ï¿½ */
     oam_report_set_all_switch_etc(OAL_SWITCH_OFF);
 
     oam_report_dhcp_arp_set_switch_etc(OAL_SWITCH_OFF);
@@ -779,11 +779,11 @@ OAL_STATIC oal_uint32  oam_ota_report_to_std_etc(oal_uint8     *puc_param_one_ad
     }
     else
     {
-        /* ´òÓ¡µÚÒ»¶ÎÄÚÈÝ */
+        /* ï¿½ï¿½Ó¡ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
         OAL_IO_PRINT("\n\nOTA TYPE is--> %d and OTA DATA the first part is:\n", en_ota_type);
         oam_dump_buff_by_hex_etc(puc_param_one_addr, us_param_one_len, OAM_PRINT_CRLF_NUM);
 
-        /* ´òÓ¡µÚ¶þ¶ÎÄÚÈÝ */
+        /* ï¿½ï¿½Ó¡ï¿½Ú¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
         OAL_IO_PRINT("\nOTA DATA tht second part is:\n");
 
         if (OAM_OTA_TYPE_80211_FRAME == en_ota_type)
@@ -818,7 +818,7 @@ oal_uint32  oam_ota_report_to_sdt_etc(oal_uint8    *puc_param_one_addr,
         return OAL_ERR_CODE_PTR_NULL;
     }
 
-    /* ÎªÉÏ±¨OTAÊý¾ÝÉêÇë¿Õ¼ä£¬Èç¹ûÊÇÃèÊö·û£¬us_param_two_lenÎª0 */
+    /* Îªï¿½Ï±ï¿½OTAï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¼ä£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½us_param_two_lenÎª0 */
     us_skb_len = us_param_one_len + us_param_two_len + OAL_SIZEOF(oam_ota_hdr_stru);
     if (us_skb_len > WLAN_SDT_NETBUF_MAX_PAYLOAD)
     {
@@ -842,7 +842,7 @@ oal_uint32  oam_ota_report_to_sdt_etc(oal_uint8    *puc_param_one_addr,
 
     pst_ota_data = (oam_ota_stru *)oal_netbuf_data(pst_netbuf);
 
-    /* »ñÈ¡ÏµÍ³TICKÖµ */
+    /* ï¿½ï¿½È¡ÏµÍ³TICKÖµ */
     ul_tick = (oal_uint32)OAL_TIME_GET_STAMP_MS();
 
     pst_ota_data->st_ota_hdr.ul_tick     = ul_tick;
@@ -859,7 +859,7 @@ oal_uint32  oam_ota_report_to_sdt_etc(oal_uint8    *puc_param_one_addr,
 
     switch (en_ota_type)
     {
-        /* ·â×°½ÓÊÕ»òÕß·¢ËÍÃèÊö·û¶ÔÓ¦OTA½á¹¹ÌåµÄÆäËü³ÉÔ± */
+        /* ï¿½ï¿½×°ï¿½ï¿½ï¿½Õ»ï¿½ï¿½ß·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦OTAï¿½á¹¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô± */
         case OAM_OTA_TYPE_RX_DSCR:
         case OAM_OTA_TYPE_TX_DSCR:
         case OAM_OTA_TYPE_IRQ:
@@ -881,32 +881,32 @@ oal_uint32  oam_ota_report_to_sdt_etc(oal_uint8    *puc_param_one_addr,
 
             break;
 
-        /* ·â×°Ö¡¶ÔÓ¦OTA½á¹¹ÌåµÄÆäËü³ÉÔ± */
+        /* ï¿½ï¿½×°Ö¡ï¿½ï¿½Ó¦OTAï¿½á¹¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô± */
         case OAM_OTA_TYPE_80211_FRAME:
         case OAM_OTA_TYPE_MEMBLOCK:
             pst_ota_data->st_ota_hdr.uc_frame_hdr_len = (oal_uint8)us_param_one_len;
             pst_ota_data->st_ota_hdr.us_ota_data_len  = us_param_one_len + us_param_two_len;
 
-            /* ¸´ÖÆÖ¡Í· */
+            /* ï¿½ï¿½ï¿½ï¿½Ö¡Í· */
             oal_memcopy((oal_void *)pst_ota_data->auc_ota_data,
                         (const oal_void *)puc_param_one_addr,
                         (oal_uint32)us_param_one_len);
 
-            /* ¸´ÖÆÖ¡Ìå */
+            /* ï¿½ï¿½ï¿½ï¿½Ö¡ï¿½ï¿½ */
             oal_memcopy((oal_void *)(pst_ota_data->auc_ota_data + us_param_one_len),
                         (const oal_void *)puc_param_two_addr,
                         (oal_uint32)us_param_two_len);
 
             break;
 
-        /* ÎÞÐ§Öµ */
+        /* ï¿½ï¿½Ð§Öµ */
         default:
             oal_mem_sdt_netbuf_free_etc(pst_netbuf, OAL_TRUE);
             //oal_netbuf_free(pst_netbuf);
             return OAL_ERR_CODE_INVALID_CONFIG;
     }
 
-    /* ÅÐ¶Ïsdt·¢ËÍÏûÏ¢¶ÓÁÐÊÇ·ñÒÑÂú£¬ÈôÂúÊä³öÖÁ´®¿Ú */
+    /* ï¿½Ð¶ï¿½sdtï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     ul_ret = oam_report_data2sdt_etc(pst_netbuf, OAM_DATA_TYPE_OTA, OAM_PRIMID_TYPE_OUTPUT_CONTENT);
 #endif
     return ul_ret;
@@ -923,7 +923,7 @@ oal_uint32  oam_ota_report_etc(
 {
     oal_uint32          ul_rslt = OAL_ERR_CODE_BUTT;
 #if 0
-    /* ¼ì²éÒª´òÓ¡µÄotaÀàÐÍ¿ª¹ØÊÇ·ñ´ò¿ª */
+    /* ï¿½ï¿½ï¿½Òªï¿½ï¿½Ó¡ï¿½ï¿½otaï¿½ï¿½ï¿½Í¿ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ */
     if (OAL_SWITCH_OFF == g_st_oam_mng_ctx_etc.ast_ota_ctx[0].aen_ota_switch[en_ota_type])
     {
         return OAL_SUCC;
@@ -931,7 +931,7 @@ oal_uint32  oam_ota_report_etc(
 #endif
     switch (g_st_oam_mng_ctx_etc.en_output_type)
     {
-        /* Êä³öÖÁ¿ØÖÆÌ¨ */
+        /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¨ */
         case OAM_OUTPUT_TYPE_CONSOLE:
         ul_rslt = oam_ota_report_to_std_etc(puc_param_one_addr,
                                         us_param_one_len,
@@ -941,7 +941,7 @@ oal_uint32  oam_ota_report_etc(
 
         break;
 
-        /* Êä³öÖÁSDT¹¤¾ß */
+        /* ï¿½ï¿½ï¿½ï¿½ï¿½SDTï¿½ï¿½ï¿½ï¿½ */
         case OAM_OUTPUT_TYPE_SDT:
         ul_rslt = oam_ota_report_to_sdt_etc(puc_param_one_addr,
                                         us_param_one_len,
@@ -1007,19 +1007,19 @@ OAL_STATIC oal_void oam_hide_mac_addr(oal_uint8 *puc_mac_hdr, oal_uint8 uc_beaco
         return;
     }
     /* addr1 */
-    puc_mac_hdr[5] = 0xff;    /* [false alarm]:fortifyÎó±¨  */
-    puc_mac_hdr[6] = 0xff;    /* [false alarm]:fortifyÎó±¨  */
-    puc_mac_hdr[7] = 0xff;    /* [false alarm]:fortifyÎó±¨  */
+    puc_mac_hdr[5] = 0xff;    /* [false alarm]:fortifyï¿½ï¿½  */
+    puc_mac_hdr[6] = 0xff;    /* [false alarm]:fortifyï¿½ï¿½  */
+    puc_mac_hdr[7] = 0xff;    /* [false alarm]:fortifyï¿½ï¿½  */
 
     /* addr2 */
-    puc_mac_hdr[11] = 0xff;   /* [false alarm]:fortifyÎó±¨  */
-    puc_mac_hdr[12] = 0xff;   /* [false alarm]:fortifyÎó±¨  */
-    puc_mac_hdr[13] = 0xff;   /* [false alarm]:fortifyÎó±¨  */
+    puc_mac_hdr[11] = 0xff;   /* [false alarm]:fortifyï¿½ï¿½  */
+    puc_mac_hdr[12] = 0xff;   /* [false alarm]:fortifyï¿½ï¿½  */
+    puc_mac_hdr[13] = 0xff;   /* [false alarm]:fortifyï¿½ï¿½  */
 
     /* addr3 */
-    puc_mac_hdr[17] = 0xff;   /* [false alarm]:fortifyÎó±¨  */
-    puc_mac_hdr[18] = 0xff;   /* [false alarm]:fortifyÎó±¨  */
-    puc_mac_hdr[19] = 0xff;   /* [false alarm]:fortifyÎó±¨  */
+    puc_mac_hdr[17] = 0xff;   /* [false alarm]:fortifyï¿½ï¿½  */
+    puc_mac_hdr[18] = 0xff;   /* [false alarm]:fortifyï¿½ï¿½  */
+    puc_mac_hdr[19] = 0xff;   /* [false alarm]:fortifyï¿½ï¿½  */
 
 }
 
@@ -1043,7 +1043,7 @@ OAL_STATIC oal_uint32  oam_report_80211_frame_to_sdt(
         return OAL_ERR_CODE_PTR_NULL;
     }
 
-    /* ÎªÉÏ±¨80211Ö¡ÉêÇë¿Õ¼ä */
+    /* Îªï¿½Ï±ï¿½80211Ö¡ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½ */
     us_skb_len = us_mac_frame_len + OAL_SIZEOF(oam_ota_hdr_stru);
     if (us_skb_len > WLAN_SDT_NETBUF_MAX_PAYLOAD)
     {
@@ -1059,10 +1059,10 @@ OAL_STATIC oal_uint32  oam_report_80211_frame_to_sdt(
 
     pst_ota_data = (oam_ota_stru *)OAL_NETBUF_HEADER(pst_netbuf);
 
-    /* »ñÈ¡ÏµÍ³TICKÖµ */
+    /* ï¿½ï¿½È¡ÏµÍ³TICKÖµ */
     ul_tick = (oal_uint32)OAL_TIME_GET_STAMP_MS();
 
-    /* ÌîÐ´otaÏûÏ¢Í·½á¹¹Ìå */
+    /* ï¿½ï¿½Ð´otaï¿½ï¿½Ï¢Í·ï¿½á¹¹ï¿½ï¿½ */
     pst_ota_data->st_ota_hdr.ul_tick            = ul_tick;
     pst_ota_data->st_ota_hdr.en_ota_type        = OAM_OTA_TYPE_80211_FRAME;
     pst_ota_data->st_ota_hdr.uc_frame_hdr_len   = uc_mac_hdr_len;
@@ -1077,18 +1077,18 @@ OAL_STATIC oal_uint32  oam_report_80211_frame_to_sdt(
     pst_ota_data->st_ota_hdr.auc_resv[0]    = OAM_OTA_TYPE_1151_HOST;
 #endif
 
-    /* ¸´ÖÆÖ¡Í· */
+    /* ï¿½ï¿½ï¿½ï¿½Ö¡Í· */
     oal_memcopy((oal_void *)pst_ota_data->auc_ota_data,
                 (const oal_void *)puc_mac_hdr_addr,
                 (oal_uint32)uc_mac_hdr_len);
-    /* ¸´ÖÆÖ¡Ìå */
+    /* ï¿½ï¿½ï¿½ï¿½Ö¡ï¿½ï¿½ */
     oal_memcopy((oal_void *)(pst_ota_data->auc_ota_data + uc_mac_hdr_len),
                 (const oal_void *)puc_mac_body_addr,
                 (oal_uint32)(us_mac_frame_len - uc_mac_hdr_len));
 
     oam_hide_mac_addr(pst_ota_data->auc_ota_data, uc_mac_hdr_len);
 
-    /* ÅÐ¶Ïsdt·¢ËÍÏûÏ¢¶ÓÁÐÊÇ·ñÒÑÂú£¬ÈôÂúÊä³öÖÁ´®¿Ú */
+    /* ï¿½Ð¶ï¿½sdtï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     ul_ret = oam_report_data2sdt_etc(pst_netbuf, OAM_DATA_TYPE_OTA, OAM_PRIMID_TYPE_OUTPUT_CONTENT);
 
     return ul_ret;
@@ -1124,7 +1124,7 @@ oal_uint32  oam_report_80211_frame_etc(
         return OAL_ERR_CODE_PTR_NULL;
     }
 
-    /* ¼ì²éÖ¡Í·³¤¶ÈºÏ·¨ÐÔ */
+    /* ï¿½ï¿½ï¿½Ö¡Í·ï¿½ï¿½ï¿½ÈºÏ·ï¿½ï¿½ï¿½ */
     if ((WLAN_MAX_FRAME_HEADER_LEN < uc_mac_hdr_len)
         || (WLAN_MIN_FRAME_HEADER_LEN > uc_mac_hdr_len))
     {
@@ -1134,7 +1134,7 @@ oal_uint32  oam_report_80211_frame_etc(
         return OAL_ERR_CODE_OAM_EVT_FR_HDR_LEN_INVALID;
     }
 
-    /* ¼ì²émacÖ¡×Ü³¤¶ÈºÏ·¨ÐÔ */
+    /* ï¿½ï¿½ï¿½macÖ¡ï¿½Ü³ï¿½ï¿½ÈºÏ·ï¿½ï¿½ï¿½ */
     if (uc_mac_hdr_len > us_mac_frame_len)
     {
         oam_report_dft_params_etc(BROADCAST_MACADDR,puc_mac_hdr_addr,OAM_OTA_FRAME_TO_SDT_MAX_LEN,OAM_OTA_TYPE_80211_FRAME);
@@ -1152,7 +1152,7 @@ oal_uint32  oam_report_80211_frame_etc(
 
     switch (g_st_oam_mng_ctx_etc.en_output_type)
     {
-        /* Êä³öÖÁ¿ØÖÆÌ¨ */
+        /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¨ */
         case OAM_OUTPUT_TYPE_CONSOLE:
             ul_ret = oam_report_80211_frame_to_console(puc_mac_hdr_addr,
                                                        uc_mac_hdr_len,
@@ -1161,9 +1161,9 @@ oal_uint32  oam_report_80211_frame_etc(
                                                        en_frame_direction);
             break;
 
-        /* Êä³öÖÁSDT¹¤¾ß */
+        /* ï¿½ï¿½ï¿½ï¿½ï¿½SDTï¿½ï¿½ï¿½ï¿½ */
         case OAM_OUTPUT_TYPE_SDT:
-            /* Á÷¿ØÅÐ¶Ï */
+            /* ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ */
             if (OAM_RATELIMIT_NOT_OUTPUT == oam_log_ratelimit_etc(OAM_RATELIMIT_TYPE_FRAME_WLAN))
             {
                 ul_oam_ret = OAL_SUCC;
@@ -1233,7 +1233,7 @@ OAL_STATIC oal_uint32  oam_report_dscr_to_sdt(
         return OAL_ERR_CODE_PTR_NULL;
     }
 
-    /* ÎªÉÏ±¨ÃèÊö·ûÉêÇë¿Õ¼ä */
+    /* Îªï¿½Ï±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½ */
     us_skb_len = us_dscr_len + OAL_SIZEOF(oam_ota_hdr_stru);
     if (us_skb_len > WLAN_SDT_NETBUF_MAX_PAYLOAD)
     {
@@ -1249,10 +1249,10 @@ OAL_STATIC oal_uint32  oam_report_dscr_to_sdt(
 
     pst_ota_data = (oam_ota_stru *)oal_netbuf_data(pst_netbuf);
 
-    /* »ñÈ¡ÏµÍ³TICKÖµ */
+    /* ï¿½ï¿½È¡ÏµÍ³TICKÖµ */
     ul_tick = (oal_uint32)OAL_TIME_GET_STAMP_MS();
 
-    /* ÌîÐ´otaÏûÏ¢Í·½á¹¹Ìå */
+    /* ï¿½ï¿½Ð´otaï¿½ï¿½Ï¢Í·ï¿½á¹¹ï¿½ï¿½ */
     pst_ota_data->st_ota_hdr.ul_tick     = ul_tick;
     pst_ota_data->st_ota_hdr.en_ota_type = en_ota_type;
     pst_ota_data->st_ota_hdr.us_ota_data_len = us_dscr_len;
@@ -1266,12 +1266,12 @@ OAL_STATIC oal_uint32  oam_report_dscr_to_sdt(
     pst_ota_data->st_ota_hdr.auc_resv[0]    = OAM_OTA_TYPE_1151_HOST;
 #endif
 
-    /* ¸´ÖÆÊý¾Ý,ÌîÐ´otaÊý¾Ý */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½Ð´otaï¿½ï¿½ï¿½ï¿½ */
     oal_memcopy((oal_void *)pst_ota_data->auc_ota_data,
                 (const oal_void *)puc_dscr_addr,
                 (oal_uint32)us_dscr_len);
 
-    /* ÅÐ¶Ïsdt·¢ËÍÏûÏ¢¶ÓÁÐÊÇ·ñÒÑÂú£¬ÈôÂúÊä³öÖÁ´®¿Ú */
+    /* ï¿½Ð¶ï¿½sdtï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     ul_ret = oam_report_data2sdt_etc(pst_netbuf, OAM_DATA_TYPE_OTA, OAM_PRIMID_TYPE_OUTPUT_CONTENT);
 
     return ul_ret;
@@ -1312,15 +1312,15 @@ oal_uint32 oam_report_dscr_etc(oal_uint8  *puc_user_macaddr,
 
     switch (g_st_oam_mng_ctx_etc.en_output_type)
     {
-        /* Êä³öÖÁ¿ØÖÆÌ¨ */
+        /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¨ */
         case OAM_OUTPUT_TYPE_CONSOLE:
             ul_ret = oam_report_dscr_to_console(puc_dscr_addr, us_dscr_len, en_ota_type);
 
             break;
 
-        /* Êä³öÖÁSDT¹¤¾ß */
+        /* ï¿½ï¿½ï¿½ï¿½ï¿½SDTï¿½ï¿½ï¿½ï¿½ */
         case OAM_OUTPUT_TYPE_SDT:
-            /* Á÷¿ØÅÐ¶Ï */
+            /* ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ */
             if (OAM_RATELIMIT_NOT_OUTPUT == oam_log_ratelimit_etc(OAM_RATELIMIT_TYPE_DSCR))
             {
                 return OAL_SUCC;
@@ -1387,7 +1387,7 @@ OAL_STATIC oal_uint32  oam_report_beacon_to_sdt(
         return OAL_ERR_CODE_PTR_NULL;
     }
 
-    /* ÎªÉÏ±¨beaconÖ¡ÉêÇë¿Õ¼ä */
+    /* Îªï¿½Ï±ï¿½beaconÖ¡ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½ */
     us_skb_len = us_beacon_len + OAL_SIZEOF(oam_ota_hdr_stru);
     if (us_skb_len > WLAN_SDT_NETBUF_MAX_PAYLOAD)
     {
@@ -1403,10 +1403,10 @@ OAL_STATIC oal_uint32  oam_report_beacon_to_sdt(
 
     pst_ota_data = (oam_ota_stru *)oal_netbuf_data(pst_netbuf);
 
-    /* »ñÈ¡ÏµÍ³TICKÖµ */
+    /* ï¿½ï¿½È¡ÏµÍ³TICKÖµ */
     ul_tick = (oal_uint32)OAL_TIME_GET_STAMP_MS();
 
-    /* ÌîÐ´otaÏûÏ¢Í·½á¹¹Ìå */
+    /* ï¿½ï¿½Ð´otaï¿½ï¿½Ï¢Í·ï¿½á¹¹ï¿½ï¿½ */
     pst_ota_data->st_ota_hdr.ul_tick            = ul_tick;
     pst_ota_data->st_ota_hdr.en_ota_type        = OAM_OTA_TYPE_BEACON;
     pst_ota_data->st_ota_hdr.uc_frame_hdr_len   = OAM_BEACON_HDR_LEN;
@@ -1420,7 +1420,7 @@ OAL_STATIC oal_uint32  oam_report_beacon_to_sdt(
     pst_ota_data->st_ota_hdr.auc_resv[0]    = OAM_OTA_TYPE_1151_HOST;
 #endif
 
-    /* ¸´ÖÆÊý¾Ý,ÌîÐ´otaÊý¾Ý */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½Ð´otaï¿½ï¿½ï¿½ï¿½ */
     oal_memcopy((oal_void *)pst_ota_data->auc_ota_data,
                 (const oal_void *)puc_beacon_hdr_addr,
                 (oal_uint32)uc_beacon_hdr_len);
@@ -1430,7 +1430,7 @@ OAL_STATIC oal_uint32  oam_report_beacon_to_sdt(
 
     oam_hide_mac_addr(pst_ota_data->auc_ota_data, uc_beacon_hdr_len);
 
-    /* ÏÂ·¢ÖÁsdt½ÓÊÕ¶ÓÁÐ£¬Èô¶ÓÁÐÂúÔò´®¿ÚÊä³ö */
+    /* ï¿½Â·ï¿½ï¿½ï¿½sdtï¿½ï¿½ï¿½Õ¶ï¿½ï¿½Ð£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ò´®¿ï¿½ï¿½ï¿½ï¿½ */
     ul_ret = oam_report_data2sdt_etc(pst_netbuf, OAM_DATA_TYPE_OTA, OAM_PRIMID_TYPE_OUTPUT_CONTENT);
 
     return ul_ret;
@@ -1472,7 +1472,7 @@ oal_uint32  oam_report_beacon_etc(
 
     switch (g_st_oam_mng_ctx_etc.en_output_type)
     {
-        /* Êä³öÖÁ¿ØÖÆÌ¨ */
+        /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¨ */
         case OAM_OUTPUT_TYPE_CONSOLE:
             ul_ret = oam_report_beacon_to_console(puc_beacon_hdr_addr,
                                                   us_beacon_len,
@@ -1480,7 +1480,7 @@ oal_uint32  oam_report_beacon_etc(
 
             break;
 
-        /* Êä³öÖÁSDT¹¤¾ß */
+        /* ï¿½ï¿½ï¿½ï¿½ï¿½SDTï¿½ï¿½ï¿½ï¿½ */
         case OAM_OUTPUT_TYPE_SDT:
             ul_ret = oam_report_beacon_to_sdt(puc_beacon_hdr_addr,
                                               uc_beacon_hdr_len,
@@ -1547,7 +1547,7 @@ OAL_STATIC oal_uint32  oam_report_eth_frame_to_sdt(
         return OAL_ERR_CODE_PTR_NULL;
     }
 
-    /* ÎªÉÏ±¨beaconÖ¡ÉêÇë¿Õ¼ä */
+    /* Îªï¿½Ï±ï¿½beaconÖ¡ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½ */
     us_skb_len = us_eth_frame_len + OAL_SIZEOF(oam_ota_hdr_stru);
     if (us_skb_len > WLAN_SDT_NETBUF_MAX_PAYLOAD)
     {
@@ -1563,10 +1563,10 @@ OAL_STATIC oal_uint32  oam_report_eth_frame_to_sdt(
 
     pst_ota_data = (oam_ota_stru *)oal_netbuf_data(pst_netbuf);
 
-    /* »ñÈ¡ÏµÍ³TICKÖµ */
+    /* ï¿½ï¿½È¡ÏµÍ³TICKÖµ */
     ul_tick = (oal_uint32)OAL_TIME_GET_STAMP_MS();
 
-    /* ÌîÐ´otaÏûÏ¢Í·½á¹¹Ìå */
+    /* ï¿½ï¿½Ð´otaï¿½ï¿½Ï¢Í·ï¿½á¹¹ï¿½ï¿½ */
     pst_ota_data->st_ota_hdr.ul_tick            = ul_tick;
     pst_ota_data->st_ota_hdr.en_ota_type        = OAM_OTA_TYPE_ETH_FRAME;
     pst_ota_data->st_ota_hdr.uc_frame_hdr_len   = ETHER_HDR_LEN;
@@ -1581,12 +1581,12 @@ OAL_STATIC oal_uint32  oam_report_eth_frame_to_sdt(
     pst_ota_data->st_ota_hdr.auc_resv[0]    = OAM_OTA_TYPE_1151_HOST;
 #endif
 
-    /* ¸´ÖÆÊý¾Ý,ÌîÐ´otaÊý¾Ý */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½Ð´otaï¿½ï¿½ï¿½ï¿½ */
     oal_memcopy((oal_void *)pst_ota_data->auc_ota_data,
                 (const oal_void *)puc_eth_frame_hdr_addr,
                 (oal_uint32)us_eth_frame_len);
 
-    /* ÏÂ·¢ÖÁsdt½ÓÊÕ¶ÓÁÐ£¬Èô¶ÓÁÐÂúÔò´®¿ÚÊä³ö */
+    /* ï¿½Â·ï¿½ï¿½ï¿½sdtï¿½ï¿½ï¿½Õ¶ï¿½ï¿½Ð£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ò´®¿ï¿½ï¿½ï¿½ï¿½ */
     ul_ret = oam_report_data2sdt_etc(pst_netbuf, OAM_DATA_TYPE_OTA, OAM_PRIMID_TYPE_OUTPUT_CONTENT);
 
     return ul_ret;
@@ -1620,7 +1620,7 @@ oal_uint32  oam_report_eth_frame_etc(oal_uint8               *puc_user_mac_addr,
 
     switch (g_st_oam_mng_ctx_etc.en_output_type)
     {
-        /* Êä³öÖÁ¿ØÖÆÌ¨ */
+        /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¨ */
         case OAM_OUTPUT_TYPE_CONSOLE:
             ul_ret = oam_report_eth_frame_to_console(puc_eth_frame_hdr_addr,
                                                      us_eth_frame_len,
@@ -1628,9 +1628,9 @@ oal_uint32  oam_report_eth_frame_etc(oal_uint8               *puc_user_mac_addr,
 
             break;
 
-        /* Êä³öÖÁSDT¹¤¾ß */
+        /* ï¿½ï¿½ï¿½ï¿½ï¿½SDTï¿½ï¿½ï¿½ï¿½ */
         case OAM_OUTPUT_TYPE_SDT:
-            /* Á÷¿ØÅÐ¶Ï */
+            /* ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ */
             if (OAM_RATELIMIT_NOT_OUTPUT == oam_log_ratelimit_etc(OAM_RATELIMIT_TYPE_FRAME_ETH))
             {
                 return OAL_SUCC;
@@ -1682,10 +1682,10 @@ OAL_STATIC oal_uint32  oam_report_netbuf_cb_to_sdt(
     oal_netbuf_put(pst_netbuf, us_ota_data_len);
     pst_ota_data = (oam_ota_stru *)oal_netbuf_data(pst_netbuf);
 
-    /* »ñÈ¡ÏµÍ³TICKÖµ */
+    /* ï¿½ï¿½È¡ÏµÍ³TICKÖµ */
     ul_tick = (oal_uint32)OAL_TIME_GET_STAMP_MS();
 
-    /* ÌîÐ´otaÏûÏ¢Í·½á¹¹Ìå */
+    /* ï¿½ï¿½Ð´otaï¿½ï¿½Ï¢Í·ï¿½á¹¹ï¿½ï¿½ */
     pst_ota_data->st_ota_hdr.ul_tick     = ul_tick;
     pst_ota_data->st_ota_hdr.en_ota_type = en_ota_type;
     pst_ota_data->st_ota_hdr.us_ota_data_len = OAM_SKB_CB_LEN;
@@ -1699,12 +1699,12 @@ OAL_STATIC oal_uint32  oam_report_netbuf_cb_to_sdt(
     pst_ota_data->st_ota_hdr.auc_resv[0]    = OAM_OTA_TYPE_1151_HOST;
 #endif
 
-    /* ¸´ÖÆÊý¾Ý,ÌîÐ´otaÊý¾Ý */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½Ð´otaï¿½ï¿½ï¿½ï¿½ */
     oal_memcopy((oal_void *)pst_ota_data->auc_ota_data,
                 (const oal_void *)puc_netbuf_cb,
                 OAM_SKB_CB_LEN);
 
-    /* ÉÏ±¨SDT */
+    /* ï¿½Ï±ï¿½SDT */
     ul_ret = oam_report_data2sdt_etc(pst_netbuf, OAM_DATA_TYPE_OTA, OAM_PRIMID_TYPE_OUTPUT_CONTENT);
 #endif
     return ul_ret;
@@ -1728,7 +1728,7 @@ oal_uint32  oam_report_netbuf_cb_etc(oal_uint8  *puc_user_mac_addr,
         return OAL_ERR_CODE_INVALID_CONFIG;
     }
 
-    /* Á÷¿ØÅÐ¶Ï */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ */
     if (OAM_RATELIMIT_NOT_OUTPUT == oam_log_ratelimit_etc(OAM_RATELIMIT_TYPE_CB))
     {
         return OAL_SUCC;
@@ -1772,10 +1772,10 @@ OAL_STATIC oal_uint32  oam_report_timer_track_to_sdt(
     oal_netbuf_put(pst_netbuf, us_ota_data_len);
     pst_ota_data = (oam_ota_stru *)oal_netbuf_data(pst_netbuf);
 
-    /* »ñÈ¡ÏµÍ³TICKÖµ */
+    /* ï¿½ï¿½È¡ÏµÍ³TICKÖµ */
     ul_tick = (oal_uint32)OAL_TIME_GET_STAMP_MS();
 
-    /* ÌîÐ´otaÏûÏ¢Í·½á¹¹Ìå */
+    /* ï¿½ï¿½Ð´otaï¿½ï¿½Ï¢Í·ï¿½á¹¹ï¿½ï¿½ */
     pst_ota_data->st_ota_hdr.ul_tick     = ul_tick;
     pst_ota_data->st_ota_hdr.en_ota_type = OAM_OTA_TYPE_TIMER_TRACK;
     pst_ota_data->st_ota_hdr.us_ota_data_len = OAL_SIZEOF(st_timer_track_info);
@@ -1791,12 +1791,12 @@ OAL_STATIC oal_uint32  oam_report_timer_track_to_sdt(
     st_timer_track_info.ul_line_num = ul_line_num;
     st_timer_track_info.en_type     = en_type;
 
-    /* ¸´ÖÆÊý¾Ý,ÌîÐ´otaÊý¾Ý */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½Ð´otaï¿½ï¿½ï¿½ï¿½ */
     oal_memcopy((oal_void *)pst_ota_data->auc_ota_data,
                 (const oal_void *)&st_timer_track_info,
                 OAL_SIZEOF(st_timer_track_info));
 
-    /* ÉÏ±¨SDT */
+    /* ï¿½Ï±ï¿½SDT */
     ul_ret = oam_report_data2sdt_etc(pst_netbuf, OAM_DATA_TYPE_OTA, OAM_PRIMID_TYPE_OUTPUT_CONTENT);
 
     return ul_ret;
@@ -1812,7 +1812,7 @@ oal_uint32  oam_report_timer_track(oal_uint32 ul_file_id,
         return OAL_ERR_CODE_INVALID_CONFIG;
     }
 
-    /* ¼ì²é¿ª¹Ø */
+    /* ï¿½ï¿½é¿ªï¿½ï¿½ */
     if (OAL_SWITCH_OFF == oam_report_get_switch(OAM_OTA_TYPE_TIMER_TRACK))
     {
         return OAL_SUCC;
@@ -1852,10 +1852,10 @@ OAL_STATIC oal_uint32  oam_report_mpdu_num_to_sdt(
     oal_netbuf_put(pst_netbuf, us_ota_data_len);
     pst_ota_data = (oam_ota_stru *)oal_netbuf_data(pst_netbuf);
 
-    /* »ñÈ¡ÏµÍ³TICKÖµ */
+    /* ï¿½ï¿½È¡ÏµÍ³TICKÖµ */
     ul_tick = (oal_uint32)OAL_TIME_GET_STAMP_MS();
 
-    /* ÌîÐ´otaÏûÏ¢Í·½á¹¹Ìå */
+    /* ï¿½ï¿½Ð´otaï¿½ï¿½Ï¢Í·ï¿½á¹¹ï¿½ï¿½ */
     pst_ota_data->st_ota_hdr.ul_tick     = ul_tick;
     pst_ota_data->st_ota_hdr.en_ota_type = OAM_OTA_TYPE_MPDU_NUM;
     pst_ota_data->st_ota_hdr.us_ota_data_len = OAL_SIZEOF(oam_report_mpdu_num_stru);
@@ -1869,12 +1869,12 @@ OAL_STATIC oal_uint32  oam_report_mpdu_num_to_sdt(
     pst_ota_data->st_ota_hdr.auc_resv[0]    = OAM_OTA_TYPE_1151_HOST;
 #endif
 
-    /* ¸´ÖÆÊý¾Ý,ÌîÐ´otaÊý¾Ý */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½Ð´otaï¿½ï¿½ï¿½ï¿½ */
     oal_memcopy((oal_void *)pst_ota_data->auc_ota_data,
                 (const oal_void *)pst_mpdu_num,
                 OAL_SIZEOF(oam_report_mpdu_num_stru));
 
-    /* ÉÏ±¨SDT */
+    /* ï¿½Ï±ï¿½SDT */
     ul_ret = oam_report_data2sdt_etc(pst_netbuf, OAM_DATA_TYPE_OTA, OAM_PRIMID_TYPE_OUTPUT_CONTENT);
 
     return ul_ret;
@@ -1930,10 +1930,10 @@ oal_uint32  oam_report_dft_params_to_sdt_etc(
     oal_netbuf_put(pst_netbuf, us_ota_data_len);
     pst_ota_data = (oam_ota_stru *)oal_netbuf_data(pst_netbuf);
 
-    /* »ñÈ¡ÏµÍ³TICKÖµ */
+    /* ï¿½ï¿½È¡ÏµÍ³TICKÖµ */
     ul_tick = (oal_uint32)OAL_TIME_GET_STAMP_MS();
 
-    /* ÌîÐ´otaÏûÏ¢Í·½á¹¹Ìå */
+    /* ï¿½ï¿½Ð´otaï¿½ï¿½Ï¢Í·ï¿½á¹¹ï¿½ï¿½ */
     pst_ota_data->st_ota_hdr.ul_tick     = ul_tick;
     pst_ota_data->st_ota_hdr.en_ota_type = en_type;
     pst_ota_data->st_ota_hdr.us_ota_data_len = us_param_len;
@@ -1947,12 +1947,12 @@ oal_uint32  oam_report_dft_params_to_sdt_etc(
     pst_ota_data->st_ota_hdr.auc_resv[0]    = OAM_OTA_TYPE_1151_HOST;
 #endif
 
-    /* ¸´ÖÆÊý¾Ý,ÌîÐ´otaÊý¾Ý */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½Ð´otaï¿½ï¿½ï¿½ï¿½ */
     oal_memcopy((oal_void *)pst_ota_data->auc_ota_data,
                 (const oal_void *)puc_param,
                 us_param_len);
 
-    /* ÉÏ±¨SDT */
+    /* ï¿½Ï±ï¿½SDT */
     ul_ret = oam_report_data2sdt_etc(pst_netbuf, OAM_DATA_TYPE_OTA, OAM_PRIMID_TYPE_OUTPUT_CONTENT);
 
     return ul_ret;
@@ -1996,9 +1996,9 @@ oal_uint32  oam_report_set_all_switch_etc(oal_switch_enum_uint8 en_switch)
 
         for (uc_vapid_loop = 0; uc_vapid_loop < WLAN_VAP_SUPPORT_MAX_NUM_LIMIT; uc_vapid_loop++)
         {
-            /*beaconÖ¡¿ª¹Ø*/
+            /*beaconÖ¡ï¿½ï¿½ï¿½ï¿½*/
             oam_ota_set_beacon_switch_etc(uc_vapid_loop, OAL_SWITCH_OFF);
-            /* rxÃèÊö·û¿ª¹Ø */
+            /* rxï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
             oam_ota_set_rx_dscr_switch_etc(uc_vapid_loop, OAL_SWITCH_OFF);
         }
     }
@@ -2008,9 +2008,9 @@ oal_uint32  oam_report_set_all_switch_etc(oal_switch_enum_uint8 en_switch)
 
         for (uc_vapid_loop = 0; uc_vapid_loop < WLAN_VAP_SUPPORT_MAX_NUM_LIMIT; uc_vapid_loop++)
         {
-            /*beaconÖ¡¿ª¹Ø*/
+            /*beaconÖ¡ï¿½ï¿½ï¿½ï¿½*/
             oam_ota_set_beacon_switch_etc(uc_vapid_loop, OAL_SWITCH_ON);
-            /* rxÃèÊö·û¿ª¹Ø */
+            /* rxï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
             oam_ota_set_rx_dscr_switch_etc(uc_vapid_loop, OAL_SWITCH_ON);
         }
     }

@@ -9,11 +9,11 @@ extern "C" {
 
 
 /*****************************************************************************
-  1 Í·ÎÄ¼þ°üº¬
+  1 Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 #ifdef _PRE_WLAN_FEATURE_AUTO_FREQ
 /*****************************************************************************
-  1 Í·ÎÄ¼þ°üº¬
+  1 Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 #include "oal_net.h"
 #include "oal_types.h"
@@ -44,7 +44,7 @@ extern "C" {
 #define HMAC_AUTO_FREQ_CPU_NUM      4
 
 /*****************************************************************************
-  2 È«¾Ö±äÁ¿¶¨Òå
+  2 È«ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 extern hmac_rxdata_thread_stru     g_st_rxdata_thread;
 
@@ -52,23 +52,23 @@ extern hmac_rxdata_thread_stru     g_st_rxdata_thread;
 OAL_STATIC oal_uint32 pre_jiffies            = 0;
 OAL_STATIC oal_uint32 g_adjust_count            = 0;
 
-/*ÓÉ¶¨ÖÆ»¯½øÐÐ³õÊ¼»¯*/
+/*ï¿½É¶ï¿½ï¿½Æ»ï¿½ï¿½ï¿½ï¿½Ð³ï¿½Ê¼ï¿½ï¿½*/
 host_speed_freq_level_stru g_host_speed_freq_level[4] = {
-    /*ppsÃÅÏÞ                   CPUÖ÷ÆµÏÂÏÞ                     DDRÖ÷ÆµÏÂÏÞ*/
+    /*ppsï¿½ï¿½ï¿½ï¿½                   CPUï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½                     DDRï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½*/
     {PPS_VALUE_0,          CPU_MIN_FREQ_VALUE_0,            DDR_MIN_FREQ_VALUE_0},
     {PPS_VALUE_1,          CPU_MIN_FREQ_VALUE_1,            DDR_MIN_FREQ_VALUE_1},
     {PPS_VALUE_2,          CPU_MIN_FREQ_VALUE_2,            DDR_MIN_FREQ_VALUE_2},
     {PPS_VALUE_3,          CPU_MIN_FREQ_VALUE_3,            DDR_MIN_FREQ_VALUE_3},
 };
 host_speed_freq_level_stru g_host_no_ba_freq_level[4] = {
-    /*ppsÃÅÏÞ                        CPUÖ÷ÆµÏÂÏÞ                      DDRÖ÷ÆµÏÂÏÞ*/
+    /*ppsï¿½ï¿½ï¿½ï¿½                        CPUï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½                      DDRï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½*/
     {NO_BA_PPS_VALUE_0,          CPU_MIN_FREQ_VALUE_0,            DDR_MIN_FREQ_VALUE_0},
     {NO_BA_PPS_VALUE_1,          CPU_MIN_FREQ_VALUE_1,            DDR_MIN_FREQ_VALUE_1},
     {NO_BA_PPS_VALUE_2,          CPU_MIN_FREQ_VALUE_2,            DDR_MIN_FREQ_VALUE_2},
     {NO_BA_PPS_VALUE_3,          CPU_MIN_FREQ_VALUE_2,            DDR_MIN_FREQ_VALUE_2},
 };
 device_speed_freq_level_stru g_device_speed_freq_level[] = {
-    /*deviceÖ÷ÆµÀàÐÍ*/
+    /*deviceï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½*/
     {FREQ_IDLE},
     {FREQ_MIDIUM},
     {FREQ_HIGHER},
@@ -89,14 +89,14 @@ OAL_STATIC oal_uint32 g_ul_orig_ddr_max_freq       = 0;
 oal_uint32 pre_jiffies;
 
 host_speed_freq_level_stru g_host_speed_freq_level[] = {
-    /*ppsÃÅÏÞ                   CPUÖ÷ÆµÏÂÏÞ                     DDRÖ÷ÆµÏÂÏÞ*/
+    /*ppsï¿½ï¿½ï¿½ï¿½                   CPUï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½                     DDRï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½*/
     {PPS_VALUE_0,          CPU_MIN_FREQ_VALUE_0,            DDR_MIN_FREQ_VALUE_0},
     {PPS_VALUE_1,          CPU_MIN_FREQ_VALUE_1,            DDR_MIN_FREQ_VALUE_1},
     {PPS_VALUE_2,          CPU_MIN_FREQ_VALUE_2,            DDR_MIN_FREQ_VALUE_2},
     {PPS_VALUE_3,          CPU_MIN_FREQ_VALUE_3,            DDR_MIN_FREQ_VALUE_3},
 };
 device_speed_freq_level_stru g_device_speed_freq_level[] = {
-    /*deviceÖ÷ÆµÀàÐÍ*/
+    /*deviceï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½*/
     {FREQ_IDLE},
     {FREQ_MIDIUM},
     {FREQ_HIGHEST},
@@ -124,7 +124,7 @@ oal_uint32 g_ul_orig_ddr_max_freq;
 oal_uint8 hmac_set_auto_freq_mod(oal_uint8 uc_freq_enable)
 {
     g_freq_lock_control.uc_lock_mod = uc_freq_enable;
-    /* ÉèÖÃdeviceÊÇ·ñÊ¹ÄÜ */
+    /* ï¿½ï¿½ï¿½ï¿½deviceï¿½Ç·ï¿½Ê¹ï¿½ï¿½ */
     if(FREQ_LOCK_ENABLE == uc_freq_enable)
     {
         hmac_set_device_freq_mode(FREQ_LOCK_ENABLE);
@@ -184,7 +184,7 @@ OAL_STATIC OAL_INLINE oal_bool_enum_uint8 hmac_get_cpu_freq_raw(oal_uint8 uc_fre
 
     if (IS_ERR_OR_NULL(filp))
     {
-        OAM_ERROR_LOG1(0,OAM_SF_ANY,"{hmac_get_cpu_freq_raw:¡¡freq¡¡= %d error !}",uc_freq_type);
+        OAM_ERROR_LOG1(0,OAM_SF_ANY,"{hmac_get_cpu_freq_raw:freq= %d error !}",uc_freq_type);
         return -1;
     }
     old_fs = get_fs();
@@ -221,7 +221,7 @@ oal_bool_enum_uint8 hmac_set_cpu_freq_raw(oal_uint8 uc_freq_type, oal_uint32 ul_
 
     if (IS_ERR_OR_NULL(filp))
     {
-        OAM_ERROR_LOG1(0,OAM_SF_ANY,"{hmac_set_cpu_freq_raw:¡¡freq¡¡= %d error !}",ul_freq_value);
+        OAM_ERROR_LOG1(0,OAM_SF_ANY,"{hmac_set_cpu_freq_raw:freq= %d error !}",ul_freq_value);
         return -1;
     }
     old_fs = get_fs();
@@ -251,7 +251,7 @@ OAL_STATIC OAL_INLINE oal_bool_enum_uint8 hmac_get_ddr_freq_raw(oal_uint8 uc_fre
 
     if (IS_ERR_OR_NULL(filp))
     {
-        OAM_ERROR_LOG1(0,OAM_SF_ANY,"{hmac_get_ddr_freq_raw:¡¡freq¡¡= %d error !}",uc_freq_type);
+        OAM_ERROR_LOG1(0,OAM_SF_ANY,"{hmac_get_ddr_freq_raw:freq= %d error !}",uc_freq_type);
         return -1;
     }
     old_fs = get_fs();
@@ -290,7 +290,7 @@ oal_bool_enum_uint8 hmac_set_ddr_freq_raw(oal_uint8 uc_freq_type, oal_uint32 ul_
 
     if (IS_ERR_OR_NULL(filp))
     {
-        OAM_ERROR_LOG1(0,OAM_SF_ANY,"{hmac_set_ddr_freq_raw:¡¡freq¡¡= %d error !}",ul_freq_value);
+        OAM_ERROR_LOG1(0,OAM_SF_ANY,"{hmac_set_ddr_freq_raw:ï¿½ï¿½freqï¿½ï¿½= %d error !}",ul_freq_value);
         return -1;
     }
     old_fs = get_fs();
@@ -319,7 +319,7 @@ oal_void  hmac_auto_freq_set_thread_affinity(oal_uint32 ul_total_sdio_rate)
     {
         cpumask_setall(&cpu_mask);
         ul_current_cpu = HMAC_AUTO_FREQ_BUSY_CPU;
-        /* ÉèÖÃwifi Ïß³Ìµ½CPU4~7 */
+        /* ï¿½ï¿½ï¿½ï¿½wifi ï¿½ß³Ìµï¿½CPU4~7 */
         cpumask_clear_cpu(0, &cpu_mask);
         cpumask_clear_cpu(1, &cpu_mask);
         cpumask_clear_cpu(2, &cpu_mask);
@@ -330,7 +330,7 @@ oal_void  hmac_auto_freq_set_thread_affinity(oal_uint32 ul_total_sdio_rate)
     {
         cpumask_setall(&cpu_mask);
         ul_current_cpu = HMAC_AUTO_FREQ_NORMAL_CPU;
-        /* ÉèÖÃwifi Ïß³Ìµ½CPU1~3 */
+        /* ï¿½ï¿½ï¿½ï¿½wifi ï¿½ß³Ìµï¿½CPU1~3 */
         cpumask_clear_cpu(0, &cpu_mask);
         cpumask_clear_cpu(4, &cpu_mask);
         cpumask_clear_cpu(5, &cpu_mask);
@@ -358,7 +358,7 @@ oal_void  hmac_auto_freq_set_thread_affinity(oal_uint32 ul_total_sdio_rate)
 
 oal_void hmac_adjust_freq_to_level(oal_void)
 {
-    /* ¸ù¾ÝÖ¡ËÙÂÊµ÷Õûwifi Ïß³Ì°ó¶¨´óºË/Ð¡ºË */
+    /* ï¿½ï¿½ï¿½ï¿½Ö¡ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½wifi ï¿½ß³Ì°ó¶¨´ï¿½ï¿½/Ð¡ï¿½ï¿½ */
     hmac_auto_freq_set_thread_affinity(g_freq_lock_control.ul_total_sdio_rate);
 
 #if 0
@@ -456,7 +456,7 @@ oal_void hmac_adjust_freq(oal_void)
     ul_sdio_dur_us = OAL_JIFFIES_TO_MSECS(ul_cur_jiffies - pre_jiffies);
     pre_jiffies = ul_cur_jiffies;
 
-    /*¼ÆËãµ÷Æµ¼¶±ð*/
+    /*ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½*/
     hmac_perform_calc_rwtotal_throughput(g_ul_wifi_rxtx_total,ul_sdio_dur_us);
     g_freq_lock_control.uc_req_lock_level = hmac_get_freq_level(g_freq_lock_control.ul_total_sdio_rate);
 
@@ -469,7 +469,7 @@ oal_void hmac_adjust_freq(oal_void)
         {
             if(uc_req_lock_level < g_freq_lock_control.uc_curr_lock_level)
             {
-                /*Á¬ÐøMAX_DEGRADE_FREQ_TIME_THRESHOLDºó²Å½µÆµ£¬±£Ö¤ÐÔÄÜ*/
+                /*ï¿½ï¿½ï¿½ï¿½MAX_DEGRADE_FREQ_TIME_THRESHOLDï¿½ï¿½Å½ï¿½Æµï¿½ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½*/
                 g_adjust_count++;
                 if(0 != g_ul_wifi_rxtx_total)
                 {
@@ -490,7 +490,7 @@ oal_void hmac_adjust_freq(oal_void)
             }
             else
             {
-                /*ÉýÆµ²»µÈ´ý£¬Á¢¼´Ö´ÐÐ±£Ö¤ÐÔÄÜ*/
+                /*ï¿½ï¿½Æµï¿½ï¿½ï¿½È´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½Ð±ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½*/
                 g_adjust_count = 0;
                 wlan_pm_adjust_feq();
             }
@@ -612,7 +612,7 @@ oal_uint32 hmac_hcc_auto_freq_process(oal_void)
 {
     oal_uint32 ul_return_total_count = 0;
 
-    /*±£´æÖ®Ç°µÄÖµ£¬·µ»Ø¸øÆ½Ì¨*/
+    /*ï¿½ï¿½ï¿½ï¿½Ö®Ç°ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½Ø¸ï¿½Æ½Ì¨*/
     ul_return_total_count = g_ul_wifi_rxtx_total;
 
     if(FREQ_LOCK_ENABLE == g_freq_lock_control.uc_lock_mod)
@@ -621,7 +621,7 @@ oal_uint32 hmac_hcc_auto_freq_process(oal_void)
     }
 
 #ifdef _PRE_WLAN_TCP_OPT
-    /* ¸ù¾ÝÁ÷Á¿pps À´¿ØÖÆ Æô¶¯/¹Ø±Õ TCP_ACK ÓÅ»¯¹¦ÄÜ */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½pps ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½/ï¿½Ø±ï¿½ TCP_ACK ï¿½Å»ï¿½ï¿½ï¿½ï¿½ï¿½ */
     hmac_tcp_ack_opt_switch_ctrol(ul_return_total_count);
 #endif  /* _PRE_WLAN_TCP_OPT */
 
