@@ -1,0 +1,27 @@
+/**
+ * Copyright (C) 2014 Hisilicon Ltd.
+ *
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License version 2 as
+ *  publishhed by the Free Software Foundation.
+ */
+
+/include/ "VOGUE_LDCM_VE_overlay.dtsi"
+
+/ {
+    board_id = <8561>;
+};
+    &rootparam{
+		compatible = "hisilicon,vendor";
+		hisi,boardid = <8 5 6 1>;
+		hisi,boardname = "VOGUE_LDCM_VF";
+		hisi,modem_id = <0x3705D800>;
+		hisi,product_id = <0x3705D800>;
+		hisi,product_name = "VOG-LDCM";
+	};
+
+	&dwmmc1 {
+		use_samdly_range = <5 8>;
+		enable_shift_range = <4 8>;
+		clock-frequency = <192>;
+	};

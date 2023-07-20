@@ -1,0 +1,110 @@
+/**
+ * Copyright (C) 2014 Hisilicon Ltd.
+ *
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License version 2 as
+ *  publishhed by the Free Software Foundation.
+ */
+
+/dts-v1/;
+/plugin/;
+/include/ "ELLE_TUGL_VF_overlay.dtsi"
+/include/ "ELLE_TUGL_DIV_VA_pin.dtsi"
+/include/ "ELLE_TUGL_DIV_VA_modem_pin.dtsi"
+
+/ {
+    board_id = <8546>;
+};
+    &rootparam{
+		compatible = "hisilicon,vendor";
+		hisi,boardid = <8 5 4 6>;
+		hisi,boardname = "ELLE_TUGL_DIV_VA";
+		hisi,modem_id = <0x37045400>;
+		hisi,product_id = <0x37045400>;
+		hisi,product_name = "ELE-AL00";
+	};
+
+	&water_check {
+		gpio_sim = <&gpio28 4 0>;
+	};
+	/*hisi customize*/
+	&hisi_cust_cfg {
+		ini_file_name = "/vendor/etc/cfg_elle_tugl_div.ini";
+	};
+
+	&sensorhub{
+		light{
+			als2{
+				compatible="huawei,ams_tcs3701";
+				bus_number = <0x0>;
+				reg=<0x39>;
+				chip_id_register = <0x92>;
+				chip_id_value = <0x18>;
+				file_id = <138>;
+				sensor_list_info_id = <0x03>;
+				sensor_type = "als";
+				poll_interval = <350>;
+				threshold_value = <0x1>;
+				GA1 = <0x1046>;
+				GA2 = <0xf3c>;
+				GA3 = <0x1194>;
+				tp_color = <0x0>;
+				again = <0x1>;
+				gpio_int1 = <&gpio24 5 0>;
+				gpio_int1_sh=<1004>;
+				atime = <0xdb>;
+				init_time = <0x96>;
+				status = "ok";
+				als_phone_type = <47>;
+				als_phone_version = <10>;
+				als_cali_after_sale = <1>;//0:no need; 1:cali of 2012
+				als_extend_data = <0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0 0x0>;
+				sensorlist_name="als-tcs3701";
+				vendor="ams";
+			};
+		};
+		proximity{
+			ps2{
+				compatible="huawei,ams_tcs3701";
+				bus_number=<0>;
+				reg=<0x39>;
+				chip_id_register=<0x92>;
+				chip_id_value=<0x18>;
+				file_id=<118>;
+				sensor_list_info_id = <0x04>;
+				sensor_type="ps";
+				min_proximity_value=<500>;
+				pwindows_value=<123>;
+				pwave_value=<75>;
+				threshold_value=<90>;
+				pwindows_screenon_value=<189>;
+				pwave_screenon_value=<104>;
+				threshold_screenon_value=<110>;
+				ps_calib_20cm_threshold=<100>;
+				ps_calib_5cm_threshold=<450>;
+				ps_calib_3cm_threshold=<950>;
+				gpio_int1=<&gpio27 1 0>;
+				poll_interval = <80>;
+				ps_oily_threshold = <15>;
+				oily_max_near_pdata=<1000>;
+				max_oily_add_pdata=<210>;
+				max_near_pdata_loop=<3>;
+				oily_count_size=<8>;
+				status = "ok";
+				sensorlist_name="proximity-tcs3701";
+				vendor="ams";
+				fifoReservedEventCount=<100>;
+				fifoMaxEventCount=<100>;
+				maxDelay=<200000>;
+				ptime =<70>;  //ms
+				wtime =<3>; //ms
+				pulse_len =<4>; //us
+				ps_pulse_count =<32>;
+				pgain =<1>;
+				led_current=<20>;//mA
+				prox_avg=<3>;
+				offset_max=<210>;
+				offset_min=<3>;
+			};
+		};
+	};

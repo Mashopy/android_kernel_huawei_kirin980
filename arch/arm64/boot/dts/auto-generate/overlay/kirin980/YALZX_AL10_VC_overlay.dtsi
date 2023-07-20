@@ -1,0 +1,40 @@
+/**
+ * Copyright (C) 2014 Hisilicon Ltd.
+ *
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License version 2 as
+ *  publishhed by the Free Software Foundation.
+ */
+
+/include/ "lcdkit3.0/yal_v4/devkit_lcd_kit.dtsi"
+/include/ "YALZX_AL10_VB_overlay.dtsi"
+
+/ {
+	board_id = <8815>;
+};
+
+	&rootparam{
+		hisi,boardid = <8 8 1 5>;
+		hisi,boardname = "YALZX_AL10_VC";
+		hisi,modem_id = <0x37662800>;
+		hisi,product_id = <0x37662800>;
+		hisi,product_name = "YALZX-AL10";
+	};
+
+	&huawei_lcd_panel {
+		product_id = <13001>;
+	};
+
+	&usb_ana_hs_fsa4476 {
+		status = "disabled";
+	};
+
+	&usb_ana_hs_mos_switch {
+		compatible = "huawei,usb_ana_hs_mos_switch";
+		gpio_type = <0>;
+		switch_mic_gnd = <&gpio17 1 0>;
+		switch_mos_hs = <&gpio16 7 0>;
+		mic_switch_delay = <150>;
+		connect_linein_r = <0>; /* 0: disconnected;  1: connected */
+		status = "ok";
+	};

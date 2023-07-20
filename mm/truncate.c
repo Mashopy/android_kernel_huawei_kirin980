@@ -199,6 +199,10 @@ int invalidate_inode_page(struct page *page)
 		return 0;
 	if (page_mapped(page))
 		return 0;
+#ifdef CONFIG_TASK_PROTECT_LRU
+	if (PageProtect(page))
+		return 0;
+#endif
 	return invalidate_complete_page(mapping, page);
 }
 
@@ -443,13 +447,9 @@ void truncate_inode_pages_final(struct address_space *mapping)
 		 */
 		spin_lock_irq(&mapping->tree_lock);
 		spin_unlock_irq(&mapping->tree_lock);
-	}
 
-	/*
-	 * Cleancache needs notification even if there are no pages or shadow
-	 * entries.
-	 */
-	truncate_inode_pages(mapping, 0);
+		truncate_inode_pages(mapping, 0);
+	}
 }
 EXPORT_SYMBOL(truncate_inode_pages_final);
 
