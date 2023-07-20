@@ -56,38 +56,15 @@ extern "C" {
 #endif
 #endif
 
-//[NV elf±àÒëÏîÄ¿]È¥³ýÖØ¸´¶¨Òå xuziheng/306651 20171207
+//[NV elfï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿]È¥ï¿½ï¿½ï¿½Ø¸ï¿½ï¿½ï¿½ï¿½ï¿½ xuziheng/306651 20171207
 #ifndef NV_DEFINE
 
-#ifndef s8
-typedef signed char          s8;
-#endif
-#ifndef u8
-typedef unsigned char        u8;
-#endif
-#ifndef s16
-typedef signed short         s16;
-#endif
-#ifndef u16
-typedef unsigned short       u16;
-#endif
-#ifndef s32
-typedef signed int           s32;
-#endif
-#ifndef u32
-typedef unsigned int         u32;
-#endif
-#ifndef s64
-typedef signed long long     s64;
-#endif
-#ifndef u64
-typedef unsigned long long   u64;
-#endif
+#include <asm-generic/int-ll64.h>
 
 #endif
 
 /*
- *  NV ID µÄÌí¼Ó°´´ÓÐ¡µ½´óÅÅÁÐ
+ *  NV ID ï¿½ï¿½ï¿½ï¿½ï¿½Ó°ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  */
 
 typedef enum
@@ -99,7 +76,7 @@ typedef enum
     NV_ID_DRV_DLOCK                        = 0xd155,    //DRV_DLOCK_CFG_STRU
 	NV_ID_DRV_PDLOCK_AP					   = 0xd192,	//DRV_PDLOCK_AP_CFG_STRU
 	
-	//¶¨ÒåÔÚccore_nv_id_drv.hÖÐ xuziheng/306651 20171207
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ccore_nv_id_drv.hï¿½ï¿½ xuziheng/306651 20171207
 #ifndef NV_DEFINE
     NV_ID_DRV_DVS_CONFIG                   = 0xd157,    //ST_DVS_CONFIG_STRU
 #endif
