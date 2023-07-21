@@ -86,7 +86,7 @@ int bbox_lpmcu_diaginfo_save(struct lpmcu_diaginfo *pmsg)
 		pr_warning("lpmcu diaginfo ID[%d] parameters lost\n", pmsg->diaginfo[0]);
 	}
 
-	ret = snprintf_s(pdata, MAX_DIAGINFO_LEN, MAX_DIAGINFO_LEN-1, lpmcu_diaginfo_map[index].pmsg);
+	ret = snprintf_s(pdata, MAX_DIAGINFO_LEN, MAX_DIAGINFO_LEN-1, "%s", lpmcu_diaginfo_map[index].pmsg);
 	if (!ret) {
 		pr_debug("ID[%d] Msg is NULL\n", pmsg->diaginfo[0]);
 	}
