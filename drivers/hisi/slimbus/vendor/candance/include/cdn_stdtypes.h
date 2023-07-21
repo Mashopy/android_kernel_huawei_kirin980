@@ -16,9 +16,6 @@
 #define NULL	((void *)0)
 #endif
 
-/* Define size_t data type */
-typedef uintptr_t	size_t;
-
 /* Define bool data type */
 #define bool	_Bool
 #define true	1
