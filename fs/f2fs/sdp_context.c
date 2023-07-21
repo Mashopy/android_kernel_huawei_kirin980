@@ -18,7 +18,7 @@ static int f2fs_get_sdp_context(struct inode *inode, void *ctx,
 {
 	return f2fs_getxattr(inode, F2FS_XATTR_INDEX_ECE_ENCRYPTION,
 				F2FS_XATTR_NAME_ENCRYPTION_CONTEXT,
-				ctx, len, fs_data, 0);
+				ctx, len, fs_data);
 }
 
 static int f2fs_set_sdp_context(struct inode *inode, const void *ctx,

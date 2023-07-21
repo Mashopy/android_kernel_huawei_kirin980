@@ -136,7 +136,7 @@ got_key:
 	res = inode->i_sb->s_cop->set_context(inode, &ctx, sizeof(ctx), NULL);
 	if (res)
 		goto out;
-	fscrypt_set_verify_context(inode, &ctx, sizeof(ctx), NULL, 1);
+	fscrypt_set_verify_context(inode, &ctx, sizeof(ctx), NULL);
 
 out:
 	if (tfm)
@@ -167,7 +167,7 @@ int fscrypt_ioctl_set_policy(struct file *filp, const void __user *arg)
 
 	inode_lock(inode);
 
-	ret = inode->i_sb->s_cop->get_context(inode, &ctx, sizeof(ctx), NULL);
+	ret = inode->i_sb->s_cop->get_context(inode, &ctx, sizeof(ctx));
 	if (ret == -ENODATA) {
 		if (!S_ISDIR(inode->i_mode))
 			ret = -ENOTDIR;
@@ -203,7 +203,7 @@ int fscrypt_ioctl_get_policy(struct file *filp, void __user *arg)
 	if (!inode->i_sb->s_cop->is_encrypted(inode))
 		return -ENODATA;
 
-	res = inode->i_sb->s_cop->get_context(inode, &ctx, sizeof(ctx), NULL);
+	res = inode->i_sb->s_cop->get_context(inode, &ctx, sizeof(ctx));
 	if (res < 0 && res != -ERANGE)
 		return res;
 	if (res != sizeof(ctx))
@@ -308,11 +308,11 @@ int fscrypt_has_permitted_context(struct inode *parent, struct inode *child)
 	/* TicketNo:AR0009DF3P END */
 	/* TicketNo:AR000B5MBD END */
 
-	res = cops->get_context(parent, &parent_ctx, sizeof(parent_ctx), NULL);
+	res = cops->get_context(parent, &parent_ctx, sizeof(parent_ctx));
 	if (res != sizeof(parent_ctx))
 		return 0;
 
-	res = cops->get_context(child, &child_ctx, sizeof(child_ctx), NULL);
+	res = cops->get_context(child, &child_ctx, sizeof(child_ctx));
 	if (res != sizeof(child_ctx))
 		return 0;
 
@@ -374,7 +374,7 @@ int fscrypt_inherit_context(struct inode *parent, struct inode *child,
 						sizeof(ctx), fs_data);
 	if (res)
 		return res;
-	fscrypt_set_verify_context(child, &ctx, sizeof(ctx), fs_data, 1);
+	fscrypt_set_verify_context(child, &ctx, sizeof(ctx), fs_data);
 
 	return preload ? fscrypt_get_encryption_info(child): 0;
 }

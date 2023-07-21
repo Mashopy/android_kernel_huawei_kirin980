@@ -19,7 +19,7 @@ static int f2fs_inode_is_config_encryption(struct inode *inode)
 {
 	if (!inode->i_sb->s_cop->get_context)
 		return 0;
-	return (inode->i_sb->s_cop->get_context(inode, NULL, 0L, NULL) > 0);
+	return (inode->i_sb->s_cop->get_context(inode, NULL, 0L) > 0);
 }
 
 static int f2fs_inode_set_config_sdp_ece_encryption_flags(struct inode *inode,

@@ -2123,19 +2123,11 @@ static const struct super_operations f2fs_sops = {
 };
 
 #ifdef CONFIG_F2FS_FS_ENCRYPTION
-static int f2fs_get_context(struct inode *inode, void *ctx, size_t len,
-			    int *has_crc)
+static int f2fs_get_context(struct inode *inode, void *ctx, size_t len)
 {
-	int ret = f2fs_getxattr(inode, F2FS_XATTR_INDEX_ENCRYPTION,
+	return f2fs_getxattr(inode, F2FS_XATTR_INDEX_ENCRYPTION,
 				F2FS_XATTR_NAME_ENCRYPTION_CONTEXT,
-				ctx, len, NULL, has_crc);
-	if (ret == -ENODATA) {
-		bd_mutex_lock(&F2FS_I_SB(inode)->bd_mutex);
-		set_bd_val(F2FS_I_SB(inode),
-			   encrypt.encrypt_struct.ctx_nonexist, 1);
-		bd_mutex_unlock(&F2FS_I_SB(inode)->bd_mutex);
-	}
-	return ret;
+				ctx, len, NULL);
 }
 
 static int f2fs_set_context(struct inode *inode, const void *ctx, size_t len,
@@ -2150,7 +2142,7 @@ static int f2fs_set_context(struct inode *inode, const void *ctx, size_t len,
 static int f2fs_get_hwaa_attr(struct inode *inode, void *buf, size_t len)
 {
 	return f2fs_getxattr(inode, F2FS_XATTR_INDEX_ENCRYPTION, HWAA_XATTR_NAME,
-		buf, len, NULL, NULL);
+		buf, len, NULL);
 }
 
 static int f2fs_set_hwaa_attr(struct inode *inode, const void *attr, size_t len,
@@ -2264,7 +2256,7 @@ out:
 }
 
 static int f2fs_set_verify_context(struct inode *inode, const void *ctx,
-			size_t len, void *fs_data, int create_crc)
+			size_t len, void *fs_data)
 {
 	struct f2fs_sb_info *sbi = F2FS_I_SB(inode);
 	struct page *ipage = (struct page *)fs_data;
@@ -2272,10 +2264,6 @@ static int f2fs_set_verify_context(struct inode *inode, const void *ctx,
 	int err;
 
 	if (!test_hw_opt(sbi, VERIFY_ENCRYPT))
-		return 0;
-
-
-	if (!create_crc)
 		return 0;
 
 	crc32 = f2fs_crc32(sbi, ctx, (unsigned int)len);

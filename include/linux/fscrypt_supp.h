@@ -57,7 +57,7 @@ extern int hwaa_inherit_context(struct inode *, struct inode *,
 /* keyinfo.c */
 extern int fscrypt_get_verify_context(struct inode *, void *, size_t);
 extern int fscrypt_set_verify_context(struct inode *, const void *,
-			size_t, void *, int);
+			size_t, void *);
 extern int fscrypt_set_gcm_key(struct crypto_aead *, u8 *);
 extern int fscrypt_derive_gcm_key(struct crypto_aead *,
 				u8 *, u8 *, u8 *, int);

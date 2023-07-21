@@ -439,8 +439,7 @@ static int f2fs_get_sdp_ece_crypt_info(struct inode *inode, void *fs_data)
 	if (res != sizeof(sdp_ctx))
 		return -EINVAL;
 
-	res = inode->i_sb->s_cop->get_context(inode, &ctx, sizeof(ctx),
-		fs_data);
+	res = inode->i_sb->s_cop->get_context(inode, &ctx, sizeof(ctx));
 	if (res != sizeof(ctx))
 		return -EINVAL;
 
@@ -709,8 +708,7 @@ static int f2fs_get_sdp_sece_crypt_info(struct inode *inode, void *fs_data)
 	if (res != sizeof(sdp_ctx))
 		return -EINVAL;
 
-	res = inode->i_sb->s_cop->get_context(inode, &ctx, sizeof(ctx),
-		fs_data);
+	res = inode->i_sb->s_cop->get_context(inode, &ctx, sizeof(ctx));
 	if (res != sizeof(ctx))
 		return -EINVAL;
 
@@ -806,7 +804,7 @@ int f2fs_change_to_sdp_crypto(struct inode *inode, void *fs_data)
 		return -EINVAL;
 
 	res = inode->i_sb->s_cop->get_context(inode, &ctx,
-			sizeof(ctx), fs_data);
+			sizeof(ctx));
 	if (res != sizeof(ctx))
 		return -EINVAL;
 

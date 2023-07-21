@@ -150,11 +150,11 @@ struct fscrypt_name {
 struct fscrypt_operations {
 	unsigned int flags;
 	const char *key_prefix;
-	int (*get_context)(struct inode *, void *, size_t, int *);
+	int (*get_context)(struct inode *, void *, size_t);
 	int (*get_verify_context)(struct inode *, void *, size_t);
 	int (*set_context)(struct inode *, const void *, size_t, void *);
 	int (*set_verify_context)(struct inode *, const void *, size_t,
-				  void *, int);
+				  void *);
 	int (*dummy_context)(struct inode *);
 	bool (*is_encrypted)(struct inode *);
 	bool (*is_inline_encrypted)(struct inode *);

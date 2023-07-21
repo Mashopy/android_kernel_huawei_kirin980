@@ -46,7 +46,7 @@ static int f2fs_xattr_generic_get(const struct xattr_handler *handler,
 		return -EINVAL;
 	}
 	return f2fs_getxattr(inode, handler->flags, name,
-			     buffer, size, NULL, NULL);
+			     buffer, size, NULL);
 }
 
 static int f2fs_xattr_generic_set(const struct xattr_handler *handler,
@@ -548,8 +548,7 @@ in_page_out:
 }
 
 int f2fs_getxattr(struct inode *inode, int index, const char *name,
-		void *buffer, size_t buffer_size, struct page *ipage,
-		int *has_crc)
+		void *buffer, size_t buffer_size, struct page *ipage)
 {
 	struct f2fs_xattr_entry *entry = NULL;
 	int error = 0;
@@ -582,15 +581,6 @@ int f2fs_getxattr(struct inode *inode, int index, const char *name,
 		memcpy(buffer, pval, size);
 	}
 	error = size;
-
-	if (has_crc) {
-		struct f2fs_xattr_header *hdr = XATTR_HDR(base_addr);
-
-		if (hdr->h_ctx_crc)
-			*has_crc = 1;
-		else
-			*has_crc = 0;
-	}
 out:
 	kzfree(base_addr);
 	return error;

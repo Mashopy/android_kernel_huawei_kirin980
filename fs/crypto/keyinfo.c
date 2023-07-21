@@ -312,13 +312,13 @@ int fscrypt_get_verify_context(struct inode *inode, void *ctx, size_t len)
 }
 
 int fscrypt_set_verify_context(struct inode *inode, const void *ctx,
-			size_t len, void *fs_data, int create_crc)
+			size_t len, void *fs_data)
 {
 	if (!inode->i_sb->s_cop->set_verify_context)
 		return 0;
 
 	return inode->i_sb->s_cop->set_verify_context(inode,
-				ctx, len, fs_data, create_crc);
+				ctx, len, fs_data);
 }
 
 static int derive_essiv_salt(const u8 *key, int keysize, u8 *salt)
@@ -396,7 +396,6 @@ int fscrypt_get_encryption_info(struct inode *inode)
 	int keysize;
 	u8 *raw_key = NULL;
 	int res;
-	int has_crc = 0;
 	int verify = 0;
 	int flag = 0;
 
@@ -421,7 +420,7 @@ int fscrypt_get_encryption_info(struct inode *inode)
 	/* TicketNo:AR0009DF3P END */
 	/* TicketNo:AR000B5MB3 END */
 
-	res = inode->i_sb->s_cop->get_context(inode, &ctx, sizeof(ctx), &has_crc);
+	res = inode->i_sb->s_cop->get_context(inode, &ctx, sizeof(ctx));
 	if (res < 0) {
 		if (!fscrypt_dummy_context_enabled(inode) ||
 		    inode->i_sb->s_cop->is_encrypted(inode)) {
@@ -545,7 +544,7 @@ int fscrypt_get_encryption_info(struct inode *inode)
 	}
 	if (cmpxchg(&inode->i_crypt_info, NULL, crypt_info) == NULL)
 		crypt_info = NULL;
-	fscrypt_set_verify_context(inode, &ctx, sizeof(ctx), NULL, has_crc);
+	fscrypt_set_verify_context(inode, &ctx, sizeof(ctx), NULL);
 
 out:
 	if (res == -ENOKEY)
@@ -685,7 +684,7 @@ static int hwaa_do_get_context(struct inode *inode, struct fscrypt_context *ctx)
 		pr_err("hwaa ino %lu init fscrypt fail\n", inode->i_ino);
 		return err;
 	}
-	err = inode->i_sb->s_cop->get_context(inode, ctx, sizeof(*ctx), NULL);
+	err = inode->i_sb->s_cop->get_context(inode, ctx, sizeof(*ctx));
 	if (err < 0) {
 		if (!fscrypt_dummy_context_enabled(inode) ||
 			inode->i_sb->s_cop->is_encrypted(inode))
