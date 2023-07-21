@@ -67,62 +67,6 @@ noinline u64 atfd_hisi_service_bl31_dbg_smc(u64 _function_id, u64 _arg0, u64 _ar
 	return function_id;
 }
 
-static int bl31_wa_counter_show(struct seq_file *s, void *unused)
-{
-	u64 ret, i;
-
-	for (i = 0; i < 11; i++) {
-		ret = atfd_hisi_service_bl31_dbg_smc((u64)BL31_WA_COUNTER_FN_VAL,
-					    0ULL,
-					    i,
-					    0ULL);
-		seq_printf(s, "bugfix_refcnt[%llu]:%llu\n", i, ret);
-	}
-
-	return 0;
-}
-
-static int bl31_wa_counter_open(struct inode *inode, struct file *file)
-{
-	return single_open(file, bl31_wa_counter_show, &inode->i_private);
-}
-
-static const struct file_operations bl31_wa_counter_fops = {
-	.owner	    = THIS_MODULE,
-	.open	    = bl31_wa_counter_open,
-	.read		= seq_read,
-	.llseek		= seq_lseek,
-	.release	= single_release,
-};
-
-static int bl31_panic_debug_show(struct seq_file *s, void *unused)
-{
-	u64 ret;
-
-	ret = atfd_hisi_service_bl31_dbg_smc((u64)BL31_DEBUG_FN_VAL,
-					     0ULL,
-					     0ULL,
-					     0ULL);
-	if (!ret)
-		return -EPERM;
-
-	return 0;
-}
-
-/*lint +e578 +e715 +e838*/
-static int bl31_panic_debug_open(struct inode *inode, struct file *file)
-{
-	return single_open(file, bl31_panic_debug_show, &inode->i_private);
-}
-/*lint -e64 -e785*/
-static const struct file_operations bl31_panic_debug_fops = {
-	.owner	    = THIS_MODULE,
-	.open	    = bl31_panic_debug_open,
-	.read		= seq_read,
-	.llseek		= seq_lseek,
-	.release	= single_release,
-};
-
 /*lint +e64 +e785*/
 /*lint -e838*/
 static int __init hisi_bl31_panic_init(void)
