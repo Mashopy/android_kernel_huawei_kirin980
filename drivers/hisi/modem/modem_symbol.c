@@ -151,7 +151,6 @@ EXPORT_SYMBOL(num_to_str);
 
 extern int dw_mci_check_himntn(int feature);
 EXPORT_SYMBOL(dw_mci_check_himntn);
-EXPORT_SYMBOL(sd_sim_detect_run);
 EXPORT_SYMBOL(detect_status_to_string);
 EXPORT_SYMBOL(sd_sim_detect_status_current);
 
