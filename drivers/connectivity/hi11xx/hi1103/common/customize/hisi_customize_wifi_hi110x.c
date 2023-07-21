@@ -28,7 +28,7 @@ extern "C" {
 #include "plat_pm_wlan.h"
 #include "plat_firmware.h"
 
-/* ÖÕ¶ËÍ·ÎÄ¼þ */
+/* ï¿½Õ¶ï¿½Í·ï¿½Ä¼ï¿½ */
 #include <linux/mtd/hisi_nve_interface.h>
 #include <linux/etherdevice.h>
 
@@ -38,27 +38,27 @@ extern "C" {
 /*
  * 2 Global Variable Definition
  */
-int32 g_al_host_init_params_etc[WLAN_CFG_INIT_BUTT] = {0};      /* ini¶¨ÖÆ»¯²ÎÊýÊý×é */
-int32 g_al_dts_params_etc[WLAN_CFG_DTS_BUTT] = {0};             /* dts¶¨ÖÆ»¯²ÎÊýÊý×é */
+int32 g_al_host_init_params_etc[WLAN_CFG_INIT_BUTT] = {0};      /* iniï¿½ï¿½ï¿½Æ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
+int32 g_al_dts_params_etc[WLAN_CFG_DTS_BUTT] = {0};             /* dtsï¿½ï¿½ï¿½Æ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 int8  g_ac_country_code_etc[COUNTRY_CODE_LEN] = "00";
 uint8 g_auc_wifimac_etc[MAC_LEN] = {0x00,0x00,0x00,0x00,0x00,0x00};
-int32 g_al_nvram_init_params[NVRAM_PARAMS_PWR_INDEX_BUTT] = {0};    /* iniÎÄ¼þÖÐNV²ÎÊýÊý×é */
-wlan_customize_private_stru g_al_priv_cust_params[WLAN_CFG_PRIV_BUTT] = {{0,0}};  /* Ë½ÓÐ¶¨ÖÆ»¯²ÎÊýÊý×é */
-wlan_cust_country_code_ingore_flag_stru g_st_cust_country_code_ignore_flag = {0}; /* ¶¨ÖÆ»¯¹ú¼ÒÂëÅäÖÃ */
-wlan_cust_nvram_params g_st_cust_nv_params  = {{0}};  /* ×î´ó·¢ËÍ¹¦ÂÊ¶¨ÖÆ»¯Êý×é */
-wlan_customize_pwr_fit_para_stru g_ast_pro_line_params[WLAN_RF_CHANNEL_NUMS][DY_CALI_PARAMS_NUM] = {{{0}}};    /* ²ú²â¶¨ÖÆ»¯²ÎÊýÊý×é */
-uint8 g_auc_cust_nvram_info[WLAN_CFG_DTS_NVRAM_END][CUS_PARAMS_LEN_MAX] = {{0}};  /* NVRAMÊý×é */
-oal_bool_enum_uint8 g_en_nv_dp_init_is_null = OAL_TRUE;      /* NVRAMÖÐdp initÖÃ¿Õ±êÖ¾ */
+int32 g_al_nvram_init_params[NVRAM_PARAMS_PWR_INDEX_BUTT] = {0};    /* iniï¿½Ä¼ï¿½ï¿½ï¿½NVï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
+wlan_customize_private_stru g_al_priv_cust_params[WLAN_CFG_PRIV_BUTT] = {{0,0}};  /* Ë½ï¿½Ð¶ï¿½ï¿½Æ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
+wlan_cust_country_code_ingore_flag_stru g_st_cust_country_code_ignore_flag = {0}; /* ï¿½ï¿½ï¿½Æ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
+wlan_cust_nvram_params g_st_cust_nv_params  = {{0}};  /* ï¿½ï¿½ï¿½ï¿½Í¹ï¿½ï¿½Ê¶ï¿½ï¿½Æ»ï¿½ï¿½ï¿½ï¿½ï¿½ */
+wlan_customize_pwr_fit_para_stru g_ast_pro_line_params[WLAN_RF_CHANNEL_NUMS][DY_CALI_PARAMS_NUM] = {{{0}}};    /* ï¿½ï¿½ï¿½â¶¨ï¿½Æ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
+uint8 g_auc_cust_nvram_info[WLAN_CFG_DTS_NVRAM_END][CUS_PARAMS_LEN_MAX] = {{0}};  /* NVRAMï¿½ï¿½ï¿½ï¿½ */
+oal_bool_enum_uint8 g_en_nv_dp_init_is_null = OAL_TRUE;      /* NVRAMï¿½ï¿½dp initï¿½Ã¿Õ±ï¿½Ö¾ */
 oal_int16 gs_extre_point_vals[WLAN_RF_CHANNEL_NUMS][DY_CALI_NUM_5G_BAND] = {{0}};
 uint8 g_uc_wlan_open_cnt = 0;
 #ifdef _PRE_WLAN_FEATURE_TAS_ANT_SWITCH
 oal_bool_enum_uint8 g_aen_tas_switch_en[WLAN_RF_CHANNEL_NUMS] = {0};
 #endif
 oal_bool_enum_uint8 g_en_fact_cali_completed = OAL_FALSE;
-oal_bool_enum_uint8 g_uc_wlan_cal_intvl_enable = OAL_TRUE; /* Ê¹ÄÜ¿ªwifiÖØ¸´Ð£×¼µÄ¼ä¸ô */
+oal_bool_enum_uint8 g_uc_wlan_cal_intvl_enable = OAL_TRUE; /* Ê¹ï¿½Ü¿ï¿½wifiï¿½Ø¸ï¿½Ð£×¼ï¿½Ä¼ï¿½ï¿½ */
 
 /*
- * ¶¨ÖÆ»¯½á¹¹Ìå
+ * ï¿½ï¿½ï¿½Æ»ï¿½ï¿½á¹¹ï¿½ï¿½
  * default values as follows:
  * ampdu_tx_max_num:            WLAN_AMPDU_TX_MAX_NUM               = 64
  * switch:                      ON                                  = 1
@@ -314,7 +314,7 @@ OAL_STATIC wlan_cfg_cmd g_ast_wifi_config_dts[] =
     {"dpd_use_cail_ch_idx1_core1",               WLAN_CFG_DTS_DPD_USE_CALI_CH_IDX1_CORE1},
     {"dpd_use_cail_ch_idx2_core1",               WLAN_CFG_DTS_DPD_USE_CALI_CH_IDX2_CORE1},
     {"dpd_use_cail_ch_idx3_core1",               WLAN_CFG_DTS_DPD_USE_CALI_CH_IDX3_CORE1},
-    /* ¶¯Ì¬Ð£×¼ */
+    /* ï¿½ï¿½Ì¬Ð£×¼ */
     {"dyn_cali_dscr_interval",     WLAN_CFG_DTS_DYN_CALI_DSCR_ITERVL},
     {"dyn_cali_opt_switch",        WLAN_CFG_DTS_DYN_CALI_OPT_SWITCH},
     {"gm0_dB10_amend",             WLAN_CFG_DTS_DYN_CALI_GM0_DB10_AMEND},
@@ -388,10 +388,10 @@ OAL_STATIC wlan_cfg_cmd g_ast_wifi_config_dts[] =
 
 OAL_STATIC wlan_cfg_cmd g_ast_wifi_config_priv[] =
 {
-    /* Ð£×¼¿ª¹Ø */
+    /* Ð£×¼ï¿½ï¿½ï¿½ï¿½ */
     {"cali_mask",                   WLAN_CFG_PRIV_CALI_MASK},
-    /* #bit0:¿ªwifiÖØÐÂÐ£×¼ bit1:¿ªwifiÖØÐÂÉÏ´« bit2:¿ª»úÐ£×¼ bit3:¶¯Ì¬Ð£×¼µ÷Æ½Debug
-       #bit4:²»¶ÁÈ¡NVÇøÓòµÄÊý¾Ý(1:²»¶ÁÈ¡ 0£º¶ÁÈ¡) */
+    /* #bit0:ï¿½ï¿½wifiï¿½ï¿½ï¿½ï¿½Ð£×¼ bit1:ï¿½ï¿½wifiï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ bit2:ï¿½ï¿½ï¿½ï¿½Ð£×¼ bit3:ï¿½ï¿½Ì¬Ð£×¼ï¿½ï¿½Æ½Debug
+       #bit4:ï¿½ï¿½ï¿½ï¿½È¡NVï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(1:ï¿½ï¿½ï¿½ï¿½È¡ 0ï¿½ï¿½ï¿½ï¿½È¡) */
     {"cali_data_mask",              WLAN_CFG_PRIV_CALI_DATA_MASK},
     {"cali_auto_cali_mask",         WLAN_CFG_PRIV_CALI_AUTOCALI_MASK},
     /* TBD:hal_cfg_customize_info_stru/mac_device_capability_stru */
@@ -412,7 +412,7 @@ OAL_STATIC wlan_cfg_cmd g_ast_wifi_config_priv[] =
     {"radio_cap_1",                 WLAN_CFG_PRIV_DBDC_RADIO_1},
     {"fastscan_switch",             WLAN_CFG_PRIV_FASTSCAN_SWITCH},
 
-    /* RSSIÌìÏßÇÐ»» */
+    /* RSSIï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½ */
     {"rssi_ant_switch",             WLAN_CFG_ANT_SWITCH},
 
     {"m2s_function_mask",           WLAN_CFG_PRIV_M2S_FUNCTION_MASK},
@@ -488,7 +488,7 @@ OAL_STATIC wlan_cfg_cmd g_ast_wifi_config_cmds[] =
     {"candidate_weak_num",              WLAN_CFG_INIT_CANDIDATE_WEAK_NUM},
     {"interval_variable",               WLAN_CFG_INIT_INTERVAL_VARIABLE},
 
-    /* ÐÔÄÜ */
+    /* ï¿½ï¿½ï¿½ï¿½ */
     {"ampdu_tx_max_num",                WLAN_CFG_INIT_AMPDU_TX_MAX_NUM},
     {"used_mem_for_start",              WLAN_CFG_INIT_USED_MEM_FOR_START},
     {"used_mem_for_stop",               WLAN_CFG_INIT_USED_MEM_FOR_STOP},
@@ -499,7 +499,7 @@ OAL_STATIC wlan_cfg_cmd g_ast_wifi_config_cmds[] =
     {"link_loss_threshold_bt",          WLAN_CFG_INIT_LINK_LOSS_THRESHOLD_BT},
     {"link_loss_threshold_dbac",        WLAN_CFG_INIT_LINK_LOSS_THRESHOLD_DBAC},
     {"link_loss_threshold_normal",      WLAN_CFG_INIT_LINK_LOSS_THRESHOLD_NORMAL},
-    /* ×Ô¶¯µ÷Æµ */
+    /* ï¿½Ô¶ï¿½ï¿½ï¿½Æµ */
 #ifdef _PRE_WLAN_FEATURE_AUTO_FREQ
     {"pss_threshold_level_0",           WLAN_CFG_INIT_PSS_THRESHOLD_LEVEL_0},
     {"cpu_freq_limit_level_0",          WLAN_CFG_INIT_CPU_FREQ_LIMIT_LEVEL_0},
@@ -518,14 +518,14 @@ OAL_STATIC wlan_cfg_cmd g_ast_wifi_config_cmds[] =
     {"device_type_level_2",             WLAN_CFG_INIT_DEVICE_TYPE_LEVEL_2},
     {"device_type_level_3",             WLAN_CFG_INIT_DEVICE_TYPE_LEVEL_3},
 #endif
-    /* ÊÕ·¢ÖÐ¶Ï¶¯Ì¬°óºË */
+    /* ï¿½Õ·ï¿½ï¿½Ð¶Ï¶ï¿½Ì¬ï¿½ï¿½ï¿½ */
     {"irq_affinity",                    WLAN_CFG_INIT_IRQ_AFFINITY},
     {"cpu_id_th_low",                   WLAN_CFG_INIT_IRQ_TH_LOW},
     {"cpu_id_th_high",                  WLAN_CFG_INIT_IRQ_TH_HIGH},
     {"cpu_id_pps_th_low",               WLAN_CFG_INIT_IRQ_PPS_TH_LOW},
     {"cpu_id_pps_th_high",              WLAN_CFG_INIT_IRQ_PPS_TH_HIGH},
 #ifdef _PRE_WLAN_FEATURE_AMPDU_TX_HW
-    /* Ó²¼þ¾ÛºÏÊ¹ÄÜ */
+    /* Ó²ï¿½ï¿½ï¿½Ûºï¿½Ê¹ï¿½ï¿½ */
     {"hw_ampdu",                        WLAN_CFG_INIT_HW_AMPDU},
     {"hw_ampdu_th_l",                   WLAN_CFG_INIT_HW_AMPDU_TH_LOW},
     {"hw_ampdu_th_h",                   WLAN_CFG_INIT_HW_AMPDU_TH_HIGH},
@@ -563,20 +563,20 @@ OAL_STATIC wlan_cfg_cmd g_ast_wifi_config_cmds[] =
 
     {"rx_ampdu_amsdu",                  WLAN_CFG_INIT_RX_AMPDU_AMSDU_SKB},
 
-    /* µÍ¹¦ºÄ */
+    /* ï¿½Í¹ï¿½ï¿½ï¿½ */
     {"powermgmt_switch",                WLAN_CFG_INIT_POWERMGMT_SWITCH},
 
     {"ps_mode",                         WLAN_CFG_INIT_PS_MODE},
     {"min_fast_ps_idle",                WLAN_CFG_INIT_MIN_FAST_PS_IDLE},
     {"max_fast_ps_idle",                WLAN_CFG_INIT_MAX_FAST_PS_IDLE},
     {"auto_fast_ps_thresh",             WLAN_CFG_INIT_AUTO_FAST_PS_THRESH},
-    /* ¿ÉÎ¬¿É²â */
+    /* ï¿½ï¿½Î¬ï¿½É²ï¿½ */
     {"loglevel",                        WLAN_CFG_INIT_LOGLEVEL},
-    /* 2G RFÇ°¶Ë²åËð */
+    /* 2G RFÇ°ï¿½Ë²ï¿½ï¿½ï¿½ */
     {"rf_rx_insertion_loss_2g_b1",     WLAN_CFG_INIT_RF_RX_INSERTION_LOSS_2G_BAND1},
     {"rf_rx_insertion_loss_2g_b2",     WLAN_CFG_INIT_RF_RX_INSERTION_LOSS_2G_BAND2},
     {"rf_rx_insertion_loss_2g_b3",     WLAN_CFG_INIT_RF_RX_INSERTION_LOSS_2G_BAND3},
-    /* 5G RFÇ°¶Ë²åËð */
+    /* 5G RFÇ°ï¿½Ë²ï¿½ï¿½ï¿½ */
     {"rf_rx_insertion_loss_5g_b1",     WLAN_CFG_INIT_RF_RX_INSERTION_LOSS_5G_BAND1},
     {"rf_rx_insertion_loss_5g_b2",     WLAN_CFG_INIT_RF_RX_INSERTION_LOSS_5G_BAND2},
     {"rf_rx_insertion_loss_5g_b3",     WLAN_CFG_INIT_RF_RX_INSERTION_LOSS_5G_BAND3},
@@ -586,7 +586,7 @@ OAL_STATIC wlan_cfg_cmd g_ast_wifi_config_cmds[] =
     {"rf_rx_insertion_loss_5g_b7",     WLAN_CFG_INIT_RF_RX_INSERTION_LOSS_5G_BAND7},
 
 #if (_PRE_PRODUCT_ID == _PRE_PRODUCT_ID_HI1103_HOST)
-    /* ÓÃÓÚ¶¨ÖÆ»¯¼ÆËãPWR RFÖµµÄÆ«²î */
+    /* ï¿½ï¿½ï¿½Ú¶ï¿½ï¿½Æ»ï¿½ï¿½ï¿½ï¿½ï¿½PWR RFÖµï¿½ï¿½Æ«ï¿½ï¿½ */
     {"rf_line_rf_pwr_ref_rssi_db_2g_c0_mult4",     WLAN_CFG_INIT_RF_PWR_REF_RSSI_2G_C0_MULT4},
     {"rf_line_rf_pwr_ref_rssi_db_2g_c1_mult4",     WLAN_CFG_INIT_RF_PWR_REF_RSSI_2G_C1_MULT4},
     {"rf_line_rf_pwr_ref_rssi_db_5g_c0_mult4",     WLAN_CFG_INIT_RF_PWR_REF_RSSI_5G_C0_MULT4},
@@ -614,7 +614,7 @@ OAL_STATIC wlan_cfg_cmd g_ast_wifi_config_cmds[] =
     {"lna_on2off_time_ns_5g",           WLAN_CFG_INIT_LNA_ON2OFF_TIME_NS_5G},
     {"lna_off2on_time_ns_5g",           WLAN_CFG_INIT_LNA_OFF2ON_TIME_NS_5G},
 #if (_PRE_PRODUCT_ID == _PRE_PRODUCT_ID_HI1102_HOST)
-    /* ÎÂ¶ÈÉÏÉýµ¼ÖÂ·¢Éä¹¦ÂÊÏÂ½µ¹ý¶àµÄ¹¦ÂÊ²¹³¥ */
+    /* ï¿½Â¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½ä¹¦ï¿½ï¿½ï¿½Â½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¹ï¿½ï¿½Ê²ï¿½ï¿½ï¿½ */
     {"tx_ratio_level_0",                WLAN_CFG_INIT_TX_RATIO_LEVEL_0},
     {"tx_pwr_comp_val_level_0",         WLAN_CFG_INIT_TX_PWR_COMP_VAL_LEVEL_0},
     {"tx_ratio_level_1",                WLAN_CFG_INIT_TX_RATIO_LEVEL_1},
@@ -628,9 +628,9 @@ OAL_STATIC wlan_cfg_cmd g_ast_wifi_config_cmds[] =
     /* 11AC2G */
     {"11ac2g_enable",                   WLAN_CFG_INIT_11AC2G_ENABLE},
     {"disable_capab_2ght40",            WLAN_CFG_INIT_DISABLE_CAPAB_2GHT40},
-    {"dual_antenna_enable",             WLAN_CFG_INIT_DUAL_ANTENNA_ENABLE}, /* Ë«ÌìÏß¿ª¹Ø */
+    {"dual_antenna_enable",             WLAN_CFG_INIT_DUAL_ANTENNA_ENABLE}, /* Ë«ï¿½ï¿½ï¿½ß¿ï¿½ï¿½ï¿½ */
     /* sta keepalive cnt th*/
-    {"sta_keepalive_cnt_th",            WLAN_CFG_INIT_STA_KEEPALIVE_CNT_TH}, /* ¶¯Ì¬¹¦ÂÊÐ£×¼ */
+    {"sta_keepalive_cnt_th",            WLAN_CFG_INIT_STA_KEEPALIVE_CNT_TH}, /* ï¿½ï¿½Ì¬ï¿½ï¿½ï¿½ï¿½Ð£×¼ */
 
     {"far_dist_pow_gain_switch",            WLAN_CFG_INIT_FAR_DIST_POW_GAIN_SWITCH},
     {"far_dist_dsss_scale_promote_switch",  WLAN_CFG_INIT_FAR_DIST_DSSS_SCALE_PROMOTE_SWITCH},
@@ -654,7 +654,7 @@ OAL_STATIC wlan_cfg_cmd g_ast_wifi_config_cmds[] =
     {"tx5g_upc_mix_gain_ctrl_5",        WLAN_TX5G_UPC_MIX_GAIN_CTRL_5},
     {"tx5g_upc_mix_gain_ctrl_6",        WLAN_TX5G_UPC_MIX_GAIN_CTRL_6},
     {"tx5g_upc_mix_gain_ctrl_7",        WLAN_TX5G_UPC_MIX_GAIN_CTRL_7},
-    /* ¶¨ÖÆ»¯RF²¿·ÖPAÆ«ÖÃ¼Ä´æÆ÷ */
+    /* ï¿½ï¿½ï¿½Æ»ï¿½RFï¿½ï¿½ï¿½ï¿½PAÆ«ï¿½Ã¼Ä´ï¿½ï¿½ï¿½ */
     {"tx2g_pa_gate_236",                WLAN_TX2G_PA_GATE_VCTL_REG236},
     {"tx2g_pa_gate_237",                WLAN_TX2G_PA_GATE_VCTL_REG237},
     {"tx2g_pa_gate_238",                WLAN_TX2G_PA_GATE_VCTL_REG238},
@@ -851,7 +851,7 @@ OAL_STATIC wlan_cfg_cmd g_ast_nvram_pro_line_config_ini[] =
     {OAL_PTR_NULL,           WLAN_CFG_NVRAM_DP2G_INIT0},
     {OAL_PTR_NULL,           WLAN_CFG_NVRAM_DP2G_INIT1},
 #endif
-    /* ²ú²ànvram²ÎÊý */
+    /* ï¿½ï¿½ï¿½ï¿½nvramï¿½ï¿½ï¿½ï¿½ */
     {"nvram_pa2gccka0",      WLAN_CFG_DTS_NVRAM_RATIO_PA2GCCKA0},
     {"nvram_pa2ga0",         WLAN_CFG_NVRAM_RATIO_PA2GA0},
     {"nvram_pa2g40a0",       WLAN_CFG_DTS_NVRAM_RATIO_PA2G40A0},
@@ -907,15 +907,15 @@ OAL_STATIC oal_void original_value_for_nvram_params(oal_void)
     g_al_nvram_init_params[NVRAM_PARAMS_INDEX_15] = 0xEC000000;
     g_al_nvram_init_params[NVRAM_PARAMS_INDEX_16] = 0xC9CECEE7;
     g_al_nvram_init_params[NVRAM_PARAMS_INDEX_17] = 0x000000C4;
-    /* DPD ´ò¿ªÊ±¸ß½×ËÙÂÊ¹¦ÂÊ */
+    /* DPD ï¿½ï¿½Ê±ï¿½ß½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ */
     g_al_nvram_init_params[NVRAM_PARAMS_INDEX_DPD_0] = 0xE2ECEC00;
     g_al_nvram_init_params[NVRAM_PARAMS_INDEX_DPD_1] = 0xE2E200E2;
     g_al_nvram_init_params[NVRAM_PARAMS_INDEX_DPD_2] = 0x0000C4C4;
-    /* 11BºÍOFDM¹¦ÂÊ²î */
+    /* 11Bï¿½ï¿½OFDMï¿½ï¿½ï¿½Ê²ï¿½ */
     g_al_nvram_init_params[NVRAM_PARAMS_INDEX_11B_OFDM_DELT_POW] = 0xA0A00000;
-    /* 5G¹¦ÂÊºÍIQÐ£×¼UPCÉÏÏÞÖµ */
+    /* 5Gï¿½ï¿½ï¿½Êºï¿½IQÐ£×¼UPCï¿½ï¿½ï¿½ï¿½Öµ */
     g_al_nvram_init_params[NVRAM_PARAMS_INDEX_IQ_MAX_UPC] = 0xD8D83030;
-    /* FCC¹¦ÂÊÈÏÖ¤ */
+    /* FCCï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ */
     g_al_nvram_init_params[NVRAM_PARAMS_INDEX_25] = 0xFFFFFFFF;
     g_al_nvram_init_params[NVRAM_PARAMS_INDEX_26] = 0xFFFFFFFF;
     g_al_nvram_init_params[NVRAM_PARAMS_INDEX_27] = 0xFFFFFFFF;
@@ -936,7 +936,7 @@ OAL_STATIC oal_void original_value_for_nvram_params(oal_void)
     g_al_nvram_init_params[NVRAM_PARAMS_INDEX_42] = 0xFFFFFFFF;
     g_al_nvram_init_params[NVRAM_PARAMS_INDEX_43] = 0xFFFFFFFF;
     g_al_nvram_init_params[NVRAM_PARAMS_INDEX_44] = 0xFFFFFFFF;
-    /* CE¹¦ÂÊÈÏÖ¤ */
+    /* CEï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ */
     g_al_nvram_init_params[NVRAM_PARAMS_INDEX_CE_0] = 0xFFFFFFFF;
     g_al_nvram_init_params[NVRAM_PARAMS_INDEX_CE_1] = 0xFFFFFFFF;
     g_al_nvram_init_params[NVRAM_PARAMS_INDEX_CE_2] = 0xFFFFFFFF;
@@ -957,7 +957,7 @@ OAL_STATIC oal_void original_value_for_nvram_params(oal_void)
     g_al_nvram_init_params[NVRAM_PARAMS_INDEX_CE_17] = 0xFFFFFFFF;
     g_al_nvram_init_params[NVRAM_PARAMS_INDEX_CE_18] = 0xFFFFFFFF;
     g_al_nvram_init_params[NVRAM_PARAMS_INDEX_CE_19] = 0xFFFFFFFF;
-    /* SAR¹¦ÂÊ¿ØÖÆ */
+    /* SARï¿½ï¿½ï¿½Ê¿ï¿½ï¿½ï¿½ */
     g_al_nvram_init_params[NVRAM_PARAMS_INDEX_45] = 0xFFFFFF;
     g_al_nvram_init_params[NVRAM_PARAMS_INDEX_46] = 0xFFFFFF;
     g_al_nvram_init_params[NVRAM_PARAMS_INDEX_47] = 0xFFFFFF;
@@ -1050,7 +1050,7 @@ OAL_STATIC oal_void host_params_init_first(oal_void)
     g_al_host_init_params_etc[WLAN_CFG_INIT_DELTA_B]                           = 10;
     g_al_host_init_params_etc[WLAN_CFG_INIT_DELTA_A]                           = 10;
 
-    /* ÐÔÄÜ */
+    /* ï¿½ï¿½ï¿½ï¿½ */
     g_al_host_init_params_etc[WLAN_CFG_INIT_AMPDU_TX_MAX_NUM]                  = WLAN_AMPDU_TX_MAX_BUF_SIZE;
     g_al_host_init_params_etc[WLAN_CFG_INIT_USED_MEM_FOR_START]                = 45;
     g_al_host_init_params_etc[WLAN_CFG_INIT_USED_MEM_FOR_STOP]                 = 25;
@@ -1061,7 +1061,7 @@ OAL_STATIC oal_void host_params_init_first(oal_void)
     g_al_host_init_params_etc[WLAN_CFG_INIT_LINK_LOSS_THRESHOLD_BT]            = 80;
     g_al_host_init_params_etc[WLAN_CFG_INIT_LINK_LOSS_THRESHOLD_DBAC]          = 80;
     g_al_host_init_params_etc[WLAN_CFG_INIT_LINK_LOSS_THRESHOLD_NORMAL]        = 40;
-    /* ×Ô¶¯µ÷Æµ */
+    /* ï¿½Ô¶ï¿½ï¿½ï¿½Æµ */
 #ifdef _PRE_WLAN_FEATURE_AUTO_FREQ
     g_al_host_init_params_etc[WLAN_CFG_INIT_PSS_THRESHOLD_LEVEL_0]             = PPS_VALUE_0;
     g_al_host_init_params_etc[WLAN_CFG_INIT_CPU_FREQ_LIMIT_LEVEL_0]            = CPU_MIN_FREQ_VALUE_0;
@@ -1080,14 +1080,14 @@ OAL_STATIC oal_void host_params_init_first(oal_void)
     g_al_host_init_params_etc[WLAN_CFG_INIT_DDR_FREQ_LIMIT_LEVEL_3]            = DDR_MIN_FREQ_VALUE_3;
     g_al_host_init_params_etc[WLAN_CFG_INIT_DEVICE_TYPE_LEVEL_3]               = FREQ_HIGHEST;
 #endif
-    /* ¶¯Ì¬°óPCIEÖÐ¶Ï */
+    /* ï¿½ï¿½Ì¬ï¿½ï¿½PCIEï¿½Ð¶ï¿½ */
     g_al_host_init_params_etc[WLAN_CFG_INIT_IRQ_AFFINITY]                      = OAL_FALSE;
     g_al_host_init_params_etc[WLAN_CFG_INIT_IRQ_TH_HIGH]                       = 250;
     g_al_host_init_params_etc[WLAN_CFG_INIT_IRQ_TH_LOW]                        = 150;
     g_al_host_init_params_etc[WLAN_CFG_INIT_IRQ_PPS_TH_HIGH]                   = 25000;
     g_al_host_init_params_etc[WLAN_CFG_INIT_IRQ_PPS_TH_LOW]                    = 5000;
 #ifdef _PRE_WLAN_FEATURE_AMPDU_TX_HW
-    /* Ó²¼þ¾ÛºÏ¶¨ÖÆ»¯Ïî */
+    /* Ó²ï¿½ï¿½ï¿½ÛºÏ¶ï¿½ï¿½Æ»ï¿½ï¿½ï¿½ */
     g_al_host_init_params_etc[WLAN_CFG_INIT_HW_AMPDU]                          = OAL_FALSE;
     g_al_host_init_params_etc[WLAN_CFG_INIT_HW_AMPDU_TH_HIGH]                  = 300;
     g_al_host_init_params_etc[WLAN_CFG_INIT_HW_AMPDU_TH_LOW]                   = 200;
@@ -1125,23 +1125,23 @@ OAL_STATIC oal_void host_params_init_first(oal_void)
     g_al_host_init_params_etc[WLAN_CFG_INIT_RX_DYN_BYPASS_EXTLNA_LOW]              = 50;
     g_al_host_init_params_etc[WLAN_CFG_INIT_RX_AMPDU_AMSDU_SKB]                = OAL_FALSE;
 
-    /* µÍ¹¦ºÄ */
+    /* ï¿½Í¹ï¿½ï¿½ï¿½ */
     g_al_host_init_params_etc[WLAN_CFG_INIT_POWERMGMT_SWITCH]                  = OAL_TRUE;
     g_al_host_init_params_etc[WLAN_CFG_INIT_PS_MODE]                           = 1;
     g_al_host_init_params_etc[WLAN_CFG_INIT_MIN_FAST_PS_IDLE]                    = 1;
     g_al_host_init_params_etc[WLAN_CFG_INIT_MAX_FAST_PS_IDLE]                    = 10;
     g_al_host_init_params_etc[WLAN_CFG_INIT_AUTO_FAST_PS_THRESH]                 = 5;
 
-    /* ¿ÉÎ¬¿É²â */
-    /* ÈÕÖ¾¼¶±ð */
+    /* ï¿½ï¿½Î¬ï¿½É²ï¿½ */
+    /* ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½ */
     g_al_host_init_params_etc[WLAN_CFG_INIT_LOGLEVEL]                          = OAM_LOG_LEVEL_WARNING;
 
-    /* 2G RFÇ°¶Ë */
+    /* 2G RFÇ°ï¿½ï¿½ */
 #if (_PRE_PRODUCT_ID == _PRE_PRODUCT_ID_HI1103_HOST)
     g_al_host_init_params_etc[WLAN_CFG_INIT_RF_RX_INSERTION_LOSS_2G_BAND1]    = 0xF4F4;
     g_al_host_init_params_etc[WLAN_CFG_INIT_RF_RX_INSERTION_LOSS_2G_BAND2]    = 0xF4F4;
     g_al_host_init_params_etc[WLAN_CFG_INIT_RF_RX_INSERTION_LOSS_2G_BAND3]    = 0xF4F4;
-    /* 5G RFÇ°¶Ë */
+    /* 5G RFÇ°ï¿½ï¿½ */
     g_al_host_init_params_etc[WLAN_CFG_INIT_RF_RX_INSERTION_LOSS_5G_BAND1]    = 0xF8F8;
     g_al_host_init_params_etc[WLAN_CFG_INIT_RF_RX_INSERTION_LOSS_5G_BAND2]    = 0xF8F8;
     g_al_host_init_params_etc[WLAN_CFG_INIT_RF_RX_INSERTION_LOSS_5G_BAND3]    = 0xF8F8;
@@ -1172,7 +1172,7 @@ OAL_STATIC oal_void host_params_init_first(oal_void)
     g_al_host_init_params_etc[WLAN_CFG_INIT_LNA_ON2OFF_TIME_NS_5G]               = 0x02760276;
     g_al_host_init_params_etc[WLAN_CFG_INIT_LNA_OFF2ON_TIME_NS_5G]               = 0x01400140;
 
-    /* ÓÃÓÚ¶¨ÖÆ»¯¼ÆËãPWR RFÖµµÄÆ«²î */
+    /* ï¿½ï¿½ï¿½Ú¶ï¿½ï¿½Æ»ï¿½ï¿½ï¿½ï¿½ï¿½PWR RFÖµï¿½ï¿½Æ«ï¿½ï¿½ */
     g_al_host_init_params_etc[WLAN_CFG_INIT_RF_PWR_REF_RSSI_2G_C0_MULT4]    = 0;
     g_al_host_init_params_etc[WLAN_CFG_INIT_RF_PWR_REF_RSSI_2G_C1_MULT4]    = 0;
     g_al_host_init_params_etc[WLAN_CFG_INIT_RF_PWR_REF_RSSI_5G_C0_MULT4]    = 0;
@@ -1181,7 +1181,7 @@ OAL_STATIC oal_void host_params_init_first(oal_void)
     g_al_host_init_params_etc[WLAN_CFG_INIT_RF_RX_INSERTION_LOSS_2G_BAND1]    = -12;
     g_al_host_init_params_etc[WLAN_CFG_INIT_RF_RX_INSERTION_LOSS_2G_BAND2]    = -12;
     g_al_host_init_params_etc[WLAN_CFG_INIT_RF_RX_INSERTION_LOSS_2G_BAND3]    = -12;
-    /* 5G RFÇ°¶Ë */
+    /* 5G RFÇ°ï¿½ï¿½ */
     g_al_host_init_params_etc[WLAN_CFG_INIT_RF_RX_INSERTION_LOSS_5G_BAND1]    = -8;
     g_al_host_init_params_etc[WLAN_CFG_INIT_RF_RX_INSERTION_LOSS_5G_BAND2]    = -8;
     g_al_host_init_params_etc[WLAN_CFG_INIT_RF_RX_INSERTION_LOSS_5G_BAND3]    = -8;
@@ -1210,7 +1210,7 @@ OAL_STATIC oal_void host_params_init_first(oal_void)
 #endif //#if (_PRE_PRODUCT_ID == _PRE_PRODUCT_ID_HI1103_HOST)
 
 #if (_PRE_PRODUCT_ID == _PRE_PRODUCT_ID_HI1102_HOST)
-    /* ÎÂ¶ÈÉÏÉýµ¼ÖÂ·¢Éä¹¦ÂÊÏÂ½µ¹ý¶àµÄ¹¦ÂÊ²¹³¥ */
+    /* ï¿½Â¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½ä¹¦ï¿½ï¿½ï¿½Â½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¹ï¿½ï¿½Ê²ï¿½ï¿½ï¿½ */
     g_al_host_init_params_etc[WLAN_CFG_INIT_TX_RATIO_LEVEL_0]                   = 900;
     g_al_host_init_params_etc[WLAN_CFG_INIT_TX_PWR_COMP_VAL_LEVEL_0]            = 17;
     g_al_host_init_params_etc[WLAN_CFG_INIT_TX_RATIO_LEVEL_1]                   = 650;
@@ -1302,7 +1302,7 @@ OAL_STATIC oal_void host_params_init_first(oal_void)
     g_al_host_init_params_etc[WLAN_CFG_INIT_DELTA_CCA_ED_HIGH_80TH_5G]         = 0;
 
     /* ldac m2s rssi */
-    g_al_host_init_params_etc[WLAN_CFG_INIT_LDAC_THRESHOLD_M2S]            = -45;  /* Ä¬ÈÏ×î´óÃÅÏÞ£¬²»Ö§³Ö */
+    g_al_host_init_params_etc[WLAN_CFG_INIT_LDAC_THRESHOLD_M2S]            = -45;  /* Ä¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ£ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ */
     g_al_host_init_params_etc[WLAN_CFG_INIT_LDAC_THRESHOLD_S2M]            = -75;
 
 }
@@ -1474,7 +1474,7 @@ OAL_STATIC oal_void hwifi_custom_adapt_device_ini_perf_param(oal_uint8 *puc_data
     st_syn_msg.en_syn_id = CUSTOM_CFGID_INI_PERF_ID;
 
     /* SDIO FLOWCTRL */
-    //device²à×öºÏ·¨ÐÔÅÐ¶Ï
+    //deviceï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½
     oal_itoa(hwifi_get_init_value_etc(CUS_TAG_INI, WLAN_CFG_INIT_USED_MEM_FOR_START), st_device_perf.ac_used_mem_param, 5);
     oal_itoa(hwifi_get_init_value_etc(CUS_TAG_INI, WLAN_CFG_INIT_USED_MEM_FOR_STOP),ac_tmp, 5);
     st_device_perf.ac_used_mem_param[OAL_STRLEN(st_device_perf.ac_used_mem_param)] = ' ';
@@ -1485,7 +1485,7 @@ OAL_STATIC oal_void hwifi_custom_adapt_device_ini_perf_param(oal_uint8 *puc_data
 
     /* SDIO ASSEMBLE COUNT:H2D */
     uc_sdio_assem_h2d = (oal_uint8)hwifi_get_init_value_etc(CUS_TAG_INI, WLAN_CFG_INIT_SDIO_H2D_ASSEMBLE_COUNT);
-    //ÅÐ¶ÏÖµµÄºÏ·¨ÐÔ
+    //ï¿½Ð¶ï¿½Öµï¿½ÄºÏ·ï¿½ï¿½ï¿½
     if (uc_sdio_assem_h2d >= 1 && uc_sdio_assem_h2d <= HISDIO_HOST2DEV_SCATT_MAX)
     {
         hcc_assemble_count_etc = uc_sdio_assem_h2d;
@@ -1498,7 +1498,7 @@ OAL_STATIC oal_void hwifi_custom_adapt_device_ini_perf_param(oal_uint8 *puc_data
 
     /* SDIO ASSEMBLE COUNT:D2H */
     uc_sdio_assem_d2h = (oal_uint8)hwifi_get_init_value_etc(CUS_TAG_INI, WLAN_CFG_INIT_SDIO_D2H_ASSEMBLE_COUNT);
-    //ÅÐ¶ÏÖµµÄºÏ·¨ÐÔ
+    //ï¿½Ð¶ï¿½Öµï¿½ÄºÏ·ï¿½ï¿½ï¿½
     if(uc_sdio_assem_d2h >= 1 && uc_sdio_assem_d2h <= HISDIO_DEV2HOST_SCATT_MAX)
     {
         st_device_perf.uc_sdio_assem_d2h = uc_sdio_assem_d2h;
@@ -1573,7 +1573,7 @@ OAL_STATIC oal_void hwifi_custom_adapt_device_ini_linkloss_param (oal_uint8 *puc
 
 OAL_STATIC oal_void hwifi_custom_adapt_device_ini_ldac_m2s_rssi_param (oal_uint8 *puc_data, oal_uint32 *pul_data_len)
 {
-    oal_int8 ast_ldac_m2s_rssi_threshold[WLAN_M2S_LDAC_RSSI_BUTT] = {0,0}; /* µ±Ç°m2sºÍs2mÃÅÏÞ£¬ºóÐøÀ©Õ¹ÔÙÌí¼ÓÃ¶¾Ù */
+    oal_int8 ast_ldac_m2s_rssi_threshold[WLAN_M2S_LDAC_RSSI_BUTT] = {0,0}; /* ï¿½ï¿½Ç°m2sï¿½ï¿½s2mï¿½ï¿½ï¿½Þ£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½ */
 
     hmac_to_dmac_cfg_custom_data_stru      st_syn_msg;
 
@@ -1671,7 +1671,7 @@ OAL_STATIC oal_int32 hwifi_custom_adapt_device_priv_ini_radio_cap_param(oal_uint
         return OAL_FAIL;
     }
 
-    /* ÎªÁË²»Ó°Ïìhost device³õÊ¼»¯£¬ÕâÀïÖØÐÂ»ñÈ¡¶¨ÖÆ»¯ÎÄ¼þ¶Áµ½µÄÖµ */
+    /* Îªï¿½Ë²ï¿½Ó°ï¿½ï¿½host deviceï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â»ï¿½È¡ï¿½ï¿½ï¿½Æ»ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ */
     uc_cmd_idx = WLAN_CFG_PRIV_DBDC_RADIO_0;
     for (uc_device_idx = 0; uc_device_idx < WLAN_SERVICE_DEVICE_MAX_NUM_PER_CHIP; uc_device_idx++)
     {
@@ -1804,7 +1804,7 @@ OAL_STATIC oal_int32 hwifi_custom_adapt_priv_ini_param(wlan_cfg_priv_id_uint8 uc
             OAL_IO_PRINT("hwifi_custom_adapt_mac_device_priv_ini_param::1024qam[%d].\r\n", uc_priv_cfg_value);
             break;
         case WLAN_CFG_PRIV_CALI_DATA_MASK:
-            /* ¿ª»úÄ¬ÈÏ´ò¿ªÐ£×¼Êý¾ÝÉÏ´«ÏÂ·¢ */
+            /* ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½Ï´ï¿½Ð£×¼ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½Â·ï¿½ */
             g_uc_wlan_open_cnt++;
 
             if (g_uc_custom_cali_done_etc == OAL_FALSE)
@@ -1828,7 +1828,7 @@ OAL_STATIC oal_int32 hwifi_custom_adapt_priv_ini_param(wlan_cfg_priv_id_uint8 uc
                            g_uc_wlan_open_cnt, uc_priv_cfg_value);
             break;
         case WLAN_CFG_PRIV_CALI_AUTOCALI_MASK:
-            /* ¿ª»úÄ¬ÈÏ²»´ò¿ª¿ª»úÐ£×¼ */
+            /* ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½Ï²ï¿½ï¿½ò¿ª¿ï¿½ï¿½ï¿½Ð£×¼ */
             uc_priv_cfg_value = (g_uc_custom_cali_done_etc == OAL_FALSE) ? OAL_FALSE : uc_priv_cfg_value;
             st_syn_msg.en_syn_id = CUSTOM_CFGID_PRIV_INI_AUTOCALI_MASK_ID;
             OAL_IO_PRINT("hwifi_custom_adapt_mac_device_priv_ini_param::g_uc_custom_cali_done_etc[%d]auto_cali_mask[0x%x].\r\n",
@@ -2048,7 +2048,7 @@ int32 hwifi_custom_adapt_device_ini_param(oal_uint8 *puc_data)
         return INI_FAILED;
     }
 
-    /* ·¢ËÍÏûÏ¢µÄ¸ñÊ½ÈçÏÂ:                                                   */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½Ä¸ï¿½Ê½ï¿½ï¿½ï¿½ï¿½:                                                   */
     /* +-------------------------------------------------------------------+ */
     /* | CFGID0    |DATA0 Length| DATA0 Value | ......................... | */
     /* +-------------------------------------------------------------------+ */
@@ -2056,26 +2056,26 @@ int32 hwifi_custom_adapt_device_ini_param(oal_uint8 *puc_data)
     /* +-------------------------------------------------------------------+ */
 
 #ifdef _PRE_WLAN_FEATURE_AUTO_FREQ
-    /* ×Ô¶¯µ÷Æµ */
+    /* ï¿½Ô¶ï¿½ï¿½ï¿½Æµ */
     hwifi_custom_adapt_device_ini_freq_param(puc_data + ul_data_len, &ul_data_len);
 #endif //  #ifdef _PRE_WLAN_FEATURE_AUTO_FREQ
 
-    /* ÐÔÄÜ */
+    /* ï¿½ï¿½ï¿½ï¿½ */
     hwifi_custom_adapt_device_ini_perf_param(puc_data + ul_data_len, &ul_data_len);
 
     /* linkloss */
     hwifi_custom_adapt_device_ini_linkloss_param(puc_data + ul_data_len, &ul_data_len);
 
-    /* µÍ¹¦ºÄ */
+    /* ï¿½Í¹ï¿½ï¿½ï¿½ */
     hwifi_custom_adapt_device_ini_pm_switch_param(puc_data + ul_data_len, &ul_data_len);
 
-    /* fast ps mode ¼ì²é´ÎÊý*/
+    /* fast ps mode ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
     hwifi_custom_adapt_device_ini_fast_ps_check_cnt(puc_data + ul_data_len, &ul_data_len);
 
-    /* ldac m2s rssiÃÅÏÞ */
+    /* ldac m2s rssiï¿½ï¿½ï¿½ï¿½ */
     hwifi_custom_adapt_device_ini_ldac_m2s_rssi_param(puc_data + ul_data_len, &ul_data_len);
 
-    /* ½áÊø */
+    /* ï¿½ï¿½ï¿½ï¿½ */
     hwifi_custom_adapt_device_ini_end_param(puc_data + ul_data_len, &ul_data_len);
 
     return ul_data_len;
@@ -2092,14 +2092,14 @@ int32 hwifi_custom_adapt_device_priv_ini_param(oal_uint8 *puc_data)
         return INI_FAILED;
     }
 
-    /* ·¢ËÍÏûÏ¢µÄ¸ñÊ½ÈçÏÂ:                                                   */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½Ä¸ï¿½Ê½ï¿½ï¿½ï¿½ï¿½:                                                   */
     /* +-------------------------------------------------------------------+ */
     /* | CFGID0    |DATA0 Length| DATA0 Value | ......................... | */
     /* +-------------------------------------------------------------------+ */
     /* | 4 Bytes   |4 Byte      | DATA  Length| ......................... | */
     /* +-------------------------------------------------------------------+ */
 
-    /* Ë½ÓÐ¶¨ÖÆ»¯ */
+    /* Ë½ï¿½Ð¶ï¿½ï¿½Æ»ï¿½ */
     hwifi_custom_adapt_device_priv_ini_radio_cap_param(puc_data, &ul_data_len);
     hwifi_custom_adapt_priv_ini_param(WLAN_CFG_PRIV_BW_MAX_WITH, puc_data + ul_data_len, &ul_data_len);
     hwifi_custom_adapt_priv_ini_param(WLAN_CFG_PRIV_LDPC_CODING, puc_data + ul_data_len, &ul_data_len);
@@ -2169,15 +2169,15 @@ int32 hwifi_hcc_custom_ini_data_buf(uint16 us_syn_id)
         return OAL_ERR_CODE_ALLOC_MEM_FAIL;
     }
 
-    /*×énetbuf*/
+    /*ï¿½ï¿½netbuf*/
     if (CUSTOM_CFGID_INI_ID == us_syn_id)
     {
-        /* INI hmac to dmac ÅäÖÃÏî*/
+        /* INI hmac to dmac ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
         ul_data_len = hwifi_custom_adapt_device_ini_param((oal_uint8 *)OAL_NETBUF_DATA(pst_netbuf));
     }
     else if (CUSTOM_CFGID_PRIV_INI_ID == us_syn_id)
     {
-        /* Ë½ÓÐ¶¨ÖÆ»¯ÅäÖÃÏî */
+        /* Ë½ï¿½Ð¶ï¿½ï¿½Æ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
         ul_data_len = hwifi_custom_adapt_device_priv_ini_param((oal_uint8 *)OAL_NETBUF_DATA(pst_netbuf));
     }
     else
@@ -2240,11 +2240,11 @@ oal_int32 hwifi_custom_host_read_dyn_cali_nvram(oal_void)
     oal_bool_enum_uint8 en_get_nvram_data_flag = OAL_FALSE;
     oal_uint8     *puc_buffer_cust_nvram_tmp   = OAL_PTR_NULL;
     oal_int32     *pl_params                   = OAL_PTR_NULL;
-    oal_uint8     *puc_cust_nvram_info         = OAL_PTR_NULL;  /* NVRAMÊý×é */
+    oal_uint8     *puc_cust_nvram_info         = OAL_PTR_NULL;  /* NVRAMï¿½ï¿½ï¿½ï¿½ */
     oal_bool_enum_uint8 en_fact_cali_completed = OAL_FALSE;
 
 
-    /* ÅÐ¶Ï¶¨ÖÆ»¯ÖÐÊÇ·ñÊ¹ÓÃnvramÖÐµÄ¶¯Ì¬Ð£×¼²ÎÊý */
+    /* ï¿½Ð¶Ï¶ï¿½ï¿½Æ»ï¿½ï¿½ï¿½ï¿½Ç·ï¿½Ê¹ï¿½ï¿½nvramï¿½ÐµÄ¶ï¿½Ì¬Ð£×¼ï¿½ï¿½ï¿½ï¿½ */
     l_ret = hwifi_get_init_priv_value(WLAN_CFG_PRIV_CALI_DATA_MASK, &l_priv_value);
     if (OAL_SUCC == l_ret)
     {
@@ -2309,7 +2309,7 @@ oal_int32 hwifi_custom_host_read_dyn_cali_nvram(oal_void)
             break;
         }
 
-        /* »ñÈ¡µÈºÅºóÃæµÄÊµ¼Ê²ÎÊý */
+        /* ï¿½ï¿½È¡ï¿½ÈºÅºï¿½ï¿½ï¿½ï¿½Êµï¿½Ê²ï¿½ï¿½ï¿½ */
         puc_str += (OAL_STRLEN(g_ast_wifi_nvram_cfg_handler[uc_idx].puc_param_name) + 1);
         pc_token = oal_strtok(puc_str, pc_end, &pc_ctx);
         if (OAL_PTR_NULL == pc_token)
@@ -2325,7 +2325,7 @@ oal_int32 hwifi_custom_host_read_dyn_cali_nvram(oal_void)
 
         pc_token = oal_strtok(pc_token, pc_sep, &pc_ctx);
 
-        /* ²ú²âÏµÊýºÏÀíÐÔ¼ì²é */
+        /* ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ */
         while (OAL_PTR_NULL != pc_token)
         {
             OAL_IO_PRINT( "hwifi_custom_host_read_dyn_cali_nvram::get [%s]\n!", pc_token);
@@ -2345,9 +2345,9 @@ oal_int32 hwifi_custom_host_read_dyn_cali_nvram(oal_void)
 
     if (l_ret != INI_SUCC)
     {
-        /* nvramÖÐ¶ÁÈ¡DPinitÒì³£ */
+        /* nvramï¿½Ð¶ï¿½È¡DPinitï¿½ì³£ */
         OAL_MEMZERO(puc_cust_nvram_info, WLAN_CFG_DTS_NVRAM_END * CUS_PARAMS_LEN_MAX * OAL_SIZEOF(oal_uint8));
-        /* ¸üÐÂ±êÖ¾Î»¸ø²úÏß¶ÁÈ¡ */
+        /* ï¿½ï¿½ï¿½Â±ï¿½Ö¾Î»ï¿½ï¿½ï¿½ï¿½ï¿½ß¶ï¿½È¡ */
         g_en_nv_dp_init_is_null = OAL_TRUE;
     }
     else
@@ -2356,7 +2356,7 @@ oal_int32 hwifi_custom_host_read_dyn_cali_nvram(oal_void)
     }
 #endif //#ifdef _PRE_WLAN_DPINIT_CALI
 
-    /* ÄâºÏÏµÊý */
+    /* ï¿½ï¿½ï¿½Ïµï¿½ï¿½ */
     for (uc_idx = WLAN_CFG_DTS_NVRAM_RATIO_PA2GCCKA0; uc_idx < WLAN_CFG_DTS_NVRAM_END; uc_idx++)
     {
         l_ret = read_conf_from_nvram_etc(puc_buffer_cust_nvram_tmp, CUS_PARAMS_LEN_MAX,
@@ -2383,7 +2383,7 @@ oal_int32 hwifi_custom_host_read_dyn_cali_nvram(oal_void)
             continue;
         }
 
-        /* »ñÈ¡µÈºÅºóÃæµÄÊµ¼Ê²ÎÊý */
+        /* ï¿½ï¿½È¡ï¿½ÈºÅºï¿½ï¿½ï¿½ï¿½Êµï¿½Ê²ï¿½ï¿½ï¿½ */
         puc_str += (OAL_STRLEN(g_ast_wifi_nvram_cfg_handler[uc_idx].puc_param_name) + 1);
         pc_token = oal_strtok(puc_str, pc_end, &pc_ctx);
         if (OAL_PTR_NULL == pc_token)
@@ -2399,13 +2399,13 @@ oal_int32 hwifi_custom_host_read_dyn_cali_nvram(oal_void)
         *(puc_cust_nvram_info + (uc_idx * CUS_PARAMS_LEN_MAX * OAL_SIZEOF(oal_uint8)) + OAL_STRLEN(pc_token)) = *pc_end;
 
 
-        /* ÄâºÏÏµÊý»ñÈ¡¼ì²é */
+        /* ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ */
         if (uc_idx <= WLAN_CFG_DTS_NVRAM_RATIO_PA5GA1_LOW)
         {
-            /* ¶þ´Î²ÎÊýºÏÀíÐÔ¼ì²é */
+            /* ï¿½ï¿½ï¿½Î²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ */
             pc_token = oal_strtok(pc_token, pc_sep, &pc_ctx);
             uc_param_idx = 0;
-            /* »ñÈ¡¶¨ÖÆ»¯ÏµÊý */
+            /* ï¿½ï¿½È¡ï¿½ï¿½ï¿½Æ»ï¿½Ïµï¿½ï¿½ */
             while (OAL_PTR_NULL != pc_token)
             {
                 OAL_IO_PRINT( "hwifi_custom_host_read_dyn_cali_nvram::get [%s]\n!", pc_token);
@@ -2421,7 +2421,7 @@ oal_int32 hwifi_custom_host_read_dyn_cali_nvram(oal_void)
                 continue;
             }
             uc_times_idx = uc_param_idx / DY_CALI_PARAMS_TIMES;
-            /* ¶þ´ÎÏîÏµÊý·Ç0¼ì²é */
+            /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½0ï¿½ï¿½ï¿½ */
             while (uc_times_idx--)
             {
                 if (0 == pl_params[(uc_times_idx)*DY_CALI_PARAMS_TIMES])
@@ -2445,7 +2445,7 @@ oal_int32 hwifi_custom_host_read_dyn_cali_nvram(oal_void)
     OS_MEM_KFREE(puc_buffer_cust_nvram_tmp);
     OS_MEM_KFREE(pl_params);
 
-    /*¼ì²éNVRAMÊÇ·ñÐÞ¸Ä */
+    /*ï¿½ï¿½ï¿½NVRAMï¿½Ç·ï¿½ï¿½Þ¸ï¿½ */
     if (0 == oal_memcmp(puc_cust_nvram_info, g_auc_cust_nvram_info, OAL_SIZEOF(g_auc_cust_nvram_info)))
     {
         OS_MEM_KFREE(puc_cust_nvram_info);
@@ -2470,12 +2470,12 @@ int32 hwifi_custom_host_read_cfg_init(void)
     oal_int32      l_nv_read_ret;
     oal_int32      l_ini_read_ret;
 
-    /* ÏÈ»ñÈ¡Ë½ÓÐ¶¨ÖÆ»¯Ïî */
+    /* ï¿½È»ï¿½È¡Ë½ï¿½Ð¶ï¿½ï¿½Æ»ï¿½ï¿½ï¿½ */
     hwifi_config_init_etc(CUS_TAG_PRIV_INI);
 
-    /* ¶ÁÈ¡nvram²ÎÊýÊÇ·ñÐÞ¸Ä */
+    /* ï¿½ï¿½È¡nvramï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½Þ¸ï¿½ */
     l_nv_read_ret  = hwifi_custom_host_read_dyn_cali_nvram();
-    /* ¼ì²é¶¨ÖÆ»¯ÎÄ¼þÖÐµÄ²úÏßÅäÖÃÊÇ·ñÐÞ¸Ä */
+    /* ï¿½ï¿½é¶¨ï¿½Æ»ï¿½ï¿½Ä¼ï¿½ï¿½ÐµÄ²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½Þ¸ï¿½ */
     l_ini_read_ret =  ini_file_check_conf_update();
     if (l_ini_read_ret ||  l_nv_read_ret)
     {
@@ -2498,7 +2498,7 @@ int32 hwifi_custom_host_read_cfg_init(void)
 
     hwifi_config_init_etc(CUS_TAG_INI);
 
-    /*Æô¶¯Íê³Éºó£¬Êä³ö´òÓ¡*/
+    /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Éºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¡*/
     OAL_IO_PRINT("hwifi_custom_host_read_cfg_init finish!\r\n");
 
     return OAL_SUCC;
@@ -2509,14 +2509,14 @@ int32 hwifi_hcc_customize_h2d_data_cfg(void)
 {
     oal_int32                              l_ret;
 
-    /* wifiÉÏµçÊ±ÖØ¶Á¶¨ÖÆ»¯ÅäÖÃ */
+    /* wifiï¿½Ïµï¿½Ê±ï¿½Ø¶ï¿½ï¿½ï¿½ï¿½Æ»ï¿½ï¿½ï¿½ï¿½ï¿½ */
     l_ret = hwifi_custom_host_read_cfg_init();
     if (OAL_SUCC != l_ret)
     {
         OAM_WARNING_LOG1(0, OAM_SF_CFG, "hwifi_hcc_customize_h2d_data_cfg data ret[%d]", l_ret);
     }
 
-    //Èç¹û²»³É¹¦£¬·µ»ØÊ§°Ü
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½
     l_ret = hwifi_hcc_custom_ini_data_buf(CUSTOM_CFGID_PRIV_INI_ID);
     if (OAL_UNLIKELY(OAL_SUCC != l_ret))
     {
@@ -2539,15 +2539,15 @@ OAL_STATIC oal_void hwifi_config_fcc_ce_5g_high_band_txpwr_nvram(regdomain_enum 
     oal_uint8     uc_5g_max_pwr_for_high_band;
     oal_int32     l_val = g_al_nvram_init_params[NVRAM_PARAMS_5G_FCC_CE_HIGH_BAND_MAX_PWR];
 
-    /* FCC/CE 5G ¸ßbandµÄ×î´ó·¢Éä¹¦ÂÊ */
+    /* FCC/CE 5G ï¿½ï¿½bandï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ä¹¦ï¿½ï¿½ */
     if(INI_SUCC != get_cust_conf_int32_etc(INI_MODU_WIFI, g_ast_nvram_config_ini[NVRAM_PARAMS_5G_FCC_CE_HIGH_BAND_MAX_PWR].name, &l_val))
     {
-        /* ¶ÁÈ¡Ê§°ÜÊ±,Ê¹ÓÃ³õÊ¼Öµ */
+        /* ï¿½ï¿½È¡Ê§ï¿½ï¿½Ê±,Ê¹ï¿½Ã³ï¿½Ê¼Öµ */
         l_val = g_al_nvram_init_params[NVRAM_PARAMS_5G_FCC_CE_HIGH_BAND_MAX_PWR];
     }
 
     uc_5g_max_pwr_for_high_band = (oal_uint8)((REGDOMAIN_ETSI == regdomain_type) ? CUS_GET_LOW_16BIT(l_val) : CUS_GET_HIGH_16BIT(l_val));
-    /* ²ÎÊýÓÐÐ§ÐÔ¼ì²é */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½Ô¼ï¿½ï¿½ */
     if (CUS_VAL_INVALID(uc_5g_max_pwr_for_high_band, CUS_MAX_BASE_TXPOWER_VAL, CUS_MIN_BASE_TXPOWER_VAL))
     {
         OAM_WARNING_LOG1(0, OAM_SF_CFG, "hwifi_config_init_nvram read 5g_max_pow_high_band[%d] failed!", l_val);
@@ -2570,9 +2570,9 @@ OAL_STATIC int32 hwifi_config_init_fcc_ce_txpwr_nvram(void)
     oal_uint8 uc_start_idx = 0;
     oal_uint8 uc_end_idx = 0;
 
-    /* »ñÈ¡¹ÜÖÆÓòÐÅÏ¢ */
+    /* ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ */
     regdomain_type = hwifi_get_regdomain_from_country_code((oal_uint8 *)g_ac_country_code_etc);
-    /* ¸ù¾Ý¹ÜÖÆÓòÐÅÏ¢Ñ¡ÔñÏÂ·¢FCC»¹ÊÇCE²ÎÊý */
+    /* ï¿½ï¿½ï¿½Ý¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢Ñ¡ï¿½ï¿½ï¿½Â·ï¿½FCCï¿½ï¿½ï¿½ï¿½CEï¿½ï¿½ï¿½ï¿½ */
     hwifi_config_fcc_ce_5g_high_band_txpwr_nvram(regdomain_type);
     if (REGDOMAIN_ETSI == regdomain_type)
     {
@@ -2603,7 +2603,7 @@ OAL_STATIC int32 hwifi_config_init_fcc_ce_txpwr_nvram(void)
         if(INI_SUCC != l_ret)
         {
             OAM_WARNING_LOG1(0, OAM_SF_CFG, "hwifi_config_init_nvram read id[%d] from ini failed!", uc_cfg_id);
-            /* ¶ÁÈ¡Ê§°ÜÊ±,Ê¹ÓÃ³õÊ¼Öµ */
+            /* ï¿½ï¿½È¡Ê§ï¿½ï¿½Ê±,Ê¹ï¿½Ã³ï¿½Ê¼Öµ */
             pl_nvram_params[uc_param_idx] = g_al_nvram_init_params[uc_cfg_id];
         }
         uc_param_idx++;
@@ -2655,14 +2655,14 @@ OAL_STATIC oal_int32 hwifi_config_init_sar_ctrl_nvram(void)
             if(INI_SUCC != l_ret)
             {
                 OAM_WARNING_LOG1(0, OAM_SF_CFG, "hwifi_config_init_sar_ctrl_nvram read id[%d] from ini failed!", uc_cus_id);
-                /* ¶ÁÈ¡Ê§°ÜÊ±,Ê¹ÓÃ³õÊ¼Öµ */
+                /* ï¿½ï¿½È¡Ê§ï¿½ï¿½Ê±,Ê¹ï¿½Ã³ï¿½Ê¼Öµ */
                 ul_nvram_params = 0xFFFFFFFF;
             }
 
             oal_memcopy(auc_nvram_params, &ul_nvram_params, OAL_SIZEOF(ul_nvram_params));
             for (uc_sar_lvl_idx = 0; uc_sar_lvl_idx < CUS_NUM_OF_SAR_ONE_PARAM_NUM; uc_sar_lvl_idx++)
             {
-                /* ¶¨ÖÆÏî¼ì²é */
+                /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
                 if (auc_nvram_params[uc_sar_lvl_idx] <= CUS_MIN_OF_SAR_VAL)
                 {
                     OAM_ERROR_LOG4(0, OAM_SF_CUSTOM, "hwifi_config_init_sar_ctrl_nvram::uc_cfg_id[%d]:0x%x got[%d] out of the normal[%d] check ini file!",
@@ -2701,7 +2701,7 @@ OAL_STATIC oal_int32 hwifi_config_init_tas_ctrl_nvram(oal_void)
     if(INI_SUCC != l_ret)
     {
         OAM_WARNING_LOG1(0, OAM_SF_CUSTOM, "hwifi_config_init_tas_ctrl_nvram read id[%d] from ini failed!", NVRAM_PARAMS_TAS_PWR_CTRL);
-        /* ¶ÁÈ¡Ê§°ÜÊ±,Ê¹ÓÃ³õÊ¼Öµ */
+        /* ï¿½ï¿½È¡Ê§ï¿½ï¿½Ê±,Ê¹ï¿½Ã³ï¿½Ê¼Öµ */
         ul_nvram_params = g_al_nvram_init_params[NVRAM_PARAMS_TAS_PWR_CTRL];
     }
 
@@ -2744,7 +2744,7 @@ OAL_STATIC oal_uint32 hwifi_config_sepa_coefficient_from_param(oal_uint8 *puc_cu
         return OAL_ERR_CODE_PTR_NULL;
     }
     pc_token = oal_strtok(pc_token, pc_sep, &pc_ctx);
-    /* »ñÈ¡¶¨ÖÆ»¯ÏµÊý */
+    /* ï¿½ï¿½È¡ï¿½ï¿½ï¿½Æ»ï¿½Ïµï¿½ï¿½ */
     while (pc_token)
     {
         if (us_param_num == us_max_idx)
@@ -2787,7 +2787,7 @@ oal_void hwifi_get_max_txpwr_base(oal_int32 l_plat_tag, oal_uint8 uc_nvram_base_
             if ((OAL_SUCC == hwifi_config_sepa_coefficient_from_param(puc_base_pwr_params, l_nv_params, &us_per_param_num, uc_param_num)) &&
                 (us_per_param_num == uc_param_num))
             {
-                /* ²ÎÊýºÏÀíÐÔ¼ì²é */
+                /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ */
                 for (uc_param_idx = 0; uc_param_idx < uc_param_num; uc_param_idx++)
                 {
                     if ((l_nv_params[uc_param_idx] < CUS_MIN_BASE_TXPOWER_VAL) || (l_nv_params[uc_param_idx] > CUS_MAX_BASE_TXPOWER_VAL))
@@ -2814,7 +2814,7 @@ oal_void hwifi_get_max_txpwr_base(oal_int32 l_plat_tag, oal_uint8 uc_nvram_base_
 
     if (INI_SUCC != l_ret)
     {
-        /* Ê§°ÜÄ¬ÈÏÊ¹ÓÃ³õÊ¼Öµ */
+        /* Ê§ï¿½ï¿½Ä¬ï¿½ï¿½Ê¹ï¿½Ã³ï¿½Ê¼Öµ */
         for (uc_param_idx = 0; uc_param_idx < uc_param_num; uc_param_idx++)
         {
             *(puc_txpwr_base_params + uc_param_idx) = CUS_MAX_BASE_TXPOWER_VAL;
@@ -2847,7 +2847,7 @@ OAL_STATIC int32 hwifi_config_init_nvram(void)
         {
             OAM_WARNING_LOG1(0, OAM_SF_CFG, "hwifi_config_init_nvram read id[%d] from ini failed!", l_cfg_id);
 
-            /* ¶ÁÈ¡Ê§°ÜÊ±,Ê¹ÓÃ³õÊ¼Öµ */
+            /* ï¿½ï¿½È¡Ê§ï¿½ï¿½Ê±,Ê¹ï¿½Ã³ï¿½Ê¼Öµ */
             al_nvram_params[l_cfg_id] = g_al_nvram_init_params[l_cfg_id];
         }
     }
@@ -2879,7 +2879,7 @@ OAL_STATIC int32 hwifi_config_init_nvram(void)
         }
     }
 
-    /* »ù×¼¹¦ÂÊ */
+    /* ï¿½ï¿½×¼ï¿½ï¿½ï¿½ï¿½ */
     hwifi_get_max_txpwr_base(INI_MODU_WIFI, NVRAM_PARAMS_INDEX_19, g_st_cust_nv_params.auc_2g_txpwr_base_params[WLAN_RF_CHANNEL_ZERO], CUS_BASE_PWR_NUM_2G);
     hwifi_get_max_txpwr_base(INI_MODU_WIFI, NVRAM_PARAMS_INDEX_20, g_st_cust_nv_params.auc_5g_txpwr_base_params[WLAN_RF_CHANNEL_ZERO], CUS_BASE_PWR_NUM_5G);
 #if (_PRE_PRODUCT_ID == _PRE_PRODUCT_ID_HI1103_HOST)
@@ -2908,7 +2908,7 @@ OAL_STATIC int32 hwifi_config_init_private_custom(void)
 
     for(l_cfg_id = 0; l_cfg_id < WLAN_CFG_PRIV_BUTT; l_cfg_id++)
     {
-        /* »ñÈ¡ private µÄÅäÖÃÖµ */
+        /* ï¿½ï¿½È¡ private ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ */
         l_ret = get_cust_conf_int32_etc(INI_MODU_WIFI, g_ast_wifi_config_priv[l_cfg_id].name, &(g_al_priv_cust_params[l_cfg_id].l_val));
 
         if (INI_FAILED == l_ret)
@@ -2951,7 +2951,7 @@ OAL_STATIC oal_void hwifi_config_get_5g_curv_switch_point(oal_uint8 *puc_ini_pa_
         return;
     }
 
-    /* »ñÈ¡ÄâºÏÏµÊýÏî */
+    /* ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½ */
     if (OAL_SUCC != hwifi_config_sepa_coefficient_from_param(puc_ini_pa_params, l_ini_params, &us_ini_param_num, OAL_SIZEOF(l_ini_params)/OAL_SIZEOF(oal_int32)) ||
         (us_ini_param_num % DY_CALI_PARAMS_TIMES))
     {
@@ -2979,7 +2979,7 @@ OAL_STATIC oal_void hwifi_config_get_5g_curv_switch_point(oal_uint8 *puc_ini_pa_
         }
     }
 
-    /* ¼ÆËã5gÇúÏßswitch point */
+    /* ï¿½ï¿½ï¿½ï¿½5gï¿½ï¿½ï¿½ï¿½switch point */
     for (uc_param_idx = 0; uc_param_idx < us_ini_param_num; uc_param_idx++)
     {
         *(ps_extre_point_val + uc_param_idx) = (oal_int16)HWIFI_DYN_CALI_GET_EXTRE_POINT(l_ini_params+uc_secon_ratio_idx);
@@ -3004,10 +3004,10 @@ OAL_STATIC oal_uint32 hwifi_config_nvram_second_coefficient_check(oal_uint8 *puc
     oal_uint8        uc_secon_ratio_idx = 0;
     oal_uint8        uc_param_idx;
 
-    /* »ñÈ¡ÄâºÏÏµÊýÏî */
-    if (OAL_SUCC != hwifi_config_sepa_coefficient_from_param(puc_cust_nvram_info, l_nv_params, &us_nv_param_num, OAL_SIZEOF(l_nv_params)/OAL_SIZEOF(oal_int16)) ||
+    /* ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½ */
+    if (OAL_SUCC != hwifi_config_sepa_coefficient_from_param(puc_cust_nvram_info, l_nv_params, &us_nv_param_num, OAL_SIZEOF(l_nv_params)/(OAL_SIZEOF(oal_int16))) ||
         (us_nv_param_num % DY_CALI_PARAMS_TIMES) ||
-         OAL_SUCC != hwifi_config_sepa_coefficient_from_param(puc_ini_pa_params, l_ini_params, &us_ini_param_num, OAL_SIZEOF(l_ini_params)/OAL_SIZEOF(oal_int16)) ||
+         OAL_SUCC != hwifi_config_sepa_coefficient_from_param(puc_ini_pa_params, l_ini_params, &us_ini_param_num, OAL_SIZEOF(l_ini_params)/(OAL_SIZEOF(oal_int16))) ||
         (us_ini_param_num % DY_CALI_PARAMS_TIMES) ||
         (us_nv_param_num != us_ini_param_num))
     {
@@ -3017,7 +3017,7 @@ OAL_STATIC oal_uint32 hwifi_config_nvram_second_coefficient_check(oal_uint8 *puc
     }
 
     us_nv_param_num /= DY_CALI_PARAMS_TIMES;
-    /* ¼ì²énvºÍiniÖÐ¶þ´ÎÏµÊýÊÇ·ñÆ¥Åä */
+    /* ï¿½ï¿½ï¿½nvï¿½ï¿½iniï¿½Ð¶ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½Ç·ï¿½Æ¥ï¿½ï¿½ */
     for (uc_param_idx = 0; uc_param_idx < us_nv_param_num; uc_param_idx++)
     {
         if (l_ini_params[uc_secon_ratio_idx] != l_nv_params[uc_secon_ratio_idx])
@@ -3025,7 +3025,7 @@ OAL_STATIC oal_uint32 hwifi_config_nvram_second_coefficient_check(oal_uint8 *puc
             OAM_WARNING_LOG4(0, OAM_SF_CUSTOM, "hwifi_config_nvram_second_coefficient_check::nvram get mismatch value idx[%d %d] val are [%d] and [%d]!",
                            uc_param_idx, uc_secon_ratio_idx, l_ini_params[uc_secon_ratio_idx], l_nv_params[uc_secon_ratio_idx]);
 
-            /* Á¿²úºó¶þ´ÎÏµÊýÒÔnvramÖÐÎª×¼£¬Ë¢ÐÂNVÖÐµÄ¶þ´ÎÄâºÏÇúÏßÇÐ»»µã */
+            /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½nvramï¿½ï¿½Îª×¼ï¿½ï¿½Ë¢ï¿½ï¿½NVï¿½ÐµÄ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½ */
             hwifi_config_get_5g_curv_switch_point(puc_cust_nvram_info, ul_cfg_id);
             uc_secon_ratio_idx += DY_CALI_PARAMS_TIMES;
             continue;
@@ -3033,7 +3033,7 @@ OAL_STATIC oal_uint32 hwifi_config_nvram_second_coefficient_check(oal_uint8 *puc
 
         if ((WLAN_CFG_DTS_NVRAM_RATIO_PA5GA0 == ul_cfg_id) || (WLAN_CFG_DTS_NVRAM_RATIO_PA5GA1 == ul_cfg_id))
         {
-            /* ¼ÆËã²úÏßÉÏµÄdelt power */
+            /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½delt power */
             *(ps_5g_delt_power + uc_param_idx) = HWIFI_GET_5G_PRO_LINE_DELT_POW_PER_BAND(l_nv_params+uc_secon_ratio_idx, l_ini_params+uc_secon_ratio_idx);
             OAL_IO_PRINT("hwifi_config_nvram_second_coefficient_check::delt power[%d] param_idx[%d] cfg_id[%d]!\r\n",
                           *(ps_5g_delt_power + uc_param_idx), uc_param_idx, ul_cfg_id);
@@ -3082,7 +3082,7 @@ OAL_STATIC oal_uint32 hwifi_config_init_dy_cali_custom(oal_void)
 
     for (ul_cfg_id = WLAN_CFG_DTS_NVRAM_RATIO_PA2GCCKA0; ul_cfg_id < WLAN_CFG_DTS_NVRAM_PARAMS_BUTT; ul_cfg_id++)
     {
-        /* ¶þ´ÎÄâºÏÏµÊý */
+        /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ */
         if ((ul_cfg_id >= WLAN_CFG_DTS_NVRAM_MUFREQ_2GCCK_C0) && (ul_cfg_id < WLAN_CFG_DTS_NVRAM_END))
         {
             /* DPN */
@@ -3108,20 +3108,20 @@ OAL_STATIC oal_uint32 hwifi_config_init_dy_cali_custom(oal_void)
             }
         }
 
-        /* »ñÈ¡iniÖÐµÄ¶þ´ÎÄâºÏÇúÏßÇÐ»»µã */
+        /* ï¿½ï¿½È¡iniï¿½ÐµÄ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½ */
         hwifi_config_get_5g_curv_switch_point(puc_nv_pa_params, ul_cfg_id);
 
         if (WLAN_CFG_DTS_NVRAM_RATIO_PA5GA1_LOW >= ul_cfg_id)
         {
             puc_cust_nvram_info = hwifi_get_nvram_param(ul_cfg_id);
-            /* ÏÈÈ¡nvÖÐµÄ²ÎÊýÖµ,Îª¿ÕÔò´ÓiniÎÄ¼þÖÐ¶ÁÈ¡ */
+            /* ï¿½ï¿½È¡nvï¿½ÐµÄ²ï¿½ï¿½ï¿½Öµ,Îªï¿½ï¿½ï¿½ï¿½ï¿½iniï¿½Ä¼ï¿½ï¿½Ð¶ï¿½È¡ */
             if (OAL_STRLEN(puc_cust_nvram_info))
             {
-                /* NVRAM¶þ´ÎÏµÊýÒì³£±£»¤ */
+                /* NVRAMï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ì³£ï¿½ï¿½ï¿½ï¿½ */
                 if (OAL_SUCC == hwifi_config_nvram_second_coefficient_check(puc_cust_nvram_info, puc_nv_pa_params, ul_cfg_id,
                                                                             s_5g_delt_power[ul_cfg_id < WLAN_CFG_DTS_NVRAM_RATIO_PA2GCCKA1 ? WLAN_RF_CHANNEL_ZERO: WLAN_RF_CHANNEL_ONE]))
                 {
-                    /* ÊÖ»úÈç¹ûlow partÎª¿Õ,ÔòÈ¡iniÖÐµÄÏµÊý,²¢¸ù¾Ý²ú²â½á¹ûÐÞÕý;·ñÔòÖ±½Ó´ÓnvramÖÐÈ¡µÃ */
+                    /* ï¿½Ö»ï¿½ï¿½ï¿½ï¿½low partÎªï¿½ï¿½,ï¿½ï¿½È¡iniï¿½Ðµï¿½Ïµï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½Ý²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½;ï¿½ï¿½ï¿½ï¿½Ö±ï¿½Ó´ï¿½nvramï¿½ï¿½È¡ï¿½ï¿½ */
                     if ((WLAN_CFG_DTS_NVRAM_RATIO_PA5GA0_LOW == ul_cfg_id) && (oal_memcmp(puc_cust_nvram_info, puc_nv_pa_params, OAL_STRLEN(puc_cust_nvram_info))))
                     {
                         OAL_MEMZERO(s_5g_delt_power[WLAN_RF_CHANNEL_ZERO], CUS_NUM_5G_BW*OAL_SIZEOF(oal_int16));
@@ -3141,7 +3141,7 @@ OAL_STATIC oal_uint32 hwifi_config_init_dy_cali_custom(oal_void)
             }
             else
             {
-                /* Ìá¹©²úÏßµÚÒ»´ÎÉÏµçÐ£×¼³õÊ¼Öµ */
+                /* ï¿½á¹©ï¿½ï¿½ï¿½ßµï¿½Ò»ï¿½ï¿½ï¿½Ïµï¿½Ð£×¼ï¿½ï¿½Ê¼Öµ */
                 oal_memcopy(puc_cust_nvram_info, puc_nv_pa_params, OAL_STRLEN(puc_nv_pa_params));
             }
         }
@@ -3161,7 +3161,7 @@ OAL_STATIC oal_uint32 hwifi_config_init_dy_cali_custom(oal_void)
 
     if (OAL_FAIL == ul_ret)
     {
-        /* ÖÃÁã·ÀÖ¹ÏÂ·¢µ½device */
+        /* ï¿½ï¿½ï¿½ï¿½ï¿½Ö¹ï¿½Â·ï¿½ï¿½ï¿½device */
         OAL_MEMZERO(g_ast_pro_line_params, OAL_SIZEOF(g_ast_pro_line_params));
     }
     else
@@ -3222,7 +3222,7 @@ OAL_STATIC oal_uint32 hwifi_config_init_dy_cali_custom(oal_void)
         for (uc_rf_idx = 0; uc_rf_idx < WLAN_RF_CHANNEL_NUMS; uc_rf_idx++)
         {
             /* 5g band1 low power */
-            /* band1²úÏß²»Ð£×¼ */
+            /* band1ï¿½ï¿½ï¿½ß²ï¿½Ð£×¼ */
             g_ast_pro_line_params[uc_rf_idx][DY_CALI_PARAMS_BASE_NUM].l_pow_par2 = pl_params[uc_idx++];
             g_ast_pro_line_params[uc_rf_idx][DY_CALI_PARAMS_BASE_NUM].l_pow_par1 = pl_params[uc_idx++];
             g_ast_pro_line_params[uc_rf_idx][DY_CALI_PARAMS_BASE_NUM].l_pow_par0 = pl_params[uc_idx++];
@@ -3280,7 +3280,7 @@ int32 hwifi_config_init_etc(int32 cus_tag)
 
     for(l_cfg_id = 0; l_cfg_id < l_wlan_cfg_butt; l_cfg_id++)
     {
-        /* »ñÈ¡iniµÄÅäÖÃÖµ */
+        /* ï¿½ï¿½È¡iniï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ */
         l_ret = get_cust_conf_int32_etc(INI_MODU_WIFI, pgast_wifi_config[l_cfg_id].name, &l_cfg_value);
 
         if (INI_FAILED == l_ret)
@@ -3450,7 +3450,7 @@ int8 *hwifi_get_country_code_etc(void)
         return g_ac_country_code_etc;
     }
 
-    /* »ñÈ¡cust¹ú¼ÒÂë */
+    /* ï¿½ï¿½È¡custï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     l_ret = get_cust_conf_string_etc(INI_MODU_WIFI, STR_COUNTRY_CODE, g_ac_country_code_etc, sizeof(g_ac_country_code_etc)-1);
 
     if(INI_FAILED == l_ret)
@@ -3496,7 +3496,7 @@ int hwifi_get_cfg_params(void)
 {
     int32                  l_cfg_idx_one = 0;
     int32                  l_cfg_idx_two = 0;
-    wlan_cust_nvram_params *pst_cust_nv_params = hwifi_get_nvram_params_etc();  /* ×î´ó·¢ËÍ¹¦ÂÊ¶¨ÖÆ»¯Êý×é */
+    wlan_cust_nvram_params *pst_cust_nv_params = hwifi_get_nvram_params_etc();  /* ï¿½ï¿½ï¿½ï¿½Í¹ï¿½ï¿½Ê¶ï¿½ï¿½Æ»ï¿½ï¿½ï¿½ï¿½ï¿½ */
 
     OAL_IO_PRINT("\nhwifi_get_cfg_params\n");
 
