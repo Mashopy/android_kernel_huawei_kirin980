@@ -39,7 +39,7 @@
 
 typedef struct _tag_hwdriveric hwdriveric_t;
 
-typedef struct _tag_hwdriveric
+struct _tag_hwdriveric
 {
     struct v4l2_subdev                          subdev;
     struct platform_device*                     pdev;
@@ -47,7 +47,7 @@ typedef struct _tag_hwdriveric
     const hwdriveric_intf_t*                    hw;
     hwcam_data_table_t*                         cfg;
     hwdriveric_notify_intf_t                    notify;
-} hwdriveric_t;
+};
 
 #define SD2HWDRIVERIC(sd) container_of(sd, hwdriveric_t, subdev)
 #define INTF2DRIVERIC(i) container_of(i, driveric_t, intf)

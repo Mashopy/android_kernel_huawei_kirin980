@@ -31,9 +31,9 @@ typedef struct _tag_hjpeg_vtbl {
     int (*set_reg) (hjpeg_intf_t *i, void* cfg);
 }hjpeg_vtbl_t;
 
-typedef struct _tag_hjpeg_intf {
+struct _tag_hjpeg_intf {
     hjpeg_vtbl_t *vtbl;
-} hjpeg_intf_t;
+};
 
 extern int
 hjpeg_register(

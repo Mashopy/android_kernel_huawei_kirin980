@@ -31,20 +31,20 @@
 typedef struct _tag_hwdot_notify_vtbl hwdot_notify_vtbl_t;
 typedef struct _tag_hwdot_notify_intf hwdot_notify_intf_t;
 
-typedef struct _tag_hwdot_notify_vtbl
+struct _tag_hwdot_notify_vtbl
 {
     void (*error)(hwdot_notify_intf_t* i, hwdot_event_t* dot_ev);
-} hwdot_notify_vtbl_t;
+};
 
-typedef struct _tag_hwdot_notify_intf
+struct _tag_hwdot_notify_intf
 {
     hwdot_notify_vtbl_t*                        vtbl;
-} hwdot_notify_intf_t;
+};
 
 typedef struct _tag_hwdot_vtbl hwdot_vtbl_t;
 typedef struct _tag_hwdot_intf hwdot_intf_t;
 
-typedef struct _tag_hwdot_vtbl
+struct _tag_hwdot_vtbl
 {
     char const* (*get_name)(const hwdot_intf_t *i);
     int (*power_on)(const hwdot_intf_t *i);
@@ -53,12 +53,12 @@ typedef struct _tag_hwdot_vtbl
     int (*dot_register_attribute)(const hwdot_intf_t *, struct device *);
     int (*init)(const hwdot_intf_t *i);
     int (*get_thermal)(const hwdot_intf_t *i,void*);
-} hwdot_vtbl_t;
+};
 
-typedef struct _tag_hwdot_intf
+struct _tag_hwdot_intf
 {
     hwdot_vtbl_t*                            vtbl;
-} hwdot_intf_t;
+};
 
 typedef struct _tag_dot
 {

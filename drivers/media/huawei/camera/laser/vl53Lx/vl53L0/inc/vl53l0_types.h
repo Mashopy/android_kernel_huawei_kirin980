@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright © 2016, STMicroelectronics International N.V.
+ * Copyright ï¿½ 2016, STMicroelectronics International N.V.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -30,16 +30,12 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define VL53L0_TYPES_H_
 
 #include <linux/types.h>
+#include <media/huawei/laser_cfg.h>
 
 #ifndef NULL
 #error "TODO review  NULL definition or add required include "
 #define NULL 0
 #endif
-/** use where fractional values are expected
- *
- * Given a floating point value f it's .16 bit point is (int)(f*(1<<16))
- */
-typedef unsigned int FixPoint1616_t;
 
 #if !defined(STDINT_H) &&  !defined(_GCC_STDINT_H) \
 	&& !defined(_STDINT_H) && !defined(_LINUX_TYPES_H)

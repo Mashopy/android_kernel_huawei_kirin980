@@ -65,7 +65,7 @@ typedef struct _hisp_dt_data {
 	struct pinctrl_state *pinctrl_idle;
 } hisp_dt_data_t;
 
-typedef struct _tag_hisp_vtbl {
+struct _tag_hisp_vtbl {
 	char const *(*get_name) (hisp_intf_t *i);
 	int (*config) (hisp_intf_t *i, void *cfg);
 	int (*power_on) (hisp_intf_t *i);
@@ -74,19 +74,19 @@ typedef struct _tag_hisp_vtbl {
 	int (*recv_rpmsg) (hisp_intf_t *i, hisp_msg_t *m, size_t len);
 	int (*open) (hisp_intf_t *i);
 	int (*close) (hisp_intf_t *i);
-} hisp_vtbl_t;
+};
 
-typedef struct _tag_hisp_intf {
+struct _tag_hisp_intf {
 	hisp_vtbl_t *vtbl;
-} hisp_intf_t;
+};
 
 typedef struct _tag_hisp_notify_vtbl {
 	void (*rpmsg_cb) (hisp_notify_intf_t *i, hisp_event_t *isp_ev);
 } hisp_notify_vtbl_t;
 
-typedef struct _tag_hisp_notify_intf {
+struct _tag_hisp_notify_intf {
 	hisp_notify_vtbl_t *vtbl;
-} hisp_notify_intf_t;
+};
 
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(4,9,0))
 struct rpmsg_hdr {

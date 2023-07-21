@@ -14,16 +14,7 @@
 #define HWCAM_MODEL_USER                                "hwcam_userdev"
 #define HWCAM_MODEL_CFG                                 "hwcam_cfgdev"
 
-typedef struct _tag_hwcam_buf_info hwcam_buf_info_t;
-
 typedef struct _tag_hwcam_cfgreq_intf hwcam_cfgreq_intf_t;
-typedef struct _tag_hwcam_cfgreq hwcam_cfgreq_t;
-typedef struct _tag_hwcam_cfgreq2dev hwcam_cfgreq2dev_t;
-typedef struct _tag_hwcam_cfgreq2pipeline hwcam_cfgreq2pipeline_t;
-typedef struct _tag_hwcam_cfgreq2stream hwcam_cfgreq2stream_t;
-
-typedef struct _tag_hwcam_data_entry hwcam_data_entry_t;
-typedef struct _tag_hwcam_data_table hwcam_data_table_t;
 
 typedef struct _tag_hwcam_user_intf hwcam_user_intf_t;
 
@@ -232,7 +223,7 @@ hwcam_data_table_entry_index(hwcam_data_table_t* tbl,
 {
     return tbl->entries <= cur
         && cur < tbl->entries + tbl->entry_count
-        ? cur - tbl->entries : -1ul;
+        ? cur - tbl->entries : -1u;
 }
 
 static inline bool

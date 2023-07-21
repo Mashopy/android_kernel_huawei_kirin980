@@ -24,7 +24,6 @@ typedef enum _tag_hwsensor_state_kind
     HWSENSOR_POWER_UP,
 } hwsensor_state_kind_t;
 
-typedef struct _tag_hwsensor_vtbl hwsensor_vtbl_t;
 typedef struct _tag_hwsensor_intf hwsensor_intf_t;
 
 /**
@@ -56,10 +55,9 @@ typedef struct _tag_hwsensor_vtbl {
     int (*get_thermal)(hwsensor_intf_t *,void *);
 }hwsensor_vtbl_t;
 
-typedef struct _tag_hwsensor_intf
-{
+struct _tag_hwsensor_intf {
     hwsensor_vtbl_t *vtbl;
-} hwsensor_intf_t;
+};
 
 static inline int
 hwsensor_intf_otp_config(hwsensor_intf_t *hsi,

@@ -33,20 +33,20 @@
 typedef struct _tag_hwfpga_notify_vtbl hwfpga_notify_vtbl_t;
 typedef struct _tag_hwfpga_notify_intf hwfpga_notify_intf_t;
 
-typedef struct _tag_hwfpga_notify_vtbl
+struct _tag_hwfpga_notify_vtbl
 {
     void (*error)(hwfpga_notify_intf_t* i, hwfpga_event_t* fpga_ev);
-} hwfpga_notify_vtbl_t;
+};
 
-typedef struct _tag_hwfpga_notify_intf
+struct _tag_hwfpga_notify_intf
 {
     hwfpga_notify_vtbl_t*                        vtbl;
-} hwfpga_notify_intf_t;
+};
 
 typedef struct _tag_hwfpga_vtbl hwfpga_vtbl_t;
 typedef struct _tag_hwfpga_intf hwfpga_intf_t;
 
-typedef struct _tag_hwfpga_vtbl
+struct _tag_hwfpga_vtbl
 {
     char const* (*get_name)(const hwfpga_intf_t *i);
     int (*power_on)(const hwfpga_intf_t *i);
@@ -59,12 +59,12 @@ typedef struct _tag_hwfpga_vtbl
     int (*fpga_get_dt_data) (const hwfpga_intf_t *, struct device_node *);
     int (*fpga_register_attribute)(const hwfpga_intf_t *, struct device *);
     int (*checkdevice)(const hwfpga_intf_t *i);
-} hwfpga_vtbl_t;
+};
 
-typedef struct _tag_hwfpga_intf
+struct _tag_hwfpga_intf
 {
     hwfpga_vtbl_t*                            vtbl;
-} hwfpga_intf_t;
+};
 
 typedef struct _tag_fpga
 {

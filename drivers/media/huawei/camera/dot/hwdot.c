@@ -39,7 +39,7 @@
 
 typedef struct _tag_hwdot hwdot_t;
 
-typedef struct _tag_hwdot
+struct _tag_hwdot
 {
     struct v4l2_subdev                          subdev;
     struct platform_device*                     pdev;
@@ -47,7 +47,7 @@ typedef struct _tag_hwdot
     const hwdot_intf_t*                         hw;
     hwcam_data_table_t*                         cfg;
     hwdot_notify_intf_t                         notify;
-} hwdot_t;
+};
 
 #define SD2HWDOT(sd) container_of(sd, hwdot_t, subdev)
 #define INTF2DOT(i) container_of(i, dot_t, intf)

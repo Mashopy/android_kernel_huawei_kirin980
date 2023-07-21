@@ -45,7 +45,7 @@ static int fpga_fd_open_times = 0;
 
 typedef struct _tag_hwfpga hwfpga_t;
 
-typedef struct _tag_hwfpga
+struct _tag_hwfpga
 {
     struct v4l2_subdev                          subdev;
     struct platform_device*                     pdev;
@@ -53,7 +53,7 @@ typedef struct _tag_hwfpga
     const hwfpga_intf_t*                        hw;
     hwcam_data_table_t*                         cfg;//stub:maybe no use
     hwfpga_notify_intf_t                        notify;//stub:maybe no use
-} hwfpga_t;
+};
 
 #define SD2HWFPGA(sd) container_of(sd, hwfpga_t, subdev)
 

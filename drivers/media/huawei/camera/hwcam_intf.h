@@ -24,29 +24,13 @@
     printk(KERN_DEBUG "%s(%d, %d): " fmt "\n", \
            __func__, __LINE__, current->pid, ## arg)
 #define AVAIL_NAME_LENGTH  31
-typedef struct _tag_hwcam_cfgreq_vtbl hwcam_cfgreq_vtbl_t; 
-typedef struct _tag_hwcam_cfgreq_intf hwcam_cfgreq_intf_t; 
 
-typedef struct _tag_hwcam_cfgreq_mount_pipeline_vtbl hwcam_cfgreq_mount_pipeline_vtbl_t; 
-typedef struct _tag_hwcam_cfgreq_mount_pipeline_intf hwcam_cfgreq_mount_pipeline_intf_t; 
-
-typedef struct _tag_hwcam_cfgreq_mount_stream_vtbl hwcam_cfgreq_mount_stream_vtbl_t; 
-typedef struct _tag_hwcam_cfgreq_mount_stream_intf hwcam_cfgreq_mount_stream_intf_t; 
-
-typedef struct _tag_hwcam_cfgack hwcam_cfgack_t; 
-
-typedef struct _tag_hwcam_user_vtbl hwcam_user_vtbl_t; 
-typedef struct _tag_hwcam_user_intf hwcam_user_intf_t; 
-
-typedef struct _tag_hwcam_dev_vtbl hwcam_dev_vtbl_t; 
-typedef struct _tag_hwcam_dev_intf hwcam_dev_intf_t; 
-
-typedef struct _tag_hwcam_cfgpipeline_vtbl hwcam_cfgpipeline_vtbl_t; 
-typedef struct _tag_hwcam_cfgpipeline_intf hwcam_cfgpipeline_intf_t; 
-
-typedef struct _tag_hwcam_cfgstream_vtbl hwcam_cfgstream_vtbl_t; 
-typedef struct _tag_hwcam_cfgstream_intf hwcam_cfgstream_intf_t; 
-
+typedef struct _tag_hwcam_cfgack hwcam_cfgack_t;
+typedef struct _tag_hwcam_cfgreq_mount_pipeline_intf hwcam_cfgreq_mount_pipeline_intf_t;
+typedef struct _tag_hwcam_cfgreq_mount_stream_intf hwcam_cfgreq_mount_stream_intf_t;
+typedef struct _tag_hwcam_dev_intf hwcam_dev_intf_t;
+typedef struct _tag_hwcam_cfgpipeline_intf hwcam_cfgpipeline_intf_t;
+typedef struct _tag_hwcam_cfgstream_intf hwcam_cfgstream_intf_t;
 
 typedef struct _tag_hwcam_vbuf
 {
@@ -73,10 +57,10 @@ typedef struct _tag_hwcam_cfgreq_vtbl
                   hwcam_cfgack_t* ack); 
 } hwcam_cfgreq_vtbl_t; 
 
-typedef struct _tag_hwcam_cfgreq_intf
+struct _tag_hwcam_cfgreq_intf
 {
     hwcam_cfgreq_vtbl_t const*                  vtbl; 
-} hwcam_cfgreq_intf_t; 
+}; 
 
 static inline void 
 hwcam_cfgreq_intf_get(hwcam_cfgreq_intf_t* intf)
@@ -120,12 +104,12 @@ hwcam_cfgreq_on_ack_noop(hwcam_cfgreq_intf_t* pintf,
 
 typedef void (*pfn_hwcam_cfgdev_release_ack)(hwcam_cfgack_t* ack);
 
-typedef struct _tag_hwcam_cfgack
+struct _tag_hwcam_cfgack
 {
     struct list_head                            node; 
     pfn_hwcam_cfgdev_release_ack                release; 
     struct v4l2_event                           ev; 
-} hwcam_cfgack_t; 
+}; 
 
 static inline int 
 hwcam_cfgack_result(hwcam_cfgack_t* ack)
@@ -140,10 +124,10 @@ typedef struct _tag_hwcam_cfgreq_mount_pipeline_vtbl
                       hwcam_cfgpipeline_intf_t** pl); 
 } hwcam_cfgreq_mount_pipeline_vtbl_t; 
 
-typedef struct _tag_hwcam_cfgreq_mount_pipeline_intf
+struct _tag_hwcam_cfgreq_mount_pipeline_intf
 {
     hwcam_cfgreq_mount_pipeline_vtbl_t const*   vtbl; 
-} hwcam_cfgreq_mount_pipeline_intf_t; 
+}; 
 
 static inline void 
 hwcam_cfgreq_mount_pipeline_intf_get_result(hwcam_cfgreq_mount_pipeline_intf_t* pintf, 
@@ -165,10 +149,10 @@ typedef struct _tag_hwcam_cfgreq_mount_stream_vtbl
                       hwcam_cfgstream_intf_t** st); 
 } hwcam_cfgreq_mount_stream_vtbl_t; 
 
-typedef struct _tag_hwcam_cfgreq_mount_stream_intf
+struct _tag_hwcam_cfgreq_mount_stream_intf
 {
     hwcam_cfgreq_mount_stream_vtbl_t const*     vtbl; 
-} hwcam_cfgreq_mount_stream_intf_t; 
+}; 
 
 static inline void 
 hwcam_cfgreq_mount_stream_intf_get_result(hwcam_cfgreq_mount_stream_intf_t* pintf, 
@@ -204,10 +188,10 @@ typedef struct _tag_hwcam_user_vtbl
                    struct v4l2_event* ev); 
 } hwcam_user_vtbl_t; 
 
-typedef struct _tag_hwcam_user_intf
+struct _tag_hwcam_user_intf
 {
     hwcam_user_vtbl_t const*                    vtbl; 
-} hwcam_user_intf_t; 
+}; 
 
 static inline void
 hwcam_user_intf_get(hwcam_user_intf_t* intf)
@@ -258,10 +242,10 @@ typedef struct _tag_hwcam_dev_vtbl
                    struct v4l2_event* ev); 
 } hwcam_dev_vtbl_t; 
 
-typedef struct _tag_hwcam_dev_intf
+struct _tag_hwcam_dev_intf
 {
     hwcam_dev_vtbl_t const*                     vtbl; 
-} hwcam_dev_intf_t; 
+}; 
 
 static inline void
 hwcam_dev_intf_notify(hwcam_dev_intf_t* intf, 
@@ -349,10 +333,10 @@ typedef struct _tag_hwcam_cfgpipeline_vtbl
                                             hwcam_stream_info_t* info); 
 } hwcam_cfgpipeline_vtbl_t; 
 
-typedef struct _tag_hwcam_cfgpipeline_intf
+struct _tag_hwcam_cfgpipeline_intf
 {
     hwcam_cfgpipeline_vtbl_t const*             vtbl; 
-} hwcam_cfgpipeline_intf_t; 
+}; 
 
 static inline void
 hwcam_cfgpipeline_intf_get(hwcam_cfgpipeline_intf_t* intf)
@@ -465,10 +449,10 @@ typedef struct _tag_hwcam_cfgstream_vtbl
     int (*stop)(hwcam_cfgstream_intf_t* intf); 
 } hwcam_cfgstream_vtbl_t; 
 
-typedef struct _tag_hwcam_cfgstream_intf
+struct _tag_hwcam_cfgstream_intf
 {
     hwcam_cfgstream_vtbl_t const*               vtbl; 
-} hwcam_cfgstream_intf_t; 
+}; 
 
 extern hwcam_cfgstream_intf_t*
 hwcam_cfgstream_get_by_fd(int fd); 

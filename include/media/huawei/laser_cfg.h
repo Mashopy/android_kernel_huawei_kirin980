@@ -438,20 +438,6 @@ typedef struct _tag_hwlaser_roi_full_t {
 } hwlaser_roi_full_t;
 
 
-typedef uint8_t RoiStatus_t;
-#define HWLASER_ROISTATUS_NOT_VALID                 ((RoiStatus_t)  0)
-#define HWLASER_ROISTATUS_VALID_NOT_LAST            ((RoiStatus_t)  1)
-#define HWLASER_ROISTATUS_VALID_LAST                ((RoiStatus_t)  2)
-
-#define HWLASER_MAX_RANGE_RESULTS              4
-
-typedef uint32_t FixPoint1616_t;
-
-
-
-
-
-
 typedef struct _tag_hwlaser_ranging_measurement_data {
 
     uint8_t RangeQualityLevel;

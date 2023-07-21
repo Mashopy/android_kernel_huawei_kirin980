@@ -31,17 +31,16 @@
 typedef struct _tag_hwdriveric_notify_vtbl hwdriveric_notify_vtbl_t;
 typedef struct _tag_hwdriveric_notify_intf hwdriveric_notify_intf_t;
 
-typedef struct _tag_hwdriveric_notify_vtbl
+struct _tag_hwdriveric_notify_vtbl
 {
     void (*error)(hwdriveric_notify_intf_t* i, hwdriveric_event_t* driveric_ev);
-} hwdriveric_notify_vtbl_t;
+};
 
-typedef struct _tag_hwdriveric_notify_intf
+struct _tag_hwdriveric_notify_intf
 {
     hwdriveric_notify_vtbl_t*                        vtbl;
-} hwdriveric_notify_intf_t;
+};
 
-typedef struct _tag_hwdriveric_vtbl hwdriveric_vtbl_t;
 typedef struct _tag_hwdriveric_intf hwdriveric_intf_t;
 
 typedef struct _tag_hwdriveric_vtbl
@@ -54,10 +53,10 @@ typedef struct _tag_hwdriveric_vtbl
     int (*init)(const hwdriveric_intf_t *i);
 } hwdriveric_vtbl_t;
 
-typedef struct _tag_hwdriveric_intf
+struct _tag_hwdriveric_intf
 {
     hwdriveric_vtbl_t*                            vtbl;
-} hwdriveric_intf_t;
+};
 
 typedef struct _tag_driveric
 {
