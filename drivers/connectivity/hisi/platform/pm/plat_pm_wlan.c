@@ -312,7 +312,7 @@ struct wifi_srv_callback_handler* wlan_pm_get_wifi_srv_handler(oal_void)
 
     if(OAL_PTR_NULL == pst_wlan_pm)
     {
-        return OAL_FALSE;
+        return NULL;
     }
 
     return &pst_wlan_pm->st_wifi_srv_handler;
