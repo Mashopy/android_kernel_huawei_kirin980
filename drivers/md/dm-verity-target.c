@@ -532,7 +532,7 @@ static void verity_work(struct work_struct *w)
 	verity_finish_io(io, verity_verify_io(io));
 }
 
-static void verity_end_io(struct bio *bio, int error)
+static void verity_end_io(struct bio *bio)
 {
 	struct dm_verity_io *io = bio->bi_private;
 
@@ -1057,8 +1057,10 @@ int verity_ctr(struct dm_target *ti, unsigned argc, char **argv)
 	 * algorithm implementation is used.  Help people debug performance
 	 * problems by logging the ->cra_driver_name.
 	 */
-	DMINFO("%s using implementation \"%s\"", v->alg_name,
-	       crypto_shash_alg(v->tfm)->base.cra_driver_name);
+	DMINFO("%s using implementation \"%s\"", v->alg_name_sha2ce,
+	       crypto_shash_alg(v->tfm_sha2ce)->base.cra_driver_name);
+	DMINFO("%s using implementation \"%s\"", v->alg_name_sha256,
+	       crypto_shash_alg(v->tfm_sha256)->base.cra_driver_name);
 
 	v->digest_size = crypto_shash_digestsize(v->tfm_sha2ce);
 	if ((1 << v->hash_dev_block_bits) < v->digest_size * 2) {
