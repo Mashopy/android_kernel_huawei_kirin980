@@ -886,8 +886,8 @@ int slimbus_drv_bus_configure(slimbus_bus_config_t *bus_config)
 
 	/* configure bus */
 	ret += csmiDrv->msgBeginReconfiguration(devm_slimbus_priv);
-	ret += csmiDrv->msgNextClockGear(devm_slimbus_priv, bus_config->cg);
-	ret += csmiDrv->msgNextSubframeMode(devm_slimbus_priv, bus_config->sm);
+	ret += csmiDrv->msgNextClockGear(devm_slimbus_priv, (CSMI_ClockGear)bus_config->cg);
+	ret += csmiDrv->msgNextSubframeMode(devm_slimbus_priv, (CSMI_SubframeMode)bus_config->sm);
 	ret += csmiDrv->msgReconfigureNow(devm_slimbus_priv);
 	if (ret) {
 		pr_err("Bus reconfiguration failed with error: %d\n", ret);
@@ -1206,8 +1206,8 @@ int slimbus_drv_track_activate(slimbus_channel_property_t *channel, uint32_t ch_
 
 	for (i = 0; i < ch_num; i++) {
 		/* Configuring Data Channel */
-		ret += csmiDrv->msgNextDefineChannel(devm_slimbus_priv, channel[i].cn, channel[i].tp, channel[i].sd, channel[i].sl);
-		ret += csmiDrv->msgNextDefineContent(devm_slimbus_priv, channel[i].cn, channel[i].fl, channel[i].pr, channel[i].af, channel[i].dt, channel[i].cl, channel[i].dl);
+		ret += csmiDrv->msgNextDefineChannel(devm_slimbus_priv, channel[i].cn, (CSMI_TransportProtocol)channel[i].tp, channel[i].sd, channel[i].sl);
+		ret += csmiDrv->msgNextDefineContent(devm_slimbus_priv, channel[i].cn, channel[i].fl, (CSMI_PresenceRate)channel[i].pr, (CSMI_AuxFieldFormat)channel[i].af, (CSMI_DataType)channel[i].dt, channel[i].cl, channel[i].dl);
 		/* Activating Data Channel */
 		ret += csmiDrv->msgNextActivateChannel(devm_slimbus_priv, channel[i].cn);
 
@@ -1312,11 +1312,11 @@ int slimbus_drv_switch_framer(uint8_t  laif, uint16_t NCo, uint16_t NCi, slimbus
 		RFC_ClearEvents();
 		ret += csmiDrv->msgBeginReconfiguration(devm_slimbus_priv);
 		if (laif == slimbusDevices.framerLa[SLIMBUS_FRAMER_HI6402_ID]) {
-			ret += csmiDrv->msgNextClockGear(devm_slimbus_priv, bus_config->cg);
+			ret += csmiDrv->msgNextClockGear(devm_slimbus_priv, (CSMI_ClockGear)bus_config->cg);
 		}
 		ret += csmiDrv->msgNextActiveFramer(devm_slimbus_priv, laif, NCo, NCi);
 		if (laif == slimbusDevices.framerLa[SLIMBUS_FRAMER_SOC_ID]) {
-			ret += csmiDrv->msgNextClockGear(devm_slimbus_priv, bus_config->cg);
+			ret += csmiDrv->msgNextClockGear(devm_slimbus_priv, (CSMI_ClockGear)bus_config->cg);
 		}
 		ret += csmiDrv->msgReconfigureNow(devm_slimbus_priv);
 		if (ret) {
@@ -1356,7 +1356,7 @@ int slimbus_drv_pause_clock(slimbus_restart_time_t newrestarttime)
 	udelay(300);
 	RFC_ClearEvents();
 	ret += csmiDrv->msgBeginReconfiguration(devm_slimbus_priv);
-	ret += csmiDrv->msgNextPauseClock(devm_slimbus_priv, newrestarttime);
+	ret += csmiDrv->msgNextPauseClock(devm_slimbus_priv, (CSMI_RestartTime)newrestarttime);
 	ret += csmiDrv->msgReconfigureNow(devm_slimbus_priv);
 	if (ret) {
 		pr_err("Bus switch framer failed with error: %d\n", ret);
@@ -1520,8 +1520,8 @@ int slimbus_drv_track_update(int cg, int sm, int track, struct slimbus_device_in
 		if (active_channel != NULL) {
 			for (j = 0; j < active_ch_num; j++) {
 				/* Configuring Data Channel */
-				ret += csmiDrv->msgNextDefineChannel(devm_slimbus_priv, active_channel[j].cn, active_channel[j].tp, active_channel[j].sd, active_channel[j].sl);
-				ret += csmiDrv->msgNextDefineContent(devm_slimbus_priv, active_channel[j].cn, active_channel[j].fl, active_channel[j].pr, active_channel[j].af, active_channel[j].dt, active_channel[j].cl, active_channel[j].dl);
+				ret += csmiDrv->msgNextDefineChannel(devm_slimbus_priv, active_channel[j].cn, (CSMI_TransportProtocol)active_channel[j].tp, active_channel[j].sd, active_channel[j].sl);
+				ret += csmiDrv->msgNextDefineContent(devm_slimbus_priv, active_channel[j].cn, active_channel[j].fl, (CSMI_PresenceRate)active_channel[j].pr, (CSMI_AuxFieldFormat)active_channel[j].af, (CSMI_DataType)active_channel[j].dt, active_channel[j].cl, active_channel[j].dl);
 				/* Activating Data Channel */
 				ret += csmiDrv->msgNextActivateChannel(devm_slimbus_priv, active_channel[j].cn);
 				msg_count = msg_count + 3;
