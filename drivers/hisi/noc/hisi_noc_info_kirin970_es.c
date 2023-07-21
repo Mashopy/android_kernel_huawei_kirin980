@@ -9,7 +9,7 @@
 */
 
 /*****************************************************************************
-  1 Í·ÎÄ¼þ°üº¬
+  1 Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
  *****************************************************************************/
 #include <linux/io.h>
 #include <linux/string.h>
@@ -160,17 +160,17 @@ static char *vivo_targetflow_array[] = {
 };
 
 /*
- * unsigned int  opc      : 4;  bit[1-4]  : Transaction²Ù×÷ÀàÐÍ£º
- * 0-->RD£ºINCRµÄ¶Á²Ù×÷£»
- * 1-->RDW£ºWRAPµÄ¶Á²Ù×÷£»
- * 2-->RDL£ºExclusive ¶Á²Ù×÷£»
- * 3-->RDX£ºLock read£»
- * 4-->WR£ºINCRÐ´²Ù×÷£»
- * 5-->WRW£ºWRAPÐ´²Ù×÷£»
- * 6-->WRC£ºExclusiveÐ´²Ù×÷£»
- * 8-->PRE£ºFIXED BURST£»
- * 9-->URG£ºurgency packet£¬Error Probe²»»á¼ì²âµ½´ËÀàpacket
- * ÆäËü-->Reserveed£º·Ç·¨²Ù×÷
+ * unsigned int  opc      : 4;  bit[1-4]  : Transactionï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½
+ * 0-->RDï¿½ï¿½INCRï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * 1-->RDWï¿½ï¿½WRAPï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * 2-->RDLï¿½ï¿½Exclusive ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * 3-->RDXï¿½ï¿½Lock readï¿½ï¿½
+ * 4-->WRï¿½ï¿½INCRÐ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * 5-->WRWï¿½ï¿½WRAPÐ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * 6-->WRCï¿½ï¿½ExclusiveÐ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * 8-->PREï¿½ï¿½FIXED BURSTï¿½ï¿½
+ * 9-->URGï¿½ï¿½urgency packetï¿½ï¿½Error Probeï¿½ï¿½ï¿½ï¿½ï¿½âµ½ï¿½ï¿½ï¿½ï¿½packet
+ * ï¿½ï¿½ï¿½ï¿½-->Reserveedï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½
  */
 static char *opc_array[] = {
 	"RD:  INCR READ",
@@ -179,21 +179,21 @@ static char *opc_array[] = {
 	"RDX: LOCK READ",
 	"WR:  INCR WRITE",
 	"WRW: WRAP WRITE",
-	"WRC£ºEXCLUSIVE WRITE",
+	"WRC: EXCLUSIVE WRITE",
 	"Reversed",
 	"PRE: FIXED BURST",
 	"Abnormal"
 };
 
 /*
- * unsigned int  errcode  : 3;  bit[8-10] : ´íÎóÀàÐÍ
- * 0-->±»·ÃÎÊslave·µ»ØError Response£»
- * 1-->master·ÃÎÊÁË×ÜÏßµÄReserveµØÖ·¿Õ¼ä£»
- * 2-->master·¢ËÍÁËslave²»Ö§³ÖµÄBurstÀàÐÍ£¨µ±Ç°×ÜÏß²»»á³öÏÖÕâÖÖ³¡¾°£©£»
- * 3-->master·ÃÎÊÁËµôµçÇøÓò£»
- * 4-->·ÃÎÊÈ¨ÏÞ±¨´í£»
- * 5-->master·ÃÎÊÊ±£¬ÊÕµ½FirewallµÄHide Error Response£»
- * 6-->±»·ÃÎÊslave TimeOut£¬²¢·µ»ØError Response£»
+ * unsigned int  errcode  : 3;  bit[8-10] : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * 0-->ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½slaveï¿½ï¿½ï¿½ï¿½Error Responseï¿½ï¿½
+ * 1-->masterï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ßµï¿½Reserveï¿½ï¿½Ö·ï¿½Õ¼ä£»
+ * 2-->masterï¿½ï¿½ï¿½ï¿½ï¿½ï¿½slaveï¿½ï¿½Ö§ï¿½Öµï¿½Burstï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ß²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * 3-->masterï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * 4-->ï¿½ï¿½ï¿½ï¿½È¨ï¿½Þ±ï¿½ï¿½ï¿½ï¿½ï¿½
+ * 5-->masterï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½Õµï¿½Firewallï¿½ï¿½Hide Error Responseï¿½ï¿½
+ * 6-->ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½slave TimeOutï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Error Responseï¿½ï¿½
  * 7-->none
  */
 static char *err_code_array[] = {
