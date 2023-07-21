@@ -220,10 +220,10 @@ static int onewire_phy_pl061_open_ic(void)
 {
 	unsigned long flags;
 
-	raw_spin_lock_irqsave(pl061_gpio.lock, flags);
+	spin_lock_irqsave(pl061_gpio.lock, flags);
 	get_current_gpio_bank_dir();
 	gpio_direction_output_unsafe(HIGH_VOLTAGE);
-	raw_spin_unlock_irqrestore(pl061_gpio.lock, flags);
+	spin_unlock_irqrestore(pl061_gpio.lock, flags);
 
 	return 0;
 }
@@ -232,10 +232,10 @@ static int onewire_phy_pl061_close_ic(void)
 {
 	unsigned long flags;
 
-	raw_spin_lock_irqsave(pl061_gpio.lock, flags);
+	spin_lock_irqsave(pl061_gpio.lock, flags);
 	get_current_gpio_bank_dir();
 	gpio_direction_input_unsafe();
-	raw_spin_unlock_irqrestore(pl061_gpio.lock, flags);
+	spin_unlock_irqrestore(pl061_gpio.lock, flags);
 
 	return 0;
 }
