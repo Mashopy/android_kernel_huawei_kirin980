@@ -1,7 +1,7 @@
 
 
 #ifndef _AGENT_H_
-#define _AGENT_H__
+#define _AGENT_H_
 #include <linux/fs.h>
 #include "teek_ns_client.h"
 
