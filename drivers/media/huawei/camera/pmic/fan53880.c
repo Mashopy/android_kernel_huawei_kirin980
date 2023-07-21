@@ -585,7 +585,7 @@ static int pmic_check_state_exception(struct hisi_pmic_ctrl_t *pmic_ctrl)
     return 0;
 }
 
-static int fan53880_shutdown(struct i2c_client *client)
+static void fan53880_shutdown(struct i2c_client *client)
 {
 	struct hisi_pmic_i2c_client *fan_i2c_client = NULL;
 	struct hisi_pmic_ctrl_t *fan_shut_pmic_ctrl = NULL;
@@ -597,18 +597,17 @@ static int fan53880_shutdown(struct i2c_client *client)
 	if (!fan_shut_pmic_ctrl || !fan_shut_pmic_ctrl->pmic_i2c_client ||
 		!fan_shut_pmic_ctrl->pmic_i2c_client->i2c_func_tbl ||
 		!fan_shut_pmic_ctrl->pdata)
-		return -EFAULT;
+		return;
 	pdata = (struct fan53880_private_data_t *)fan_shut_pmic_ctrl->pdata;
 	if (pdata->shutdown_4V5 == 0) {
 		cam_warn("%s not support shut down to 4v5", __func__);
-		return 0;
+		return;
 	}
 
 	fan_i2c_client = fan_shut_pmic_ctrl->pmic_i2c_client;
 	i2c_func = fan_shut_pmic_ctrl->pmic_i2c_client->i2c_func_tbl;
 	i2c_func->i2c_write(fan_i2c_client, BOOST_CTL, FAN53880_VOUT_4v5);
 	cam_warn("set to 4V5");
-	return 0;
 }
 
 static int fan53880_remove(struct i2c_client *client)

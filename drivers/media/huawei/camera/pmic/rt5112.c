@@ -665,7 +665,7 @@ static int pmic_check_state_exception(struct hisi_pmic_ctrl_t *pmic_ctrl)
     return 0;
 }
 
-static int rt5112_shutdown(struct i2c_client *client)
+static void rt5112_shutdown(struct i2c_client *client)
 {
 	struct hisi_pmic_i2c_client *rt_i2c_client = NULL;
 	struct hisi_pmic_ctrl_t *rt_shut_pmic_ctrl = NULL;
@@ -678,12 +678,12 @@ static int rt5112_shutdown(struct i2c_client *client)
 	if (!rt_shut_pmic_ctrl || !rt_shut_pmic_ctrl->pmic_i2c_client ||
 		!rt_shut_pmic_ctrl->pmic_i2c_client->i2c_func_tbl ||
 		!rt_shut_pmic_ctrl->pdata)
-		return -EFAULT;
+		return;
 
 	pdata = (struct rt5112_private_data_t *)rt_shut_pmic_ctrl->pdata;
 	if (pdata->shutdown_4V5 == 0) {
 		cam_warn("%s not support shut down to 4v5", __func__);
-		return 0;
+		return;
 	}
 
 	rt_i2c_client = rt_shut_pmic_ctrl->pmic_i2c_client;
@@ -692,7 +692,6 @@ static int rt5112_shutdown(struct i2c_client *client)
 	boost_vol_value = boost_vol_value & BOOST_VOUT_4V5;
 	i2c_func->i2c_write(rt_i2c_client, BOOST_VOUT, boost_vol_value);
 	cam_warn("set to 4V5");
-	return 0;
 }
 
 static int rt5112_remove(struct i2c_client *client)
