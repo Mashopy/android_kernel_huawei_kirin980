@@ -2149,7 +2149,7 @@ bk_batt_failed:
     }
     power_supply_unregister(di->ac);
 wireless_failed:
-    power_supply_unregister(&di->wireless);
+    power_supply_unregister(di->wireless);
 ac_failed:
     power_supply_unregister(di->usb);
 usb_failed:
