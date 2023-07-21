@@ -296,7 +296,7 @@ static int _tca_mode_switch(TCPC_MUX_CTRL_TYPE old_mode,
 {
 	struct timeval tv;
 	volatile unsigned int reg_data = 0x10;
-	/*1.	µ÷ÓÃÇÐ»»Ç°¼ì²éBCÄ£Ê½£º 0xff200034[0] = 0£¬·ñÔòÓÐÒì³£(³äµçÊ±²»µÃÇÐ»»)¡£ */
+	/*1.	ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½Ç°ï¿½ï¿½ï¿½BCÄ£Ê½ï¿½ï¿½ 0xff200034[0] = 0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì³£(ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½)ï¿½ï¿½ */
 	if (is_bits_set(BIT(SOC_USB31_MISC_CTRL_BC_CTRL1_bc_mode_START),SOC_USB31_MISC_CTRL_BC_CTRL1_ADDR(tca_dev.usb_misc_base))) {
 		usb_err("BC_CTRL1[0x%x][now is BC status,tca switch is forbidden ]\n",
 			readl(SOC_USB31_MISC_CTRL_BC_CTRL1_ADDR(tca_dev.usb_misc_base)));
@@ -460,7 +460,7 @@ static int tca_mode_switch(TCPC_MUX_CTRL_TYPE new_mode, TYPEC_PLUG_ORIEN_E typec
 		goto USB_CHANGE_FIN;
 	}
 #ifndef COMBOPHY_VERSION_1_1
-	/*3.	ÇÐ»»Ê±£¨µ÷ÓÃusb½øÈëP3½Ó¿Úºó£©¼ì²é¸´Î»£º0xff2000A0 = 0x30303,·ñÔòÒì³£*/
+	/*3.	ï¿½Ð»ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½usbï¿½ï¿½ï¿½ï¿½P3ï¿½Ó¿Úºó£©¼ï¿½é¸´Î»ï¿½ï¿½0xff2000A0 = 0x30303,ï¿½ï¿½ï¿½ï¿½ï¿½ì³£*/
 	reg = readl(SOC_USB31_MISC_CTRL_USB_MISC_CFGA0_ADDR(tca_dev.usb_misc_base));
 	if (0x30303 != reg) {
 		usb_err("CFGA0[0x%x]  err\n", reg);
@@ -904,8 +904,8 @@ static int pd_event_processing(pd_event_t *event)
 		}
 
 		/*
-		2£©USBÔÚÎ»×´Ì¬£¬¿¼ÂÇµ½USB¿ÉÄÜ´æÔÚÊý´«£¬
-		PD²»ÄÜÖ±½Ó×öPHYµÄÄ£Ê½ÇÐ»»£¬±ØÐëÏÈ×öÒ»ÏÂ°Î³ö£¬ÔÙµ½ÐÂµÄ×´Ì¬¡£
+		2ï¿½ï¿½USBï¿½ï¿½Î»×´Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½Çµï¿½USBï¿½ï¿½ï¿½Ü´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+		PDï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½ï¿½ï¿½PHYï¿½ï¿½Ä£Ê½ï¿½Ð»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½Â°Î³ï¿½ï¿½ï¿½ï¿½Ùµï¿½ï¿½Âµï¿½×´Ì¬ï¿½ï¿½
 		USB->DP4:  USB->NC->DP4
 		USB->USB+DP4:USB->NC->USB+DP4
 		*/
@@ -1128,7 +1128,7 @@ static struct of_device_id hisi_pd_of_match[] = {
 };
 
 MODULE_DEVICE_TABLE(of, hisi_pd_of_match);
-static struct platform_driver pd_platdrv = {
+static struct platform_driver __refdata pd_platdrv = {
 	.driver = {
 		.name		= "hisi-pd",
 		.owner		= THIS_MODULE,

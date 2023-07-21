@@ -88,7 +88,7 @@ static const struct of_device_id hisi_timekeeper_of_match[] = {
 
 MODULE_DEVICE_TABLE(of, hisi_timekeeper_of_match);
 
-static struct platform_driver hisi_timekeeper_driver = {
+static struct platform_driver __refdata hisi_timekeeper_driver = {
 	.probe = hisi_timekeeper_probe,
 	.driver = {
 		.name  = "hisi-timekeeper",

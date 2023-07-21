@@ -50,7 +50,7 @@ struct pmalloc_data {
 
 static LIST_HEAD(pmalloc_final_list);
 static __initdata LIST_HEAD(pmalloc_tmp_list);
-static struct list_head *pmalloc_list = &pmalloc_tmp_list;
+static struct list_head __refdata *pmalloc_list = &pmalloc_tmp_list;
 static DEFINE_MUTEX(pmalloc_mutex);
 static struct kobject *pmalloc_kobject;
 

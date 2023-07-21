@@ -75,7 +75,7 @@ static DECLARE_WORK(ion_pre_alloc_wk, pre_alloc_wk_func);
 
 struct cma *hisi_camera_pool;
 
-static int  hisi_camera_pool_set_up(struct reserved_mem *rmem)
+static int __init hisi_camera_pool_set_up(struct reserved_mem *rmem)
 {
 	phys_addr_t align = PAGE_SIZE << max(MAX_ORDER - 1, pageblock_order);
 	phys_addr_t mask = align - 1;

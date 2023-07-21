@@ -185,8 +185,8 @@ static hisee_driver_function g_hisee_atf_function_list[] = {
 	{"hisee_channel_test", hisee_auto_test_func},
 	{"hisee_parallel_factory_action", hisee_parallel_manufacture_func},
 
-	{"inse_shutdown_swipe_t_pmu_en", inse_shutdown_swipe_t_nfc_en_func}, /* Õæ¹Ø»úË¢¿¨£¬Ê¹ÄÜPMUÏìÓ¦NFCÖ¸Ê¾ÐÅºÅ */
-	{"inse_shutdown_swipe_t_pmu_dis", inse_shutdown_swipe_t_nfc_dis_func}, /* Õæ¹Ø»úË¢¿¨£¬½ûÖ¹PMUÏìÓ¦NFCÖ¸Ê¾ÐÅºÅ */
+	{"inse_shutdown_swipe_t_pmu_en", inse_shutdown_swipe_t_nfc_en_func}, /* ï¿½ï¿½Ø»ï¿½Ë¢ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½PMUï¿½ï¿½Ó¦NFCÖ¸Ê¾ï¿½Åºï¿½ */
+	{"inse_shutdown_swipe_t_pmu_dis", inse_shutdown_swipe_t_nfc_dis_func}, /* ï¿½ï¿½Ø»ï¿½Ë¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¹PMUï¿½ï¿½Ó¦NFCÖ¸Ê¾ï¿½Åºï¿½ */
 
 	{"CASD", hisi_receive_casd_func},
 	{"VERIFYCASD", hisi_verify_casd_func},
@@ -419,11 +419,11 @@ int send_smc_process(atf_message_header *p_message_header, phys_addr_t phy_addr,
 }
 
 /***************************************************************************
-* º¯Êý£ºint hisee_get_smx_cfg(unsigned int *p_smx_cfg)
-* ²ÎÊý£ºÎÞ
-* ·µ»Ø£º»ñÈ¡smx×´Ì¬:TRUE or FALSE;
-* ´¦Àí£ºÍ¨¹ýSMCÏòATF·¢³ö»ñÈ¡smx×´Ì¬µÄÃüÁî£»
-* ÊµÏÖ£º
+* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½int hisee_get_smx_cfg(unsigned int *p_smx_cfg)
+* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+* ï¿½ï¿½ï¿½Ø£ï¿½ï¿½ï¿½È¡smx×´Ì¬:TRUE or FALSE;
+* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½SMCï¿½ï¿½ATFï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡smx×´Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½î£»
+* Êµï¿½Ö£ï¿½
 ***************************************************************************/
 void hisee_get_smx_cfg(unsigned int *p_smx_cfg)
 {
@@ -786,14 +786,14 @@ static void set_hisee_lcs_mode(void)
 }
 
 /*************************************************************
-º¯ÊýÔ­ÐÍ£ºint cos_image_upgrade_by_self(void)
-º¯Êý¹¦ÄÜ£ºÖ´ÐÐ¶àcos¾µÏñµÄÉý¼¶²Ù×÷£¬¶Ôhisee.img¾µÏñµÄÃ¿Ò»¸öcos¾µÏñÎÄ¼þ£¬×öcos¾µÏñÉý¼¶¶¯×÷¡£
-²ÎÊý£º
-ÊäÈë£ºÎÞ
-Êä³ö£ºÎÞ¡£
-·µ»ØÖµ£ºHISEE_OK:¶àcos¾µÏñÉý¼¶³É¹¦£»²»ÊÇHISEE_OK:¶àcos¾µÏñÉý¼¶Ê§°Ü
-Ç°ÖÃÌõ¼þ£ºhisee_img·ÖÇøÐ´ÈëÁËÓÐÐ§µÄhisee.imgÎÄ¼þ
-ºóÖÃÌõ¼þ£º ÎÞ
+ï¿½ï¿½ï¿½ï¿½Ô­ï¿½Í£ï¿½int cos_image_upgrade_by_self(void)
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü£ï¿½Ö´ï¿½Ð¶ï¿½cosï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½hisee.imgï¿½ï¿½ï¿½ï¿½ï¿½Ã¿Ò»ï¿½ï¿½cosï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½cosï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ï¿½ï¿½ï¿½ë£ºï¿½ï¿½
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¡ï¿½
+ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½HISEE_OK:ï¿½ï¿½cosï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½HISEE_OK:ï¿½ï¿½cosï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½
+Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½hisee_imgï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½hisee.imgï¿½Ä¼ï¿½
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 *************************************************************/
 int cos_image_upgrade_by_self(void)
 {
@@ -1527,7 +1527,7 @@ static void hisee_read_dts(struct device *pdevice)
  * @brief      : hisee_probe_second_stage
  * @param[in]  : pdev
  * @return     : int
- * @note       : Ôö¼Ó±¾º¯ÊýµÄÔ­ÒòÊÇhisee_probe()È¦¸´ÔÓ¶È³¬¹ý15£¬ÐèÒª²ð·Öº¯ÊýÀ´½µµÍÈ¦¸´ÔÓ¶È
+ * @note       : ï¿½ï¿½ï¿½Ó±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô­ï¿½ï¿½ï¿½ï¿½hisee_probe()È¦ï¿½ï¿½ï¿½Ó¶È³ï¿½ï¿½ï¿½15ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½Öºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¦ï¿½ï¿½ï¿½Ó¶ï¿½
 ********************************************************************************/
 static int hisee_probe_second_stage(struct platform_device *pdev)
 {
@@ -1670,7 +1670,7 @@ static int __init hisee_probe(struct platform_device *pdev)
 	hisee_read_dts(pdevice);
 
 	/*enter hisee probe secnod stage,why add the second stage only because the hisee_probe()
-	  È¦¸´ÔÓ¶È³¬¹ý15£¬ÐèÒª²ð·Öº¯ÊýÀ´½µµÍÈ¦¸´ÔÓ¶È*/
+	  È¦ï¿½ï¿½ï¿½Ó¶È³ï¿½ï¿½ï¿½15ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½Öºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¦ï¿½ï¿½ï¿½Ó¶ï¿½*/
 	return hisee_probe_second_stage(pdev);
 }
 
@@ -1680,7 +1680,7 @@ static const struct of_device_id hisee_of_match[] = {
 };
 MODULE_DEVICE_TABLE(of, hisee_of_match);
 
-static struct platform_driver hisee_driver = {
+static struct platform_driver __refdata hisee_driver = {
 	.probe = hisee_probe,
 	.remove = hisee_remove,
 	.suspend = hisee_suspend,
