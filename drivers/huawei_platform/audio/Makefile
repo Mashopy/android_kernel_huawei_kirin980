@@ -14,3 +14,4 @@ obj-$(CONFIG_USB_AUDIO_POWER)	+= usb_audio_power/
 obj-$(CONFIG_USB_AUDIO_COMMON)	+= usb_audio_common/
 obj-$(CONFIG_USB_AUDIO_POWER_V600) += usb_audio_power_v600/
 obj-$(CONFIG_USB_AUDIO_POWER)	+= usb_headset_core/
+obj-$(CONFIG_HIGH_RESISTANCE_HS_DET) += high_resistance_hs_det/

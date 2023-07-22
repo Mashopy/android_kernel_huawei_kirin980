@@ -20,5 +20,6 @@ source "drivers/huawei_platform/audio/usb_audio_power/Kconfig"
 source "drivers/huawei_platform/audio/usb_audio_common/Kconfig"
 source "drivers/huawei_platform/audio/usb_audio_power_v600/Kconfig"
 source "drivers/huawei_platform/audio/usb_headset_core/Kconfig"
+source "drivers/huawei_platform/audio/high_resistance_hs_det/Kconfig"
 endif # if HUAWEI_AUDIO
 endmenu
