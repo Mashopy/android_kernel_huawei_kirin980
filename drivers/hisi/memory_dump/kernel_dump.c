@@ -137,7 +137,6 @@ int kernel_dump_init(void)
 {
 	unsigned int i, j;
 	struct kernel_dump_cb *cb;
-	struct memblock_type *print_mb_cb;
 	if (register_mntn_dump(MNTN_DUMP_KERNEL_DUMP, sizeof(struct kernel_dump_cb), (void **)&cb)) {
 		pr_err("%s: fail to get reserve memory\r\n", __func__);
 		goto err;
@@ -170,7 +169,6 @@ int kernel_dump_init(void)
 	cb->ttbr = virt_to_phys(init_mm.pgd);
 
 	cb->mb_cb = (struct memblock_type *)(uintptr_t)virt_to_phys(&memblock.memory);
-	print_mb_cb = &memblock.memory;
 	cb->mbr_size = sizeof(struct memblock_region);
 
 	cb->text_kaslr_offset = (uintptr_t)_text - (KIMAGE_VADDR + TEXT_OFFSET); /*lint !e648*/
