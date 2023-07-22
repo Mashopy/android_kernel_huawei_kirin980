@@ -3,7 +3,7 @@
  *
  * Copyright(C), 2008-2013, Huawei Tech. Co., Ltd. ALL RIGHTS RESERVED. \n
  *
- * ÃèÊö£º¶¨Òå»ù±¾Êý¾ÝÀàÐÍºÍÊý¾Ý½á¹¹\n
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½ï¿½ï¿½Ý½á¹¹\n
  */
 
 #ifndef _TEE_CLIENT_TYPE_H_
@@ -13,43 +13,13 @@
 
 #include "teek_client_list.h"
 #include "teek_client_constants.h"
+#include <linux/types.h>
 
 #define TOKEN_SAVE_LEN    24
 
 /**
  * @ingroup TEEC_COMMON_DATA
- * ÎÞ·ûºÅÕûÐÍ¶¨Òå
- */
-typedef unsigned int uint32_t;
-/**
- * @ingroup TEEC_COMMON_DATA
- * ÓÐ·ûºÅÕûÐÍ¶¨Òå
- */
-typedef signed int int32_t;
-/**
- * @ingroup TEEC_COMMON_DATA
- * ÎÞ·ûºÅ¶ÌÕûÐÍ¶¨Òå
- */
-typedef unsigned short uint16_t;
-/**
- * @ingroup TEEC_COMMON_DATA
- * ÓÐ·ûºÅ¶ÌÕûÐÍ¶¨Òå
- */
-typedef signed short int16_t;
-/**
- * @ingroup TEEC_COMMON_DATA
- * ÎÞ·ûºÅ×Ö·ûÐÍ¶¨Òå
- */
-typedef unsigned char uint8_t;
-/**
- * @ingroup TEEC_COMMON_DATA
- * ÓÐ·ûºÅ×Ö·ûÐÍ¶¨Òå
- */
-typedef signed char int8_t;
-
-/**
- * @ingroup TEEC_COMMON_DATA
- * trueÖµµÄ¶¨Òå
+ * trueÖµï¿½Ä¶ï¿½ï¿½ï¿½
  */
 #ifndef true
 /*lint -e652 */
@@ -59,7 +29,7 @@ typedef signed char int8_t;
 
 /**
  * @ingroup TEEC_COMMON_DATA
- * falseÖµµÄ¶¨Òå
+ * falseÖµï¿½Ä¶ï¿½ï¿½ï¿½
  */
 #ifndef false
 /*lint -e652 */
@@ -69,7 +39,7 @@ typedef signed char int8_t;
 
 /**
  * @ingroup TEEC_COMMON_DATA
- * NULLÖµµÄ¶¨Òå
+ * NULLÖµï¿½Ä¶ï¿½ï¿½ï¿½
  */
 #ifndef NULL
 #define NULL 0
@@ -77,61 +47,61 @@ typedef signed char int8_t;
 
 /**
  * @ingroup TEEC_COMMON_DATA
- * º¯Êý·µ»ØÖµÀàÐÍ¶¨Òå
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½Í¶ï¿½ï¿½ï¿½
  *
- * ÓÃÓÚ±íÊ¾º¯Êý·µ»Ø½á¹û
+ * ï¿½ï¿½ï¿½Ú±ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø½ï¿½ï¿½
  */
 typedef uint32_t TEEC_Result;
 
 /**
  * @ingroup TEEC_COMMON_DATA
- * UUIDÀàÐÍ¶¨Òå
+ * UUIDï¿½ï¿½ï¿½Í¶ï¿½ï¿½ï¿½
  *
- * UUIDÀàÐÍ×ñÑ­RFC4122 [2]£¬ÓÃÓÚ±êÊ¶°²È«·þÎñ
+ * UUIDï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ­RFC4122 [2]ï¿½ï¿½ï¿½ï¿½ï¿½Ú±ï¿½Ê¶ï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½
  */
 typedef struct {
 	uint32_t timeLow;
-	/**< Ê±¼ä´ÁµÄµÍ4×Ö½Ú  */
+	/**< Ê±ï¿½ï¿½ï¿½ï¿½Äµï¿½4ï¿½Ö½ï¿½  */
 	uint16_t timeMid;
-	/**< Ê±¼ä´ÁµÄÖÐ2×Ö½Ú  */
+	/**< Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½2ï¿½Ö½ï¿½  */
 	uint16_t timeHiAndVersion;
-	/**< Ê±¼ä´ÁµÄ¸ß2×Ö½ÚÓë°æ±¾ºÅµÄ×éºÏ  */
+	/**< Ê±ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½2ï¿½Ö½ï¿½ï¿½ï¿½æ±¾ï¿½Åµï¿½ï¿½ï¿½ï¿½  */
 	uint8_t clockSeqAndNode[8];
-	/**< Ê±ÖÓÐòÁÐÓë½Úµã±êÊ¶·ûµÄ×éºÏ  */
+	/**< Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½Ê¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  */
 } TEEC_UUID;
 
 /**
  * @ingroup TEEC_COMMON_DATA
- * TEEC_Context½á¹¹ÌåÀàÐÍ¶¨Òå
+ * TEEC_Contextï¿½á¹¹ï¿½ï¿½ï¿½ï¿½ï¿½Í¶ï¿½ï¿½ï¿½
  *
- * ÃèÊö¿Í»§¶ËÓ¦ÓÃÓë°²È«ÊÀ½çÖ®¼ä½¨Á¢µÄÁ´½Ó»·¾³
+ * ï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ë°²È«ï¿½ï¿½ï¿½ï¿½Ö®ï¿½ä½¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó»ï¿½ï¿½ï¿½
  */
 typedef struct {
 	void *dev;
 	uint8_t *ta_path;
 	struct list_node session_list;
-	/**< »á»°Á´±í  */
+	/**< ï¿½á»°ï¿½ï¿½ï¿½ï¿½  */
 	struct list_node shrd_mem_list;
-	/**< ¹²ÏíÄÚ´æÁ´±í  */
+	/**< ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½ï¿½ï¿½  */
 } TEEC_Context;
 
 /**
  * @ingroup TEEC_COMMON_DATA
- * TEEC_Session½á¹¹ÌåÀàÐÍ¶¨Òå
+ * TEEC_Sessionï¿½á¹¹ï¿½ï¿½ï¿½ï¿½ï¿½Í¶ï¿½ï¿½ï¿½
  *
- * ÃèÊö¿Í»§¶ËÓ¦ÓÃÓë°²È«ÊÀ½çÖ®¼ä½¨Á¢µÄ»á»°
+ * ï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ë°²È«ï¿½ï¿½ï¿½ï¿½Ö®ï¿½ä½¨ï¿½ï¿½ï¿½Ä»á»°
  */
 typedef struct {
 	uint32_t session_id;
-	/**< »á»°ID£¬ÓÉ°²È«ÊÀ½ç·µ»Ø  */
+	/**< ï¿½á»°IDï¿½ï¿½ï¿½É°ï¿½È«ï¿½ï¿½ï¿½ç·µï¿½ï¿½  */
 	TEEC_UUID service_id;
-	/**< °²È«·þÎñµÄUUID£¬Ã¿¸ö°²È«·þÎñÓµÓÐÎ¨Ò»µÄUUID  */
+	/**< ï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½ï¿½UUIDï¿½ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½Î¨Ò»ï¿½ï¿½UUID  */
 	uint32_t ops_cnt;
-	/**< ÔÚ»á»°ÄÚµÄ²Ù×÷Êý  */
+	/**< ï¿½Ú»á»°ï¿½ÚµÄ²ï¿½ï¿½ï¿½ï¿½ï¿½  */
 	struct list_node head;
-	/**< »á»°Á´±íÍ·  */
+	/**< ï¿½á»°ï¿½ï¿½ï¿½ï¿½Í·  */
 	TEEC_Context *context;
-	/**< Ö¸Ïò»á»°ËùÊôµÄTEE»·¾³  */
+	/**< Ö¸ï¿½ï¿½á»°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½TEEï¿½ï¿½ï¿½ï¿½  */
 #ifdef SECURITY_AUTH_ENHANCE
 	/* TOKEN_SAVE_LEN_24byte = token_16byte + timestamp_8byte */
 	uint8_t teec_token[TOKEN_SAVE_LEN];
@@ -140,93 +110,93 @@ typedef struct {
 
 /**
  * @ingroup TEEC_COMMON_DATA
- * TEEC_SharedMemory½á¹¹ÌåÀàÐÍ¶¨Òå
+ * TEEC_SharedMemoryï¿½á¹¹ï¿½ï¿½ï¿½ï¿½ï¿½Í¶ï¿½ï¿½ï¿½
  *
- * ÃèÊöÒ»¿é¹²ÏíÄÚ´æ£¬¿ÉÒÔ×¢²á£¬Ò²¿ÉÒÔ·ÖÅä
+ * ï¿½ï¿½ï¿½ï¿½Ò»ï¿½é¹²ï¿½ï¿½ï¿½Ú´æ£¬ï¿½ï¿½ï¿½ï¿½×¢ï¿½á£¬Ò²ï¿½ï¿½ï¿½Ô·ï¿½ï¿½ï¿½
  */
 typedef struct {
 	void *buffer;
-	/**< ÄÚ´æÖ¸Õë  */
+	/**< ï¿½Ú´ï¿½Ö¸ï¿½ï¿½  */
 	size_t size;
-	/**< ÄÚ´æ´óÐ¡  */
+	/**< ï¿½Ú´ï¿½ï¿½Ð¡  */
 	uint32_t flags;
-	/**< ÄÚ´æ±êÊ¶·û£¬ÓÃÓÚÇø±ðÊäÈë»òÊä³ö£¬È¡Öµ·¶Î§Îª#TEEC_SharedMemCtl  */
+	/**< ï¿½Ú´ï¿½ï¿½Ê¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡Öµï¿½ï¿½Î§Îª#TEEC_SharedMemCtl  */
 	uint32_t ops_cnt;
-	/**< ÄÚ´æ²Ù×÷Êý  */
+	/**< ï¿½Ú´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  */
 	bool is_allocated;
-	/**< ÄÚ´æ·ÖÅä±êÊ¾·û£¬ÓÃÓÚÇø±ðÊÇ×¢²áµÄ£¬»¹ÊÇ·ÖÅäµÄ  */
+	/**< ï¿½Ú´ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½Ä£ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½  */
 	struct list_node head;
-	/**< ¹²ÏíÄÚ´æÁ´±íÍ·  */
+	/**< ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½ï¿½ï¿½Í·  */
 	TEEC_Context *context;
-	/**< Ö¸ÏòËùÊôµÄTEE»·¾³ */
+	/**< Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½TEEï¿½ï¿½ï¿½ï¿½ */
 } TEEC_SharedMemory;
 
 /**
  * @ingroup TEEC_COMMON_DATA
- * TEEC_TempMemoryReference½á¹¹ÌåÀàÐÍ¶¨Òå
+ * TEEC_TempMemoryReferenceï¿½á¹¹ï¿½ï¿½ï¿½ï¿½ï¿½Í¶ï¿½ï¿½ï¿½
  *
- * ÃèÊöÒ»¿éÁÙÊ±»º³åÇøÖ¸Õë\n
- * ¿ÉÒÔÓÃÓÚ#TEEC_ParameterµÄÀàÐÍ£¬ÓëÆäÏà¶ÔÓ¦µÄÀàÐÍ¿ÉÒÔÊÇ
- * #TEEC_MEMREF_TEMP_INPUT£¬ #TEEC_MEMREF_TEMP_OUTPUT£¬»ò#TEEC_MEMREF_TEMP_INOUT
+ * ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½\n
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½#TEEC_Parameterï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½Í¿ï¿½ï¿½ï¿½ï¿½ï¿½
+ * #TEEC_MEMREF_TEMP_INPUTï¿½ï¿½ #TEEC_MEMREF_TEMP_OUTPUTï¿½ï¿½ï¿½ï¿½#TEEC_MEMREF_TEMP_INOUT
  */
 typedef struct {
 	void *buffer;
-	/**< ÁÙÊ±»º³åÇøÖ¸Õë  */
+	/**< ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½  */
 	size_t size;
-	/**< ÁÙÊ±»º³åÇø´óÐ¡  */
+	/**< ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡  */
 } TEEC_TempMemoryReference;
 
 /**
  * @ingroup TEEC_COMMON_DATA
- * TEEC_RegisteredMemoryReference½á¹¹ÌåÀàÐÍ¶¨Òå
+ * TEEC_RegisteredMemoryReferenceï¿½á¹¹ï¿½ï¿½ï¿½ï¿½ï¿½Í¶ï¿½ï¿½ï¿½
  *
- * ÃèÊö¹²ÏíÄÚ´æÖ¸Õë£¬Ö¸ÏòÊÂÏÈ×¢²á»ò·ÖÅäºÃµÄ¹²ÏíÄÚ´æ\n
- * ¿ÉÒÔÓÃÓÚ#TEEC_ParameterµÄÀàÐÍ£¬ÓëÆäÏà¶ÔÓ¦µÄÀàÐÍ¿ÉÒÔÊÇ
- * #TEEC_MEMREF_WHOLE£¬ #TEEC_MEMREF_PARTIAL_INPUT£¬
- * #TEEC_MEMREF_PARTIAL_OUTPUT£¬»ò #TEEC_MEMREF_PARTIAL_INOUT
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½Ö¸ï¿½ë£¬Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÃµÄ¹ï¿½ï¿½ï¿½ï¿½Ú´ï¿½\n
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½#TEEC_Parameterï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½Í¿ï¿½ï¿½ï¿½ï¿½ï¿½
+ * #TEEC_MEMREF_WHOLEï¿½ï¿½ #TEEC_MEMREF_PARTIAL_INPUTï¿½ï¿½
+ * #TEEC_MEMREF_PARTIAL_OUTPUTï¿½ï¿½ï¿½ï¿½ #TEEC_MEMREF_PARTIAL_INOUT
  */
 typedef struct {
 	TEEC_SharedMemory *parent;
-	/**< ¹²ÏíÄÚ´æÖ¸Õë  */
+	/**< ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½Ö¸ï¿½ï¿½  */
 	size_t size;
-	/**< ¹²ÏíÄÚ´æµÄÊ¹ÓÃ´óÐ¡  */
+	/**< ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ï¿½Ê¹ï¿½Ã´ï¿½Ð¡  */
 	size_t offset;
-	/**< ¹²ÏíÄÚ´æµÄÊ¹ÓÃÆ«ÒÆ  */
+	/**< ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ï¿½Ê¹ï¿½ï¿½Æ«ï¿½ï¿½  */
 } TEEC_RegisteredMemoryReference;
 
 /**
  * @ingroup TEEC_COMMON_DATA
- * TEEC_Value½á¹¹ÌåÀàÐÍ¶¨Òå
+ * TEEC_Valueï¿½á¹¹ï¿½ï¿½ï¿½ï¿½ï¿½Í¶ï¿½ï¿½ï¿½
  *
- * ÃèÊöÉÙÁ¿µÄÊý¾Ý\n
- * ¿ÉÒÔÓÃÓÚ#TEEC_ParameterµÄÀàÐÍ£¬ÓëÆäÏà¶ÔÓ¦µÄÀàÐÍ¿ÉÒÔÊÇ
- * #TEEC_VALUE_INPUT£¬ #TEEC_VALUE_OUTPUT£¬»ò#TEEC_VALUE_INOUT
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\n
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½#TEEC_Parameterï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½Í¿ï¿½ï¿½ï¿½ï¿½ï¿½
+ * #TEEC_VALUE_INPUTï¿½ï¿½ #TEEC_VALUE_OUTPUTï¿½ï¿½ï¿½ï¿½#TEEC_VALUE_INOUT
  */
 typedef struct {
 	uint32_t a;
-	/**< ÕûÐÍÊý¾Ýa  */
+	/**< ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½a  */
 	uint32_t b;
-	/**< ÕûÐÍÊý¾Ýb  */
+	/**< ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½b  */
 } TEEC_Value;
 
 typedef struct {
-	int ion_share_fd;  /**< ÕûÐÍÊý¾Ýa  */
-	size_t ion_size;  /**< ÕûÐÍÊý¾Ýb  */
+	int ion_share_fd;  /**< ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½a  */
+	size_t ion_size;  /**< ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½b  */
 } TEEC_IonReference;
 
 /**
  * @ingroup TEEC_COMMON_DATA
- * TEEC_ParameterÁªºÏÌåÀàÐÍ¶¨Òå
+ * TEEC_Parameterï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¶ï¿½ï¿½ï¿½
  *
- * ÃèÊö#TEEC_OperationËù¶ÔÓ¦µÄ²ÎÊýÀàÐÍ
+ * ï¿½ï¿½ï¿½ï¿½#TEEC_Operationï¿½ï¿½ï¿½ï¿½Ó¦ï¿½Ä²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  */
 typedef union {
 	TEEC_TempMemoryReference tmpref;
-	/**< ÃèÊö#TEEC_TempMemoryReferenceÀàÐÍ  */
+	/**< ï¿½ï¿½ï¿½ï¿½#TEEC_TempMemoryReferenceï¿½ï¿½ï¿½ï¿½  */
 	TEEC_RegisteredMemoryReference memref;
-	/**< ÃèÊö#TEEC_RegisteredMemoryReferenceÀàÐÍ  */
+	/**< ï¿½ï¿½ï¿½ï¿½#TEEC_RegisteredMemoryReferenceï¿½ï¿½ï¿½ï¿½  */
 	TEEC_Value value;
-	/**< ÃèÊö#TEEC_ValueÀàÐÍ  */
+	/**< ï¿½ï¿½ï¿½ï¿½#TEEC_Valueï¿½ï¿½ï¿½ï¿½  */
 	TEEC_IonReference ionref;
 } TEEC_Parameter;
 
@@ -239,19 +209,19 @@ typedef struct {
 
 /**
  * @ingroup TEEC_COMMON_DATA
- * TEEC_Operation½á¹¹ÌåÀàÐÍ¶¨Òå
+ * TEEC_Operationï¿½á¹¹ï¿½ï¿½ï¿½ï¿½ï¿½Í¶ï¿½ï¿½ï¿½
  *
- * ´ò¿ª»á»°»ò·¢ËÍÃüÁîÊ±µÄ²ÎÊý¿ÉÒÔÍ¨¹ý´ËÀàÐÍÃèÊö£¬
- * È¡Ïû²Ù×÷Ò²¿ÉÒÔÊ¹ÓÃ´Ë²ÎÊý
+ * ï¿½ò¿ª»á»°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½Ä²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ã´Ë²ï¿½ï¿½ï¿½
  */
 typedef struct {
 	uint32_t started;
-	/**< ±êÊ¶ÊÇ·ñÊÇÈ¡Ïû²Ù×÷£¬0±íÊ¾È¡Ïû²Ù×÷  */
+	/**< ï¿½ï¿½Ê¶ï¿½Ç·ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½0ï¿½ï¿½Ê¾È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  */
 	uint32_t paramTypes;
-	/**ÃèÊöparamsµÄ²ÎÊýÀàÐÍ#TEEC_ParamType,
-	*    ÐèÒªÊ¹ÓÃºê#TEEC_PARAM_TYPES×éºÏ²ÎÊýÀàÐÍ */
+	/**ï¿½ï¿½ï¿½ï¿½paramsï¿½Ä²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½#TEEC_ParamType,
+	*    ï¿½ï¿½ÒªÊ¹ï¿½Ãºï¿½#TEEC_PARAM_TYPESï¿½ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 	TEEC_Parameter params[4];
-	/**< ²ÎÊýÄÚÈÝ£¬ÀàÐÍÎª#TEEC_Parameter  */
+	/**< ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½ï¿½ï¿½Îª#TEEC_Parameter  */
 	TEEC_Session *session;
 	bool cancel_flag;
 } TEEC_Operation;
