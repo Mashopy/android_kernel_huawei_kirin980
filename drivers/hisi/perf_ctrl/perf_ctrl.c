@@ -507,7 +507,6 @@ static int perf_ctrl_ddr_init(void)
 		return -ENOMEM;
 	}
 #pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wformat="
 	pr_info("perf_ctrl: perfdata phys:%llx virt:%llx data:%x %x\n", ddr_perfdata_phy_addr, freqdump_virt_addr, data[0], data[1]);/*lint !e626*/
 #pragma GCC diagnostic pop
 
