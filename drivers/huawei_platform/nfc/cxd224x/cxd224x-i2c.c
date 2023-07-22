@@ -531,7 +531,7 @@ dt_err:
 }
 #endif
 
-static int cxd224x_probe(struct i2c_client *client,
+static int __init cxd224x_probe(struct i2c_client *client,
 			   const struct i2c_device_id *id)
 {
 	int ret;
@@ -810,7 +810,7 @@ static const struct i2c_device_id cxd224x_id[] = {
 };
 MODULE_DEVICE_TABLE(of, cxd224x_i2c_dt_ids);
 
-static struct i2c_driver cxd224x_driver = {
+static struct i2c_driver __refdata cxd224x_driver = {
 	.id_table = cxd224x_id,
 	.probe = cxd224x_probe,
 	.remove = cxd224x_remove,

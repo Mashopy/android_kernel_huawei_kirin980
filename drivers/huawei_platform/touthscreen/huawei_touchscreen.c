@@ -7195,7 +7195,7 @@ void ts_thread_bindtocpu(void)
 	 return;
 }
 
-static int ts_thread(void *p)
+static int __init ts_thread(void *p)
 {
 	static const struct sched_param param = {
 		.sched_priority = 99,
