@@ -15,6 +15,7 @@ obj-$(CONFIG_HUAWEI_BATT_ACR_DETECT)	+= batt_acr_detect/
 obj-$(CONFIG_HUAWEI_POWER_THERMALZONE)	+= power_thermalzone/
 obj-$(CONFIG_HUAWEI_POWER_DEBUG)	+= power_debug/
 obj-$(CONFIG_HUAWEI_VSYS_SWITCH) += vsys_switch/
+obj-$(CONFIG_HUAWEI_SOC_CONTROL) += hardware_monitor/
 
 ifeq ($(HLTHERM_RUNTEST),true)
 CFLAGS_KERNEL += -DCONFIG_HLTHERM_RUNTEST

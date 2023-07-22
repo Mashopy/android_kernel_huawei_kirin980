@@ -27,6 +27,7 @@ enum power_if_sysfs_type {
 
 	/* enable charger */
 	POWER_IF_SYSFS_ENABLE_CHARGER = POWER_IF_SYSFS_BEGIN,
+	POWER_IF_SYSFS_VBUS_IIN_LIMIT,
 
 	POWER_IF_SYSFS_END,
 
@@ -91,6 +92,8 @@ struct power_if_ops {
 	const char *type_name;
 	int (*set_enable_charger)(unsigned int value);
 	int (*get_enable_charger)(unsigned int *value);
+	int (*set_iin_limit)(unsigned int value);
+	int (*get_iin_limit)(unsigned int *value);
 };
 
 /* power interface info */
