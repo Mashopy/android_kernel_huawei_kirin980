@@ -20,7 +20,6 @@
  *
  */
 #pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wformat="
 #pragma GCC diagnostic ignored "-Wdeclaration-after-statement"
 
 #include <mali_kbase.h>
