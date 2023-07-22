@@ -16,7 +16,7 @@
  *
  */
 
-#ifndef _IAN231_H_
+#ifndef _INA231_H_
 #define _INA231_H_
 
 #ifndef BIT
