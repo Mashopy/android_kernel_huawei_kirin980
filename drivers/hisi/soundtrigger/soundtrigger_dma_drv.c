@@ -939,8 +939,6 @@ static int32_t dma_close(void)
 	struct soundtrigger_dma_drv_info *dma_drv_info = g_dma_drv_info;
 	struct fast_tran_info *fast_info = NULL;
 	struct normal_tran_info *normal_info = NULL;
-	struct soundtrigger_pcm_info *fast_pcm_info = NULL;
-	struct soundtrigger_pcm_info *normal_pcm_info = NULL;
 	slimbus_device_type_t device_type = SLIMBUS_DEVICE_NUM;
 	uint32_t track_type;
 	int32_t err;
@@ -959,8 +957,6 @@ static int32_t dma_close(void)
 
 	fast_info = &(dma_drv_info->st_fast_tran_info);
 	normal_info = &(dma_drv_info->st_normal_tran_info);
-	fast_pcm_info = &(dma_drv_info->st_pcm_info[SOUNDTRIGGER_PCM_FAST]);
-	normal_pcm_info = &(dma_drv_info->st_pcm_info[SOUNDTRIGGER_PCM_NORMAL]);
 
 	if (dma_drv_info->is_dma_enable) {
 		if (fast_info->fast_read_complete_flag != FAST_TRAN_COMPLETE) {
