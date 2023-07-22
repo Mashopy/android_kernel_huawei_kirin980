@@ -1,7 +1,7 @@
 
 
 /*****************************************************************************
-  1 Í·ÎÄ¼þ°üº¬
+  1 Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 #include <linux/moduleparam.h>
 #include <linux/delay.h>
@@ -25,9 +25,9 @@
 #undef  THIS_FILE_ID
 #define THIS_FILE_ID OAM_FILE_ID_PLAT_FIRMWARE_C
 /*****************************************************************************
-  3 È«¾Ö±äÁ¿¶¨Òå
+  3 È«ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
-/*hi1102 cfgÎÄ¼þÂ·¾¶*/
+/*hi1102 cfgï¿½Ä¼ï¿½Â·ï¿½ï¿½*/
 uint8 *g_auc_cfg_patch_in_vendor[CFG_FILE_TOTAL] =
                     {
                         BFGX_AND_WIFI_CFG_PATH,
@@ -36,7 +36,7 @@ uint8 *g_auc_cfg_patch_in_vendor[CFG_FILE_TOTAL] =
                         RAM_CHECK_CFG_PATH,
                     };
 
-/*hi1103 mpw2 cfgÎÄ¼þÂ·¾¶*/
+/*hi1103 mpw2 cfgï¿½Ä¼ï¿½Â·ï¿½ï¿½*/
 uint8 *g_auc_mpw2_cfg_patch_in_vendor[CFG_FILE_TOTAL] =
                     {
                         BFGX_AND_WIFI_CFG_HI1103_MPW2_PATH,
@@ -45,7 +45,7 @@ uint8 *g_auc_mpw2_cfg_patch_in_vendor[CFG_FILE_TOTAL] =
                         RAM_CHECK_CFG_HI1103_MPW2_PATH,
                     };
 
-/*hi1103 pilot cfgÎÄ¼þÂ·¾¶*/
+/*hi1103 pilot cfgï¿½Ä¼ï¿½Â·ï¿½ï¿½*/
 uint8 *g_auc_pilot_cfg_patch_in_vendor[CFG_FILE_TOTAL] =
                     {
                         BFGX_AND_WIFI_CFG_HI1103_PILOT_PATH,
@@ -54,7 +54,7 @@ uint8 *g_auc_pilot_cfg_patch_in_vendor[CFG_FILE_TOTAL] =
                         RAM_CHECK_CFG_HI1103_PILOT_PATH,
                     };
 
-/* hi1102a cfgÎÄ¼þ */
+/* hi1102a cfgï¿½Ä¼ï¿½ */
 uint8 *g_auc_1102a_cfg_patch_in_vendor[CFG_FILE_TOTAL] =
                     {
                         BFGX_AND_WIFI_CFG_HI1102A_PILOT_PATH,
@@ -71,20 +71,20 @@ uint32 g_ul_asic_type = HI1103_ASIC_MPW2;
 
 uint8 **g_auc_cfg_path = g_auc_cfg_patch_in_vendor;
 
-/*´æ´¢cfgÎÄ¼þÐÅÏ¢£¬½âÎöcfgÎÄ¼þÊ±¸³Öµ£¬¼ÓÔØµÄÊ±ºòÊ¹ÓÃ¸Ã±äÁ¿*/
+/*ï¿½æ´¢cfgï¿½Ä¼ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½cfgï¿½Ä¼ï¿½Ê±ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½Ê±ï¿½ï¿½Ê¹ï¿½Ã¸Ã±ï¿½ï¿½ï¿½*/
 FIRMWARE_GLOBALS_STRUCT  g_st_cfg_info;
 
-/*±£´æfirmware fileÄÚÈÝµÄbuffer£¬ÏÈ½«ÎÄ¼þ¶Áµ½Õâ¸öbufferÖÐ£¬È»ºó´ÓÕâ¸öÏòdevice buffer·¢ËÍ*/
+/*ï¿½ï¿½ï¿½ï¿½firmware fileï¿½ï¿½ï¿½Ýµï¿½bufferï¿½ï¿½ï¿½È½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½bufferï¿½Ð£ï¿½È»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½device bufferï¿½ï¿½ï¿½ï¿½*/
 uint8 *g_pucDataBuf = NULL;
 
-/* g_pucDataBufµÄ³¤¶È */
+/* g_pucDataBufï¿½Ä³ï¿½ï¿½ï¿½ */
 uint32 g_ulDataBufLen = 0;
 
 struct st_wifi_dump_mem_info nfc_buffer_data = {0x30000000+0x000f9d00, OMLNFCDATABUFFLEN, "nfc_buffer_data"};
 extern oal_uint32   oam_send_device_data2sdt(oal_uint8* pc_string, oal_uint16 len);
 uint8* g_pucNfcLog= NULL;
 /*****************************************************************************
-  4 º¯ÊýÊµÏÖ
+  4 ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
 *****************************************************************************/
 
 
@@ -276,12 +276,12 @@ void *malloc_cmd_buf(uint8 *puc_cfg_info_buf, uint32 ul_index)
         return NULL;
     }
 
-    /* Í³¼ÆÃüÁî¸öÊý */
+    /* Í³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     flag = puc_cfg_info_buf;
     g_st_cfg_info.al_count[ul_index] = 0;
     while(NULL != flag)
     {
-        /* Ò»¸öÕýÈ·µÄÃüÁîÐÐ½áÊø·ûÎª ; */
+        /* Ò»ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð½ï¿½ï¿½ï¿½ï¿½ï¿½Îª ; */
         flag = OS_STR_CHR(flag, CMD_LINE_SIGN);
         if (NULL == flag)
         {
@@ -292,7 +292,7 @@ void *malloc_cmd_buf(uint8 *puc_cfg_info_buf, uint32 ul_index)
     }
     PS_PRINT_DBG("cfg file cmd count: al_count[%d] = %d\n", ul_index, g_st_cfg_info.al_count[ul_index]);
 
-    /* ÉêÇë´æ´¢ÃüÁî¿Õ¼ä */
+    /* ï¿½ï¿½ï¿½ï¿½æ´¢ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½ */
     l_len = ((g_st_cfg_info.al_count[ul_index]) + CFG_INFO_RESERVE_LEN) * sizeof(struct cmd_type_st);
     p_buf = OS_KMALLOC_GFP(l_len);
     if (NULL == p_buf)
@@ -315,7 +315,7 @@ uint8 *delete_space(uint8 *string, int32 *len)
         return NULL;
     }
 
-    /* É¾³ýÎ²²¿µÄ¿Õ¸ñ */
+    /* É¾ï¿½ï¿½Î²ï¿½ï¿½ï¿½Ä¿Õ¸ï¿½ */
     for(i = *len - 1; i >= 0; i--)
     {
         if (COMPART_KEYWORD != string[i])
@@ -324,21 +324,21 @@ uint8 *delete_space(uint8 *string, int32 *len)
         }
         string[i] = '\0';
     }
-    /* ³ö´í */
+    /* ï¿½ï¿½ï¿½ï¿½ */
     if (i < 0)
     {
         PS_PRINT_ERR(" string is Space bar\n");
         return NULL;
     }
-    /* ÔÚforÓï¾äÖÐ¼õÈ¥1£¬ÕâÀï¼ÓÉÏ1 */
+    /* ï¿½ï¿½forï¿½ï¿½ï¿½ï¿½Ð¼ï¿½È¥1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½1 */
     *len = i + 1;
 
-    /* É¾³ýÍ·²¿µÄ¿Õ¸ñ */
+    /* É¾ï¿½ï¿½Í·ï¿½ï¿½ï¿½Ä¿Õ¸ï¿½ */
     for(i = 0; i < *len; i++)
     {
         if (COMPART_KEYWORD != string[i])
         {
-            /* ¼õÈ¥¿Õ¸ñµÄ¸öÊý */
+            /* ï¿½ï¿½È¥ï¿½Õ¸ï¿½Ä¸ï¿½ï¿½ï¿½ */
             *len = *len - i;
             return &string[i];
         }
@@ -602,8 +602,8 @@ int32 update_device_cali_count(uint8 *Key, uint8 *Value)
     uint8 *addr;
     uint8  buff_tx[SEND_BUF_LEN];
 
-    /*ÖØÐÂ×éºÏValue×Ö·û´®£¬Èë²ÎValueÖ»ÊÇÒ»¸öµØÖ·£¬ÐÎÊ½Îª"0xXXXXX"*/
-    /*×éºÏÒÔºóµÄÐÎÊ½Îª"Êý¾Ý¿í¶È,ÒªÐ´µÄµØÖ·,ÒªÐ´µÄÖµ"---"4,0xXXXX,value"*/
+    /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Valueï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ValueÖ»ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½Ê½Îª"0xXXXXX"*/
+    /*ï¿½ï¿½ï¿½ï¿½Ôºï¿½ï¿½ï¿½ï¿½Ê½Îª"ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½,ÒªÐ´ï¿½Äµï¿½Ö·,ÒªÐ´ï¿½ï¿½Öµ"---"4,0xXXXX,value"*/
     len = 0;
     OS_MEM_SET(buff_tx, 0, SEND_BUF_LEN);
 
@@ -630,9 +630,9 @@ int32 update_device_cali_count(uint8 *Key, uint8 *Value)
     l_ret = get_cali_count(&number);
     l_ret += num_to_string(&buff_tx[len], number);
 
-    /* ´ËÊ±buff_tx="4,0xXXX,value" */
+    /* ï¿½ï¿½Ê±buff_tx="4,0xXXX,value" */
 
-    /*Ê¹ÓÃWMEM_CMD_KEYWORDÃüÁîÏòdevice·¢ËÍÐ£×¼´ÎÊý*/
+    /*Ê¹ï¿½ï¿½WMEM_CMD_KEYWORDï¿½ï¿½ï¿½ï¿½ï¿½ï¿½deviceï¿½ï¿½ï¿½ï¿½Ð£×¼ï¿½ï¿½ï¿½ï¿½*/
     l_ret += number_type_cmd_send(WMEM_CMD_KEYWORD, buff_tx);
     if (0 > l_ret)
     {
@@ -658,8 +658,8 @@ int32 download_bfgx_cali_data(uint8 *Key, uint8 *Value)
     uint8 *addr;
     uint8  buff_tx[SEND_BUF_LEN];
 
-    /*ÖØÐÂ×éºÏValue×Ö·û´®£¬Èë²ÎValueÖ»ÊÇÒ»¸öµØÖ·£¬ÐÎÊ½Îª"0xXXXXX"*/
-    /*×éºÏÒÔºóµÄÐÎÊ½Îª"FILES ÎÄ¼þ¸öÊý ÒªÐ´µÄµØÖ·"---"FILES 1 0xXXXX "*/
+    /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Valueï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ValueÖ»ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½Ê½Îª"0xXXXXX"*/
+    /*ï¿½ï¿½ï¿½ï¿½Ôºï¿½ï¿½ï¿½ï¿½Ê½Îª"FILES ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ ÒªÐ´ï¿½Äµï¿½Ö·"---"FILES 1 0xXXXX "*/
     OS_MEM_SET(buff_tx, 0, SEND_BUF_LEN);
 
     /* buff_tx="" */
@@ -689,7 +689,7 @@ int32 download_bfgx_cali_data(uint8 *Key, uint8 *Value)
 
     /* buff_tx="FILES 1 0xXXXX " */
 
-    /*·¢ËÍµØÖ·*/
+    /*ï¿½ï¿½ï¿½Íµï¿½Ö·*/
     l_ret = msg_send_and_recv_except(buff_tx, len, MSG_FROM_DEV_READY_OK);
     if (0 > l_ret)
     {
@@ -697,7 +697,7 @@ int32 download_bfgx_cali_data(uint8 *Key, uint8 *Value)
         return -EFAIL;
     }
 
-    /*»ñÈ¡bfgxÐ£×¼Êý¾Ý*/
+    /*ï¿½ï¿½È¡bfgxÐ£×¼ï¿½ï¿½ï¿½ï¿½*/
     l_ret = get_bfgx_cali_data(g_pucDataBuf, &len, g_ulDataBufLen);
     if (0 > l_ret)
     {
@@ -708,7 +708,7 @@ int32 download_bfgx_cali_data(uint8 *Key, uint8 *Value)
     /* Wait at least 5 ms */
     oal_usleep_range(FILE_CMD_WAIT_TIME_MIN, FILE_CMD_WAIT_TIME_MAX);
 
-    /*·¢ËÍbfgxÐ£×¼Êý¾Ý*/
+    /*ï¿½ï¿½ï¿½ï¿½bfgxÐ£×¼ï¿½ï¿½ï¿½ï¿½*/
     l_ret = msg_send_and_recv_except(g_pucDataBuf, len, MSG_FROM_DEV_FILES_OK);
     if(0 > l_ret)
     {
@@ -727,8 +727,8 @@ int32 download_dcxo_cali_data(uint8 *Key, uint8 *Value)
     uint8 *addr;
     uint8  buff_tx[SEND_BUF_LEN];
 
-    /*ÖØÐÂ×éºÏValue×Ö·û´®£¬Èë²ÎValueÖ»ÊÇÒ»¸öµØÖ·£¬ÐÎÊ½Îª"0xXXXXX"*/
-    /*×éºÏÒÔºóµÄÐÎÊ½Îª"FILES ÎÄ¼þ¸öÊý ÒªÐ´µÄµØÖ·"---"FILES 1 0xXXXX "*/
+    /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Valueï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ValueÖ»ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½Ê½Îª"0xXXXXX"*/
+    /*ï¿½ï¿½ï¿½ï¿½Ôºï¿½ï¿½ï¿½ï¿½Ê½Îª"FILES ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ ÒªÐ´ï¿½Äµï¿½Ö·"---"FILES 1 0xXXXX "*/
     OS_MEM_SET(buff_tx, 0, SEND_BUF_LEN);
 
     /* buff_tx="" */
@@ -758,7 +758,7 @@ int32 download_dcxo_cali_data(uint8 *Key, uint8 *Value)
 
     /* buff_tx="FILES 1 0xXXXX " */
 
-    /*·¢ËÍµØÖ·*/
+    /*ï¿½ï¿½ï¿½Íµï¿½Ö·*/
     l_ret = msg_send_and_recv_except(buff_tx, len, MSG_FROM_DEV_READY_OK);
     if (0 > l_ret)
     {
@@ -768,7 +768,7 @@ int32 download_dcxo_cali_data(uint8 *Key, uint8 *Value)
 
     oal_usleep_range(FILE_CMD_WAIT_TIME_MIN, FILE_CMD_WAIT_TIME_MAX);
 
-    /*·¢ËÍdcxoÐ£×¼Êý¾Ý*/
+    /*ï¿½ï¿½ï¿½ï¿½dcxoÐ£×¼ï¿½ï¿½ï¿½ï¿½*/
     l_ret = msg_send_and_recv_except(g_pucDcxoDataBuf, DCXO_CALI_DATA_BUF_LEN, MSG_FROM_DEV_FILES_OK);
     if(0 > l_ret)
     {
@@ -792,7 +792,7 @@ int32 parse_file_cmd(uint8 *string, unsigned long *addr, int8 **file_path)
         return -EFAIL;
     }
 
-    /*»ñµÃ·¢ËÍµÄÎÄ¼þµÄ¸öÊý£¬´Ë´¦±ØÐëÎª1£¬string×Ö·û´®µÄ¸ñÊ½±ØÐëÊÇ"1,0xXXXXX,file_path"*/
+    /*ï¿½ï¿½Ã·ï¿½ï¿½Íµï¿½ï¿½Ä¼ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë´ï¿½ï¿½ï¿½ï¿½ï¿½Îª1ï¿½ï¿½stringï¿½Ö·ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"1,0xXXXXX,file_path"*/
     tmp = string;
     while(COMPART_KEYWORD == *tmp)
     {
@@ -805,7 +805,7 @@ int32 parse_file_cmd(uint8 *string, unsigned long *addr, int8 **file_path)
         return -EFAIL;
     }
 
-    /*ÈÃtmpÖ¸ÏòµØÖ·µÄÊ××ÖÄ¸*/
+    /*ï¿½ï¿½tmpÖ¸ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¸*/
     tmp = OS_STR_CHR(string, ',');
     if (tmp == NULL)
     {
@@ -832,7 +832,7 @@ int32 parse_file_cmd(uint8 *string, unsigned long *addr, int8 **file_path)
     {
         after++;
     }
-    /*Ìø¹ý','×Ö·û*/
+    /*ï¿½ï¿½ï¿½ï¿½','ï¿½Ö·ï¿½*/
     after++;
     while(COMPART_KEYWORD == *after)
     {
@@ -895,7 +895,7 @@ int32 read_device_reg16(uint32 address, int16* value)
     ret = read_msg(buf_result, 4);
     if(ret > 0)
     {
-        /*½âÎö»Ø¶ÁµÄÄÚ´æ,¶¼ÊÇÐ¡¶ËÖ±½Ó×ª»»*/
+        /*ï¿½ï¿½ï¿½ï¿½ï¿½Ø¶ï¿½ï¿½ï¿½ï¿½Ú´ï¿½,ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½Ö±ï¿½ï¿½×ªï¿½ï¿½*/
         *value = oal_readl(buf_result);
         oal_print_hex_dump(buf_result, 8, 32, "reg16: ");
         return 0;
@@ -1055,7 +1055,7 @@ int32 wifi_device_mem_dump(struct st_wifi_dump_mem_info *pst_mem_dump_info, uint
     uint32* pcount = (uint32*)&buff[0];
     uint32 sdio_transfer_limit = hcc_get_max_trans_size(hcc_get_110x_handler());
 
-    /*¦Ì??¨²¡ä??¨¨????3¨¦1|?¨º,¨°3¡ä¨®D?????¦Ì??¨²¡ä?¨¨Y¨°¡Á¨¦¨º??3¨¦1|?¡ê*/
+    /*ï¿½ï¿½??ï¿½ï¿½ï¿½ï¿½??ï¿½ï¿½????3ï¿½ï¿½1|?ï¿½ï¿½,ï¿½ï¿½3ï¿½ä¨®D?????ï¿½ï¿½??ï¿½ï¿½ï¿½ï¿½?ï¿½ï¿½Yï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½??3ï¿½ï¿½1|?ï¿½ï¿½*/
     sdio_transfer_limit = OAL_MIN(PAGE_SIZE, sdio_transfer_limit);
 
     if (NULL == pst_mem_dump_info)
@@ -1183,7 +1183,7 @@ int32 wifi_device_mem_dump(struct st_wifi_dump_mem_info *pst_mem_dump_info, uint
     uint8 *pucDataBuf = NULL;
     uint32 sdio_transfer_limit = hcc_get_max_trans_size(hcc_get_110x_handler());
 
-    /*µ¼ÄÚ´æÏÈ¿¼ÂÇ³É¹¦ÂÊ,Ò³´óÐ¡¶ÔÆëµÄÄÚ´æÈÝÒ×ÉêÇë³É¹¦¡£*/
+    /*ï¿½ï¿½ï¿½Ú´ï¿½ï¿½È¿ï¿½ï¿½Ç³É¹ï¿½ï¿½ï¿½,Ò³ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½*/
     sdio_transfer_limit = OAL_MIN(PAGE_SIZE, sdio_transfer_limit);
 
     if (NULL == pst_mem_dump_info)
@@ -1216,7 +1216,7 @@ int32 wifi_device_mem_dump(struct st_wifi_dump_mem_info *pst_mem_dump_info, uint
     for (i = 0; i < count; i++)
     {
         time_start = ktime_get();
-        /*´ò¿ªÎÄ¼þ£¬×¼±¸½ÓÊÜwifi mem dump*/
+        /*ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½×¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½wifi mem dump*/
         OS_MEM_SET(filename, 0, sizeof(filename));
         snprintf(filename, sizeof(filename), WIFI_DUMP_PATH"/%s_%s.bin", SDIO_STORE_WIFI_MEM, pst_mem_dump_info[i].file_name);
         PS_PRINT_INFO("readm %s\n",filename);
@@ -1252,14 +1252,14 @@ int32 wifi_device_mem_dump(struct st_wifi_dump_mem_info *pst_mem_dump_info, uint
 int32 sdio_read_mem(uint8 *Key, uint8 *Value)
 {
     int32 l_ret = -EFAIL;
-    uint32 size,readlen;
+    uint32 size;
     int32 retry = 3;
     uint8 *flag;
     OS_KERNEL_FILE_STRU *fp;
     uint8 *pucDataBuf = NULL;
     uint32 sdio_transfer_limit = hcc_get_max_trans_size(hcc_get_110x_handler());
 
-    /*µ¼ÄÚ´æÏÈ¿¼ÂÇ³É¹¦ÂÊ,Ò³´óÐ¡¶ÔÆëµÄÄÚ´æÈÝÒ×ÉêÇë³É¹¦¡£*/
+    /*ï¿½ï¿½ï¿½Ú´ï¿½ï¿½È¿ï¿½ï¿½Ç³É¹ï¿½ï¿½ï¿½,Ò³ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½*/
     sdio_transfer_limit = OAL_MIN(PAGE_SIZE, sdio_transfer_limit);
 
     flag = OS_STR_CHR(Value, ',');
@@ -1314,7 +1314,6 @@ int32 sdio_read_mem(uint8 *Key, uint8 *Value)
     PS_PRINT_DBG("recv len [%d]\n", size);
     while(size > 0)
     {
-        readlen = min(size, sdio_transfer_limit);
         l_ret = recv_device_mem(fp, pucDataBuf, size);
         if (l_ret > 0)
         {
@@ -1393,7 +1392,7 @@ int32 exec_number_type_cmd(uint8 *Key, uint8 *Value)
     }
     else if (!OS_STR_CMP((int8 *)Key, CALI_COUNT_CMD_KEYWORD))
     {
-        /*¼ÓÔØÐ£×¼´ÎÊýµ½device*/
+        /*ï¿½ï¿½ï¿½ï¿½Ð£×¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½device*/
         l_ret = update_device_cali_count(Key, Value);
         if (0 > l_ret)
         {
@@ -1409,7 +1408,7 @@ int32 exec_number_type_cmd(uint8 *Key, uint8 *Value)
             return SUCC;
         }
 
-        /*¼ÓÔØBFGXµÄÐ£×¼Êý¾Ý*/
+        /*ï¿½ï¿½ï¿½ï¿½BFGXï¿½ï¿½Ð£×¼ï¿½ï¿½ï¿½ï¿½*/
         l_ret = download_bfgx_cali_data(FILES_CMD_KEYWORD, Value);
         if (0 > l_ret)
         {
@@ -1420,7 +1419,7 @@ int32 exec_number_type_cmd(uint8 *Key, uint8 *Value)
     else if (!OS_STR_CMP((int8 *)Key, CALI_DCXO_DATA_CMD_KEYWORD))
     {
         PS_PRINT_DBG("download dcxo cali data begin\n");
-        /*·¢ËÍTCXO µÄÐ£×¼²ÎÊýµ½devcie*/
+        /*ï¿½ï¿½ï¿½ï¿½TCXO ï¿½ï¿½Ð£×¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½devcie*/
         l_ret = download_dcxo_cali_data(FILES_CMD_KEYWORD, Value);
         if (0 > l_ret)
         {
@@ -1553,7 +1552,7 @@ int32 exec_file_type_cmd(uint8 *Key, uint8 *Value)
         return -EFAIL;
     }
 
-    /* »ñÈ¡fileÎÄ¼þ´óÐ¡ */
+    /* ï¿½ï¿½È¡fileï¿½Ä¼ï¿½ï¿½ï¿½Ð¡ */
     file_len = vfs_llseek(fp, 0, SEEK_END);
     if (0 >= file_len)
     {
@@ -1562,7 +1561,7 @@ int32 exec_file_type_cmd(uint8 *Key, uint8 *Value)
         return -EFAIL;
     }
 
-    /* »Ö¸´fp->f_posµ½ÎÄ¼þ¿ªÍ· */
+    /* ï¿½Ö¸ï¿½fp->f_posï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Í· */
     vfs_llseek(fp, 0, SEEK_SET);
 
     PS_PRINT_DBG("file len is [%d]\n", file_len);
@@ -1596,7 +1595,7 @@ int32 exec_file_type_cmd(uint8 *Key, uint8 *Value)
                                             addr_send,
                                             COMPART_KEYWORD);
 
-        /*·¢ËÍµØÖ·*/
+        /*ï¿½ï¿½ï¿½Íµï¿½Ö·*/
         PS_PRINT_DBG("send file addr cmd is [%s]\n", buff_tx);
         ret = msg_send_and_recv_except(buff_tx, OS_STR_LEN(buff_tx), MSG_FROM_DEV_READY_OK);
         if (0 > ret)
@@ -1609,7 +1608,7 @@ int32 exec_file_type_cmd(uint8 *Key, uint8 *Value)
         /* Wait at least 5 ms */
         oal_usleep_range(FILE_CMD_WAIT_TIME_MIN, FILE_CMD_WAIT_TIME_MAX);
 
-        /*·¢ËÍÎÄ¼þÄÚÈÝ*/
+        /*ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½*/
         ret = msg_send_and_recv_except(g_pucDataBuf, rdlen, MSG_FROM_DEV_FILES_OK);
         if(0 > ret)
         {
@@ -1622,7 +1621,7 @@ int32 exec_file_type_cmd(uint8 *Key, uint8 *Value)
 
     filp_close(fp, NULL);
 
-    /*·¢ËÍµÄ³¤¶ÈÒªºÍÎÄ¼þµÄ³¤¶ÈÒ»ÖÂ*/
+    /*ï¿½ï¿½ï¿½ÍµÄ³ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ä³ï¿½ï¿½ï¿½Ò»ï¿½ï¿½*/
     if (offset != file_len)
     {
         PS_PRINT_ERR("file send len is err! send len is [%d], file len is [%d]\n", offset, file_len);
@@ -1777,17 +1776,17 @@ int32 firmware_parse_cmd(uint8 *puc_cfg_buffer, uint8 *puc_cmd_name, uint8 *puc_
         return ERROR_TYPE_CMD;
     }
 
-    /* ×¢ÊÍÐÐ */
+    /* ×¢ï¿½ï¿½ï¿½ï¿½ */
     if ('@' == puc_cfg_buffer[0])
     {
         return ERROR_TYPE_CMD;
     }
 
-    /* ´íÎóÐÐ£¬»òÕßÍË³öÃüÁîÐÐ */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     link = OS_STR_CHR((int8 *)begin, '=');
     if (NULL == link)
     {
-        /* ÍË³öÃüÁîÐÐ */
+        /* ï¿½Ë³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
         if (NULL != OS_STR_STR((int8 *)puc_cfg_buffer, QUIT_CMD_KEYWORD))
         {
             return QUIT_TYPE_CMD;
@@ -1804,7 +1803,7 @@ int32 firmware_parse_cmd(uint8 *puc_cfg_buffer, uint8 *puc_cmd_name, uint8 *puc_
         return ERROR_TYPE_CMD;
     }
 
-    /* ´íÎóÐÐ£¬Ã»ÓÐ½áÊø·û */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½Ã»ï¿½Ð½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     end = OS_STR_CHR(link, ';');
     if (NULL == end)
     {
@@ -1813,14 +1812,14 @@ int32 firmware_parse_cmd(uint8 *puc_cfg_buffer, uint8 *puc_cmd_name, uint8 *puc_
 
     l_cmdlen = link - begin;
 
-    /* É¾³ý¹Ø¼ü×ÖµÄÁ½±ß¿Õ¸ñ */
+    /* É¾ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ß¿Õ¸ï¿½ */
     handle = delete_space((uint8 *)begin, &l_cmdlen);
     if (NULL == handle)
     {
         return ERROR_TYPE_CMD;
     }
 
-    /* ÅÐ¶ÏÃüÁîÀàÐÍ */
+    /* ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     if (!OS_MEM_CMP(handle, (uint8 *)FILE_TYPE_CMD_KEY, OS_STR_LEN((uint8 *)FILE_TYPE_CMD_KEY)))
     {
         handle_temp = OS_STR_STR(handle, (uint8 *)FILE_TYPE_CMD_KEY);
@@ -1857,7 +1856,7 @@ int32 firmware_parse_cmd(uint8 *puc_cfg_buffer, uint8 *puc_cmd_name, uint8 *puc_
     }
     OS_MEM_CPY(puc_cmd_name, handle, l_cmdlen);
 
-    /* É¾³ýÖµÁ½±ß¿Õ¸ñ */
+    /* É¾ï¿½ï¿½Öµï¿½ï¿½ï¿½ß¿Õ¸ï¿½ */
     begin = link + 1;
     l_paralen = end - begin;
     if (DOWNLOAD_CMD_PARA_LEN < l_paralen || 0 > l_paralen)
@@ -1902,24 +1901,24 @@ int32 firmware_parse_cfg(uint8 *puc_cfg_info_buf, int32 l_buf_len, uint32 ul_ind
         return -EFAIL;
     }
 
-    /* ½âÎöCMD BUF*/
+    /* ï¿½ï¿½ï¿½ï¿½CMD BUF*/
     flag = puc_cfg_info_buf;
     l_len = l_buf_len;
     i = 0;
     while((i < g_st_cfg_info.al_count[ul_index]) && (flag < &puc_cfg_info_buf[l_len]))
     {
         /*
-         *»ñÈ¡ÅäÖÃÎÄ¼þÖÐµÄÒ»ÐÐ,ÅäÖÃÎÄ¼þ±ØÐëÊÇunix¸ñÊ½.
-         *ÅäÖÃÎÄ¼þÖÐµÄÄ³Ò»ÐÐº¬ÓÐ×Ö·û @ ÔòÈÏÎª¸ÃÐÐÎª×¢ÊÍÐÐ
+         *ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ðµï¿½Ò»ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½unixï¿½ï¿½Ê½.
+         *ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ðµï¿½Ä³Ò»ï¿½Ðºï¿½ï¿½ï¿½ï¿½Ö·ï¿½ @ ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½Îª×¢ï¿½ï¿½ï¿½ï¿½
          */
         begin = flag;
         end   = OS_STR_CHR(flag, '\n');
-        if (NULL == end)           /*ÎÄ¼þµÄ×îºóÒ»ÐÐ£¬Ã»ÓÐ»»ÐÐ·û*/
+        if (NULL == end)           /*ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½Ð£ï¿½Ã»ï¿½Ð»ï¿½ï¿½Ð·ï¿½*/
         {
             PS_PRINT_DBG("lost of new line!\n");
             end = &puc_cfg_info_buf[l_len];
         }
-        else if (end == begin)     /* ¸ÃÐÐÖ»ÓÐÒ»¸ö»»ÐÐ·û */
+        else if (end == begin)     /* ï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ð·ï¿½ */
         {
             PS_PRINT_DBG("blank line\n");
             flag = end + 1;
@@ -1936,12 +1935,12 @@ int32 firmware_parse_cfg(uint8 *puc_cfg_info_buf, int32 l_buf_len, uint32 ul_ind
 
         PS_PRINT_DBG("cmd type=[%d],cmd_name=[%s],cmd_para=[%s]\n", cmd_type, cmd_name, cmd_para);
 
-        if (ERROR_TYPE_CMD != cmd_type)/* ÕýÈ·µÄÃüÁîÀàÐÍ£¬Ôö¼Ó */
+        if (ERROR_TYPE_CMD != cmd_type)/* ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½ï¿½ï¿½ */
         {
             g_st_cfg_info.apst_cmd[ul_index][i].cmd_type = cmd_type;
             OS_MEM_CPY(g_st_cfg_info.apst_cmd[ul_index][i].cmd_name, cmd_name, DOWNLOAD_CMD_LEN);
             OS_MEM_CPY(g_st_cfg_info.apst_cmd[ul_index][i].cmd_para, cmd_para, DOWNLOAD_CMD_PARA_LEN);
-            /* »ñÈ¡ÅäÖÃ°æ±¾ºÅ */
+            /* ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ã°æ±¾ï¿½ï¿½ */
             if (!OS_MEM_CMP(g_st_cfg_info.apst_cmd[ul_index][i].cmd_name,
                             VER_CMD_KEYWORD,
                             OS_STR_LEN(VER_CMD_KEYWORD)))
@@ -1983,7 +1982,7 @@ int32 firmware_parse_cfg(uint8 *puc_cfg_info_buf, int32 l_buf_len, uint32 ul_ind
         flag = end + 1;
     }
 
-    /* ¸ù¾ÝÊµ¼ÊÃüÁî¸öÊý£¬ÐÞ¸Ä×îÖÕµÄÃüÁî¸öÊý */
+    /* ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸ï¿½ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     g_st_cfg_info.al_count[ul_index] = i;
     PS_PRINT_INFO("effective cmd count: al_count[%d] = %d\n", ul_index, g_st_cfg_info.al_count[ul_index]);
 
@@ -2003,7 +2002,7 @@ int32 firmware_get_cfg(uint8 *puc_CfgPatch, uint32 ul_index)
         return -EFAIL;
     }
 
-    /*cfgÎÄ¼þÏÞ¶¨ÔÚÐ¡ÓÚ2048,Èç¹ûcfgÎÄ¼þµÄ´óÐ¡È·Êµ´óÓÚ2048£¬¿ÉÒÔÐÞ¸ÄREAD_CFG_BUF_LENµÄÖµ*/
+    /*cfgï¿½Ä¼ï¿½ï¿½Þ¶ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½2048,ï¿½ï¿½ï¿½cfgï¿½Ä¼ï¿½ï¿½Ä´ï¿½Ð¡È·Êµï¿½ï¿½ï¿½ï¿½2048ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸ï¿½READ_CFG_BUF_LENï¿½ï¿½Öµ*/
     puc_read_cfg_buf = OS_KMALLOC_GFP(READ_CFG_BUF_LEN);
     if (NULL == puc_read_cfg_buf)
     {
@@ -2019,7 +2018,7 @@ int32 firmware_get_cfg(uint8 *puc_CfgPatch, uint32 ul_index)
         puc_read_cfg_buf = NULL;
         return -EFAIL;
     }
-    /*¼õ1ÊÇÎªÁËÈ·±£cfgÎÄ¼þµÄ³¤¶È²»³¬¹ýREAD_CFG_BUF_LEN£¬ÒòÎªfirmware_read_cfg×î¶àÖ»»á¶ÁÈ¡READ_CFG_BUF_LEN³¤¶ÈµÄÄÚÈÝ*/
+    /*ï¿½ï¿½1ï¿½ï¿½Îªï¿½ï¿½È·ï¿½ï¿½cfgï¿½Ä¼ï¿½ï¿½Ä³ï¿½ï¿½È²ï¿½ï¿½ï¿½ï¿½ï¿½READ_CFG_BUF_LENï¿½ï¿½ï¿½ï¿½Îªfirmware_read_cfgï¿½ï¿½ï¿½Ö»ï¿½ï¿½ï¿½È¡READ_CFG_BUF_LENï¿½ï¿½ï¿½Èµï¿½ï¿½ï¿½ï¿½ï¿½*/
     else if (l_readlen > READ_CFG_BUF_LEN - 1)
     {
         PS_PRINT_ERR("cfg file [%s] larger than %d\n", puc_CfgPatch, READ_CFG_BUF_LEN);
@@ -2234,7 +2233,7 @@ int32 firmware_cfg_init(void)
         return -EFAIL;
     }
 
-    /* ÉêÇëÓÉÓÚ±£´æ¹²Ê±ÖÓÐ£×¼Êý¾ÝµÄbuffer */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú±ï¿½ï¿½æ¹²Ê±ï¿½ï¿½Ð£×¼ï¿½ï¿½ï¿½Ýµï¿½buffer */
     l_ret = dcxo_data_buf_malloc();
     if(0 > l_ret)
     {
@@ -2242,7 +2241,7 @@ int32 firmware_cfg_init(void)
         goto alloc_dcxo_data_buf_fail;
     }
 
-    /*½âÎöcfgÎÄ¼þ*/
+    /*ï¿½ï¿½ï¿½ï¿½cfgï¿½Ä¼ï¿½*/
     for (i = 0; i < CFG_FILE_TOTAL; i++)
     {
         l_ret = firmware_get_cfg(g_auc_cfg_path[i], i);
@@ -2259,7 +2258,7 @@ int32 firmware_cfg_init(void)
         }
     }
 
-    /*ÉêÇëÓÃÓÚ±£´æÐ£×¼Êý¾ÝµÄbuffer*/
+    /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú±ï¿½ï¿½ï¿½Ð£×¼ï¿½ï¿½ï¿½Ýµï¿½buffer*/
     l_ret = cali_data_buf_malloc();
     if(0 > l_ret)
     {
@@ -2312,7 +2311,7 @@ int32 nfc_buffer_data_recv(uint8 *pucDataBuf, int32 len)
         return -EFAIL;
     }
 
-    //½ÓÊÕÊý¾Ý
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     while (len > lenbuf)
     {
         l_ret = read_msg(pucDataBuf + lenbuf, len - lenbuf);
@@ -2393,7 +2392,7 @@ void save_nfc_lowpower_log_2_sdt(void)
                                                 COMPART_KEYWORD);
         PS_PRINT_INFO("read nfc buffer cmd:[%s]\n", buf_tx);
 
-        /* ÐèÒªÔö¼ÓdelayÊ±¼ä£¬¸ÃÊ±¼äºÍSDIO¶ÁÈ¡µÄ³¤¶ÈÏà¹Ø */
+        /* ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½delayÊ±ï¿½ä£¬ï¿½ï¿½Ê±ï¿½ï¿½ï¿½SDIOï¿½ï¿½È¡ï¿½Ä³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
         /*oal_usleep_range(10000, 11000);*/
         send_msg(buf_tx, buf_tx_len);
 
@@ -2415,7 +2414,7 @@ void save_nfc_lowpower_log_2_sdt(void)
             }
         }
 #endif
-        /**ÒòÎªnfcÊôÓÚbfgn£¬log×ßbfgnÍ¨µÀ**/
+        /**ï¿½ï¿½Îªnfcï¿½ï¿½ï¿½ï¿½bfgnï¿½ï¿½logï¿½ï¿½bfgnÍ¨ï¿½ï¿½**/
         retry = 3;
         while (!wifi_choose_bfgn_channel_send_log2sdt(g_pucNfcLog, cp_len))
         {

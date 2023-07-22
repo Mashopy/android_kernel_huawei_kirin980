@@ -9,7 +9,7 @@ extern "C" {
 #endif
 
 /*****************************************************************************
-  1 Í·ÎÄ¼þ°üº¬
+  1 Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 #include "hmac_main.h"
 #include "hmac_blacklist.h"
@@ -23,14 +23,14 @@ extern "C" {
 #define THIS_FILE_ID OAM_FILE_ID_HMAC_BLACKLIST_C
 
 /*****************************************************************************
-  2 STRUCT¶¨Òå
+  2 STRUCTï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 
 /*****************************************************************************
-  3 È«¾Ö±äÁ¿¶¨Òå
+  3 È«ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 /*****************************************************************************
-  4 º¯ÊýÊµÏÖ
+  4 ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
 *****************************************************************************/
 
 
@@ -61,7 +61,6 @@ OAL_STATIC oal_uint32 hmac_blacklist_mac_is_bcast(const oal_uint8 *puc_mac_addr)
 
 OAL_STATIC oal_void hmac_blacklist_init(mac_vap_stru *pst_mac_vap, cs_blacklist_mode_enum_uint8 en_mode, oal_bool_enum_uint8 en_flush)
 {
-    oal_uint32                   ul_size;
     mac_blacklist_info_stru     *pst_blacklist_info;
     hmac_vap_stru               *pst_hmac_vap;
 
@@ -83,8 +82,8 @@ OAL_STATIC oal_void hmac_blacklist_init(mac_vap_stru *pst_mac_vap, cs_blacklist_
         OAM_ERROR_LOG0(0, OAM_SF_ANY, "{hmac_blacklist_init::pst_blacklist_info null!}\r\n");
         return;
     }
-    ul_size = sizeof(mac_blacklist_info_stru);
-    /* Max=32 => ÐÂÔö¼Ómac_vap½á¹¹´óÐ¡= 0x494 = 1172 ; Max=8 => size = 308 */
+
+    /* Max=32 => ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½mac_vapï¿½á¹¹ï¿½ï¿½Ð¡= 0x494 = 1172 ; Max=8 => size = 308 */
     if (en_flush)
     {
         OAL_MEMZERO(pst_blacklist_info->ast_black_list, sizeof(mac_blacklist_stru) * WLAN_BLACKLIST_MAX);
@@ -106,19 +105,19 @@ OAL_STATIC oal_bool_enum_uint8 hmac_blacklist_is_aged(mac_vap_stru *pst_mac_vap,
     oal_uint8                    *puc_mac_addr;
     hmac_vap_stru                *pst_hmac_vap;
 
-    /* 1.1 È«ÁãµØÖ·£¬ÊôÓÚ·Ç·¨µØÖ· */
+    /* 1.1 È«ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½Ú·Ç·ï¿½ï¿½ï¿½Ö· */
     if (hmac_blacklist_mac_is_zero(pst_blacklist->auc_mac_addr))
     {
         return OAL_FALSE;
     }
 
-    /* 2.1 ÀÏ»¯Ê±¼äÎª0±íÊ¾²»ÐèÒªÀÏ»¯ */
+    /* 2.1 ï¿½Ï»ï¿½Ê±ï¿½ï¿½Îª0ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Òªï¿½Ï»ï¿½ */
     if (0 == pst_blacklist->ul_aging_time)
     {
         return OAL_FALSE;
     }
 
-    /* 2.2 Ã»ÓÐ³¬¹ýÀÏ»¯Ê±¼ä */
+    /* 2.2 Ã»ï¿½Ð³ï¿½ï¿½ï¿½ï¿½Ï»ï¿½Ê±ï¿½ï¿½ */
     oal_time_get_stamp_us(&st_cur_time);
     if (st_cur_time.i_sec < (oal_int)(pst_blacklist->ul_cfg_time + pst_blacklist->ul_aging_time))
     {
@@ -137,7 +136,7 @@ OAL_STATIC oal_bool_enum_uint8 hmac_blacklist_is_aged(mac_vap_stru *pst_mac_vap,
             "{aging time reach delete MAC:=%02X:XX:XX:%02X:%02X:%02X}",
             puc_mac_addr[0],puc_mac_addr[3],puc_mac_addr[4],puc_mac_addr[5]);
 
-    /* 3.1 Ö±½Ó´ÓºÚÃûµ¥ÖÐÉ¾³ý */
+    /* 3.1 Ö±ï¿½Ó´Óºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ */
     pst_blacklist_info = pst_hmac_vap->pst_blacklist_info;
     if (OAL_PTR_NULL == pst_blacklist_info)
     {
@@ -155,7 +154,7 @@ OAL_STATIC oal_bool_enum_uint8 hmac_blacklist_is_aged(mac_vap_stru *pst_mac_vap,
         return OAL_TRUE;
     }
 
-    /* 4.1 Ö±½Ó´Ó°×Ãûµ¥ÖÐ»Ö¸´ */
+    /* 4.1 Ö±ï¿½Ó´Ó°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð»Ö¸ï¿½ */
     if (CS_BLACKLIST_MODE_WHITE == pst_blacklist_info->uc_mode)
     {
         pst_blacklist->ul_aging_time = 0;
@@ -173,13 +172,13 @@ OAL_STATIC oal_uint32 hmac_blacklist_get(mac_vap_stru *pst_mac_vap, oal_uint8 *p
     mac_blacklist_info_stru      *pst_blacklist_info = OAL_PTR_NULL;
     hmac_vap_stru                *pst_hmac_vap;
 
-    /* 1.1 ¹ã²¥µØÖ·£¬ÊôÓÚ·Ç·¨µØÖ· */
+    /* 1.1 ï¿½ã²¥ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½Ú·Ç·ï¿½ï¿½ï¿½Ö· */
     if (hmac_blacklist_mac_is_bcast(puc_mac_addr))
     {
         return OAL_ERR_CODE_SECURITY_MAC_INVALID;
     }
 
-    /* 1.2 È«ÁãµØÖ·£¬ÊôÓÚ·Ç·¨µØÖ· */
+    /* 1.2 È«ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½Ú·Ç·ï¿½ï¿½ï¿½Ö· */
     if (hmac_blacklist_mac_is_zero(puc_mac_addr))
     {
         return OAL_ERR_CODE_SECURITY_MAC_INVALID;
@@ -199,7 +198,7 @@ OAL_STATIC oal_uint32 hmac_blacklist_get(mac_vap_stru *pst_mac_vap, oal_uint8 *p
         return OAL_ERR_CODE_PTR_NULL;
     }
 
-    /* 2.1 ÕÒµ½±íµ¥ */
+    /* 2.1 ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ */
     for (ul_blacklist_index = 0; ul_blacklist_index < WLAN_BLACKLIST_MAX; ul_blacklist_index++)
     {
         *ppst_blacklist = &pst_blacklist_info->ast_black_list[ul_blacklist_index];
@@ -218,7 +217,7 @@ oal_uint32 hmac_backlist_get_drop_etc(mac_vap_stru *pst_mac_vap, oal_uint8 *puc_
 {
     mac_blacklist_stru *pst_blacklist = OAL_PTR_NULL;	/* 2014.9.2 Add UT and found no init value set to it ! add initial value null */
 
-    /* 1.1 Èë²Î¼ì²é */
+    /* 1.1 ï¿½ï¿½Î¼ï¿½ï¿½ */
     if (OAL_PTR_NULL == pst_mac_vap)
     {
         OAM_ERROR_LOG0(0, OAM_SF_ANY, "{hmac_backlist_get_drop_etc::null mac_vap}");
@@ -256,7 +255,7 @@ oal_uint8 hmac_backlist_get_list_num_etc(mac_vap_stru *pst_mac_vap)
     mac_blacklist_info_stru      *pst_blacklist_info;
     hmac_vap_stru                *pst_hmac_vap;
 
-    /* 1.1 Èë²Î¼ì²é */
+    /* 1.1 ï¿½ï¿½Î¼ï¿½ï¿½ */
     if (OAL_PTR_NULL == pst_mac_vap)
     {
         OAM_ERROR_LOG0(0, OAM_SF_ANY, "{hmac_backlist_get_list_num_etc::null mac_vap}");
@@ -292,13 +291,13 @@ OAL_STATIC oal_uint32 hmac_autoblacklist_get(mac_vap_stru *pst_mac_vap, oal_uint
     hmac_vap_stru                    *pst_hmac_vap;
 
 
-    /* 1.1 ¹ã²¥µØÖ·£¬ÊôÓÚ·Ç·¨µØÖ· */
+    /* 1.1 ï¿½ã²¥ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½Ú·Ç·ï¿½ï¿½ï¿½Ö· */
     if (hmac_blacklist_mac_is_bcast(puc_mac_addr))
     {
         return OAL_ERR_CODE_SECURITY_MAC_INVALID;
     }
 
-    /* 1.2 È«ÁãµØÖ·£¬ÊôÓÚ·Ç·¨µØÖ· */
+    /* 1.2 È«ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½Ú·Ç·ï¿½ï¿½ï¿½Ö· */
     if (hmac_blacklist_mac_is_zero(puc_mac_addr))
     {
         return OAL_ERR_CODE_SECURITY_MAC_INVALID;
@@ -321,18 +320,18 @@ OAL_STATIC oal_uint32 hmac_autoblacklist_get(mac_vap_stru *pst_mac_vap, oal_uint
 
     *ppst_autoblacklist = OAL_PTR_NULL;
 
-    /* 2.1 ÕÒµ½ÀúÊ·±íµ¥ */
+    /* 2.1 ï¿½Òµï¿½ï¿½ï¿½Ê·ï¿½ï¿½ï¿½ï¿½ */
     for (ul_blacklist_index = 0; ul_blacklist_index < WLAN_BLACKLIST_MAX; ul_blacklist_index++)
     {
         /**ppst_autoblacklist = &pst_autoblacklist_info->ast_autoblack_list[ul_blacklist_index];*/
         pst_autoblacklist = &pst_autoblacklist_info->ast_autoblack_list[ul_blacklist_index];
-        /* 2.2 ÎÞÐ§±íµ¥*/
+        /* 2.2 ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½*/
         if (pst_autoblacklist->ul_cfg_time == 0)
         {
             continue;
         }
 
-        /* 2.2 ¹ýÆÚ±íµ¥Ö±½ÓÇå0*/
+        /* 2.2 ï¿½ï¿½ï¿½Ú±ï¿½ï¿½ï¿½Ö±ï¿½ï¿½ï¿½ï¿½0*/
         if (st_cur_time.i_sec > (oal_int)(pst_autoblacklist->ul_cfg_time + pst_autoblacklist_info->ul_reset_time))
         {
             if(pst_autoblacklist_info->list_num > 0)
@@ -341,7 +340,7 @@ OAL_STATIC oal_uint32 hmac_autoblacklist_get(mac_vap_stru *pst_mac_vap, oal_uint
             continue;
         }
 
-        /* 2.3 ÓÐÐ§±íµ¥£¬macµØÖ·±È¶Ô*/
+        /* 2.3 ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½macï¿½ï¿½Ö·ï¿½È¶ï¿½*/
         if (!oal_memcmp(pst_autoblacklist->auc_mac_addr, puc_mac_addr, OAL_MAC_ADDR_LEN))
         {
             *ppst_autoblacklist = pst_autoblacklist;
@@ -354,17 +353,17 @@ OAL_STATIC oal_uint32 hmac_autoblacklist_get(mac_vap_stru *pst_mac_vap, oal_uint
     {
         OAM_INFO_LOG3(pst_mac_vap->uc_vap_id, OAM_SF_ANY,
             "{Get a history item from auto_blacklist.index=%d.MAC=x.x.x.x.%02x.%02x.}",
-            ul_blacklist_index,puc_mac_addr[4],puc_mac_addr[5]);/* [false alarm]:pst_autoblacklist²»¿ÉÄÜÎª¿Õ£¬Èç¹ûÎª¿ÕÄÇËµÃ÷ppst_autoblacklistÒ²Îª¿Õ£¬ÄÇÕâ¸ö·ÖÖ§²»¿ÉÄÜ½øÈë*/
+            ul_blacklist_index,puc_mac_addr[4],puc_mac_addr[5]);/* [false alarm]:pst_autoblacklistï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½Õ£ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ppst_autoblacklistÒ²Îªï¿½Õ£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½ï¿½ï¿½Ü½ï¿½ï¿½ï¿½*/
         return OAL_SUCC;
     }
 
-    /* 3.1 ÕÒµ½ÐÂ±íµ¥ */
+    /* 3.1 ï¿½Òµï¿½ï¿½Â±ï¿½ï¿½ï¿½ */
     ul_cfg_time_old        = (st_cur_time.i_sec > 0) ? (oal_uint32)(st_cur_time.i_sec) : 0;
     ul_blacklist_index_old = 0;
     for (ul_blacklist_index = 0; ul_blacklist_index < WLAN_BLACKLIST_MAX; ul_blacklist_index++)
     {
         pst_autoblacklist = &pst_autoblacklist_info->ast_autoblack_list[ul_blacklist_index];
-        /* 2.2 ÕÒµ½¿ÕÏÐ±íµ¥ */
+        /* 2.2 ï¿½Òµï¿½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½ */
         if (pst_autoblacklist->ul_cfg_time == 0)
         {
             pst_autoblacklist_info->list_num++;
@@ -372,7 +371,7 @@ OAL_STATIC oal_uint32 hmac_autoblacklist_get(mac_vap_stru *pst_mac_vap, oal_uint
             break;
         }
 
-        /* 2.3 ¼ÇÂ¼×îÀÏÅäÖÃµÄ±íµ¥ */
+        /* 2.3 ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÃµÄ±ï¿½ï¿½ï¿½ */
         if (pst_autoblacklist->ul_cfg_time < ul_cfg_time_old)
         {
             ul_cfg_time_old         = pst_autoblacklist->ul_cfg_time;
@@ -382,7 +381,7 @@ OAL_STATIC oal_uint32 hmac_autoblacklist_get(mac_vap_stru *pst_mac_vap, oal_uint
         /*pst_autoblacklist = OAL_PTR_NULL;*/
     }
 
-    /* 4.1 Èç¹ûÃ»ÓÐ¿ÕÏÐµÄ±íµ¥£¬¾ÍÊ¹ÓÃ×îÀÏµÄ±íµ¥ */
+    /* 4.1 ï¿½ï¿½ï¿½Ã»ï¿½Ð¿ï¿½ï¿½ÐµÄ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ÏµÄ±ï¿½ï¿½ï¿½ */
     /*if (OAL_PTR_NULL == pst_autoblacklist)*/
     if (OAL_PTR_NULL == *ppst_autoblacklist)
     {
@@ -390,7 +389,7 @@ OAL_STATIC oal_uint32 hmac_autoblacklist_get(mac_vap_stru *pst_mac_vap, oal_uint
         *ppst_autoblacklist = pst_autoblacklist;
     }
 
-    /* 5.1 ¸üÐÂ±íµ¥ */
+    /* 5.1 ï¿½ï¿½ï¿½Â±ï¿½ï¿½ï¿½ */
     OAM_INFO_LOG4(pst_mac_vap->uc_vap_id, OAM_SF_ANY,
             "{add to auto_blacklist MAC:=%02X:XX:XX:%02X:%02X:%02X. assoc_count=1.}",
             puc_mac_addr[0],puc_mac_addr[3],puc_mac_addr[4],puc_mac_addr[5]);
@@ -420,7 +419,7 @@ OAL_STATIC oal_uint32  hmac_blacklist_update_delete_user(hmac_vap_stru *pst_hmac
 
     hmac_mgmt_send_disassoc_frame_etc(pst_mac_vap, pst_mac_user->auc_user_mac_addr, MAC_DISAS_LV_SS, OAL_FALSE);
 
-    /* É¾³ýºÚÃûµ¥ÄÚÓÃ»§£¬ÐèÒªÉÏ±¨ÄÚºË */
+    /* É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½Ï±ï¿½ï¿½Úºï¿½ */
     hmac_handle_disconnect_rsp_etc(pst_hmac_vap, pst_hmac_user, MAC_DISAS_LV_SS);
 
     hmac_user_del_etc(pst_mac_vap, pst_hmac_user);
@@ -445,7 +444,7 @@ OAL_STATIC oal_uint32 hmac_whitelist_check_user(mac_vap_stru *pst_mac_vap)
         return OAL_ERR_CODE_PTR_NULL;
     }
 
-    /* ±éÀúVAPÏÂËùÓÐÓÃ»§£¬²»ÔÚ°×Ãûµ¥ÀïµÄÉ¾³ý */
+    /* ï¿½ï¿½ï¿½ï¿½VAPï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ */
     OAL_DLIST_SEARCH_FOR_EACH_SAFE(pst_entry, pst_dlist_tmp, &(pst_mac_vap->st_mac_user_list_head))
     {
         pst_user_tmp = OAL_DLIST_GET_ENTRY(pst_entry, mac_user_stru, st_user_dlist);
@@ -465,7 +464,7 @@ OAL_STATIC oal_uint32 hmac_whitelist_check_user(mac_vap_stru *pst_mac_vap)
         {
             continue;
         }
-        /* 2014.6.30 chenchongbao ÔÚÈçÉÏµÄhmac_blacklist_filter()ÖÐ»á ul_drop_counter++ Ëü²»ÊÇÊµ¼ÊµÄ¹ýÂËÊý£¬ËùÒÔ--»Ö¸´ */
+        /* 2014.6.30 chenchongbao ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½hmac_blacklist_filter()ï¿½Ð»ï¿½ ul_drop_counter++ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ÊµÄ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--ï¿½Ö¸ï¿½ */
         hmac_backlist_sub_drop(pst_mac_vap, pst_user_tmp->auc_user_mac_addr);
 
         hmac_blacklist_update_delete_user(pst_hmac_vap, pst_hmac_user_tmp);
@@ -492,14 +491,14 @@ OAL_STATIC oal_uint32 hmac_blacklist_vap_check_user_by_macaddr(mac_vap_stru *pst
     ul_ret = mac_vap_find_user_by_macaddr_etc(pst_mac_vap, puc_mac_addr, &us_idx);
     if(OAL_SUCC != ul_ret)
     {
-        /* ¸ÃmacµØÖ·ÔÚ´ËvapÏÂ²»´æÔÚÓÃ»§£¬²»ÐèÒªÉ¾³ý£¬Ö±½Ó·µ»Ø³É¹¦ */
+        /* ï¿½ï¿½macï¿½ï¿½Ö·ï¿½Ú´ï¿½vapï¿½Â²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÉ¾ï¿½ï¿½ï¿½ï¿½Ö±ï¿½Ó·ï¿½ï¿½Ø³É¹ï¿½ */
         return OAL_SUCC;
     }
 
     pst_mac_user = (mac_user_stru *)mac_res_get_mac_user_etc(us_idx);
     if (OAL_PTR_NULL == pst_mac_user)
     {
-        return OAL_FAIL;/* Òì³£·µ»Ø */
+        return OAL_FAIL;/* ï¿½ì³£ï¿½ï¿½ï¿½ï¿½ */
     }
 
     bool_ret = hmac_blacklist_filter_etc(pst_mac_vap, pst_mac_user->auc_user_mac_addr);
@@ -508,7 +507,7 @@ OAL_STATIC oal_uint32 hmac_blacklist_vap_check_user_by_macaddr(mac_vap_stru *pst
         OAM_WARNING_LOG1(pst_mac_vap->uc_vap_id, OAM_SF_ANY, "{hmac_blacklist_vap_check_user_by_macaddr::hmac_blacklist_filter_etc bool_ret=%d}", bool_ret);
         return OAL_FAIL;
     }
-    /* 2014.6.30 chenchongbao ÔÚÈçÉÏµÄhmac_blacklist_filter()ÖÐ»á ul_drop_counter++ Ëü²»ÊÇÊµ¼ÊµÄ¹ýÂËÊý£¬ËùÒÔ--»Ö¸´ */
+    /* 2014.6.30 chenchongbao ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½hmac_blacklist_filter()ï¿½Ð»ï¿½ ul_drop_counter++ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ÊµÄ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½--ï¿½Ö¸ï¿½ */
     hmac_backlist_sub_drop(pst_mac_vap,pst_mac_user->auc_user_mac_addr);
 
     pst_hmac_user = mac_res_get_hmac_user_etc(us_idx);
@@ -607,7 +606,7 @@ oal_uint32 hmac_blacklist_add_etc(mac_vap_stru *pst_mac_vap, oal_uint8 *puc_mac_
     hmac_vap_stru                *pst_hmac_vap;
 
 
-    /* 1.1 Èë²Î¼ì²é */
+    /* 1.1 ï¿½ï¿½Î¼ï¿½ï¿½ */
     if (OAL_PTR_NULL == pst_mac_vap)
     {
         OAM_ERROR_LOG0(0, OAM_SF_ANY, "{hmac_blacklist_add_etc::null mac_vap}");
@@ -633,7 +632,7 @@ oal_uint32 hmac_blacklist_add_etc(mac_vap_stru *pst_mac_vap, oal_uint8 *puc_mac_
         return OAL_ERR_CODE_PTR_NULL;
     }
 
-    /* 3.1 ÕÒµ½±íµ¥ */
+    /* 3.1 ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ */
     for (ul_blacklist_index = 0; ul_blacklist_index < WLAN_BLACKLIST_MAX; ul_blacklist_index++)
     {
         pst_blacklist = &pst_blacklist_info->ast_black_list[ul_blacklist_index];
@@ -644,7 +643,7 @@ oal_uint32 hmac_blacklist_add_etc(mac_vap_stru *pst_mac_vap, oal_uint8 *puc_mac_
         pst_blacklist = OAL_PTR_NULL;
     }
 
-    /* 4.1 ±íµ¥ÒÑ¾­´æÔÚ£¬Ö»¸üÐÂÀÏ»¯Ê±¼ä */
+    /* 4.1 ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½Ú£ï¿½Ö»ï¿½ï¿½ï¿½ï¿½ï¿½Ï»ï¿½Ê±ï¿½ï¿½ */
     if (OAL_PTR_NULL != pst_blacklist)
     {
         OAM_INFO_LOG1(pst_mac_vap->uc_vap_id, OAM_SF_ANY, "{blacklist_add allready exist. update aging = %d}",ul_aging_time);
@@ -652,7 +651,7 @@ oal_uint32 hmac_blacklist_add_etc(mac_vap_stru *pst_mac_vap, oal_uint8 *puc_mac_
         return OAL_SUCC;
     }
 
-    /* 5.1 ÕÒÒ»¸öµØÖ·Îª¿ÕµÄ±íµ¥ */
+    /* 5.1 ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ö·Îªï¿½ÕµÄ±ï¿½ï¿½ï¿½ */
     for (ul_blacklist_index = 0; ul_blacklist_index < WLAN_BLACKLIST_MAX; ul_blacklist_index++)
     {
         pst_blacklist = &pst_blacklist_info->ast_black_list[ul_blacklist_index];
@@ -663,7 +662,7 @@ oal_uint32 hmac_blacklist_add_etc(mac_vap_stru *pst_mac_vap, oal_uint8 *puc_mac_
         pst_blacklist = OAL_PTR_NULL;
     }
 
-    /* 6.1 ÎÞ¿ÉÓÃ±íµ¥ */
+    /* 6.1 ï¿½Þ¿ï¿½ï¿½Ã±ï¿½ï¿½ï¿½ */
     if (OAL_PTR_NULL == pst_blacklist)
     {
         OAM_WARNING_LOG4(pst_mac_vap->uc_vap_id, OAM_SF_ANY,
@@ -672,7 +671,7 @@ oal_uint32 hmac_blacklist_add_etc(mac_vap_stru *pst_mac_vap, oal_uint8 *puc_mac_
         return OAL_ERR_CODE_SECURITY_LIST_FULL;
     }
 
-    /* 7.1 ¸üÐÂ±íµ¥ */
+    /* 7.1 ï¿½ï¿½ï¿½Â±ï¿½ï¿½ï¿½ */
     oal_time_get_stamp_us(&st_cur_time);
     oal_memcopy(pst_blacklist->auc_mac_addr, puc_mac_addr, OAL_MAC_ADDR_LEN);
     pst_blacklist->ul_cfg_time     = (oal_uint32)st_cur_time.i_sec;
@@ -685,7 +684,7 @@ oal_uint32 hmac_blacklist_add_etc(mac_vap_stru *pst_mac_vap, oal_uint8 *puc_mac_
             puc_mac_addr[4],puc_mac_addr[5],pst_blacklist_info->uc_list_num,pst_blacklist->ul_cfg_time);
 
 
-    /* ºÚ°×Ãûµ¥Ìí¼Ó³É¹¦ºóË¢ÐÂÒ»°ÑÓÃ»§ */
+    /* ï¿½Ú°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó³É¹ï¿½ï¿½ï¿½Ë¢ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ã»ï¿½ */
     if (CS_BLACKLIST_MODE_BLACK == pst_blacklist_info->uc_mode)
     {
         hmac_blacklist_vap_check_user_by_macaddr(pst_mac_vap, puc_mac_addr);
@@ -724,7 +723,7 @@ oal_bool_enum_uint8 hmac_blacklist_get_vap_in_device(mac_device_stru *pst_device
         {
             break;
         }
-        /* ±éÀúvapÏÂËùÓÐÓÃ»§£¬ÈôÄÜÕÒµ½µ±Ç°user£¬Ôò·µ»Ø¸Ãvap */
+        /* ï¿½ï¿½ï¿½ï¿½vapï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½Ç°userï¿½ï¿½ï¿½ò·µ»Ø¸ï¿½vap */
         OAL_DLIST_SEARCH_FOR_EACH(pst_entry, &(pst_mac_vap->st_mac_user_list_head))
         {
             pst_mac_user = OAL_DLIST_GET_ENTRY(pst_entry, mac_user_stru, st_user_dlist);
@@ -798,7 +797,7 @@ oal_bool_enum_uint8 hmac_blacklist_get_assoc_ap(mac_vap_stru *pst_cur_vap, oal_u
     }
 
 #elif (_PRE_WLAN_FEATURE_BLACKLIST_LEVEL == _PRE_WLAN_FEATURE_BLACKLIST_DEVICE)
-    /* »ñÈ¡device½á¹¹Ìå */
+    /* ï¿½ï¿½È¡deviceï¿½á¹¹ï¿½ï¿½ */
     pst_device = mac_res_get_dev_etc(pst_cur_vap->uc_device_id);
     if (OAL_PTR_NULL == pst_device)
     {
@@ -823,7 +822,7 @@ oal_uint32 hmac_blacklist_add_only_etc(mac_vap_stru *pst_mac_vap, oal_uint8 *puc
     hmac_vap_stru                *pst_hmac_vap;
 
 
-    /* 1.1 Èë²Î¼ì²é */
+    /* 1.1 ï¿½ï¿½Î¼ï¿½ï¿½ */
     if (OAL_PTR_NULL == pst_mac_vap)
     {
         OAM_ERROR_LOG0(0, OAM_SF_ANY, "{hmac_blacklist_add_only_etc::null mac_vap}");
@@ -849,7 +848,7 @@ oal_uint32 hmac_blacklist_add_only_etc(mac_vap_stru *pst_mac_vap, oal_uint8 *puc
         return OAL_ERR_CODE_PTR_NULL;
     }
 
-    /* 3.1 ÕÒµ½±íµ¥ */
+    /* 3.1 ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ */
     for (ul_blacklist_index = 0; ul_blacklist_index < WLAN_BLACKLIST_MAX; ul_blacklist_index++)
     {
         pst_blacklist = &pst_blacklist_info->ast_black_list[ul_blacklist_index];
@@ -860,7 +859,7 @@ oal_uint32 hmac_blacklist_add_only_etc(mac_vap_stru *pst_mac_vap, oal_uint8 *puc
         pst_blacklist = OAL_PTR_NULL;
     }
 
-    /* 4.1 ±íµ¥ÒÑ¾­´æÔÚ£¬Ö»¸üÐÂÀÏ»¯Ê±¼ä */
+    /* 4.1 ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½Ú£ï¿½Ö»ï¿½ï¿½ï¿½ï¿½ï¿½Ï»ï¿½Ê±ï¿½ï¿½ */
     if (OAL_PTR_NULL != pst_blacklist)
     {
         OAM_INFO_LOG1(pst_mac_vap->uc_vap_id, OAM_SF_ANY, "{blacklist_add allready exist. update aging = %d}",ul_aging_time);
@@ -868,7 +867,7 @@ oal_uint32 hmac_blacklist_add_only_etc(mac_vap_stru *pst_mac_vap, oal_uint8 *puc
         return OAL_SUCC;
     }
 
-    /* 5.1 ÕÒÒ»¸öµØÖ·Îª¿ÕµÄ±íµ¥ */
+    /* 5.1 ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ö·Îªï¿½ÕµÄ±ï¿½ï¿½ï¿½ */
     for (ul_blacklist_index = 0; ul_blacklist_index < WLAN_BLACKLIST_MAX; ul_blacklist_index++)
     {
         pst_blacklist = &pst_blacklist_info->ast_black_list[ul_blacklist_index];
@@ -879,7 +878,7 @@ oal_uint32 hmac_blacklist_add_only_etc(mac_vap_stru *pst_mac_vap, oal_uint8 *puc
         pst_blacklist = OAL_PTR_NULL;
     }
 
-    /* 6.1 ÎÞ¿ÉÓÃ±íµ¥ */
+    /* 6.1 ï¿½Þ¿ï¿½ï¿½Ã±ï¿½ï¿½ï¿½ */
     if (OAL_PTR_NULL == pst_blacklist)
     {
         OAM_INFO_LOG4(pst_mac_vap->uc_vap_id, OAM_SF_ANY,
@@ -888,7 +887,7 @@ oal_uint32 hmac_blacklist_add_only_etc(mac_vap_stru *pst_mac_vap, oal_uint8 *puc
         return OAL_ERR_CODE_SECURITY_LIST_FULL;
     }
 
-    /* 7.1 ¸üÐÂ±íµ¥ */
+    /* 7.1 ï¿½ï¿½ï¿½Â±ï¿½ï¿½ï¿½ */
     oal_time_get_stamp_us(&st_cur_time);
     oal_memcopy(pst_blacklist->auc_mac_addr, puc_mac_addr, OAL_MAC_ADDR_LEN);
     pst_blacklist->ul_cfg_time     = (oal_uint32)st_cur_time.i_sec;
@@ -914,7 +913,7 @@ oal_uint32 hmac_blacklist_del_etc(mac_vap_stru *pst_mac_vap, oal_uint8 *puc_mac_
     oal_uint16                    us_user_idx   = 0xffff;
     hmac_user_stru               *pst_hmac_user_tmp = OAL_PTR_NULL;
 
-    /* 1.1 Èë²Î¼ì²é */
+    /* 1.1 ï¿½ï¿½Î¼ï¿½ï¿½ */
     if (OAL_PTR_NULL == pst_mac_vap)
     {
         OAM_ERROR_LOG0(0, OAM_SF_ANY, "{hmac_blacklist_del_etc::null mac_vap}");
@@ -935,7 +934,7 @@ oal_uint32 hmac_blacklist_del_etc(mac_vap_stru *pst_mac_vap, oal_uint8 *puc_mac_
         return OAL_ERR_CODE_PTR_NULL;
     }
 
-    /* 2.1 Èç¹ûÄ£Ê½²»Ò»ÖÂ£¬²»ÐèÒªÉ¾³ý£¬·µ»ØÊ§°Ü¼´¿É */
+    /* 2.1 ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½Ò»ï¿½Â£ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÉ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü¼ï¿½ï¿½ï¿½ */
     /*if (pst_blacklist_info->uc_mode == CS_BLACKLIST_MODE_NONE)
     {
         return OAL_ERR_CODE_HMAC_SECURITY_MODE_INVALID;
@@ -947,7 +946,7 @@ oal_uint32 hmac_blacklist_del_etc(mac_vap_stru *pst_mac_vap, oal_uint8 *puc_mac_
         return OAL_ERR_CODE_PTR_NULL;
     }
 
-    /* 3.1 ¹ã²¥µØÖ·£¬ÐèÒªÉ¾³ýËùÓÐ±íµ¥ */
+    /* 3.1 ï¿½ã²¥ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ÒªÉ¾ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½ */
     if (hmac_blacklist_mac_is_bcast(puc_mac_addr))
     {
         OAM_WARNING_LOG0(pst_mac_vap->uc_vap_id, OAM_SF_ANY,
@@ -958,7 +957,7 @@ oal_uint32 hmac_blacklist_del_etc(mac_vap_stru *pst_mac_vap, oal_uint8 *puc_mac_
         return OAL_SUCC;
     }
 
-    /* 4.1 ÕÒµ½±íµ¥ */
+    /* 4.1 ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ */
     for (ul_blacklist_index = 0; ul_blacklist_index < WLAN_BLACKLIST_MAX; ul_blacklist_index++)
     {
         pst_blacklist = &pst_blacklist_info->ast_black_list[ul_blacklist_index];
@@ -969,7 +968,7 @@ oal_uint32 hmac_blacklist_del_etc(mac_vap_stru *pst_mac_vap, oal_uint8 *puc_mac_
         pst_blacklist = OAL_PTR_NULL;
     }
 
-    /* 5.1 Èç¹ûÕÒµ½±íµ¥£¬É¾³ý */
+    /* 5.1 ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ */
     if (OAL_PTR_NULL != pst_blacklist)
     {
         oal_memset(pst_blacklist, 0, sizeof(mac_blacklist_stru));
@@ -980,7 +979,7 @@ oal_uint32 hmac_blacklist_del_etc(mac_vap_stru *pst_mac_vap, oal_uint8 *puc_mac_
 
         if (CS_BLACKLIST_MODE_WHITE == pst_blacklist_info->uc_mode)
         {
-            /*¸ù¾Ýmac addrÕÒµ½staË÷Òý*/
+            /*ï¿½ï¿½ï¿½ï¿½mac addrï¿½Òµï¿½staï¿½ï¿½ï¿½ï¿½*/
             ul_ret = mac_vap_find_user_by_macaddr_etc(pst_mac_vap, puc_mac_addr, &us_user_idx);
             if(OAL_SUCC != ul_ret)
             {
@@ -1011,7 +1010,7 @@ oal_uint32 hmac_blacklist_set_mode_etc(mac_vap_stru *pst_mac_vap, oal_uint8 uc_m
 {
     /*oal_uint32        ul_ret; */
 
-    /* 1.1 Èë²Î¼ì²é */
+    /* 1.1 ï¿½ï¿½Î¼ï¿½ï¿½ */
     if (OAL_PTR_NULL == pst_mac_vap)
     {
         OAM_ERROR_LOG0(0, OAM_SF_ANY, "{hmac_blacklist_set_mode_etc::null mac_vap}");
@@ -1024,7 +1023,7 @@ oal_uint32 hmac_blacklist_set_mode_etc(mac_vap_stru *pst_mac_vap, oal_uint8 uc_m
     }
 
     OAM_WARNING_LOG1(pst_mac_vap->uc_vap_id, OAM_SF_ANY, "{hmac_blacklist_set_mode_etc::mode = %d}",uc_mode);
-    /* 2.1 ¸ù¾Ý²»Í¬Ä£Ê½Ôö¼Ó±íµ¥ */
+    /* 2.1 ï¿½ï¿½ï¿½Ý²ï¿½Í¬Ä£Ê½ï¿½ï¿½ï¿½Ó±ï¿½ï¿½ï¿½ */
     switch (uc_mode)
     {
         case CS_BLACKLIST_MODE_NONE:
@@ -1048,7 +1047,7 @@ oal_uint32 hmac_blacklist_get_mode(mac_vap_stru *pst_mac_vap, oal_uint8 *uc_mode
 {
     hmac_vap_stru                *pst_hmac_vap;
 
-    /*  Èë²Î¼ì²é */
+    /*  ï¿½ï¿½Î¼ï¿½ï¿½ */
     if (OAL_PTR_NULL == pst_mac_vap)
     {
         OAM_ERROR_LOG0(0, OAM_SF_ANY, "{hmac_blacklist_get_mode::null mac_vap}");
@@ -1087,7 +1086,7 @@ OAL_STATIC oal_void hmac_show_autoblacklist_info(mac_autoblacklist_info_stru *ps
     }
     OAL_MEMZERO(pc_print_buff, OAM_REPORT_MAX_STRING_LEN);
 
-    /* 2.1 ºÚÃûµ¥ÅäÖÃÐÅÏ¢ */
+    /* 2.1 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ */
 
     OAM_INFO_LOG4(0, OAM_SF_ANY, "{hmac_show_autoblacklist_info::AUTOBLACKLIST[%d] info: THRESHOLD: %u. RESET_TIME: %u sec. AGING_TIME: %u sec}",
         pst_autoblacklist_info->uc_enabled,pst_autoblacklist_info->ul_threshold,
@@ -1101,7 +1100,7 @@ OAL_STATIC oal_void hmac_show_autoblacklist_info(mac_autoblacklist_info_stru *ps
             pst_autoblacklist_info->uc_enabled,pst_autoblacklist_info->ul_threshold,
             pst_autoblacklist_info->ul_reset_time,pst_autoblacklist_info->ul_aging_time);
 
-    /* 4.1 ´òÓ¡ºÚÃûµ¥±íµ¥ */
+    /* 4.1 ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     for (ul_blacklist_index = 0; ul_blacklist_index < WLAN_BLACKLIST_MAX; ul_blacklist_index++)
     {
         pst_autoblacklist = &pst_autoblacklist_info->ast_autoblack_list[ul_blacklist_index];
@@ -1142,7 +1141,7 @@ oal_void hmac_show_blacklist_info_etc(mac_vap_stru *pst_mac_vap)
     oal_int8                     *pc_print_buff;
     hmac_vap_stru                *pst_hmac_vap;
 
-    /* 1.1 Èë²Î¼ì²é */
+    /* 1.1 ï¿½ï¿½Î¼ï¿½ï¿½ */
     if (OAL_PTR_NULL == pst_mac_vap)
     {
         OAM_ERROR_LOG0(0, OAM_SF_ANY, "{hmac_show_blacklist_info_etc::null mac_vap}");
@@ -1178,7 +1177,7 @@ oal_void hmac_show_blacklist_info_etc(mac_vap_stru *pst_mac_vap)
         return;
     }
 
-    /* 3.1 ºÚÃûµ¥Ä£Ê½ÐÅÏ¢ */
+    /* 3.1 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½Ï¢ */
     if (CS_BLACKLIST_MODE_BLACK == pst_blacklist_info->uc_mode)
     {
         OAM_WARNING_LOG1(pst_mac_vap->uc_vap_id, OAM_SF_ANY, "{BLACKLIST[BLACK] num=%d info:}",pst_blacklist_info->uc_list_num);
@@ -1195,7 +1194,7 @@ oal_void hmac_show_blacklist_info_etc(mac_vap_stru *pst_mac_vap)
         buff_index = (oal_uint8)OAL_SPRINTF(pc_print_buff,OAM_REPORT_MAX_STRING_LEN,"BLACKLIST not enable! num=%d info:\n",pst_blacklist_info->uc_list_num);
     }
 
-    /* 5.1 ´òÓ¡ºÚÃûµ¥±íµ¥ */
+    /* 5.1 ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     for (ul_blacklist_index = 0; ul_blacklist_index < WLAN_BLACKLIST_MAX; ul_blacklist_index++)
     {
         pst_blacklist = &pst_blacklist_info->ast_black_list[ul_blacklist_index];
@@ -1222,10 +1221,10 @@ oal_void hmac_show_blacklist_info_etc(mac_vap_stru *pst_mac_vap)
     oam_print_etc(pc_print_buff);
     OAL_MEM_FREE(pc_print_buff, OAL_TRUE);
 
-    /* 4.1 ×Ô¶¯ºÚÃûµ¥ÐÅÏ¢ */
+    /* 4.1 ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ */
     hmac_show_autoblacklist_info(&pst_blacklist_info->st_autoblacklist_info);
 
-    /* ¼ÓÈëµ±Ç°Ê±¼ä */
+    /* ï¿½ï¿½ï¿½ëµ±Ç°Ê±ï¿½ï¿½ */
     oal_time_get_stamp_us(&st_cur_time);
     OAM_INFO_LOG1(pst_mac_vap->uc_vap_id, OAM_SF_ANY,"{ CURR_TIME: %d}",(oal_uint32)st_cur_time.i_sec);
 
@@ -1237,7 +1236,7 @@ oal_uint32 hmac_autoblacklist_enable_etc(mac_vap_stru *pst_mac_vap, oal_uint8 uc
     mac_autoblacklist_info_stru   *pst_autoblacklist_info;
     hmac_vap_stru                 *pst_hmac_vap;
 
-    /* 1.1 Èë²Î¼ì²é */
+    /* 1.1 ï¿½ï¿½Î¼ï¿½ï¿½ */
     if (OAL_PTR_NULL == pst_mac_vap)
     {
         OAM_ERROR_LOG0(0, OAM_SF_ANY, "{hmac_autoblacklist_enable_etc::null mac_vap}");
@@ -1249,7 +1248,7 @@ oal_uint32 hmac_autoblacklist_enable_etc(mac_vap_stru *pst_mac_vap, oal_uint8 uc
         return OAL_ERR_CODE_PTR_NULL;
     }
 
-    /* 2.1 »ñÈ¡²ÎÊý */
+    /* 2.1 ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ */
     pst_hmac_vap = (hmac_vap_stru *)mac_res_get_hmac_vap(pst_mac_vap->uc_vap_id);
     if (OAL_PTR_NULL == pst_hmac_vap)
     {
@@ -1263,7 +1262,7 @@ oal_uint32 hmac_autoblacklist_enable_etc(mac_vap_stru *pst_mac_vap, oal_uint8 uc
     }
     pst_autoblacklist_info = &(pst_hmac_vap->pst_blacklist_info->st_autoblacklist_info);
 
-    /* ²ÎÊý¸úÔ­ÓÐÒ»Ñù */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô­ï¿½ï¿½Ò»ï¿½ï¿½ */
     if (uc_enabled == pst_autoblacklist_info->uc_enabled)
     {
         OAM_WARNING_LOG1(pst_mac_vap->uc_vap_id, OAM_SF_ANY,
@@ -1272,7 +1271,7 @@ oal_uint32 hmac_autoblacklist_enable_etc(mac_vap_stru *pst_mac_vap, oal_uint8 uc
         return OAL_SUCC;
     }
 
-    /* ÖØÐÂ³õÊ¼»¯ */
+    /* ï¿½ï¿½ï¿½Â³ï¿½Ê¼ï¿½ï¿½ */
     if (uc_enabled == 1)
     {
         hmac_blacklist_init(pst_mac_vap, CS_BLACKLIST_MODE_BLACK, OAL_TRUE);
@@ -1281,7 +1280,7 @@ oal_uint32 hmac_autoblacklist_enable_etc(mac_vap_stru *pst_mac_vap, oal_uint8 uc
         pst_autoblacklist_info->ul_reset_time = CS_DEFAULT_RESET_TIME;
         pst_autoblacklist_info->ul_threshold  = CS_DEFAULT_THRESHOLD;
     }
-    else    /* ¹Ø±Õ×Ô¶¯ºÚÃûµ¥£¬ÇåÁãÏà¹ØÊý¾Ý */
+    else    /* ï¿½Ø±ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     {
         hmac_blacklist_init(pst_mac_vap, CS_BLACKLIST_MODE_NONE, OAL_TRUE);   /* 2013.7.23 add clean */
     }
@@ -1298,14 +1297,14 @@ oal_uint32 hmac_autoblacklist_set_aging_etc(mac_vap_stru *pst_mac_vap, oal_uint3
     mac_autoblacklist_info_stru   *pst_autoblacklist_info;
     hmac_vap_stru                 *pst_hmac_vap;
 
-    /* 1.1 Èë²Î¼ì²é */
+    /* 1.1 ï¿½ï¿½Î¼ï¿½ï¿½ */
     if (OAL_PTR_NULL == pst_mac_vap)
     {
         OAM_ERROR_LOG0(0, OAM_SF_ANY, "{hmac_autoblacklist_set_aging_etc::null mac_vap}");
         return OAL_ERR_CODE_PTR_NULL;
     }
 
-    /* 2.1 »ñÈ¡²ÎÊý */
+    /* 2.1 ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ */
     if (ul_aging_time == 0)
     {
         OAM_ERROR_LOG0(pst_mac_vap->uc_vap_id, OAM_SF_ANY, "{ul_aging_time should not be 0}");
@@ -1325,13 +1324,13 @@ oal_uint32 hmac_autoblacklist_set_aging_etc(mac_vap_stru *pst_mac_vap, oal_uint3
     }
     pst_autoblacklist_info = &(pst_hmac_vap->pst_blacklist_info->st_autoblacklist_info);
 
-    /* 3.1 ×Ô¶¯ºÚÃûµ¥Ã»ÓÐÊ¹ÄÜ */
+    /* 3.1 ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ê¹ï¿½ï¿½ */
     if (0 == pst_autoblacklist_info->uc_enabled)
     {
         hmac_autoblacklist_enable_etc(pst_mac_vap, 1);
     }
 
-    /* 4.1 ¸üÐÂÀÏ»¯Ê±¼ä */
+    /* 4.1 ï¿½ï¿½ï¿½ï¿½ï¿½Ï»ï¿½Ê±ï¿½ï¿½ */
     pst_autoblacklist_info->ul_aging_time = ul_aging_time;
 
     OAM_INFO_LOG1(pst_mac_vap->uc_vap_id, OAM_SF_ANY, "{blacklist set auto aging = %d}",ul_aging_time);
@@ -1344,14 +1343,14 @@ oal_uint32 hmac_autoblacklist_set_threshold_etc(mac_vap_stru *pst_mac_vap, oal_u
     mac_autoblacklist_info_stru   *pst_autoblacklist_info;
     hmac_vap_stru                 *pst_hmac_vap;
 
-    /* 1.1 Èë²Î¼ì²é */
+    /* 1.1 ï¿½ï¿½Î¼ï¿½ï¿½ */
     if (OAL_PTR_NULL == pst_mac_vap)
     {
         OAM_ERROR_LOG0(0, OAM_SF_ANY, "{hmac_autoblacklist_set_threshold_etc::null mac_vap}");
         return OAL_ERR_CODE_PTR_NULL;
     }
 
-    /* 2.1 »ñÈ¡²ÎÊý */
+    /* 2.1 ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ */
     if (ul_threshold == 0)
     {
         OAM_ERROR_LOG0(pst_mac_vap->uc_vap_id, OAM_SF_ANY, "{ul_threshold should not be 0}");
@@ -1371,13 +1370,13 @@ oal_uint32 hmac_autoblacklist_set_threshold_etc(mac_vap_stru *pst_mac_vap, oal_u
     }
     pst_autoblacklist_info = &(pst_hmac_vap->pst_blacklist_info->st_autoblacklist_info);
 
-    /* 3.1 ×Ô¶¯ºÚÃûµ¥Ã»ÓÐÊ¹ÄÜ */
+    /* 3.1 ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ê¹ï¿½ï¿½ */
     if (0 == pst_autoblacklist_info->uc_enabled)
     {
         hmac_autoblacklist_enable_etc(pst_mac_vap, 1);
     }
 
-    /* 4.1 ¸üÐÂÃÅÏÞ */
+    /* 4.1 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     pst_autoblacklist_info->ul_threshold = ul_threshold;
 
     OAM_INFO_LOG1(pst_mac_vap->uc_vap_id, OAM_SF_ANY, "{blacklist set auto threshold = %d}",ul_threshold);
@@ -1390,14 +1389,14 @@ oal_uint32 hmac_autoblacklist_set_reset_time_etc(mac_vap_stru *pst_mac_vap, oal_
     mac_autoblacklist_info_stru   *pst_autoblacklist_info;
     hmac_vap_stru                  *pst_hmac_vap;
 
-    /* 1.1 Èë²Î¼ì²é */
+    /* 1.1 ï¿½ï¿½Î¼ï¿½ï¿½ */
     if (OAL_PTR_NULL == pst_mac_vap)
     {
         OAM_ERROR_LOG0(0, OAM_SF_ANY, "{hmac_autoblacklist_set_reset_time_etc::null mac_vap}");
         return OAL_ERR_CODE_PTR_NULL;
     }
 
-    /* 2.1 »ñÈ¡²ÎÊý */
+    /* 2.1 ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ */
     if (ul_reset_time == 0)
     {
         OAM_ERROR_LOG0(pst_mac_vap->uc_vap_id, OAM_SF_ANY, "{ul_aging_time should not be 0}");
@@ -1417,13 +1416,13 @@ oal_uint32 hmac_autoblacklist_set_reset_time_etc(mac_vap_stru *pst_mac_vap, oal_
     }
     pst_autoblacklist_info = &(pst_hmac_vap->pst_blacklist_info->st_autoblacklist_info);
 
-    /* 3.1 ×Ô¶¯ºÚÃûµ¥Ã»ÓÐÊ¹ÄÜ */
+    /* 3.1 ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ê¹ï¿½ï¿½ */
     if (0 == pst_autoblacklist_info->uc_enabled)
     {
         hmac_autoblacklist_enable_etc(pst_mac_vap, 1);
     }
 
-    /* 4.1 ¸üÐÂÖØÖÃÊ±¼ä */
+    /* 4.1 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ */
     pst_autoblacklist_info->ul_reset_time = ul_reset_time;
 
     OAM_INFO_LOG1(pst_mac_vap->uc_vap_id, OAM_SF_ANY, "{blacklist set auto reset_time = %d}", ul_reset_time);
@@ -1439,7 +1438,7 @@ oal_bool_enum_uint8 hmac_blacklist_filter_etc(mac_vap_stru *pst_mac_vap, oal_uin
     oal_uint32                    ul_ret;
     oal_bool_enum_uint8           b_ret;
 
-    /* 1.1 Èë²Î¼ì²é */
+    /* 1.1 ï¿½ï¿½Î¼ï¿½ï¿½ */
     if ((OAL_PTR_NULL == pst_mac_vap) || (OAL_PTR_NULL == puc_mac_addr))
     {
         OAM_ERROR_LOG0(0, OAM_SF_ANY, "{hmac_blacklist_filter_etc::null mac_vap or null mac addr}");
@@ -1460,36 +1459,36 @@ oal_bool_enum_uint8 hmac_blacklist_filter_etc(mac_vap_stru *pst_mac_vap, oal_uin
     }
     pst_blacklist_info = pst_hmac_vap->pst_blacklist_info;
 
-    /* 1.1 ¹¦ÄÜÃ»ÓÐ¿ªÆô£¬²»ÐèÒª¹ýÂË */
+    /* 1.1 ï¿½ï¿½ï¿½ï¿½Ã»ï¿½Ð¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ */
     if (CS_BLACKLIST_MODE_NONE == pst_blacklist_info->uc_mode)
     {
         return OAL_FALSE;
     }
 
-    /* 2.1 ºÚÃûµ¥Ä£Ê½ÏÂ */
+    /* 2.1 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ */
     if (CS_BLACKLIST_MODE_BLACK == pst_blacklist_info->uc_mode)
     {
         ul_ret = hmac_blacklist_get(pst_mac_vap, puc_mac_addr, &pst_blacklist);
-        /* ±íÊ¾puc_mac_addrµØÖ·Îª¹ã²¥µØÖ·»òÕßÈ«ÁãµØÖ·, ²»¹ýÂË */
+        /* ï¿½ï¿½Ê¾puc_mac_addrï¿½ï¿½Ö·Îªï¿½ã²¥ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½ï¿½Ö·, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
         if (OAL_SUCC != ul_ret)
         {
             OAM_WARNING_LOG3(pst_mac_vap->uc_vap_id, OAM_SF_ANY,
                 "{hmac_blacklist_filter_etc::there is no MAC=x.x.x.%02x.%02x.%02x in blacklist}", puc_mac_addr[3], puc_mac_addr[4], puc_mac_addr[5]);
             return OAL_FALSE;
         }
-        /* 2.2 Èç¹ûÕÒ²»µ½±íµ¥£¬²»ÐèÒª¹ýÂË */
+        /* 2.2 ï¿½ï¿½ï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ */
         if (OAL_PTR_NULL == pst_blacklist)
         {
             return OAL_FALSE;
         }
 
-        /* 2.3 ÀÏ»¯Ê±¼äµ½ÁË£¬²»ÐèÒª¹ýÂË */
+        /* 2.3 ï¿½Ï»ï¿½Ê±ï¿½äµ½ï¿½Ë£ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ */
         b_ret = hmac_blacklist_is_aged(pst_mac_vap, pst_blacklist);
         if (OAL_TRUE == b_ret)
         {
             return OAL_FALSE;
         }
-        /* 2.4 ÆäËûÇé¿öÏÂ¶¼ÐèÒª¹ýÂË */
+        /* 2.4 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¶ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ */
         pst_blacklist->ul_drop_counter++;
         OAM_INFO_LOG4(pst_mac_vap->uc_vap_id, OAM_SF_ANY,
             "{hmac_blacklist_filter_etc::blacklist_filter drop_counter = %d MAC:=x.x.x.%02x.%02x.%02x}",
@@ -1498,16 +1497,16 @@ oal_bool_enum_uint8 hmac_blacklist_filter_etc(mac_vap_stru *pst_mac_vap, oal_uin
         return OAL_TRUE;
     }
 
-    /* 3.1 °×Ãûµ¥Ä£Ê½ÏÂ */
+    /* 3.1 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ */
     if (CS_BLACKLIST_MODE_WHITE == pst_blacklist_info->uc_mode)
     {
         ul_ret = hmac_blacklist_get(pst_mac_vap, puc_mac_addr, &pst_blacklist);
-        /* ±íÊ¾puc_mac_addrµØÖ·Îª¹ã²¥µØÖ·»òÕßÈ«ÁãµØÖ·, ²»¹ýÂË */
+        /* ï¿½ï¿½Ê¾puc_mac_addrï¿½ï¿½Ö·Îªï¿½ã²¥ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½ï¿½Ö·, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
         if (OAL_SUCC != ul_ret)
         {
             return OAL_FALSE;
         }
-        /* 3.2 Èç¹ûÕÒ²»µ½±íµ¥£¬ÐèÒª¹ýÂË */
+        /* 3.2 ï¿½ï¿½ï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ */
         if (OAL_PTR_NULL == pst_blacklist)
         {
             OAM_WARNING_LOG4(pst_mac_vap->uc_vap_id, OAM_SF_ANY,
@@ -1516,7 +1515,7 @@ oal_bool_enum_uint8 hmac_blacklist_filter_etc(mac_vap_stru *pst_mac_vap, oal_uin
             return OAL_TRUE;
         }
 
-        /* 3.3 ÀÏ»¯Ê±¼äµ½ÁË£¬²»ÐèÒª¹ýÂË */
+        /* 3.3 ï¿½Ï»ï¿½Ê±ï¿½äµ½ï¿½Ë£ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ */
         b_ret = hmac_blacklist_is_aged(pst_mac_vap, pst_blacklist);
         if (OAL_TRUE == b_ret)
         {
@@ -1526,7 +1525,7 @@ oal_bool_enum_uint8 hmac_blacklist_filter_etc(mac_vap_stru *pst_mac_vap, oal_uin
             return OAL_FALSE;
         }
 
-        /* 3.4 ÀÏ»¯Ê±¼äÃ»ÓÐµ½£¬ÐèÒª¹ýÂË */
+        /* 3.4 ï¿½Ï»ï¿½Ê±ï¿½ï¿½Ã»ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ */
         if (0 != pst_blacklist->ul_aging_time)
         {
             OAM_INFO_LOG4(pst_mac_vap->uc_vap_id, OAM_SF_ANY,
@@ -1537,20 +1536,20 @@ oal_bool_enum_uint8 hmac_blacklist_filter_etc(mac_vap_stru *pst_mac_vap, oal_uin
         }
     }
 
-    /* ²»Âú×ãºÚ°×Ãûµ¥¹ýÂËÌõ¼þµÄ£¬¾ù²»ÐèÒª¹ýÂË */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ */
     return OAL_FALSE;
 }
 
 
 oal_void hmac_autoblacklist_filter_etc(mac_vap_stru *pst_mac_vap, oal_uint8 *puc_mac_addr)
 {
-    mac_autoblacklist_stru           *pst_autoblacklist = OAL_PTR_NULL;	/* Ìí¼Ó³õÊ¼»¯Öµ£¬±ãÓÚ×öUT´ò×®ºó´ËÖµÊÇnull */
+    mac_autoblacklist_stru           *pst_autoblacklist = OAL_PTR_NULL;	/* ï¿½ï¿½ï¿½Ó³ï¿½Ê¼ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½UTï¿½ï¿½×®ï¿½ï¿½ï¿½Öµï¿½ï¿½null */
     mac_autoblacklist_info_stru      *pst_autoblacklist_info;
     oal_uint32                        ul_ret;
     hmac_vap_stru                    *pst_hmac_vap;
     mac_blacklist_stru               *pst_blacklist = OAL_PTR_NULL;
 
-    /* 1.1 Èë²Î¼ì²é */
+    /* 1.1 ï¿½ï¿½Î¼ï¿½ï¿½ */
     if ((OAL_PTR_NULL == pst_mac_vap) || (OAL_PTR_NULL == puc_mac_addr))
     {
         OAM_ERROR_LOG0(0, OAM_SF_ANY, "{hmac_autoblacklist_filter_etc::null mac_vap or null mac addr}");
@@ -1575,13 +1574,13 @@ oal_void hmac_autoblacklist_filter_etc(mac_vap_stru *pst_mac_vap, oal_uint8 *puc
     }
     pst_autoblacklist_info = &(pst_hmac_vap->pst_blacklist_info->st_autoblacklist_info);
 
-    /* 1.1 ¹¦ÄÜÃ»ÓÐ¿ªÆô */
+    /* 1.1 ï¿½ï¿½ï¿½ï¿½Ã»ï¿½Ð¿ï¿½ï¿½ï¿½ */
     if (0 == pst_autoblacklist_info->uc_enabled)
     {
         return;
     }
 
-    /* 1.2 ¼ì²éÊÇ·ñÒÑ¾­ÔÚºÚÃûµ¥ÖÐ, ÈôÔÚºÚÃûµ¥ÖÐ£¬Ö±½Ó·µ»Ø */
+    /* 1.2 ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½Ñ¾ï¿½ï¿½Úºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½Úºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½Ö±ï¿½Ó·ï¿½ï¿½ï¿½ */
     hmac_blacklist_get(pst_mac_vap, puc_mac_addr, &pst_blacklist);
     if (OAL_PTR_NULL != pst_blacklist)
     {
@@ -1592,21 +1591,21 @@ oal_void hmac_autoblacklist_filter_etc(mac_vap_stru *pst_mac_vap, oal_uint8 *puc
             "{hmac_autoblacklist_filter_etc:: MAC:=%02X:XX:XX:%02X:%02X:%02X}",
             puc_mac_addr[0],puc_mac_addr[3],puc_mac_addr[4],puc_mac_addr[5]);
 
-    /* 2.1 ÕÒµ½¹ØÁªÇëÇóÍ³¼Æ±íµ¥  */
+    /* 2.1 ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í³ï¿½Æ±ï¿½ï¿½ï¿½  */
     ul_ret = hmac_autoblacklist_get(pst_mac_vap, puc_mac_addr, &pst_autoblacklist);
     if (OAL_SUCC != ul_ret)
     {
         OAM_ERROR_LOG1(pst_mac_vap->uc_vap_id, OAM_SF_ANY, "{hmac_autoblacklist_get failed %d}", ul_ret);
         return;
     }
-    /* 2.2 Èç¹ûÕÒ²»µ½±íµ¥£¬²»´¦Àí */
+    /* 2.2 ï¿½ï¿½ï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     if (OAL_PTR_NULL == pst_autoblacklist)
     {
         OAM_ERROR_LOG0(pst_mac_vap->uc_vap_id, OAM_SF_ANY, "{Can't find item to add}");
         return;
     }
 
-    /* 3.1 ¹ØÁª¼ÆÊýÆ÷ÅÐ¶Ï */
+    /* 3.1 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ */
     if (++pst_autoblacklist->ul_asso_counter > pst_autoblacklist_info->ul_threshold)
     {
         OAM_INFO_LOG2(pst_mac_vap->uc_vap_id, OAM_SF_ANY,
@@ -1618,7 +1617,7 @@ oal_void hmac_autoblacklist_filter_etc(mac_vap_stru *pst_mac_vap, oal_uint8 *puc
             OAM_ERROR_LOG1(pst_mac_vap->uc_vap_id, OAM_SF_ANY, "{hmac_blacklist_add_etc failed %d}", ul_ret);
             return;
         }
-        /* 3.2 É¾³ýÍ³¼Æ±íµ¥*/
+        /* 3.2 É¾ï¿½ï¿½Í³ï¿½Æ±ï¿½ï¿½ï¿½*/
         oal_memset(pst_autoblacklist, 0, OAL_SIZEOF(mac_autoblacklist_stru));
         if(pst_autoblacklist_info->list_num > 0)
         {
@@ -1672,7 +1671,7 @@ oal_void hmac_config_get_blacklist(mac_vap_stru *pst_mac_vap,oal_uint8 *pst_info
     str_len_left -= strlen;
     if(str_len_left <= 0) return;
 
-    /*  ºÚÃûµ¥±íµ¥ */
+    /*  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     for (ul_blacklist_index = 0; ul_blacklist_index < WLAN_BLACKLIST_MAX; ul_blacklist_index++)
     {
             pst_blacklist = &pst_blacklist_info->ast_black_list[ul_blacklist_index];
@@ -1705,7 +1704,7 @@ oal_void hmac_config_get_blacklist(mac_vap_stru *pst_mac_vap,oal_uint8 *pst_info
 
     }
 
-    /*  ×Ô¶¯ºÚÃûµ¥ÐÅÏ¢ */
+    /*  ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ */
     strlen = OAL_SPRINTF(pst_info_str + str_idex,str_len_left,"\nAUTOBLACKLIST INFO : enable=%d. list_num=%d. left=%d\n",
         pst_autoblacklist_info->uc_enabled,pst_autoblacklist_info->list_num,str_len_left);
     str_idex += strlen;
@@ -1732,7 +1731,7 @@ oal_void hmac_config_get_blacklist(mac_vap_stru *pst_mac_vap,oal_uint8 *pst_info
     str_len_left -= strlen;
     if(str_len_left <= 0) return;
 
-    /*  ×Ô¶¯ºÚÃûµ¥±íµ¥ */
+    /*  ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     for (ul_blacklist_index = 0; ul_blacklist_index < WLAN_ASSOC_USER_MAX_NUM; ul_blacklist_index++)
     {
             pst_autoblacklist_item = &pst_blacklist_info->st_autoblacklist_info.ast_autoblack_list[ul_blacklist_index];

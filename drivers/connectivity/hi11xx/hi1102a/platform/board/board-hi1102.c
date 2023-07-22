@@ -316,7 +316,7 @@ int32 hi1102_bfgx_dev_power_off(void)
     {
         if (SUCCESS != release_tty_drv(ps_core_d->pm_data))
         {
-           /*´úÂëÖ´ÐÐµ½´Ë´¦£¬ËµÃ÷ÁùºÏÒ»ËùÓÐÒµÎñ¶¼ÒÑ¾­¹Ø±Õ£¬ÎÞÂÛttyÊÇ·ñ¹Ø±Õ³É¹¦£¬device¶¼ÒªÏÂµç*/
+           /*ï¿½ï¿½ï¿½ï¿½Ö´ï¿½Ðµï¿½ï¿½Ë´ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½Ø±Õ£ï¿½ï¿½ï¿½ï¿½ï¿½ttyï¿½Ç·ï¿½Ø±Õ³É¹ï¿½ï¿½ï¿½deviceï¿½ï¿½Òªï¿½Âµï¿½*/
            PS_PRINT_ERR("wifi off, close tty is err!");
         }
 
@@ -331,14 +331,14 @@ int32 hi1102_bfgx_dev_power_off(void)
     {
         if(SUCCESS != uart_bfgx_close_cmd())
         {
-           /*bfgx self close fail ÁË£¬ºóÃæÒ²ÒªÍ¨¹ýwifi shutdown bcpu*/
+           /*bfgx self close fail ï¿½Ë£ï¿½ï¿½ï¿½ï¿½ï¿½Ò²ÒªÍ¨ï¿½ï¿½wifi shutdown bcpu*/
            PS_PRINT_ERR("bfgx self close fail\n");
            CHR_EXCEPTION(CHR_GNSS_DRV(CHR_GNSS_DRV_EVENT_PLAT, CHR_PLAT_DRV_ERROR_CLOSE_BCPU));
         }
 
         if (SUCCESS != release_tty_drv(ps_core_d->pm_data))
         {
-           /*´úÂëÖ´ÐÐµ½´Ë´¦£¬ËµÃ÷bfgxËùÓÐÒµÎñ¶¼ÒÑ¾­¹Ø±Õ£¬ÎÞÂÛttyÊÇ·ñ¹Ø±Õ³É¹¦£¬¶¼Òª¹Ø±Õbcpu*/
+           /*ï¿½ï¿½ï¿½ï¿½Ö´ï¿½Ðµï¿½ï¿½Ë´ï¿½ï¿½ï¿½Ëµï¿½ï¿½bfgxï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½Ø±Õ£ï¿½ï¿½ï¿½ï¿½ï¿½ttyï¿½Ç·ï¿½Ø±Õ³É¹ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½Ø±ï¿½bcpu*/
            PS_PRINT_ERR("wifi on, close tty is err!");
         }
 
@@ -373,13 +373,13 @@ int32 hi1102_wlan_power_off(void)
     }
     else
     {
-        /*ÏÈ¹Ø±ÕSDIO TXÍ¨µÀ*/
+        /*ï¿½È¹Ø±ï¿½SDIO TXÍ¨ï¿½ï¿½*/
         hcc_bus_disable_state(hcc_get_current_110x_bus(), OAL_BUS_STATE_TX);
 
         /*wakeup dev,send poweroff cmd to wifi*/
         if(OAL_SUCC != wlan_pm_poweroff_cmd())
         {
-            /*wifi self close Ê§°ÜÁËÒ²¼ÌÐøÍùÏÂÖ´ÐÐ£¬uart¹Ø±ÕWCPU£¬Òì³£»Ö¸´ÍÆ³Ùµ½wifiÏÂ´ÎopenµÄÊ±ºòÖ´ÐÐ*/
+            /*wifi self close Ê§ï¿½ï¿½ï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½Ð£ï¿½uartï¿½Ø±ï¿½WCPUï¿½ï¿½ï¿½ì³£ï¿½Ö¸ï¿½ï¿½Æ³Ùµï¿½wifiï¿½Â´ï¿½openï¿½ï¿½Ê±ï¿½ï¿½Ö´ï¿½ï¿½*/
             DECLARE_DFT_TRACE_KEY_INFO("wlan_poweroff_by_sdio_fail",OAL_DFT_TRACE_FAIL);
             CHR_EXCEPTION(CHR_WIFI_DRV(CHR_WIFI_DRV_EVENT_PLAT, CHR_PLAT_DRV_ERROR_CLOSE_WCPU));
 #ifdef PLATFORM_DEBUG_ENABLE
@@ -392,7 +392,7 @@ int32 hi1102_wlan_power_off(void)
         /*power off cmd execute succ,send shutdown wifi cmd to BFGN */
         if(OAL_SUCC != uart_wifi_close())
         {
-            /*uart¹Ø±ÕWCPUÊ§°ÜÒ²¼ÌÐøÖ´ÐÐ£¬DFRÍÆ³Ùµ½wifiÏÂ´ÎopenµÄÊ±ºòÖ´ÐÐ*/
+            /*uartï¿½Ø±ï¿½WCPUÊ§ï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½Ö´ï¿½Ð£ï¿½DFRï¿½Æ³Ùµï¿½wifiï¿½Â´ï¿½openï¿½ï¿½Ê±ï¿½ï¿½Ö´ï¿½ï¿½*/
             DECLARE_DFT_TRACE_KEY_INFO("wlan_poweroff_uart_cmd_fail",OAL_DFT_TRACE_FAIL);
             CHR_EXCEPTION(CHR_WIFI_DRV(CHR_WIFI_DRV_EVENT_PLAT, CHR_PLAT_DRV_ERROR_CLOSE_WCPU));
         }
@@ -500,7 +500,7 @@ int32 hi1102_board_power_on(uint32 ul_subsystem)
 
     //if(hcc_get_current_110x_bus())
     {
-        /*µÚÒ»´ÎÃ¶¾ÙÊ±BUS »¹Î´³õÊ¼»¯*/
+        /*ï¿½ï¿½Ò»ï¿½ï¿½Ã¶ï¿½ï¿½Ê±BUS ï¿½ï¿½Î´ï¿½ï¿½Ê¼ï¿½ï¿½*/
         ret = hcc_bus_power_ctrl_register(hcc_get_current_110x_bus(), HCC_BUS_CTRL_POWER_UP, board_wlan_gpio_power_on, (void*)(long)gpio);
         hcc_bus_power_action(hcc_get_current_110x_bus(), HCC_BUS_POWER_UP);
     }
@@ -518,7 +518,7 @@ int32 hi1102_board_power_off(uint32 ul_subsystem)
     if (ul_subsystem >= POWER_BUTT)
     {
         PS_PRINT_ERR("power input system:%d error\n", ul_subsystem);
-        return -EFAIL;
+        return ret;
     }
 
     //if(hcc_get_current_110x_bus())
@@ -563,7 +563,7 @@ int32 hi1102_get_board_uart_port(void)
             return BOARD_FAIL;
         }
 
-        /*Ê¹ÓÃuart4£¬ÐèÒªÔÚdtsÀïÐÂÔöDTS_PROP_UART_PCLKÏî£¬Ö¸Ã÷uart4²»ÒÀÀµsensorhub*/
+        /*Ê¹ï¿½ï¿½uart4ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½dtsï¿½ï¿½ï¿½ï¿½ï¿½ï¿½DTS_PROP_UART_PCLKï¿½î£¬Ö¸ï¿½ï¿½uart4ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sensorhub*/
         if (of_property_read_bool(np, DTS_PROP_UART_PCLK))
         {
             PS_PRINT_INFO("uart pclk normal\n");
@@ -785,8 +785,8 @@ int32 hi1102_board_get_power_pinctrl(struct platform_device *pdev)
     struct pinctrl_state *pinctrl_def;
     struct pinctrl_state *pinctrl_idle;
 
-    /* ¼ì²éÊÇ·ñÐèÒªprepare before board power on */
-    /* JTAG SELECT À­µÍ£¬XLDO MODEÑ¡Ôñ2.8v */
+    /* ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªprepare before board power on */
+    /* JTAG SELECT ï¿½ï¿½ï¿½Í£ï¿½XLDO MODEÑ¡ï¿½ï¿½2.8v */
     ret = get_board_dts_node(&np, DTS_NODE_HI110X);
     if(BOARD_SUCC != ret)
     {

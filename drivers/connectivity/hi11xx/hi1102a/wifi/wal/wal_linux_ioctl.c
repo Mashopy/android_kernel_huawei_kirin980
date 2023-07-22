@@ -3882,7 +3882,6 @@ OAL_STATIC oal_void wal_set_power_mgmt_on(oal_uint power_mgmt_flag)
 oal_int32 wal_netdev_stop_ap(oal_net_device_stru *pst_net_dev)
 {
     oal_int32          l_ret;
-    oal_netdev_priv_stru       *pst_netdev_priv;
     if (NL80211_IFTYPE_AP != pst_net_dev->ieee80211_ptr->iftype)
     {
         return OAL_SUCC;
@@ -3901,7 +3900,6 @@ oal_int32 wal_netdev_stop_ap(oal_net_device_stru *pst_net_dev)
         OAM_WARNING_LOG0(0, OAM_SF_CFG, "{wal_netdev_stop_ap::wal_deinit_wlan_vap enter a error.}");
         return l_ret;
     }
-    pst_netdev_priv = (oal_netdev_priv_stru *)OAL_NET_DEV_WIRELESS_PRIV(pst_net_dev);
 
     /* Del aput����Ҫ�л�netdev iftype״̬��station */
     pst_net_dev->ieee80211_ptr->iftype = NL80211_IFTYPE_STATION;

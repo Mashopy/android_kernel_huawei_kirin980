@@ -9,7 +9,7 @@ extern "C" {
 #define HI11XX_LOG_MODULE_NAME "[HCC_BUS]"
 #define HI11XX_LOG_MODULE_NAME_VAR hcc_bus_loglevel
 /*****************************************************************************
-  1 Í·ÎÄ¼þ°üº¬
+  1 Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 #if (_PRE_OS_VERSION_LINUX == _PRE_OS_VERSION)
 #include "board.h"
@@ -35,7 +35,7 @@ extern "C" {
 
 
 /*****************************************************************************
-  2 È«¾Ö±äÁ¿¶¨Òå
+  2 È«ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 */
 #if (_PRE_OS_VERSION_LINUX == _PRE_OS_VERSION)
 static oal_int32 hcc_bus_pm_state_switch_event(struct notifier_block *unused,
@@ -79,7 +79,7 @@ oal_debug_module_param(hcc_bus_auto_bindcpu, uint, S_IRUGO|S_IWUSR);
 oal_uint32 hcc_bus_manual_bindcpu = 1;
 oal_debug_module_param(hcc_bus_manual_bindcpu, uint, S_IRUGO|S_IWUSR);
 
-/*pps °´ÕÕ´ó°ü¼ÆËã*/
+/*pps ï¿½ï¿½ï¿½Õ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 oal_uint32 hcc_bus_auto_bindcpu_limit = (200*1024*128)/1500;
 oal_debug_module_param(hcc_bus_auto_bindcpu_limit, uint, S_IRUGO|S_IWUSR);
 
@@ -112,7 +112,7 @@ oal_uint32 hcc_bus_auto_bindcpu = 0;
 oal_uint32 hcc_bus_manual_bindcpu = 1;
 oal_uint32 hcc_bus_current_pps = 0x0;
 oal_uint32 hcc_bus_wakelock_debug = 0x0;
-/*pps °´ÕÕ´ó°ü¼ÆËã*/
+/*pps ï¿½ï¿½ï¿½Õ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 oal_uint32 hcc_bus_auto_sdio_bindcpu_limit = (300*1024*128)/1500;
 oal_uint32 hcc_bus_auto_pcie_bindcpu_limit = (450*1024*128)/1500;
 oal_uint32 hcc_bus_auto_switch_limit       = (350*1024*128)/1500;
@@ -131,7 +131,7 @@ oal_int32  g_switch_total_count = 0;
 oal_uint32 g_hcc_tx_err_cnt = 0;
 extern oal_bool_enum g_wlan_pm_switch_etc;
 /*****************************************************************************
-  3 º¯ÊýÉùÃ÷
+  3 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 oal_int32 oal_register_gpio_intr_etc(hcc_bus_dev *pst_bus_dev);
 oal_void  oal_unregister_gpio_intr_etc(hcc_bus_dev *pst_bus_dev);
@@ -143,13 +143,13 @@ oal_int32 hcc_bus_auto_sched_is_support(oal_uint32 dev_id);
 oal_int32 hcc_switch_bus_request(oal_uint32 dev_id, oal_uint32 target, oal_int32 is_sync);
 
 /*****************************************************************************
-  4 º¯ÊýÊµÏÖ
+  4 ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
 *****************************************************************************/
 
 hcc_bus*  g_hisi_wifi_bus = OAL_PTR_NULL;
 //struct semaphore bus_wake_sema;
 #if (_PRE_OS_VERSION_LINUX == _PRE_OS_VERSION)
-/*¸ù¾ÝÒÔÏÂ½á¹¹ÌåÀ´Ã¶¾Ù IPÉè±¸*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â½á¹¹ï¿½ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½ IPï¿½è±¸*/
 OAL_STATIC hcc_bus_dev g_bus_dev_res[] =
 {
     {
@@ -181,7 +181,7 @@ oal_uint32       bus_dump_mem_flag = 0;
 oal_debug_module_param(bus_dump_mem_flag, uint, S_IRUGO | S_IWUSR);
 
 oal_atomic g_wakeup_dev_wait_ack_etc;
-oal_atomic g_bus_powerup_dev_wait_ack;/*ip ÉÏµçÎÕÊÖ±ê¼Ç*/
+oal_atomic g_bus_powerup_dev_wait_ack;/*ip ï¿½Ïµï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½*/
 #endif
 
 /*-1 means did't bind cpus*/
@@ -344,7 +344,7 @@ oal_void hcc_bus_chan_init_from_string(hcc_bus_dev*  pst_bus_dev, char* bus_sele
                     oal_print_hi11xx_log(HI11XX_LOG_INFO, "hisi wifi support pcie %s", default_select);
                 }
 
-                /*¶¯Ì¬ÇÐ»»¿ª¹Ø£¬ÓÉÇý¶¯À´ÖÙ²ÃÄÄ2ÖÖ½Ó¿ÚÇÐ»»*/
+                /*ï¿½ï¿½Ì¬ï¿½Ð»ï¿½ï¿½ï¿½ï¿½Ø£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù²ï¿½ï¿½ï¿½2ï¿½Ö½Ó¿ï¿½ï¿½Ð»ï¿½*/
                 if(!oal_memcmp(start, "switchon", OAL_STRLEN("switchon")))
                 {
                     pst_bus_dev->bus_switch_enable = 1;
@@ -575,7 +575,7 @@ oal_int32 hcc_switch_bus(oal_uint32 dev_id, oal_uint32 bus_type)
     oal_int32 ret = OAL_SUCC;
     hcc_bus* old_bus;
     hcc_bus_dev* pst_bus_dev  = hcc_get_bus_dev(dev_id);
-    /*ÔÝÊ±Ö»ÔÊÐíÔÚ¹Ø»ú×´Ì¬ÇÐ»»*/
+    /*ï¿½ï¿½Ê±Ö»ï¿½ï¿½ï¿½ï¿½ï¿½Ú¹Ø»ï¿½×´Ì¬ï¿½Ð»ï¿½*/
     if(OAL_WARN_ON(HCC_CHIP_110X_DEV != dev_id))
     {
         return -OAL_EINVAL;
@@ -735,7 +735,7 @@ OAL_STATIC oal_int32 hcc_bus_notify_devip_powerctrl(hcc_bus* pst_bus, oal_uint32
     oal_memcopy((oal_void*)oal_netbuf_data(pst_netbuf) + OAL_SIZEOF(oal_uint16), (oal_void*)&st_switch_info, OAL_SIZEOF(st_switch_info));
 #endif
 
-    /*¸ßÓÅÏÈ¼¶·¢ËÍ*/
+    /*ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½ï¿½ï¿½ï¿½ï¿½*/
     hcc_hdr_param_init(&st_hcc_transfer_param,
                     HCC_ACTION_TYPE_BUS,
                     0,
@@ -747,7 +747,7 @@ OAL_STATIC oal_int32 hcc_bus_notify_devip_powerctrl(hcc_bus* pst_bus, oal_uint32
 
 }
 
-/*Òì³£ÏÂµç£¬²»ÐèÒªµÈresponse*/
+/*ï¿½ì³£ï¿½Âµç£¬ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½response*/
 oal_int32 hcc_bus_switch_ip_power_down_excep(void* data)
 {
     /*target ip power down process*/
@@ -780,14 +780,14 @@ oal_int32 hcc_bus_switch_ip_power_down_excep(void* data)
 
     if(OAL_SUCC != hcc_bus_notify_devip_powerctrl(target_bus,  0, 0))
     {
-        /*Í¨ÖªÀÏµÄIPÏÂµç*/
+        /*Í¨Öªï¿½Ïµï¿½IPï¿½Âµï¿½*/
         oal_print_hi11xx_log(HI11XX_LOG_INFO, "hcc_bus_switch_thread send power down bus %s message failed", hcc_bus_get_bus_type_str(target_bus->bus_type));
     }
 
     return OAL_SUCC;
 }
 
-/*Õý³£ÏÂµç£¬µÈ´ýresponse*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½Âµç£¬ï¿½È´ï¿½response*/
 oal_int32 hcc_bus_switch_ip_power_down(void* data)
 {
     /*target ip power down process*/
@@ -818,7 +818,7 @@ oal_int32 hcc_bus_switch_ip_power_down(void* data)
 
     if(OAL_SUCC != hcc_bus_notify_devip_powerctrl(target_bus,  0, 1))
     {
-        /*Í¨ÖªÀÏµÄIPÏÂµç*/
+        /*Í¨Öªï¿½Ïµï¿½IPï¿½Âµï¿½*/
         oal_print_hi11xx_log(HI11XX_LOG_INFO, "hcc_bus_switch_thread send power down bus %d message failed", target_bus->bus_id);
     }
 
@@ -867,18 +867,18 @@ oal_int32 hcc_bus_switch_ip_power_on(void* data)
         return -OAL_ENODEV;
     }
 
-    /*ipÉÏµç*/
-    /*Í¨ÖªDevice ¸øÄ¿±êIPÉÏµç*/
+    /*ipï¿½Ïµï¿½*/
+    /*Í¨ÖªDevice ï¿½ï¿½Ä¿ï¿½ï¿½IPï¿½Ïµï¿½*/
     if(OAL_SUCC != hcc_bus_notify_devip_powerctrl(target_bus, 1, 1))
     {
-        /*Í¨ÖªÉÏµçÊ§°Ü£¬ºöÂÔÕâ´ÎÇÐ»»²Ù×÷*/
+        /*Í¨Öªï¿½Ïµï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½ï¿½ï¿½*/
         oal_print_hi11xx_log(HI11XX_LOG_ERR, "hcc_bus_switch_thread power up bus %s failed", hcc_bus_get_bus_type_str(target_bus->bus_type));
         DECLARE_DFT_TRACE_KEY_INFO("hcc_bus_switch_thread response timeout failed", OAL_DFT_TRACE_FAIL);
         g_switch_pwr_ret = -OAL_EBUSY;
         return -OAL_EBUSY;
     }
 
-    /*µÈ´ýÉÏµçÍê³É*/
+    /*ï¿½È´ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½*/
     ret = oal_wait_for_completion_interruptible_timeout(&pst_bus_dev->st_switch_powerup_ready, (oal_uint32)OAL_MSECS_TO_JIFFIES(10000));
     if(0 == ret)
     {
@@ -967,7 +967,7 @@ oal_int32 hcc_bus_test_powercrcle(oal_int32 test_cnt)
 
     hcc_bus_power_action(target_bus, HCC_BUS_SW_POWER_PATCH_LOAD_PREPARE);
 
-    /*Host·¢ÆðÄ¿±êIPÓ²¼þ³õÊ¼»¯*/
+    /*Hostï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½IPÓ²ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½*/
     hcc_bus_power_ctrl_register(target_bus, HCC_BUS_CTRL_POWER_UP, hcc_bus_switch_ip_power_on, (void*)target_bus);
     ret = hcc_bus_power_action(target_bus, HCC_BUS_SW_POWER_UP);
     if(OAL_SUCC != ret || OAL_SUCC != g_switch_pwr_ret)
@@ -978,7 +978,7 @@ oal_int32 hcc_bus_test_powercrcle(oal_int32 test_cnt)
         return -OAL_EFAIL;
     }
     oal_print_hi11xx_log(HI11XX_LOG_INFO, "[%s]:%d", __FUNCTION__, __LINE__);
-    /*×ÊÔ´³õÊ¼»¯*/
+    /*ï¿½ï¿½Ô´ï¿½ï¿½Ê¼ï¿½ï¿½*/
     ret = hcc_bus_reinit(target_bus);
     if(OAL_SUCC != ret)
     {
@@ -991,8 +991,8 @@ oal_int32 hcc_bus_test_powercrcle(oal_int32 test_cnt)
         return -OAL_EFAIL;
     }
     oal_print_hi11xx_log(HI11XX_LOG_INFO, "[%s]:%d", __FUNCTION__, __LINE__);
-    /*Host·¢ÆðÄ¿±êIPÈí¼þ³õÊ¼»¯*/
-    /*ip³õÊ¼»¯ ²»ÐèÒªÏÂÔØPATCH ´ËÊ±WCPUÔÚÕý³£ÔËÐÐ*/
+    /*Hostï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½IPï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½*/
+    /*ipï¿½ï¿½Ê¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½PATCH ï¿½ï¿½Ê±WCPUï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
     ret = hcc_bus_power_action(target_bus, HCC_BUS_SW_POWER_PATCH_LAUCH);
     if(OAL_SUCC != ret)
     {
@@ -1064,7 +1064,7 @@ oal_int32 hcc_bus_test_powerup(oal_int32 target)
 
     hcc_bus_power_action(target_bus, HCC_BUS_SW_POWER_PATCH_LOAD_PREPARE);
 
-    /*Host·¢ÆðÄ¿±êIPÓ²¼þ³õÊ¼»¯*/
+    /*Hostï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½IPÓ²ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½*/
     hcc_bus_power_ctrl_register(target_bus, HCC_BUS_CTRL_POWER_UP, hcc_bus_switch_ip_power_on, (void*)target_bus);
     ret = hcc_bus_power_action(target_bus, HCC_BUS_SW_POWER_UP);
     if(OAL_SUCC != ret || OAL_SUCC != g_switch_pwr_ret)
@@ -1075,7 +1075,7 @@ oal_int32 hcc_bus_test_powerup(oal_int32 target)
         return -OAL_EFAIL;
     }
     oal_print_hi11xx_log(HI11XX_LOG_INFO, "[%s]:%d", __FUNCTION__, __LINE__);
-    /*×ÊÔ´³õÊ¼»¯*/
+    /*ï¿½ï¿½Ô´ï¿½ï¿½Ê¼ï¿½ï¿½*/
     ret = hcc_bus_reinit(target_bus);
     if(OAL_SUCC != ret)
     {
@@ -1088,8 +1088,8 @@ oal_int32 hcc_bus_test_powerup(oal_int32 target)
         return -OAL_EFAIL;
     }
     oal_print_hi11xx_log(HI11XX_LOG_INFO, "[%s]:%d", __FUNCTION__, __LINE__);
-    /*Host·¢ÆðÄ¿±êIPÈí¼þ³õÊ¼»¯*/
-    /*ip³õÊ¼»¯ ²»ÐèÒªÏÂÔØPATCH ´ËÊ±WCPUÔÚÕý³£ÔËÐÐ*/
+    /*Hostï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½IPï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½*/
+    /*ipï¿½ï¿½Ê¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½PATCH ï¿½ï¿½Ê±WCPUï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
     ret = hcc_bus_power_action(target_bus, HCC_BUS_SW_POWER_PATCH_LAUCH);
     if(OAL_SUCC != ret)
     {
@@ -1184,7 +1184,7 @@ OAL_STATIC oal_int32 hcc_bus_switch_thread(oal_void *data)
 
         old_bus = pst_bus_dev->cur_bus;
 
-        /*ÅÐ¶ÏWLANÉÏÏÂµç×´Ì¬*/
+        /*ï¿½Ð¶ï¿½WLANï¿½ï¿½ï¿½Âµï¿½×´Ì¬*/
 
         /*process target_bus*/
 
@@ -1220,7 +1220,7 @@ OAL_STATIC oal_int32 hcc_bus_switch_thread(oal_void *data)
 
         g_switch_pwr_ret = OAL_SUCC;
 
-        /*Host·¢ÆðÄ¿±êIPÓ²¼þ³õÊ¼»¯*/
+        /*Hostï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½IPÓ²ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½*/
         hcc_bus_power_ctrl_register(target_bus, HCC_BUS_CTRL_POWER_UP, hcc_bus_switch_ip_power_on, (void*)target_bus);
         ret = hcc_bus_power_action(target_bus, HCC_BUS_SW_POWER_UP);
         if(OAL_SUCC != ret || OAL_SUCC != g_switch_pwr_ret)
@@ -1233,7 +1233,7 @@ OAL_STATIC oal_int32 hcc_bus_switch_thread(oal_void *data)
             continue;
         }
         oal_print_hi11xx_log(HI11XX_LOG_INFO, "[%s]:%d", __FUNCTION__, __LINE__);
-        /*×ÊÔ´³õÊ¼»¯*/
+        /*ï¿½ï¿½Ô´ï¿½ï¿½Ê¼ï¿½ï¿½*/
         ret = hcc_bus_reinit(target_bus);
         if(OAL_SUCC != ret)
         {
@@ -1247,8 +1247,8 @@ OAL_STATIC oal_int32 hcc_bus_switch_thread(oal_void *data)
             continue;
         }
         oal_print_hi11xx_log(HI11XX_LOG_INFO, "[%s]:%d", __FUNCTION__, __LINE__);
-        /*Host·¢ÆðÄ¿±êIPÈí¼þ³õÊ¼»¯*/
-        /*ip³õÊ¼»¯ ²»ÐèÒªÏÂÔØPATCH ´ËÊ±WCPUÔÚÕý³£ÔËÐÐ*/
+        /*Hostï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½IPï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½*/
+        /*ipï¿½ï¿½Ê¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½PATCH ï¿½ï¿½Ê±WCPUï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
         ret = hcc_bus_power_action(target_bus, HCC_BUS_SW_POWER_PATCH_LAUCH);
         if(OAL_SUCC != ret)
         {
@@ -1273,12 +1273,12 @@ OAL_STATIC oal_int32 hcc_bus_switch_thread(oal_void *data)
             hcc_bus_stop_auto_pps_task(pst_bus_dev);
         }
 
-        /*Ó²¼þ³õÊ¼»¯Íê³É£¬ÇÐ»»Èí¼þ*/
-        /*ÔÝÍ£hcc Ïß³Ì,»òÕßhcc_txËø*/
+        /*Ó²ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½É£ï¿½ï¿½Ð»ï¿½ï¿½ï¿½ï¿½ï¿½*/
+        /*ï¿½ï¿½Í£hcc ï¿½ß³ï¿½,ï¿½ï¿½ï¿½ï¿½hcc_txï¿½ï¿½*/
         oal_get_time_cost_start(cost);
         hcc_tx_transfer_lock(pst_bus_dev->hcc);
 
-        /*¹ÒÆð·¢ËÍÍ¨µÀ,µÈ´ýÍ¨µÀÇå¿Õ, Çå¿ÕºóWCPU»áÇÐ»»bus*/
+        /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½,ï¿½È´ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½Õºï¿½WCPUï¿½ï¿½ï¿½Ð»ï¿½bus*/
         ret = hcc_bus_switch_suspend_tx(old_bus);
 
         ret = hcc_bus_switch_clean_res(old_bus);
@@ -1299,7 +1299,7 @@ OAL_STATIC oal_int32 hcc_bus_switch_thread(oal_void *data)
             continue;
         }
 
-        /*ÖØÈëÎÊÌâ*/
+        /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
         hcc_switch_bus(pst_bus_dev->dev_id, target_bus->bus_type);
 
         if(old_bus == pst_bus_dev->cur_bus)
@@ -1314,10 +1314,10 @@ OAL_STATIC oal_int32 hcc_bus_switch_thread(oal_void *data)
                                 hcc_bus_get_bus_type_str(old_bus->bus_type), hcc_bus_get_bus_type_str(target_bus->bus_type));
         }
 
-        /*·¢ÏûÏ¢Í¨ÖªDEVËø×¡DMAµ÷¶È¹Ø±ÕÏûÏ¢½Ó¿Ú£¬µÈ´ýIP¿ÕÏÐ*/
+        /*ï¿½ï¿½ï¿½ï¿½Ï¢Í¨ÖªDEVï¿½ï¿½×¡DMAï¿½ï¿½ï¿½È¹Ø±ï¿½ï¿½ï¿½Ï¢ï¿½Ó¿Ú£ï¿½ï¿½È´ï¿½IPï¿½ï¿½ï¿½ï¿½*/
 
-        /*ÇÐ»»Íê³É»Ö¸´·¢ËÍÍ¨µÀ, ÉÏÃæHost bus ÇÐ»»ÓÐÊ±¼ä²î£¬
-          ËùÓÐÍê³ÉºóÐèÒªÖØÐÂµ÷¶ÈÊÜÓ°ÏìµÄÈÎÎñ*/
+        /*ï¿½Ð»ï¿½ï¿½ï¿½É»Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½Host bus ï¿½Ð»ï¿½ï¿½ï¿½Ê±ï¿½ï¿½î£¬
+          ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Éºï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½ï¿½ï¿½Ó°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
         hcc_bus_sched_gpio_task(pst_bus_dev->cur_bus, 0);
 
         ret = hcc_bus_switch_resume_tx(pst_bus_dev->cur_bus);
@@ -1338,7 +1338,7 @@ OAL_STATIC oal_int32 hcc_bus_switch_thread(oal_void *data)
             ret = hcc_bus_power_ctrl_register(old_bus,
                                                 HCC_BUS_CTRL_POWER_DOWN, hcc_bus_switch_ip_power_down, (oal_void*)old_bus);
             hcc_bus_power_action(old_bus, HCC_BUS_SW_POWER_DOWN);
-            /*´ËÊ±²»¹ÜµÍ¹¦ºÄÊÇ·ñ´ò¿ª£¬old_busÒÑ¾­³ÖÓÐÒ»°ÑËø£¬ÐèÒªÊÍ·Å,²¢ÇÒËø×¡new_bus*/
+            /*ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ÜµÍ¹ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ò¿ª£ï¿½old_busï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½Í·ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¡new_bus*/
             hcc_bus_wake_lock(pst_bus_dev->cur_bus);
             hcc_bus_wake_unlock(old_bus);
             hcc_bus_rx_transfer_unlock(old_bus);
@@ -1433,7 +1433,7 @@ oal_int32 hi110x_hcc_dev_bindcpu(oal_int32 is_bind)
 
     if(hcc_bus_auto_bindcpu_is_support(dev_id))
     {
-        /*×Ô¶¯°óºË´ò¿ªÖ±½Ó·µ»Ø*/
+        /*ï¿½Ô¶ï¿½ï¿½ï¿½Ë´ï¿½Ö±ï¿½Ó·ï¿½ï¿½ï¿½*/
         return OAL_SUCC;
     }
 
@@ -1473,12 +1473,12 @@ oal_int32 hcc_dev_bindcpu(oal_uint32 dev_id, oal_int32 is_bind)
 }
 EXPORT_SYMBOL_GPL(hcc_dev_bindcpu);
 
-/*busÐÔÄÜµ÷¶È*/
+/*busï¿½ï¿½ï¿½Üµï¿½ï¿½ï¿½*/
 oal_int32 hcc_bus_performance_core_schedule(oal_uint32 dev_id)
 {
     oal_uint32 run_time;
     oal_ulong current_time, pkt_pps_rx, pkt_pps_tx, pkt_pps_total;
-    oal_ulong tx_cnt, rx_cnt, total_cnt;
+    oal_ulong tx_cnt, rx_cnt;
     hcc_bus_dev* pst_bus_dev  = hcc_get_bus_dev(dev_id);
 
     if(OAL_UNLIKELY(NULL == pst_bus_dev))
@@ -1500,7 +1500,6 @@ oal_int32 hcc_bus_performance_core_schedule(oal_uint32 dev_id)
         /*time is up, calc pps*/
         tx_cnt = pst_bus_dev->hcc->hcc_transer_info.tx_assem_info.pkt_cnt;
         rx_cnt = pst_bus_dev->hcc->hcc_transer_info.rx_assem_info.pkt_cnt;
-        total_cnt = tx_cnt + rx_cnt;
 
         run_time = OAL_JIFFIES_TO_MSECS(current_time)
                    - OAL_JIFFIES_TO_MSECS(pst_bus_dev->bus_pps_start_time);
@@ -1528,7 +1527,7 @@ oal_int32 hcc_bus_performance_core_schedule(oal_uint32 dev_id)
             {
                 if(HDEV_TO_HBUS(pst_bus_dev)->bus_type != HCC_BUS_SDIO)
                 {
-                    /*µÍÍÌÍÂ²»ÐèÒªÖØ¸´ÇÐ»»*/
+                    /*ï¿½ï¿½ï¿½ï¿½ï¿½Â²ï¿½ï¿½ï¿½Òªï¿½Ø¸ï¿½ï¿½Ð»ï¿½*/
                     hcc_switch_bus_request(dev_id, HCC_BUS_SDIO, 0);
                 }
             }
@@ -1682,7 +1681,7 @@ oal_int32 hcc_switch_bus_request(oal_uint32 dev_id, oal_uint32 target, oal_int32
 
     if(is_sync)
     {
-        /*µÈ´ýÇÐ»»Íê³É*/
+        /*ï¿½È´ï¿½ï¿½Ð»ï¿½ï¿½ï¿½ï¿½*/
         ret = OAL_WAIT_EVENT_INTERRUPTIBLE_TIMEOUT(pst_bus_dev->st_swtich_ack_wq,
                                            ((HCC_BUS_SWITCH_STATE_ABORT == pst_bus_dev->switch_state)
                                            || (HCC_BUS_SWITCH_STATE_END == pst_bus_dev->switch_state)),
@@ -1849,7 +1848,7 @@ oal_int32 hcc_message_register_etc(struct hcc_handler* hcc, oal_uint8 msg,
         pst_bus_tmp = OAL_DLIST_GET_ENTRY(pst_entry, hcc_bus, list);
         if(pst_bus_tmp->bus_dev == hcc->bus_dev)
         {
-            /*×¢²áÔÚµ±Ç°Éè±¸ÉÏµÄËùÓÐBUS ¶¼ÐèÒª×¢²á*/
+            /*×¢ï¿½ï¿½ï¿½Úµï¿½Ç°ï¿½è±¸ï¿½Ïµï¿½ï¿½ï¿½ï¿½ï¿½BUS ï¿½ï¿½ï¿½ï¿½Òª×¢ï¿½ï¿½*/
             ret = hcc_bus_message_register(pst_bus_tmp, msg, cb, data);
             if(OAL_SUCC != ret)
             {
@@ -1880,7 +1879,7 @@ oal_void hcc_message_unregister_etc(struct hcc_handler* hcc, oal_uint8 msg)
         pst_bus_tmp = OAL_DLIST_GET_ENTRY(pst_entry, hcc_bus, list);
         if(pst_bus_tmp->bus_dev == hcc->bus_dev)
         {
-            /*×¢²áÔÚµ±Ç°Éè±¸ÉÏµÄËùÓÐBUS ¶¼ÐèÒª×¢²á*/
+            /*×¢ï¿½ï¿½ï¿½Úµï¿½Ç°ï¿½è±¸ï¿½Ïµï¿½ï¿½ï¿½ï¿½ï¿½BUS ï¿½ï¿½ï¿½ï¿½Òª×¢ï¿½ï¿½*/
             hcc_bus_message_unregister(pst_bus_tmp, msg);
         }
     }
@@ -2299,7 +2298,7 @@ oal_void hcc_bus_exception_submit(hcc_bus *hi_bus, oal_int32 excep_type)
 
             if(!oal_print_rate_limit(24*PRINT_RATE_HOUR))
             {
-                /*24*60·ÖÖÓ´òÓ¡Ò»´Î*/
+                /*24*60ï¿½ï¿½ï¿½Ó´ï¿½Ó¡Ò»ï¿½ï¿½*/
                 set = 0x0;
             }
         }
@@ -2441,7 +2440,7 @@ oal_int32 hcc_bus_device_init_ready(void *data)
 	return OAL_SUCC;
 }
 
-/*¼ì²éDEVICE WAKEUP HOST gpio ÊÇ·ñÀ­¸ß¡£*/
+/*ï¿½ï¿½ï¿½DEVICE WAKEUP HOST gpio ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ß¡ï¿½*/
 oal_int32 oal_dev2host_gpio_hold_time_check_etc(oal_uint32 switch_timeout, oal_uint32 hold_time)
 {
     oal_ulong timeout;
@@ -2874,7 +2873,7 @@ oal_int32 oal_register_gpio_intr_etc(hcc_bus_dev *pst_bus_dev)
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 10, 44))
    ret = request_irq(wlan_irq, hcc_bus_wlan_gpio_irq, IRQF_NO_SUSPEND | IRQF_TRIGGER_RISING | IRQF_DISABLED, "wifi_gpio_intr", pst_bus_dev);
 #else
-    /*µÍ°æ±¾ÄÚºËÃ»ÓÐIRQF_NO_SUSPEND±ê¼Ç*/
+    /*ï¿½Í°æ±¾ï¿½Úºï¿½Ã»ï¿½ï¿½IRQF_NO_SUSPENDï¿½ï¿½ï¿½*/
    ret = request_irq(wlan_irq, hcc_bus_wlan_gpio_irq, IRQF_TRIGGER_RISING | IRQF_DISABLED, "wifi_gpio_intr", pst_bus_dev);
 #endif
    if (ret < 0)
@@ -2913,7 +2912,7 @@ oal_void oal_wlan_gpio_intr_enable_etc(hcc_bus_dev *pst_bus_dev,oal_uint32  ul_e
     oal_spin_lock_irq_save(&pst_bus_dev->st_irq_lock, &flags);
     if (ul_en)
     {
-        /*²»ÔÙÖ§³ÖÖÐ¶Ï¿ª¹ØÇ¶Ì×*/
+        /*ï¿½ï¿½ï¿½ï¿½Ö§ï¿½ï¿½ï¿½Ð¶Ï¿ï¿½ï¿½ï¿½Ç¶ï¿½ï¿½*/
         if(pst_bus_dev->ul_irq_stat)
         {
             enable_irq(pst_bus_dev->ul_wlan_irq);
@@ -3276,7 +3275,7 @@ hcc_init_fail:
     return -OAL_EFAIL;
 }
 
-/*Ã¶¾Ù½Ó¿ÚÉè±¸*/
+/*Ã¶ï¿½Ù½Ó¿ï¿½ï¿½è±¸*/
 oal_int32 oal_wifi_platform_load_dev(oal_void)
 {
     oal_int32 ret = OAL_SUCC;
@@ -3301,7 +3300,7 @@ failed_load_pcie:
     return ret;
 }
 
-/*Ð¶ÔØ½Ó¿ÚÉè±¸*/
+/*Ð¶ï¿½Ø½Ó¿ï¿½ï¿½è±¸*/
 oal_void oal_wifi_platform_unload_dev(oal_void)
 {
     oal_wifi_platform_unload_pcie();
@@ -3353,13 +3352,13 @@ oal_int32 oal_trigger_bus_exception(hcc_bus *hi_bus, oal_int32 is_sync)
     return OAL_SUCC;
 }
 
-/*Ã¶¾Ù½Ó¿ÚÉè±¸*/
+/*Ã¶ï¿½Ù½Ó¿ï¿½ï¿½è±¸*/
 oal_int32 oal_wifi_platform_load_dev(oal_void)
 {
     return OAL_SUCC;
 }
 
-/*Ð¶ÔØ½Ó¿ÚÉè±¸*/
+/*Ð¶ï¿½Ø½Ó¿ï¿½ï¿½è±¸*/
 oal_void oal_wifi_platform_unload_dev(oal_void)
 {
 }
@@ -3432,7 +3431,7 @@ oal_int32 hcc_transfer_rx_register(struct hcc_handler* hcc, oal_void* data,hcc_b
         pst_bus_tmp = OAL_DLIST_GET_ENTRY(pst_entry, hcc_bus, list);
         if(pst_bus_tmp->bus_dev == hcc->bus_dev)
         {
-            /*×¢²áÔÚµ±Ç°Éè±¸ÉÏµÄËùÓÐBUS ¶¼ÐèÒª×¢²á*/
+            /*×¢ï¿½ï¿½ï¿½Úµï¿½Ç°ï¿½è±¸ï¿½Ïµï¿½ï¿½ï¿½ï¿½ï¿½BUS ï¿½ï¿½ï¿½ï¿½Òª×¢ï¿½ï¿½*/
             ret = hcc_bus_transfer_rx_register(pst_bus_tmp, data, rx);
             if(OAL_SUCC != ret)
             {

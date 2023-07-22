@@ -71,10 +71,10 @@ char* g_pcie_link_state_str[PCI_WLAN_LINK_BUTT+1] =
  */
 OAL_STATIC oal_pcie_bar_info g_en_bar_table[] =
 {
-    /*1103 4.7a Ò»¸öBAR [8MB]£¬ 5.0a ÎªÁ½¸öBAR[Bar0 8M  BAR1 16KB]
-      (ÒòÎª1103 ÊÇ64bit bar,ËùÒÔ¶ÔÓ¦bar index¼Ä´æÆ÷, ÊÇ¶ÔÓ¦bar index=2,
-       ²Î¿¼ __pci_read_base ×îºóÒ»ÐÐ),
-      µÚ¶þ¸öBAR Ö±½ÓÓÃMEM ·½Ê½ ·ÃÎÊIATU±í*/
+    /*1103 4.7a Ò»ï¿½ï¿½BAR [8MB]ï¿½ï¿½ 5.0a Îªï¿½ï¿½ï¿½ï¿½BAR[Bar0 8M  BAR1 16KB]
+      (ï¿½ï¿½Îª1103 ï¿½ï¿½64bit bar,ï¿½ï¿½ï¿½Ô¶ï¿½Ó¦bar indexï¿½Ä´ï¿½ï¿½ï¿½, ï¿½Ç¶ï¿½Ó¦bar index=2,
+       ï¿½Î¿ï¿½ __pci_read_base ï¿½ï¿½ï¿½Ò»ï¿½ï¿½),
+      ï¿½Ú¶ï¿½ï¿½ï¿½BAR Ö±ï¿½ï¿½ï¿½ï¿½MEM ï¿½ï¿½Ê½ ï¿½ï¿½ï¿½ï¿½IATUï¿½ï¿½*/
     {
         .bar_idx = OAL_PCI_BAR_0,
     },
@@ -89,7 +89,7 @@ oal_debug_module_param(pcie_soft_fifo_enable, int, S_IRUGO | S_IWUSR);
 oal_int32 pcie_ringbuf_bugfix_enable = 1;
 oal_debug_module_param(pcie_ringbuf_bugfix_enable, int, S_IRUGO | S_IWUSR);
 
-oal_int32 pcie_dma_data_check_enable = 0;/*Wi-Fi¹Ø±ÕÊ±¿ÉÒÔÐÞ¸Ä´Ë±ê¼Ç*/
+oal_int32 pcie_dma_data_check_enable = 0;/*Wi-Fiï¿½Ø±ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸Ä´Ë±ï¿½ï¿½*/
 oal_debug_module_param(pcie_dma_data_check_enable, int, S_IRUGO | S_IWUSR);
 
 oal_int32 ft_pcie_wcpu_max_freq_bypass = 0;
@@ -180,8 +180,8 @@ typedef enum _HI1103_REGIONS_
     HI1103_REGION_BUTT
 }HI1103_REGIONS;
 
- /*Region´óÐ¡±ØÐëÎª4KBµÄ±¶Êý£¬iATUÒªÇó*/
- /*ÕâÀïµÄ·Ö¶Î¶¼ÊÇ¶ÔÓ¦iATU inbound*/
+ /*Regionï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½Îª4KBï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½iATUÒªï¿½ï¿½*/
+ /*ï¿½ï¿½ï¿½ï¿½Ä·Ö¶Î¶ï¿½ï¿½Ç¶ï¿½Ó¦iATU inbound*/
 OAL_STATIC oal_pcie_region g_hi1103_pcie_mpw2_regions[] =
 {
     {
@@ -736,12 +736,12 @@ oal_pcie_res* oal_get_default_pcie_handler(oal_void)
 oal_int32 oal_pcie_edma_get_read_done_fifo(oal_pcie_res* pst_pci_res, edma_paddr_t* addr, oal_uint32* count)
 {
     /*TBD:TBC*/
-    /*ºóÐø¿¼ÂÇÓÅ»¯£¬ PCIE¶ÁÄÚ´æ±È½ÏºÄÊ±*/
-    /*ÏÈ¶ÁFIFO0£¬·ÖÈý´Î¶Á×ß64bit Êý¾Ý£¬¶Á¿Õ*/
+    /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å»ï¿½ï¿½ï¿½ PCIEï¿½ï¿½ï¿½Ú´ï¿½È½Ïºï¿½Ê±*/
+    /*ï¿½È¶ï¿½FIFO0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¶ï¿½ï¿½ï¿½64bit ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½ï¿½ï¿½*/
     oal_uint32 addr_low,addr_high;
     oal_uint32 trans_count;
 
-    /*´¦Àífifo0*/
+    /*ï¿½ï¿½ï¿½ï¿½fifo0*/
     trans_count    = oal_readl(pst_pci_res->pst_pci_ctrl_base + PCIE_FIFO_REMOTE_READ_FIFO0_DATA_OFF);
 //#ifdef _PRE_PLAT_FEATURE_HI110X_PCIE_FIFO_ADDRESS
     addr_low       = oal_readl(pst_pci_res->pst_pci_ctrl_base + PCIE_FIFO_REMOTE_READ_FIFO0_DATA_OFF+4);
@@ -758,14 +758,14 @@ oal_int32 oal_pcie_edma_get_read_done_fifo(oal_pcie_res* pst_pci_res, edma_paddr
     }
 
 
-    trans_count = trans_count >> 1;/*Ò»¸öÊý¾Ý°ü¶ÔÓ¦2¸öÃèÊö·û*/
+    trans_count = trans_count >> 1;/*Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ý°ï¿½ï¿½ï¿½Ó¦2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 //#ifdef _PRE_PLAT_FEATURE_HI110X_PCIE_FIFO_ADDRESS
     addr->bits.low_addr = addr_low;
     addr->bits.high_addr = addr_high;
 //#endif
     *count = trans_count;
 
-    /*´¦Àífifo1*/
+    /*ï¿½ï¿½ï¿½ï¿½fifo1*/
     addr++;
     count++;
 
@@ -786,7 +786,7 @@ oal_int32 oal_pcie_edma_get_read_done_fifo(oal_pcie_res* pst_pci_res, edma_paddr
                                     addr_low, addr_high, trans_count);
     }
 
-    trans_count = trans_count >> 1;/*Ò»¸öÊý¾Ý°ü¶ÔÓ¦2¸öÃèÊö·û*/
+    trans_count = trans_count >> 1;/*Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ý°ï¿½ï¿½ï¿½Ó¦2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 //#ifdef _PRE_PLAT_FEATURE_HI110X_PCIE_FIFO_ADDRESS
     addr->bits.low_addr = addr_low;
     addr->bits.high_addr = addr_high;
@@ -799,12 +799,12 @@ oal_int32 oal_pcie_edma_get_read_done_fifo(oal_pcie_res* pst_pci_res, edma_paddr
 oal_int32 oal_pcie_edma_get_write_done_fifo(oal_pcie_res* pst_pci_res, edma_paddr_t* addr, oal_uint32* count)
 {
     /*TBD:TBC*/
-    /*ºóÐø¿¼ÂÇÓÅ»¯£¬ PCIE¶ÁÄÚ´æ±È½ÏºÄÊ±*/
-    /*ÏÈ¶ÁFIFO0£¬·ÖÈý´Î¶Á×ß64bit Êý¾Ý£¬¶Á¿Õ*/
+    /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å»ï¿½ï¿½ï¿½ PCIEï¿½ï¿½ï¿½Ú´ï¿½È½Ïºï¿½Ê±*/
+    /*ï¿½È¶ï¿½FIFO0ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¶ï¿½ï¿½ï¿½64bit ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½ï¿½ï¿½*/
     oal_uint32 addr_low, addr_high;
     oal_uint32 trans_count;
 
-    /*´¦Àífifo0*/
+    /*ï¿½ï¿½ï¿½ï¿½fifo0*/
     trans_count = oal_readl(pst_pci_res->pst_pci_ctrl_base + PCIE_FIFO_REMOTE_WRITE_FIFO0_DATA_OFF);
 #ifdef _PRE_PLAT_FEATURE_HI110X_PCIE_FIFO_ADDRESS
     addr_low    = oal_readl(pst_pci_res->pst_pci_ctrl_base + PCIE_FIFO_REMOTE_WRITE_FIFO0_DATA_OFF+4);
@@ -821,7 +821,7 @@ oal_int32 oal_pcie_edma_get_write_done_fifo(oal_pcie_res* pst_pci_res, edma_padd
                                 addr_low, addr_high, trans_count);
     }
 
-    trans_count = trans_count >> 1;/*Ò»¸öÊý¾Ý°ü¶ÔÓ¦2¸öÃèÊö·û*/
+    trans_count = trans_count >> 1;/*Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ý°ï¿½ï¿½ï¿½Ó¦2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 #ifdef _PRE_PLAT_FEATURE_HI110X_PCIE_FIFO_ADDRESS
     addr->bits.low_addr = addr_low;
     addr->bits.high_addr = addr_high;
@@ -829,7 +829,7 @@ oal_int32 oal_pcie_edma_get_write_done_fifo(oal_pcie_res* pst_pci_res, edma_padd
     *count = trans_count;
 
 
-    /*´¦Àífifo1*/
+    /*ï¿½ï¿½ï¿½ï¿½fifo1*/
     addr++;
     count++;
 
@@ -849,7 +849,7 @@ oal_int32 oal_pcie_edma_get_write_done_fifo(oal_pcie_res* pst_pci_res, edma_padd
                                 addr_low, addr_high, trans_count);
     }
 
-    trans_count = trans_count >> 1;/*Ò»¸öÊý¾Ý°ü¶ÔÓ¦2¸öÃèÊö·û*/
+    trans_count = trans_count >> 1;/*Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ý°ï¿½ï¿½ï¿½Ó¦2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 #ifdef _PRE_PLAT_FEATURE_HI110X_PCIE_FIFO_ADDRESS
     addr->bits.low_addr = addr_low;
     addr->bits.high_addr = addr_high;
@@ -947,8 +947,6 @@ oal_void oal_pcie_iatu_reg_dump_by_viewport(oal_pcie_res * pst_pci_res)
 
 oal_void oal_pcie_iatu_reg_dump_by_membar(oal_pcie_res * pst_pci_res)
 {
-    oal_void* inbound_addr = NULL;
-
     oal_int32 index;
     oal_uint32 region_num;
     oal_pcie_region* region_base;
@@ -959,8 +957,6 @@ oal_void oal_pcie_iatu_reg_dump_by_membar(oal_pcie_res * pst_pci_res)
         PCI_PRINT_LOG(PCI_LOG_ERR, "iatu bar1 vaddr is null");
         return;
     }
-
-    inbound_addr = pst_pci_res->st_iatu_bar.st_region.vaddr;
 
     region_num  = pst_pci_res->regions.region_nums;
     region_base = pst_pci_res->regions.pst_regions;
@@ -1073,7 +1069,7 @@ oal_int32 oal_pcie_set_inbound_by_viewport(oal_pcie_res * pst_pci_res)
         }
 
         /*TBD:TBC*/
-        /*ÊÇ·ñÐèÒª»Ø¶ÁµÈ´ý*/
+        /*ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½Ø¶ï¿½ï¿½È´ï¿½*/
         ret = oal_pci_read_config_dword(pst_pci_dev, HI_PCI_IATU_VIEWPORT_OFF, &reg);
         if(ret)
         {
@@ -1083,7 +1079,7 @@ oal_int32 oal_pcie_set_inbound_by_viewport(oal_pcie_res * pst_pci_res)
 
         if(reg != vp.AsDword)
         {
-            /*1.viewport Ã»ÓÐÇÐ»»Íê³É 2. iatuÅäÖÃ¸öÊý³¬¹ýÁËSocµÄ×î´ó¸öÊý*/
+            /*1.viewport Ã»ï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½ï¿½ 2. iatuï¿½ï¿½ï¿½Ã¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Socï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
             PCI_PRINT_LOG(PCI_LOG_ERR, "write [0x%8x:0x%8x] pcie viewport failed value still 0x%8x, region's index:%d\n",
                             HI_PCI_IATU_VIEWPORT_OFF, vp.AsDword, reg, index);
             return -OAL_EIO;
@@ -1096,7 +1092,7 @@ oal_int32 oal_pcie_set_inbound_by_viewport(oal_pcie_res * pst_pci_res)
         ctr2.bits.bar_num = region_base->bar_info->bar_idx;
         ret |= oal_pci_write_config_dword(pst_pci_dev, HI_PCI_IATU_REGION_CTRL_2_OFF_INBOUND_I(HI_PCI_IATU_BOUND_BASE_OFF), ctr2.AsDword);
 
-        /*Host²à64Î»µØÖ·µÄµÍ32Î»µØÖ·*/
+        /*Hostï¿½ï¿½64Î»ï¿½ï¿½Ö·ï¿½Äµï¿½32Î»ï¿½ï¿½Ö·*/
         start.addr = region_base->bus_addr;
         PCI_PRINT_LOG(PCI_LOG_INFO, "PCIe inbound bus addr:0x%llx",start.addr);
         ret |= oal_pci_write_config_dword(pst_pci_dev, HI_PCI_IATU_LWR_BASE_ADDR_OFF_INBOUND_I(HI_PCI_IATU_BOUND_BASE_OFF),  start.bits.low_addr);
@@ -1107,13 +1103,13 @@ oal_int32 oal_pcie_set_inbound_by_viewport(oal_pcie_res * pst_pci_res)
         if(start.bits.high_addr != end.bits.high_addr)
         {
             /*TBD:TBC*/
-            /*Èç¹û¿çÁË4GµØÖ·Ó¦¸Ã¶àÅäÖÃÒ»¸öiatu±íÏî£¬´ýÔö¼Ó*/
+            /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½4Gï¿½ï¿½Ö·Ó¦ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½iatuï¿½ï¿½ï¿½î£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
             PCI_PRINT_LOG(PCI_LOG_ERR,"iatu high 32 bits must same![start:0x%llx, end:0x%llx]", start.addr, end.addr);
             return -OAL_EIO;
         }
         ret |= oal_pci_write_config_dword(pst_pci_dev, HI_PCI_IATU_LIMIT_ADDR_OFF_INBOUND_I(HI_PCI_IATU_BOUND_BASE_OFF),  end.bits.low_addr);
 
-        /*Device²à¶ÔÓ¦µÄµØÖ·(PCI¿´µ½µÄµØÖ·)*/
+        /*Deviceï¿½ï¿½ï¿½Ó¦ï¿½Äµï¿½Ö·(PCIï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½Ö·)*/
         target.addr = region_base->pci_start;
         ret |= oal_pci_write_config_dword(pst_pci_dev, HI_PCI_IATU_LWR_TARGET_ADDR_OFF_INBOUND_I(HI_PCI_IATU_BOUND_BASE_OFF),    target.bits.low_addr);
         ret |= oal_pci_write_config_dword(pst_pci_dev, HI_PCI_IATU_UPPER_TARGET_ADDR_OFF_INBOUND_I(HI_PCI_IATU_BOUND_BASE_OFF),  target.bits.high_addr);
@@ -1121,7 +1117,7 @@ oal_int32 oal_pcie_set_inbound_by_viewport(oal_pcie_res * pst_pci_res)
     }
 
     /*TBD:TBC*/
-    /* ÅäÖÃÃüÁî¼Ä´æÆ÷                                                                         */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½                                                                         */
     /* BIT0 = 1(I/O Space Enable), BIT1 = 1(Memory Space Enable), BIT2 = 1(Bus Master Enable) */
     ret |= oal_pci_write_config_word(pst_pci_dev, 0x04, 0x7);
     if(ret)
@@ -1173,7 +1169,7 @@ oal_int32 oal_pcie_set_inbound_by_membar(oal_pcie_res * pst_pci_res)
         ctr2.bits.bar_num = region_base->bar_info->bar_idx;
         oal_writel(ctr2.AsDword, inbound_addr + HI_PCI_IATU_REGION_CTRL_2_OFF_INBOUND_I(HI_PCI_IATU_INBOUND_BASE_OFF(index)));
 
-        /*Host²à64Î»µØÖ·µÄµÍ32Î»µØÖ·*/
+        /*Hostï¿½ï¿½64Î»ï¿½ï¿½Ö·ï¿½Äµï¿½32Î»ï¿½ï¿½Ö·*/
         start.addr = region_base->bus_addr;
         PCI_PRINT_LOG(PCI_LOG_INFO, "PCIe inbound bus addr:0x%llx",start.addr);
         oal_writel(start.bits.low_addr, inbound_addr + HI_PCI_IATU_LWR_BASE_ADDR_OFF_INBOUND_I(HI_PCI_IATU_INBOUND_BASE_OFF(index)));
@@ -1184,13 +1180,13 @@ oal_int32 oal_pcie_set_inbound_by_membar(oal_pcie_res * pst_pci_res)
         if(start.bits.high_addr != end.bits.high_addr)
         {
             /*TBD:TBC*/
-            /*Èç¹û¿çÁË4GµØÖ·Ó¦¸Ã¶àÅäÖÃÒ»¸öiatu±íÏî£¬´ýÔö¼Ó*/
+            /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½4Gï¿½ï¿½Ö·Ó¦ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½iatuï¿½ï¿½ï¿½î£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
             PCI_PRINT_LOG(PCI_LOG_ERR,"iatu high 32 bits must same![start:0x%llx, end:0x%llx]", start.addr, end.addr);
             return -OAL_EIO;
         }
         oal_writel(end.bits.low_addr, inbound_addr + HI_PCI_IATU_LIMIT_ADDR_OFF_INBOUND_I(HI_PCI_IATU_INBOUND_BASE_OFF(index)));
 
-        /*Device²à¶ÔÓ¦µÄµØÖ·(PCI¿´µ½µÄµØÖ·)*/
+        /*Deviceï¿½ï¿½ï¿½Ó¦ï¿½Äµï¿½Ö·(PCIï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½Ö·)*/
         target.addr = region_base->pci_start;
         oal_writel(target.bits.low_addr,  inbound_addr + HI_PCI_IATU_LWR_TARGET_ADDR_OFF_INBOUND_I(HI_PCI_IATU_INBOUND_BASE_OFF(index)));
         oal_writel(target.bits.high_addr, inbound_addr + HI_PCI_IATU_UPPER_TARGET_ADDR_OFF_INBOUND_I(HI_PCI_IATU_INBOUND_BASE_OFF(index)));
@@ -1199,14 +1195,14 @@ oal_int32 oal_pcie_set_inbound_by_membar(oal_pcie_res * pst_pci_res)
 
     if(index)
     {
-        /*»Ø¶Á¿ÉÒÔ±£Ö¤Ö®Ç°µÄIATUÁ¢¿ÌÉúÐ§*/
+        /*ï¿½Ø¶ï¿½ï¿½ï¿½ï¿½Ô±ï¿½Ö¤Ö®Ç°ï¿½ï¿½IATUï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§*/
         oal_uint32 callback_read;
         callback_read = oal_readl(inbound_addr + HI_PCI_IATU_REGION_CTRL_1_OFF_INBOUND_I(HI_PCI_IATU_INBOUND_BASE_OFF(0)));
         OAL_REFERENCE(callback_read);
     }
 
     /*TBD:TBC*/
-    /* ÅäÖÃÃüÁî¼Ä´æÆ÷                                                                         */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½                                                                         */
     /* BIT0 = 1(I/O Space Enable), BIT1 = 1(Memory Space Enable), BIT2 = 1(Bus Master Enable) */
     ret |= oal_pci_write_config_word(pst_pci_dev, 0x04, 0x7);
     if(ret)
@@ -1241,7 +1237,7 @@ oal_int32 oal_pcie_set_inbound(oal_pcie_res * pst_pci_res)
 /*set ep outbound, device->host*/
 oal_int32 oal_pcie_set_outbound(oal_pcie_res * pst_pci_res)
 {
-    /*1103 ÔÝÊ± Ã»ÓÐÕâ²¿·ÖÐèÇó£¬Êý²É·½°¸»¹Ã»ÓÐÃ÷È·*/
+    /*1103 ï¿½ï¿½Ê± Ã»ï¿½ï¿½ï¿½â²¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É·ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½È·*/
 //#ifdef CONFIG_PCIE_1181_TRY
 #if 0
     /* iATU1:512M */
@@ -1254,7 +1250,7 @@ oal_int32 oal_pcie_set_outbound(oal_pcie_res * pst_pci_res)
     oal_pci_write_config_dword(pst_pci_dev, 0x700 + 0x214, 0xfffff);        /* limit */
     oal_pci_write_config_dword(pst_pci_dev, 0x700 + 0x218, 0xbf400000);     /* target lower */
     oal_pci_write_config_dword(pst_pci_dev, 0x700 + 0x21c, 0);              /* target upper */
-    /* ÅäÖÃÃüÁî¼Ä´æÆ÷                                                                         */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½                                                                         */
     /* BIT0 = 1(I/O Space Enable), BIT1 = 1(Memory Space Enable), BIT2 = 1(Bus Master Enable) */
     oal_pci_write_config_word(pst_pci_dev, 0x04, 0x7);
 #endif
@@ -1295,7 +1291,7 @@ oal_int32 oal_pcie_iatu_init(oal_pcie_res* pst_pci_res)
         return ret;
     }
 
-    /*mem·½Ê½·ÃÎÊÊ¹ÄÜ*/
+    /*memï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½*/
     oal_pcie_change_link_state(pst_pci_res, PCI_WLAN_LINK_MEM_UP);
     return OAL_SUCC;
 }
@@ -1358,7 +1354,7 @@ oal_void oal_pcie_regions_exit(oal_pcie_res* pst_pci_res)
     region_num  = pst_pci_res->regions.region_nums;
     region_base = pst_pci_res->regions.pst_regions;
 
-    /*ÊÍ·ÅÉêÇëµÄµØÖ·¿Õ¼ä*/
+    /*ï¿½Í·ï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½Ö·ï¿½Õ¼ï¿½*/
     for(index = 0; index < region_num; index++, region_base++)
     {
         if(NULL != region_base->vaddr)
@@ -1396,9 +1392,9 @@ oal_int32 oal_pcie_iatu_bar_init(oal_pcie_res* pst_pci_res)
     bar_base = &pst_pci_res->st_iatu_bar.st_bar_info;
     region_base= &pst_pci_res->st_iatu_bar.st_region;
 
-    /*Bar1 ×¨ÃÅÓÃÓÚÅäÖÃ iatu±í*/
-    region_base->vaddr = NULL;/*remap ºóµÄÐéÄâµØÖ·*/
-    region_base->paddr = bar_base->start;/*Host CPU¿´µ½µÄÎïÀíµØÖ·*/
+    /*Bar1 ×¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ iatuï¿½ï¿½*/
+    region_base->vaddr = NULL;/*remap ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·*/
+    region_base->paddr = bar_base->start;/*Host CPUï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·*/
     region_base->bus_addr = 0x0;
     region_base->res   = NULL;
     region_base->bar_info = bar_base;
@@ -1415,11 +1411,11 @@ oal_int32 oal_pcie_iatu_bar_init(oal_pcie_res* pst_pci_res)
     /*remap*/
     if(region_base->flag & OAL_IORESOURCE_REG)
     {
-        /*¼Ä´æÆ÷Ó³Éä³É·Çcache¶Î, ²»ÐèÒªË¢cache*/
+        /*ï¿½Ä´ï¿½ï¿½ï¿½Ó³ï¿½ï¿½É·ï¿½cacheï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ÒªË¢cache*/
         region_base->vaddr = oal_ioremap_nocache(region_base->paddr, region_base->size);
 
     }else{
-        /*cache ¶Î£¬×¢ÒâÒªË¢cache*/
+        /*cache ï¿½Î£ï¿½×¢ï¿½ï¿½ÒªË¢cache*/
         region_base->vaddr = oal_ioremap(region_base->paddr, region_base->size);
     }
 
@@ -1446,7 +1442,7 @@ failed_request_region:
 
 oal_int32 oal_pcie_regions_init(oal_pcie_res* pst_pci_res)
 {
-    /*³õÊ¼»¯DEVICE Ã¿¸ö¶Î·ÖÅäµÄHOSTÎïÀíµØÖ·£¬È»ºó×öremap*/
+    /*ï¿½ï¿½Ê¼ï¿½ï¿½DEVICE Ã¿ï¿½ï¿½ï¿½Î·ï¿½ï¿½ï¿½ï¿½HOSTï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½È»ï¿½ï¿½ï¿½ï¿½remap*/
     oal_void* vaddr;
     oal_int32 index, region_idx, bar_used_size;
     oal_uint32 bar_num, region_num;
@@ -1456,7 +1452,7 @@ oal_int32 oal_pcie_regions_init(oal_pcie_res* pst_pci_res)
 
     if(OAL_WARN_ON(pst_pci_res->regions.inited))
     {
-        /*²»ÄÜÖØ¸´³õÊ¼»¯*/
+        /*ï¿½ï¿½ï¿½ï¿½ï¿½Ø¸ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½*/
         return -OAL_EBUSY;
     }
 
@@ -1466,11 +1462,11 @@ oal_int32 oal_pcie_regions_init(oal_pcie_res* pst_pci_res)
     bar_base = pst_pci_res->regions.pst_bars;
     region_base = pst_pci_res->regions.pst_regions;
 
-    /*Çå¿ÕregionsµÄÌØ¶¨×Ö¶Î*/
+    /*ï¿½ï¿½ï¿½regionsï¿½ï¿½ï¿½Ø¶ï¿½ï¿½Ö¶ï¿½*/
     for(index = 0; index < region_num; index++, region_base++)
     {
-        region_base->vaddr = NULL;/*remap ºóµÄÐéÄâµØÖ·*/
-        region_base->paddr = 0x0;/*Host CPU¿´µ½µÄÎïÀíµØÖ·*/
+        region_base->vaddr = NULL;/*remap ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·*/
+        region_base->paddr = 0x0;/*Host CPUï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·*/
         region_base->bus_addr = 0x0;
         region_base->res   = NULL;
         region_base->bar_info = NULL;
@@ -1486,10 +1482,10 @@ oal_int32 oal_pcie_regions_init(oal_pcie_res* pst_pci_res)
     {
         for(; region_idx < region_num; region_idx++, region_base++)
         {
-            /*BAR¿ÉÓÃµÄÆðÊ¼µØÖ·*/
+            /*BARï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½Ê¼ï¿½ï¿½Ö·*/
             if(bar_base->start + bar_used_size + region_base->size - 1  > bar_base->end)
             {
-                /*Õâ¸öBARµØÖ·¿Õ¼ä²»×ã*/
+                /*ï¿½ï¿½ï¿½BARï¿½ï¿½Ö·ï¿½Õ¼ä²»ï¿½ï¿½*/
                 PCI_PRINT_LOG(PCI_LOG_ERR, "index:%d,region_idx:%d, start:0x%llx ,end:0x%llx, used_size:0x%x, region_size:%u\n",
                                 index, region_idx, bar_base->start, bar_base->end, bar_used_size, region_base->size);
                 break;
@@ -1506,7 +1502,7 @@ oal_int32 oal_pcie_regions_init(oal_pcie_res* pst_pci_res)
 
     if(region_idx < region_num)
     {
-        /*µØÖ·²»¹»ÓÃ*/
+        /*ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
         PCI_PRINT_LOG(PCI_LOG_ERR, "bar address range is too small, region_idx %d < region_num %d\n", region_idx, region_num);
         return -OAL_ENOMEM;
     }
@@ -1528,11 +1524,11 @@ oal_int32 oal_pcie_regions_init(oal_pcie_res* pst_pci_res)
         /*remap*/
         if(region_base->flag & OAL_IORESOURCE_REG)
         {
-            /*¼Ä´æÆ÷Ó³Éä³É·Çcache¶Î, ²»ÐèÒªË¢cache*/
+            /*ï¿½Ä´ï¿½ï¿½ï¿½Ó³ï¿½ï¿½É·ï¿½cacheï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ÒªË¢cache*/
             vaddr = oal_ioremap_nocache(region_base->paddr, region_base->size);
 
         }else{
-            /*cache ¶Î£¬×¢ÒâÒªË¢cache*/
+            /*cache ï¿½Î£ï¿½×¢ï¿½ï¿½ÒªË¢cache*/
             vaddr = oal_ioremap(region_base->paddr, region_base->size);
         }
 
@@ -1545,7 +1541,7 @@ oal_int32 oal_pcie_regions_init(oal_pcie_res* pst_pci_res)
 
         /*remap and request succ.*/
         region_base->res   = pst_res;
-        region_base->vaddr = vaddr;/*Host Cpu ¿ÉÒÔ·ÃÎÊµÄÐéÄâµØÖ·*/
+        region_base->vaddr = vaddr;/*Host Cpu ï¿½ï¿½ï¿½Ô·ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·*/
 
     }
 
@@ -1601,7 +1597,7 @@ oal_int32 oal_pcie_get_ca_by_pa(oal_pcie_res * pst_pci_res, oal_ulong paddr, oal
 
         if((paddr >= (oal_ulong)region_base->paddr) && (paddr <= end))
         {
-            /*µØÖ·ÔÚ·¶Î§ÄÚ*/
+            /*ï¿½ï¿½Ö·ï¿½Ú·ï¿½Î§ï¿½ï¿½*/
             offset = paddr - (oal_ulong)region_base->paddr;
             *cpuaddr = region_base->cpu_start + offset;
             return OAL_SUCC;
@@ -1613,10 +1609,10 @@ oal_int32 oal_pcie_get_ca_by_pa(oal_pcie_res * pst_pci_res, oal_ulong paddr, oal
     return -OAL_ENOMEM;
 }
 
-/*½«Device Cpu¿´µ½µÄµØÖ·×ª»»Îª Host²àµÄÐéÄâµØÖ·,
-  ÐéÄâµØÖ··µ»ØNULLÎªÎÞÐ§µØÖ·£¬Device CpuµØÖ·ÓÐ¿ÉÄÜÎª0,
+/*ï¿½ï¿½Device Cpuï¿½ï¿½ï¿½ï¿½ï¿½Äµï¿½Ö·×ªï¿½ï¿½Îª Hostï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·,
+  ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½NULLÎªï¿½ï¿½Ð§ï¿½ï¿½Ö·ï¿½ï¿½Device Cpuï¿½ï¿½Ö·ï¿½Ð¿ï¿½ï¿½ï¿½Îª0,
   local ip inbound cpu address to host virtual address,
-  º¯Êý·µ»Ø·Ç0ÎªÊ§°Ü*/
+  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø·ï¿½0ÎªÊ§ï¿½ï¿½*/
 oal_int32 oal_pcie_inbound_ca_to_va(oal_pcie_res * pst_pci_res, oal_uint64 dev_cpuaddr,
                                                          pci_addr_map* addr_map)
 {
@@ -1654,13 +1650,13 @@ oal_int32 oal_pcie_inbound_ca_to_va(oal_pcie_res * pst_pci_res, oal_uint64 dev_c
 
         if((dev_cpuaddr >= region_base->cpu_start) && (dev_cpuaddr <= region_base->cpu_end))
         {
-            /*µØÖ·ÔÚ·¶Î§ÄÚ*/
+            /*ï¿½ï¿½Ö·ï¿½Ú·ï¿½Î§ï¿½ï¿½*/
             offset = dev_cpuaddr - region_base->cpu_start;
             if(NULL != addr_map)
             {
-                /*·µ»ØHOSTÐéÄâµØÖ·*/
+                /*ï¿½ï¿½ï¿½ï¿½HOSTï¿½ï¿½ï¿½ï¿½ï¿½Ö·*/
                 addr_map->va = (oal_ulong)(region_base->vaddr + offset);
-                /*·µ»ØHOSTÎïÀíµØÖ·*/
+                /*ï¿½ï¿½ï¿½ï¿½HOSTï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·*/
                 addr_map->pa = (oal_ulong)(region_base->paddr + offset);
             }
             return OAL_SUCC;
@@ -1672,7 +1668,7 @@ oal_int32 oal_pcie_inbound_ca_to_va(oal_pcie_res * pst_pci_res, oal_uint64 dev_c
     return -OAL_ENOMEM;
 }
 
-/*¼ì²éÍ¨¹ýPCIE²Ù×÷µÄHOST²àÐéÄâµØÖ·ÊÇ·ñºÏ·¨ £¬ÊÇ·ñÓ³Éä¹ý*/
+/*ï¿½ï¿½ï¿½Í¨ï¿½ï¿½PCIEï¿½ï¿½ï¿½ï¿½ï¿½ï¿½HOSTï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½Ç·ï¿½Ï·ï¿½ ï¿½ï¿½ï¿½Ç·ï¿½Ó³ï¿½ï¿½ï¿½*/
 oal_int32 oal_pcie_vaddr_isvalid(oal_pcie_res * pst_pci_res, oal_void* vaddr)
 {
     oal_int32 index;
@@ -1713,7 +1709,7 @@ oal_int32 oal_pcie_bar_init(oal_pcie_res * pst_pci_res)
 
     oal_pci_dev_stru *pst_pci_dev = PCIE_RES_TO_DEV(pst_pci_res);
 
-    /*ÔÝÊ±Ö»¿¼ÂÇ1103*/
+    /*ï¿½ï¿½Ê±Ö»ï¿½ï¿½ï¿½ï¿½1103*/
     bar_num  = OAL_ARRAY_SIZE(g_en_bar_table);
     bar_base = &g_en_bar_table[0];
 
@@ -1741,12 +1737,12 @@ oal_int32 oal_pcie_bar_init(oal_pcie_res * pst_pci_res)
     pst_pci_res->regions.pst_regions = region_base;
     pst_pci_res->regions.region_nums = region_num;
 
-    /*ÕâÀï²»Ó³Éä£¬iatuÅäÖÃÒªºÍÓ³Éä·Ö¶Î¶ÔÓ¦*/
+    /*ï¿½ï¿½ï¿½ï²»Ó³ï¿½ä£¬iatuï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½Ó³ï¿½ï¿½Ö¶Î¶ï¿½Ó¦*/
     for(index = 0; index < bar_num; index++)
     {
-        /*»ñÈ¡Host·ÖÅäµÄÓ²¼þµØÖ·×ÊÔ´,1103Îª8M´óÐ¡,
-          1103 4.7a ¶ÔÓ¦Ò»¸öBAR, 5.0a ¶ÔÓ¦2¸öbar,
-          ÆäÖÐµÚ¶þ¸öbarÓÃÓÚÅäÖÃiatu±í*/
+        /*ï¿½ï¿½È¡Hostï¿½ï¿½ï¿½ï¿½ï¿½Ó²ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½Ô´,1103Îª8Mï¿½ï¿½Ð¡,
+          1103 4.7a ï¿½ï¿½Ó¦Ò»ï¿½ï¿½BAR, 5.0a ï¿½ï¿½Ó¦2ï¿½ï¿½bar,
+          ï¿½ï¿½ï¿½ÐµÚ¶ï¿½ï¿½ï¿½barï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½iatuï¿½ï¿½*/
 
         oal_pcie_bar_info* bar_curr = bar_base + index;
         oal_uint8 bar_idx = bar_curr->bar_idx;
@@ -1766,7 +1762,7 @@ oal_int32 oal_pcie_bar_init(oal_pcie_res * pst_pci_res)
                             oal_pci_resource_flags(pst_pci_dev, bar_idx));
     }
 
-    /*ÊÇ·ñÖ§³ÖBAR1*/
+    /*ï¿½Ç·ï¿½Ö§ï¿½ï¿½BAR1*/
     if(PCIE_REVISION_5_00A == pst_pci_res->revision)
     {
         /*Get Bar Address*/
@@ -1818,7 +1814,7 @@ oal_int32 oal_pcie_bar_init(oal_pcie_res * pst_pci_res)
     return OAL_SUCC;
 }
 
-/*²¹³ärx netbuf*/
+/*ï¿½ï¿½ï¿½ï¿½rx netbuf*/
 #ifdef _PRE_PLAT_FEATURE_HI110X_PCIE_D2H_BYPASS
 oal_int32 oal_pcie_rx_ringbuf_bypass_supply( oal_pcie_res* pst_pci_res,
                                             oal_int32 is_sync,
@@ -1835,7 +1831,7 @@ oal_int32 oal_pcie_rx_ringbuf_bypass_supply( oal_pcie_res* pst_pci_res,
     oal_pcie_mips_start(PCIE_MIPS_RX_NETBUF_SUPPLY);
     if(OAL_TRUE == is_sync)
     {
-        /*Í¬²½Dev2HostµÄ¶ÁÖ¸Õë*/
+        /*Í¬ï¿½ï¿½Dev2Hostï¿½Ä¶ï¿½Ö¸ï¿½ï¿½*/
         oal_pcie_d2h_ringbuf_rd_update(pst_pci_res);
     }
 
@@ -1862,7 +1858,7 @@ oal_int32 oal_pcie_rx_ringbuf_bypass_supply( oal_pcie_res* pst_pci_res,
         cnt++;
     }
 
-    /*ÕâÀïÐèÒª¿¼ÂÇHOST/DEVICEµÄ³õÊ¼»¯Ë³Ðò*/
+    /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½HOST/DEVICEï¿½Ä³ï¿½Ê¼ï¿½ï¿½Ë³ï¿½ï¿½*/
     if(cnt && (OAL_TRUE == is_doorbell))
     {
         oal_pcie_d2h_ringbuf_wr_update(pst_pci_res);
@@ -1892,7 +1888,7 @@ oal_int32 oal_pcie_rx_ringbuf_supply( oal_pcie_res* pst_pci_res,
     oal_pcie_mips_start(PCIE_MIPS_RX_NETBUF_SUPPLY);
     if(OAL_TRUE == is_sync)
     {
-        /*Í¬²½Dev2HostµÄ¶ÁÖ¸Õë*/
+        /*Í¬ï¿½ï¿½Dev2Hostï¿½Ä¶ï¿½Ö¸ï¿½ï¿½*/
         oal_pcie_d2h_ringbuf_rd_update(pst_pci_res);
     }
 
@@ -1902,8 +1898,8 @@ oal_int32 oal_pcie_rx_ringbuf_supply( oal_pcie_res* pst_pci_res,
         {
             break;
         }
-        /*ringbuf ÓÐ¿Õ¼ä*/
-        /*Ô¤ÉêÇënetbuf¶¼°´ÕÕ´ó°üÀ´ÉêÇë*/
+        /*ringbuf ï¿½Ð¿Õ¼ï¿½*/
+        /*Ô¤ï¿½ï¿½ï¿½ï¿½netbufï¿½ï¿½ï¿½ï¿½ï¿½Õ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
         oal_pcie_mips_start(PCIE_MIPS_RX_MEM_ALLOC);
         pst_netbuf = oal_pcie_rx_netbuf_alloc(HCC_HDR_TOTAL_LEN + PCIE_EDMA_TRANS_MAX_FRAME_LEN, gflag);
         if(NULL == pst_netbuf)
@@ -1920,7 +1916,7 @@ oal_int32 oal_pcie_rx_ringbuf_supply( oal_pcie_res* pst_pci_res,
         if(pcie_dma_data_check_enable)
         {
             oal_uint32 value;
-            /*Ôö¼Ó±ê¼Ç£¬ÅÐ¶ÏDMAÊÇ·ñÕæµÄÆô¶¯*/
+            /*ï¿½ï¿½ï¿½Ó±ï¿½Ç£ï¿½ï¿½Ð¶ï¿½DMAï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
             oal_writel(0xffffffff, (oal_void*)OAL_NETBUF_DATA(pst_netbuf));
             value = (oal_uint32)(oal_ulong)OAL_NETBUF_DATA(pst_netbuf) + HCC_HDR_TOTAL_LEN;
             oal_writel(value, ((oal_void*)OAL_NETBUF_DATA(pst_netbuf) + HCC_HDR_TOTAL_LEN));
@@ -1941,7 +1937,7 @@ oal_int32 oal_pcie_rx_ringbuf_supply( oal_pcie_res* pst_pci_res,
             break;
         }
 
-        /*DMAµØÖ·Ìîµ½CBÖÐ, CBÊ×µØÖ·8×Ö½Ú¶ÔÆë¿ÉÒÔÖ±½ÓÇ¿×ª*/
+        /*DMAï¿½ï¿½Ö·ï¿½îµ½CBï¿½ï¿½, CBï¿½×µï¿½Ö·8ï¿½Ö½Ú¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½Ç¿×ª*/
         pst_cb_res = (pcie_cb_dma_res*)OAL_NETBUF_CB(pst_netbuf);
         pst_cb_res->paddr.addr = pci_dma_addr;
         pst_cb_res->len = OAL_NETBUF_LEN(pst_netbuf);
@@ -1950,7 +1946,7 @@ oal_int32 oal_pcie_rx_ringbuf_supply( oal_pcie_res* pst_pci_res,
         //st_write_item.reserved0  = 0x1234;
         //st_write_item.buf_len    = OAL_NETBUF_LEN(pst_netbuf);
 
-        /*Èë¶Ó*/
+        /*ï¿½ï¿½ï¿½*/
 
         oal_spin_lock_irq_save(&pst_pci_res->st_rx_res.lock, &flags);
         oal_netbuf_list_tail_nolock(&pst_pci_res->st_rx_res.rxq, pst_netbuf);
@@ -1972,11 +1968,11 @@ oal_int32 oal_pcie_rx_ringbuf_supply( oal_pcie_res* pst_pci_res,
         cnt++;
     }
 
-    /*ÕâÀïÐèÒª¿¼ÂÇHOST/DEVICEµÄ³õÊ¼»¯Ë³Ðò*/
+    /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½HOST/DEVICEï¿½Ä³ï¿½Ê¼ï¿½ï¿½Ë³ï¿½ï¿½*/
     if(cnt && (OAL_TRUE == is_doorbell))
     {
         oal_pcie_d2h_ringbuf_wr_update(pst_pci_res);
-        /*ÔÝÊ±²»ÐèÒªÇÃÁå£¬D2H DeviceÊÇ´óÑ­»·*/
+        /*ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½å£¬D2H Deviceï¿½Ç´ï¿½Ñ­ï¿½ï¿½*/
         //oal_pcie_d2h_doorbell(pst_pci_res);/*TBD:TBC*/
     }
 
@@ -1985,11 +1981,11 @@ oal_int32 oal_pcie_rx_ringbuf_supply( oal_pcie_res* pst_pci_res,
     return cnt;
 }
 
-/*Ô¤ÏÈ·ÖÅärxµÄ½ÓÊÕbuf*/
+/*Ô¤ï¿½È·ï¿½ï¿½ï¿½rxï¿½Ä½ï¿½ï¿½ï¿½buf*/
 oal_int32 oal_pcie_rx_ringbuf_build(oal_pcie_res* pst_pci_res)
 {
-    /*×ßµ½ÕâÀïÒªÈ·±£DEVICE ZIÇøÒÑ¾­³õÊ¼»¯Íê³É£¬
-      ÖÐ¶ÏÒÑ¾­×¢²áºÍÊ¹ÄÜ*/
+    /*ï¿½ßµï¿½ï¿½ï¿½ï¿½ï¿½ÒªÈ·ï¿½ï¿½DEVICE ZIï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½É£ï¿½
+      ï¿½Ð¶ï¿½ï¿½Ñ¾ï¿½×¢ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½*/
     /*TBD:TBC*/
 #ifdef _PRE_PLAT_FEATURE_HI110X_PCIE_D2H_BYPASS
 #else
@@ -2008,13 +2004,13 @@ oal_int32 oal_pcie_rx_ringbuf_build(oal_pcie_res* pst_pci_res)
     return OAL_SUCC;
 }
 
-/*ÊÍ·ÅRXÍ¨Â·µÄ×ÊÔ´*/
+/*ï¿½Í·ï¿½RXÍ¨Â·ï¿½ï¿½ï¿½ï¿½Ô´*/
 oal_void oal_pcie_rx_res_clean(oal_pcie_res* pst_pci_res)
 {
     oal_ulong flags;
     oal_netbuf_stru* pst_netbuf;
 
-    /*ÊÍ·ÅRX²¹³ä¶ÓÁÐ*/
+    /*ï¿½Í·ï¿½RXï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
     PCI_PRINT_LOG(PCI_LOG_INFO, "prepare free rxq len=%d", oal_netbuf_list_len(&pst_pci_res->st_rx_res.rxq));
     for(;;)
     {
@@ -2029,7 +2025,7 @@ oal_void oal_pcie_rx_res_clean(oal_pcie_res* pst_pci_res)
     }
 }
 
-/*¹é»¹tx ringbuf ÖÐµÄ±¨ÎÄ »Øhcc ¶ÓÁÐ*/
+/*ï¿½é»¹tx ringbuf ï¿½ÐµÄ±ï¿½ï¿½ï¿½ ï¿½ï¿½hcc ï¿½ï¿½ï¿½ï¿½*/
 oal_void oal_pcie_tx_res_restore(oal_pcie_res* pst_pci_res)
 {
     oal_int32 i;
@@ -2037,7 +2033,7 @@ oal_void oal_pcie_tx_res_restore(oal_pcie_res* pst_pci_res)
     oal_netbuf_stru* pst_netbuf;
     oal_pcie_linux_res * pst_pci_lres = (oal_pcie_linux_res*)oal_pci_get_drvdata(PCIE_RES_TO_DEV(pst_pci_res));
     struct hcc_handler* hcc = HBUS_TO_HCC(pst_pci_lres->pst_bus);
-    /*¹é»¹TX·¢ËÍ¶ÓÁÐ, Ringbuf ÔÚDEV²à ÓÉwcpuÖØÐÂ³õÊ¼»¯*/
+    /*ï¿½é»¹TXï¿½ï¿½ï¿½Í¶ï¿½ï¿½ï¿½, Ringbuf ï¿½ï¿½DEVï¿½ï¿½ ï¿½ï¿½wcpuï¿½ï¿½ï¿½Â³ï¿½Ê¼ï¿½ï¿½*/
     for(i = 0; i < PCIE_H2D_QTYPE_BUTT; i++)
     {
         PCI_PRINT_LOG(PCI_LOG_INFO, "prepare restore txq[%d] len=%d", i ,oal_netbuf_list_len(&pst_pci_res->st_tx_res[i].txq));
@@ -2060,7 +2056,7 @@ oal_void oal_pcie_tx_res_restore(oal_pcie_res* pst_pci_res)
 
 }
 
-/*ÊÍ·ÅTXÍ¨Â·µÄ×ÊÔ´*/
+/*ï¿½Í·ï¿½TXÍ¨Â·ï¿½ï¿½ï¿½ï¿½Ô´*/
 oal_void oal_pcie_tx_res_clean(oal_pcie_res* pst_pci_res)
 {
     oal_int32 i;
@@ -2068,7 +2064,7 @@ oal_void oal_pcie_tx_res_clean(oal_pcie_res* pst_pci_res)
     oal_netbuf_stru* pst_netbuf;
 
 
-    /*ÊÍ·Å´ýTX·¢ËÍ¶ÓÁÐ, Ringbuf ÔÚDEV²à Ö±½ÓÏÂµç*/
+    /*ï¿½Í·Å´ï¿½TXï¿½ï¿½ï¿½Í¶ï¿½ï¿½ï¿½, Ringbuf ï¿½ï¿½DEVï¿½ï¿½ Ö±ï¿½ï¿½ï¿½Âµï¿½*/
     for(i = 0; i < PCIE_H2D_QTYPE_BUTT; i++)
     {
         PCI_PRINT_LOG(PCI_LOG_INFO, "prepare free txq[%d] len=%d", i ,oal_netbuf_list_len(&pst_pci_res->st_tx_res[i].txq));
@@ -2091,8 +2087,8 @@ oal_int32 oal_pcie_transfer_res_init(oal_pcie_res * pst_pci_res)
 {
     oal_int32 ret = OAL_SUCC;
 
-    /*ÏÂÔØÍêPATCH²ÅÐèÒªÖ´ÐÐÏÂÃæµÄ²Ù×÷,
-      Ð¾Æ¬ÑéÖ¤½×¶ÎÍ¨¹ýSSIÏÂÔØ´úÂë*/
+    /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½PATCHï¿½ï¿½ï¿½ï¿½ÒªÖ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä²ï¿½ï¿½ï¿½,
+      Ð¾Æ¬ï¿½ï¿½Ö¤ï¿½×¶ï¿½Í¨ï¿½ï¿½SSIï¿½ï¿½ï¿½Ø´ï¿½ï¿½ï¿½*/
     /*TBD:TBC*/
     ret = oal_pcie_share_mem_res_map(pst_pci_res);
     if(OAL_SUCC != ret)
@@ -2137,7 +2133,7 @@ oal_void oal_pcie_transfer_res_exit(oal_pcie_res * pst_pci_res)
     oal_pcie_share_mem_res_unmap(pst_pci_res);
 }
 
-/*ÅäÖÃBAR,IATUµÈÉè±¸×ÊÔ´*/
+/*ï¿½ï¿½ï¿½ï¿½BAR,IATUï¿½ï¿½ï¿½è±¸ï¿½ï¿½Ô´*/
 oal_int32 oal_pcie_dev_init(oal_pcie_res * pst_pci_res)
 {
     oal_int32 ret = OAL_SUCC;
@@ -2160,7 +2156,7 @@ oal_int32 oal_pcie_dev_init(oal_pcie_res * pst_pci_res)
     }
 
     /*TBD:TBC*/
-    /*ÒÆÖ²µ½÷è÷ëÆ½Ì¨ÕâÀïÒª´ò¿ª,ÔÚHostÖ÷¿ØÉÏÏÂµçºóºÏÈë*/
+    /*ï¿½ï¿½Ö²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ½Ì¨ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½,ï¿½ï¿½Hostï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½ï¿½ï¿½*/
 #if 0
     ret = oal_pcie_transfer_res_init(pst_pci_res);
     if(OAL_SUCC != ret)
@@ -2185,10 +2181,10 @@ oal_void oal_pcie_dev_deinit(oal_pcie_res * pst_pci_res)
 /*isr functions*/
 oal_int32 oal_pcie_tx_dma_addr_match(oal_netbuf_stru* pst_netbuf, edma_paddr_t dma_addr)
 {
-    /*dma_addr ´æ·ÅÔÚCB×Ö¶ÎÀï*/
+    /*dma_addr ï¿½ï¿½ï¿½ï¿½ï¿½CBï¿½Ö¶ï¿½ï¿½ï¿½*/
     pcie_cb_dma_res st_cb_dma;
 
-    /*²»ÊÇ´ÓCBµÄÊ×µØÖ·¿ªÊ¼£¬±ØÐë¿½±´£¬¶ÔÆëÎÊÌâ¡£*/
+    /*ï¿½ï¿½ï¿½Ç´ï¿½CBï¿½ï¿½ï¿½×µï¿½Ö·ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ë¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â¡£*/
     oal_memcopy(&st_cb_dma, (oal_uint8*)OAL_NETBUF_CB(pst_netbuf) + sizeof(struct hcc_tx_cb_stru), sizeof(st_cb_dma));
 
     PCI_PRINT_LOG(PCI_LOG_DBG, "tx dma addr match, cb's addr 0x%llx , dma_addr 0x%llx", st_cb_dma.paddr.addr, dma_addr.addr);
@@ -2200,10 +2196,10 @@ oal_int32 oal_pcie_tx_dma_addr_match(oal_netbuf_stru* pst_netbuf, edma_paddr_t d
 
 oal_int32 oal_pcie_tx_dma_addr_match_low(oal_netbuf_stru* pst_netbuf, oal_uint16 dma_addr)
 {
-    /*dma_addr ´æ·ÅÔÚCB×Ö¶ÎÀï*/
+    /*dma_addr ï¿½ï¿½ï¿½ï¿½ï¿½CBï¿½Ö¶ï¿½ï¿½ï¿½*/
     pcie_cb_dma_res st_cb_dma;
 
-    /*²»ÊÇ´ÓCBµÄÊ×µØÖ·¿ªÊ¼£¬±ØÐë¿½±´£¬¶ÔÆëÎÊÌâ¡£*/
+    /*ï¿½ï¿½ï¿½Ç´ï¿½CBï¿½ï¿½ï¿½×µï¿½Ö·ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ë¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â¡£*/
     oal_memcopy(&st_cb_dma, (oal_uint8*)OAL_NETBUF_CB(pst_netbuf) + sizeof(struct hcc_tx_cb_stru), sizeof(st_cb_dma));
 
     PCI_PRINT_LOG(PCI_LOG_DBG, "tx dma addr match, cb's addr 0x%llx , dma_addr 0x%x", st_cb_dma.paddr.addr, dma_addr);
@@ -2218,7 +2214,7 @@ oal_int32 oal_pcie_tx_dma_addr_match_low(oal_netbuf_stru* pst_netbuf, oal_uint16
 oal_int32 oal_pcie_rx_dma_addr_match(oal_netbuf_stru* pst_netbuf, edma_paddr_t dma_addr)
 {
     pcie_cb_dma_res* pst_cb_res;
-    /*DMAµØÖ·Ìîµ½CBÖÐ, CBÊ×µØÖ·8×Ö½Ú¶ÔÆë¿ÉÒÔÖ±½ÓÇ¿×ª*/
+    /*DMAï¿½ï¿½Ö·ï¿½îµ½CBï¿½ï¿½, CBï¿½×µï¿½Ö·8ï¿½Ö½Ú¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½Ç¿×ª*/
     pst_cb_res = (pcie_cb_dma_res*)OAL_NETBUF_CB(pst_netbuf);
     if(pst_cb_res->paddr.addr == dma_addr.addr)
         return OAL_TRUE;
@@ -2228,7 +2224,7 @@ oal_int32 oal_pcie_rx_dma_addr_match(oal_netbuf_stru* pst_netbuf, edma_paddr_t d
 oal_int32 oal_pcie_rx_dma_addr_matchlow(oal_netbuf_stru* pst_netbuf, oal_uint32 dma_addr)
 {
     pcie_cb_dma_res* pst_cb_res;
-    /*DMAµØÖ·Ìîµ½CBÖÐ, CBÊ×µØÖ·8×Ö½Ú¶ÔÆë¿ÉÒÔÖ±½ÓÇ¿×ª*/
+    /*DMAï¿½ï¿½Ö·ï¿½îµ½CBï¿½ï¿½, CBï¿½×µï¿½Ö·8ï¿½Ö½Ú¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½Ç¿×ª*/
     pst_cb_res = (pcie_cb_dma_res*)OAL_NETBUF_CB(pst_netbuf);
     if(pst_cb_res->paddr.bits.low_addr == dma_addr)
         return OAL_TRUE;
@@ -2275,7 +2271,7 @@ OAL_STATIC oal_void oal_pcie_release_rx_netbuf(oal_pcie_res* pst_pci_res, oal_ne
 
 }
 
-/*ÏòHcc²ãÌá½»ÊÕµ½µÄnetbuf*/
+/*ï¿½ï¿½Hccï¿½ï¿½ï¿½á½»ï¿½Õµï¿½ï¿½ï¿½netbuf*/
 oal_void oal_pcie_rx_netbuf_submit(oal_pcie_res* pst_pci_res, oal_netbuf_stru* pst_netbuf)
 {
     struct hcc_handler* hcc;
@@ -2358,13 +2354,13 @@ release_netbuf:
 
 oal_int32 oal_pcie_unmap_tx_netbuf(oal_pcie_res* pst_pci_res, oal_netbuf_stru* pst_netbuf)
 {
-    /*dma_addr ´æ·ÅÔÚCB×Ö¶ÎÀï*/
+    /*dma_addr ï¿½ï¿½ï¿½ï¿½ï¿½CBï¿½Ö¶ï¿½ï¿½ï¿½*/
     pcie_cb_dma_res st_cb_dma;
     oal_pci_dev_stru *pst_pci_dev;
 
     pst_pci_dev = PCIE_RES_TO_DEV(pst_pci_res);
 
-    /*²»ÊÇ´ÓCBµÄÊ×µØÖ·¿ªÊ¼£¬±ØÐë¿½±´£¬¶ÔÆëÎÊÌâ¡£*/
+    /*ï¿½ï¿½ï¿½Ç´ï¿½CBï¿½ï¿½ï¿½×µï¿½Ö·ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ë¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â¡£*/
     oal_memcopy(&st_cb_dma, (oal_uint8*)OAL_NETBUF_CB(pst_netbuf) + sizeof(struct hcc_tx_cb_stru), sizeof(st_cb_dma));
 
 #ifdef _PRE_PLAT_FEATURE_PCIE_DEBUG
@@ -2393,12 +2389,12 @@ oal_void oal_pcie_tx_netbuf_free(oal_pcie_res* pst_pci_res, oal_netbuf_stru* pst
 }
 
 #ifdef _PRE_PLAT_FEATURE_HI110X_PCIE_H2D_BYPASS
-/*·¢ËÍÍê³ÉÖÐ¶Ï*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½*/
 oal_void oal_pcie_h2d_transfer_done(oal_pcie_res* pst_pci_res)
 {
     oal_ulong flags;
     oal_int32  j, flag, cnt, total_cnt;
-    /*tx fifoÖÐ»ñÈ¡ ·¢ËÍÍê³ÉµÄÊ×µØÖ·,Ë«Í¨µÀ£¬Ë«µØÖ·£¬Ë«count*/
+    /*tx fifoï¿½Ð»ï¿½È¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Éµï¿½ï¿½×µï¿½Ö·,Ë«Í¨ï¿½ï¿½ï¿½ï¿½Ë«ï¿½ï¿½Ö·ï¿½ï¿½Ë«count*/
     edma_paddr_t addr[PCIE_EDMA_MAX_CHANNELS];
     oal_uint32 count[PCIE_EDMA_MAX_CHANNELS];
 
@@ -2407,32 +2403,32 @@ oal_void oal_pcie_h2d_transfer_done(oal_pcie_res* pst_pci_res)
     if(OAL_TRUE != oal_pcie_edma_get_read_done_fifo(pst_pci_res, addr, count))
     {
         /*TBD:TBC*/
-        /*´ýÔö¼ÓÎ¬²â¼ÆÊý*/
+        /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¬ï¿½ï¿½ï¿½ï¿½ï¿½*/
         return;
     }
 
     PCI_PRINT_LOG(PCI_LOG_DBG, "oal_pcie_h2d_transfer_done, cnt:%u", pst_pci_res->stat.intx_tx_count);
 
-    /*»ñÈ¡µ½·¢ËÍÍê³ÉµÄDMAµØÖ·£¬±éÀú·¢ËÍ¶ÓÁÐ,
-      ÏÈ±éÀúµÚÒ»¸öÔªËØ£¬Õý³£Ó¦¸Ã¶ÓÍ·¾ÍÊÇ·¢ËÍÍê³ÉµÄÔªËØ£¬
-      Èç¹û²»ÔÚ¶ÓÍ·ËµÃ÷¶ªÖÐ¶ÏÁË(ÓÐFIFOÕý³£²»»á¶ª),ÐèÒªÊÍ·ÅÔªËØÖ®Ç°µÄnetbuf*/
+    /*ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Éµï¿½DMAï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¶ï¿½ï¿½ï¿½,
+      ï¿½È±ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ôªï¿½Ø£ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½Ã¶ï¿½Í·ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½Éµï¿½Ôªï¿½Ø£ï¿½
+      ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¶ï¿½Í·Ëµï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½(ï¿½ï¿½FIFOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½á¶ª),ï¿½ï¿½Òªï¿½Í·ï¿½Ôªï¿½ï¿½Ö®Ç°ï¿½ï¿½netbuf*/
     flag = 0;
     total_cnt = 0;
     //for(i = 0; i < PCIE_H2D_QTYPE_BUTT; i++)
     //{
-        /*DMAË«Í¨µÀ*/
+        /*DMAË«Í¨ï¿½ï¿½*/
         for(j = 0; j < PCIE_EDMA_MAX_CHANNELS; j++)
         {
 
             PCI_PRINT_LOG(PCI_LOG_DBG, "tx chan:%d pa 0x%llx, cnt:%d", j, addr[j].addr, count[j]);
 
-            cnt = count[j];/*ÎÞÐ§ÃèÊö·ûÊ±,countÎª0*/
+            cnt = count[j];/*ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±,countÎª0*/
             if(!cnt)
             {
 #if 0
                 if(addr[j].addr)
                 {
-                    /*cnt ºÍ addr Ó¦¸ÃÍ¬Ê±Îª 0*/
+                    /*cnt ï¿½ï¿½ addr Ó¦ï¿½ï¿½Í¬Ê±Îª 0*/
                     PCI_PRINT_LOG(PCI_LOG_DBG, "tx chan:%d get invalid dma pa 0x%llx", j, addr[j].addr);
                 }
 #endif
@@ -2447,7 +2443,7 @@ oal_void oal_pcie_h2d_transfer_done(oal_pcie_res* pst_pci_res)
 #ifdef _PRE_PLAT_FEATURE_HI110X_PCIE_FIFO_ADDRESS
             if((oal_uint64)g_h2d_pci_dma_addr != (oal_uint64)addr[j].addr)
             {
-                /*µØÖ·²»Æ¥Åä£¬±éÀúÏÂÒ»¸ö¶ÓÁÐ*/
+                /*ï¿½ï¿½Ö·ï¿½ï¿½Æ¥ï¿½ä£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
                 PCI_PRINT_LOG(PCI_LOG_ERR, "unkown bypass netbuf addr:0x%llu, should be :0x%llu",(oal_uint64)g_h2d_pci_dma_addr, addr[j]);
                 break;
             }
@@ -2466,18 +2462,18 @@ oal_void oal_pcie_h2d_transfer_done(oal_pcie_res* pst_pci_res)
     {
         pst_pci_res->st_tx_res[PCIE_H2D_QTYPE_NORMAL].stat.tx_burst_cnt[total_cnt]++;
     }
-        /*Î´Æ¥Åä£¬±éÀúÏÂÒ»Ìõ¶ÓÁÐ*/
+        /*Î´Æ¥ï¿½ä£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
     //}
 }
 #else
-/*·¢ËÍÍê³ÉÖÐ¶Ï*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½*/
 oal_void oal_pcie_h2d_transfer_done(oal_pcie_res* pst_pci_res)
 {
     oal_ulong flags;
     oal_int32 i, j, flag, cnt, total_cnt, netbuf_cnt, curr_cnt;
     oal_netbuf_stru* pst_netbuf;
     oal_netbuf_head_stru* pst_txq;
-    /*tx fifoÖÐ»ñÈ¡ ·¢ËÍÍê³ÉµÄÊ×µØÖ·,Ë«Í¨µÀ£¬Ë«µØÖ·£¬Ë«count*/
+    /*tx fifoï¿½Ð»ï¿½È¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Éµï¿½ï¿½×µï¿½Ö·,Ë«Í¨ï¿½ï¿½ï¿½ï¿½Ë«ï¿½ï¿½Ö·ï¿½ï¿½Ë«count*/
     edma_paddr_t addr[PCIE_EDMA_MAX_CHANNELS];
     oal_uint32 count[PCIE_EDMA_MAX_CHANNELS];
 
@@ -2486,15 +2482,15 @@ oal_void oal_pcie_h2d_transfer_done(oal_pcie_res* pst_pci_res)
     if(OAL_TRUE != oal_pcie_edma_get_read_done_fifo(pst_pci_res, addr, count))
     {
         /*TBD:TBC*/
-        /*´ýÔö¼ÓÎ¬²â¼ÆÊý*/
+        /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¬ï¿½ï¿½ï¿½ï¿½ï¿½*/
         return;
     }
 
     PCI_PRINT_LOG(PCI_LOG_DBG, "oal_pcie_h2d_transfer_done, cnt:%u", pst_pci_res->stat.intx_tx_count);
 
-    /*»ñÈ¡µ½·¢ËÍÍê³ÉµÄDMAµØÖ·£¬±éÀú·¢ËÍ¶ÓÁÐ,
-      ÏÈ±éÀúµÚÒ»¸öÔªËØ£¬Õý³£Ó¦¸Ã¶ÓÍ·¾ÍÊÇ·¢ËÍÍê³ÉµÄÔªËØ£¬
-      Èç¹û²»ÔÚ¶ÓÍ·ËµÃ÷¶ªÖÐ¶ÏÁË(ÓÐFIFOÕý³£²»»á¶ª),ÐèÒªÊÍ·ÅÔªËØÖ®Ç°µÄnetbuf*/
+    /*ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Éµï¿½DMAï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¶ï¿½ï¿½ï¿½,
+      ï¿½È±ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ôªï¿½Ø£ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½Ã¶ï¿½Í·ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½Éµï¿½Ôªï¿½Ø£ï¿½
+      ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¶ï¿½Í·Ëµï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½(ï¿½ï¿½FIFOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½á¶ª),ï¿½ï¿½Òªï¿½Í·ï¿½Ôªï¿½ï¿½Ö®Ç°ï¿½ï¿½netbuf*/
     flag = 0;
     netbuf_cnt = 0;
 
@@ -2510,36 +2506,36 @@ oal_void oal_pcie_h2d_transfer_done(oal_pcie_res* pst_pci_res)
             continue;
         }
 
-        /*DMAË«Í¨µÀ*/
+        /*DMAË«Í¨ï¿½ï¿½*/
         for(j = 0; j < PCIE_EDMA_MAX_CHANNELS; j++)
         {
             if(oal_netbuf_list_empty(pst_txq))
             {
-                /*¶ÓÁÐÎª¿Õ*/
+                /*ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½*/
                 break;
             }
 
             PCI_PRINT_LOG(PCI_LOG_DBG, "[q:%d]tx chan:%d pa 0x%llx, cnt:%d",i , j, addr[j].addr, count[j]);
 
-            cnt = count[j];/*ÎÞÐ§ÃèÊö·ûÊ±,countÎª0*/
+            cnt = count[j];/*ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±,countÎª0*/
             if(!cnt)
             {
 #if 0
                 if(addr[j].addr)
                 {
-                    /*cnt Îª0 Ê±£¬addr ÊÇÉÏÒ»´ÎµÄÖµ*/
+                    /*cnt Îª0 Ê±ï¿½ï¿½addr ï¿½ï¿½ï¿½ï¿½Ò»ï¿½Îµï¿½Öµ*/
                     PCI_PRINT_LOG(PCI_LOG_DBG, "tx chan:%d get invalid dma pa 0x%llx", j, addr[j].addr);
                 }
 #endif
                 continue;
             }
 
-            /*±£Ö¤Ò»¸öµØ·½Èë¶Ó£¬ÕâÀï³ö¶Ó*/
+            /*ï¿½ï¿½Ö¤Ò»ï¿½ï¿½ï¿½Ø·ï¿½ï¿½ï¿½Ó£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
             pst_netbuf = (oal_netbuf_stru*)OAL_NETBUF_NEXT(pst_txq);
 //#ifdef _PRE_PLAT_FEATURE_HI110X_PCIE_FIFO_ADDRESS
             if(OAL_TRUE != oal_pcie_tx_dma_addr_match(pst_netbuf, addr[j]))
             {
-                /*µØÖ·²»Æ¥Åä£¬±éÀúÏÂÒ»¸ö¶ÓÁÐ*/
+                /*ï¿½ï¿½Ö·ï¿½ï¿½Æ¥ï¿½ä£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
                 PCI_PRINT_LOG(PCI_LOG_DBG, "[q:%d]tx chan:%d match failed, search next txq",i , j);
                 break;
             }
@@ -2547,12 +2543,12 @@ oal_void oal_pcie_h2d_transfer_done(oal_pcie_res* pst_pci_res)
 
             /*match succ.*/
 
-            /*ÕÒµ½µØÖ·£¬³ö¶Ó,ÏÈÈëÏÈ³ö£¬ËùÒÔÏÈ¼ì²éÍ¨µÀ0£¬ÔÙ¼ì²éÍ¨µÀ1,
-              2¸öÍ¨µÀµÄµØÖ· Ó¦¸ÃÔÚÍ¬Ò»¸ö¶ÓÁÐÖÐ*/
+            /*ï¿½Òµï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½È³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½ï¿½Í¨ï¿½ï¿½0ï¿½ï¿½ï¿½Ù¼ï¿½ï¿½Í¨ï¿½ï¿½1,
+              2ï¿½ï¿½Í¨ï¿½ï¿½ï¿½Äµï¿½Ö· Ó¦ï¿½ï¿½ï¿½ï¿½Í¬Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
             curr_cnt = oal_netbuf_list_len(pst_txq);
             if(OAL_UNLIKELY(cnt > curr_cnt))
             {
-                /*count ³ö´í?*/
+                /*count ï¿½ï¿½ï¿½ï¿½?*/
                 PCI_PRINT_LOG(PCI_LOG_ERR, "[q:%d]tx chan:%d tx done invalid count cnt %d ,list len %u",i , j,
                                         cnt, curr_cnt);
                 DECLARE_DFT_TRACE_KEY_INFO("pcie tx done count error", OAL_DFT_TRACE_EXCEP);
@@ -2564,15 +2560,15 @@ oal_void oal_pcie_h2d_transfer_done(oal_pcie_res* pst_pci_res)
 
             do
             {
-                /*ÕâÀïµÄËø¿ÉÒÔÓÅ»¯*/
+                /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å»ï¿½*/
                 /*TBD:TBC*/
                 oal_spin_lock_irq_save(&pst_pci_res->st_tx_res[i].lock, &flags);
-                /*Í·²¿³ö¶Ó*/
+                /*Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
                 pst_netbuf = oal_netbuf_delist_nolock(pst_txq);
                 oal_spin_unlock_irq_restore(&pst_pci_res->st_tx_res[i].lock, &flags);
                 if(NULL == pst_netbuf)
                 {
-                    /*²»Ó¦¸ÃÎª¿Õ£¬countÓÐ¿ÉÄÜÓÐÎÊÌâ*/
+                    /*ï¿½ï¿½Ó¦ï¿½ï¿½Îªï¿½Õ£ï¿½countï¿½Ð¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
                     PCI_PRINT_LOG(PCI_LOG_ERR, "[q:%d]tx chan:%d tx netbuf queue underflow[cnt:%d:%d, qlen:%d]",i , j,
                         cnt, count[j], curr_cnt);
                     DECLARE_DFT_TRACE_KEY_INFO("pcie tx done count error2", OAL_DFT_TRACE_EXCEP);
@@ -2594,7 +2590,7 @@ oal_void oal_pcie_h2d_transfer_done(oal_pcie_res* pst_pci_res)
 
             if(!cnt)
             {
-                /*Ò»¸öÍ¨µÀµÄµØÖ·´¦ÀíÍê³É*/
+                /*Ò»ï¿½ï¿½Í¨ï¿½ï¿½ï¿½Äµï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
                 PCI_PRINT_LOG(PCI_LOG_DBG, "[q:%d]tx chan:%d all bus process done!",i , j);
                 flag = 1;
             }
@@ -2618,7 +2614,7 @@ oal_void oal_pcie_h2d_transfer_done(oal_pcie_res* pst_pci_res)
         if(flag)
             break;
 
-        /*Î´Æ¥Åä£¬±éÀúÏÂÒ»Ìõ¶ÓÁÐ*/
+        /*Î´Æ¥ï¿½ä£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
     }
 
     if(OAL_UNLIKELY(netbuf_cnt != (count[0] + count[1])))
@@ -2632,8 +2628,8 @@ oal_void oal_pcie_h2d_transfer_done(oal_pcie_res* pst_pci_res)
 done:
     if(!flag)
     {
-        /*Î¬²â,Î´ÕÒµ½FIFOÖÐµÄµØÖ·£¬µØÖ·ÓÐ´í£¬»òÕßcountÓÐ´í,»òÕß¶ªÖÐ¶Ï
-          ÕâÀïÓ¦¸Ã´¥·¢DFR*/
+        /*Î¬ï¿½ï¿½,Î´ï¿½Òµï¿½FIFOï¿½ÐµÄµï¿½Ö·ï¿½ï¿½ï¿½ï¿½Ö·ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½countï¿½Ð´ï¿½,ï¿½ï¿½ï¿½ß¶ï¿½ï¿½Ð¶ï¿½
+          ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½Ã´ï¿½ï¿½ï¿½DFR*/
         /*TBD:TBC*/
         //DECLARE_DFT_TRACE_KEY_INFO("pcie tx done addr error", OAL_DFT_TRACE_EXCEP);
         PCI_PRINT_LOG(PCI_LOG_ERR, "pcie tx done addr error");
@@ -2641,11 +2637,11 @@ done:
     else
     {
         oal_pcie_linux_res * pst_pci_lres = (oal_pcie_linux_res*)oal_pci_get_drvdata(PCIE_RES_TO_DEV(pst_pci_res));
-        /*·¢ËÍÍê³É,»½ÐÑ·¢ËÍÏß³Ì*/
+        /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½Ñ·ï¿½ï¿½ï¿½ï¿½ß³ï¿½*/
         if(OAL_LIKELY(NULL != pst_pci_lres))
         {
             PCI_PRINT_LOG(PCI_LOG_DBG, "pcie sched hcc thread, qid:%d", i);
-            oal_atomic_set(&pst_pci_res->st_tx_res[i].tx_ringbuf_sync_cond, 1);/*ÏÂ°ë²¿Ë¢ÐÂ£¬±£³ÖÒ»ÖÂÐÔ*/
+            oal_atomic_set(&pst_pci_res->st_tx_res[i].tx_ringbuf_sync_cond, 1);/*ï¿½Â°ë²¿Ë¢ï¿½Â£ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½*/
             hcc_sched_transfer(HBUS_TO_HCC(pst_pci_lres->pst_bus));
         }
     }
@@ -2655,12 +2651,12 @@ done:
 
 extern oal_int32 hcc_send_rx_queue_etc(struct hcc_handler *hcc, hcc_queue_type type);
 #ifdef _PRE_PLAT_FEATURE_HI110X_PCIE_D2H_BYPASS
-/*½ÓÊÕÍê³ÉÖÐ¶Ï*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½*/
 oal_void oal_pcie_d2h_transfer_done(oal_pcie_res* pst_pci_res)
 {
     oal_ulong flags;
     oal_int32 i, flag, cnt, total_cnt;
-    /*rx fifoÖÐ»ñÈ¡ ·¢ËÍÍê³ÉµÄÊ×µØÖ·,Ë«Í¨µÀ£¬Ë«µØÖ·£¬Ë«count*/
+    /*rx fifoï¿½Ð»ï¿½È¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Éµï¿½ï¿½×µï¿½Ö·,Ë«Í¨ï¿½ï¿½ï¿½ï¿½Ë«ï¿½ï¿½Ö·ï¿½ï¿½Ë«count*/
     edma_paddr_t addr[PCIE_EDMA_MAX_CHANNELS];
     oal_uint32   count[PCIE_EDMA_MAX_CHANNELS];
 
@@ -2670,38 +2666,38 @@ oal_void oal_pcie_d2h_transfer_done(oal_pcie_res* pst_pci_res)
     if(OAL_TRUE != oal_pcie_edma_get_write_done_fifo(pst_pci_res, addr, count))
     {
         /*TBD:TBC*/
-        /*´ýÔö¼ÓÎ¬²â¼ÆÊý*/
+        /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¬ï¿½ï¿½ï¿½ï¿½ï¿½*/
         return;
     }
     oal_pcie_mips_end(PCIE_MIPS_RX_MSG_FIFO);
 
     PCI_PRINT_LOG(PCI_LOG_DBG, "oal_pcie_d2h_transfer_done, cnt:%u", pst_pci_res->stat.intx_rx_count);
 
-    /*»ñÈ¡µ½·¢ËÍÍê³ÉµÄDMAµØÖ·£¬±éÀú·¢ËÍ¶ÓÁÐ,
-      ÏÈ±éÀúµÚÒ»¸öÔªËØ£¬Õý³£Ó¦¸Ã¶ÓÍ·¾ÍÊÇ·¢ËÍÍê³ÉµÄÔªËØ£¬
-      Èç¹û²»ÔÚ¶ÓÍ·ËµÃ÷¶ªÖÐ¶ÏÁË(ÓÐFIFOÕý³£²»»á¶ª),ÐèÒªÊÍ·ÅÔªËØÖ®Ç°µÄnetbuf*/
+    /*ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Éµï¿½DMAï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¶ï¿½ï¿½ï¿½,
+      ï¿½È±ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ôªï¿½Ø£ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½Ã¶ï¿½Í·ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½Éµï¿½Ôªï¿½Ø£ï¿½
+      ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¶ï¿½Í·Ëµï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½(ï¿½ï¿½FIFOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½á¶ª),ï¿½ï¿½Òªï¿½Í·ï¿½Ôªï¿½ï¿½Ö®Ç°ï¿½ï¿½netbuf*/
     flag = 0;
     total_cnt = 0;
 
-    /*DMAË«Í¨µÀ*/
+    /*DMAË«Í¨ï¿½ï¿½*/
     for(i = 0; i < PCIE_EDMA_MAX_CHANNELS; i++)
     {
         PCI_PRINT_LOG(PCI_LOG_DBG, "rx chan:%d pa 0x%llx, cnt:%d",i , addr[i].addr, count[i]);
-        cnt = count[i];/*ÎÞÐ§ÃèÊö·ûÊ±,countÎª0*/
+        cnt = count[i];/*ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±,countÎª0*/
         if(!cnt)
         {
 #if 0
             if(addr[i].addr)
             {
-                /*cnt ºÍ addr Ó¦¸ÃÍ¬Ê±Îª 0*/
+                /*cnt ï¿½ï¿½ addr Ó¦ï¿½ï¿½Í¬Ê±Îª 0*/
                 PCI_PRINT_LOG(PCI_LOG_DBG, "rx chan:%d get invalid dma pa 0x%llx", i, addr[i].addr);
             }
 #endif
             continue;
         }
 
-        /*ÕÒµ½µØÖ·£¬³ö¶Ó,ÏÈÈëÏÈ³ö£¬ËùÒÔÏÈ¼ì²éÍ¨µÀ0£¬ÔÙ¼ì²éÍ¨µÀ1,
-          2¸öÍ¨µÀµÄµØÖ· Ó¦¸ÃÔÚÍ¬Ò»¸ö¶ÓÁÐÖÐ*/
+        /*ï¿½Òµï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½È³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½ï¿½Í¨ï¿½ï¿½0ï¿½ï¿½ï¿½Ù¼ï¿½ï¿½Í¨ï¿½ï¿½1,
+          2ï¿½ï¿½Í¨ï¿½ï¿½ï¿½Äµï¿½Ö· Ó¦ï¿½ï¿½ï¿½ï¿½Í¬Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
         cnt = count[i];
         pst_pci_res->st_rx_res.stat.rx_done_count++;
         g_d2h_bypass_pkt_num += cnt;
@@ -2727,14 +2723,14 @@ oal_void oal_pcie_d2h_transfer_done(oal_pcie_res* pst_pci_res)
 }
 #else
 oal_uint32 g_rx_addr_count_err_cnt = 0;
-/*½ÓÊÕÍê³ÉÖÐ¶Ï*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½*/
 oal_void oal_pcie_d2h_transfer_done(oal_pcie_res* pst_pci_res)
 {
     oal_ulong flags;
     oal_int32 i, flag, cnt, total_cnt;
     oal_netbuf_stru* pst_netbuf;
     oal_netbuf_head_stru* pst_rxq;
-    /*rx fifoÖÐ»ñÈ¡ ·¢ËÍÍê³ÉµÄÊ×µØÖ·,Ë«Í¨µÀ£¬Ë«µØÖ·£¬Ë«count*/
+    /*rx fifoï¿½Ð»ï¿½È¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Éµï¿½ï¿½×µï¿½Ö·,Ë«Í¨ï¿½ï¿½ï¿½ï¿½Ë«ï¿½ï¿½Ö·ï¿½ï¿½Ë«count*/
     edma_paddr_t addr[PCIE_EDMA_MAX_CHANNELS];
     oal_uint32   count[PCIE_EDMA_MAX_CHANNELS];
 
@@ -2744,16 +2740,16 @@ oal_void oal_pcie_d2h_transfer_done(oal_pcie_res* pst_pci_res)
     if(OAL_TRUE != oal_pcie_edma_get_write_done_fifo(pst_pci_res, addr, count))
     {
         /*TBD:TBC*/
-        /*´ýÔö¼ÓÎ¬²â¼ÆÊý*/
+        /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¬ï¿½ï¿½ï¿½ï¿½ï¿½*/
         return;
     }
     oal_pcie_mips_end(PCIE_MIPS_RX_MSG_FIFO);
 
     PCI_PRINT_LOG(PCI_LOG_DBG, "oal_pcie_d2h_transfer_done, cnt:%u", pst_pci_res->stat.intx_rx_count);
 
-    /*»ñÈ¡µ½·¢ËÍÍê³ÉµÄDMAµØÖ·£¬±éÀú·¢ËÍ¶ÓÁÐ,
-      ÏÈ±éÀúµÚÒ»¸öÔªËØ£¬Õý³£Ó¦¸Ã¶ÓÍ·¾ÍÊÇ·¢ËÍÍê³ÉµÄÔªËØ£¬
-      Èç¹û²»ÔÚ¶ÓÍ·ËµÃ÷¶ªÖÐ¶ÏÁË(ÓÐFIFOÕý³£²»»á¶ª),ÐèÒªÊÍ·ÅÔªËØÖ®Ç°µÄnetbuf*/
+    /*ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Éµï¿½DMAï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¶ï¿½ï¿½ï¿½,
+      ï¿½È±ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ôªï¿½Ø£ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½Ã¶ï¿½Í·ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½Éµï¿½Ôªï¿½Ø£ï¿½
+      ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¶ï¿½Í·Ëµï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½(ï¿½ï¿½FIFOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½á¶ª),ï¿½ï¿½Òªï¿½Í·ï¿½Ôªï¿½ï¿½Ö®Ç°ï¿½ï¿½netbuf*/
     flag = 0;
     total_cnt = 0;
 
@@ -2766,30 +2762,30 @@ oal_void oal_pcie_d2h_transfer_done(oal_pcie_res* pst_pci_res)
         return;
     }
 
-    /*DMAË«Í¨µÀ*/
+    /*DMAË«Í¨ï¿½ï¿½*/
     for(i = 0; i < PCIE_EDMA_MAX_CHANNELS; i++)
     {
         if(oal_netbuf_list_empty(pst_rxq))
         {
-            /*¶ÓÁÐÎª¿Õ*/
+            /*ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½*/
             break;
         }
 
         PCI_PRINT_LOG(PCI_LOG_DBG, "rx chan:%d pa 0x%llx, cnt:%d",i , addr[i].addr, count[i]);
-        cnt = count[i];/*ÎÞÐ§ÃèÊö·ûÊ±,countÎª0*/
+        cnt = count[i];/*ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±,countÎª0*/
         if(!cnt)
         {
 #if 0
             if(addr[i].addr)
             {
-                /*cnt ºÍ addr Ó¦¸ÃÍ¬Ê±Îª 0*/
+                /*cnt ï¿½ï¿½ addr Ó¦ï¿½ï¿½Í¬Ê±Îª 0*/
                 PCI_PRINT_LOG(PCI_LOG_DBG, "rx chan:%d get invalid dma pa 0x%llx", i, addr[i].addr);
             }
 #endif
             continue;
         }
 
-        /*±£Ö¤Ò»¸öµØ·½Èë¶Ó£¬ÕâÀï³ö¶Ó*/
+        /*ï¿½ï¿½Ö¤Ò»ï¿½ï¿½ï¿½Ø·ï¿½ï¿½ï¿½Ó£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
         pst_netbuf = (oal_netbuf_stru*)OAL_NETBUF_NEXT(pst_rxq);
 
         if(OAL_UNLIKELY(NULL == pst_netbuf))
@@ -2804,7 +2800,7 @@ oal_void oal_pcie_d2h_transfer_done(oal_pcie_res* pst_pci_res)
             g_rx_addr_count_err_cnt++;
             if(g_rx_addr_count_err_cnt >= 2)
             {
-                /*µØÖ·²»Æ¥Åä ÖØÊÔÒ»´Î*/
+                /*ï¿½ï¿½Ö·ï¿½ï¿½Æ¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½*/
                 PCI_PRINT_LOG(PCI_LOG_ERR, "rx chan:%d match failed, rx error, count[i]:%u, errcnt:%d",i, count[i], g_rx_addr_count_err_cnt);
                 PCI_PRINT_LOG(PCI_LOG_ERR, "count0:%u, count1:%u",count[0], count[1]);
                 DECLARE_DFT_TRACE_KEY_INFO("pcie rx addr fatal error", OAL_DFT_TRACE_EXCEP);
@@ -2813,7 +2809,7 @@ oal_void oal_pcie_d2h_transfer_done(oal_pcie_res* pst_pci_res)
             }
             else
             {
-                /*µØÖ·²»Æ¥Åä£¬³ö´í*/
+                /*ï¿½ï¿½Ö·ï¿½ï¿½Æ¥ï¿½ä£¬ï¿½ï¿½ï¿½ï¿½*/
                 PCI_PRINT_LOG(PCI_LOG_ERR, "rx chan:%d match failed, rx error, count[i]:%u, errcnt:%d",i, count[i], g_rx_addr_count_err_cnt);
                 PCI_PRINT_LOG(PCI_LOG_ERR, "count0:%u, count1:%u",count[0], count[1]);
                 DECLARE_DFT_TRACE_KEY_INFO("pcie rx addr error,retry", OAL_DFT_TRACE_FAIL);
@@ -2827,8 +2823,8 @@ oal_void oal_pcie_d2h_transfer_done(oal_pcie_res* pst_pci_res)
         }
 #endif
 
-        /*ÕÒµ½µØÖ·£¬³ö¶Ó,ÏÈÈëÏÈ³ö£¬ËùÒÔÏÈ¼ì²éÍ¨µÀ0£¬ÔÙ¼ì²éÍ¨µÀ1,
-          2¸öÍ¨µÀµÄµØÖ· Ó¦¸ÃÔÚÍ¬Ò»¸ö¶ÓÁÐÖÐ*/
+        /*ï¿½Òµï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½È³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½ï¿½Í¨ï¿½ï¿½0ï¿½ï¿½ï¿½Ù¼ï¿½ï¿½Í¨ï¿½ï¿½1,
+          2ï¿½ï¿½Í¨ï¿½ï¿½ï¿½Äµï¿½Ö· Ó¦ï¿½ï¿½ï¿½ï¿½Í¬Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
         cnt = count[i];
         if(OAL_UNLIKELY(cnt > oal_netbuf_list_len(pst_rxq)))
         {
@@ -2843,17 +2839,17 @@ oal_void oal_pcie_d2h_transfer_done(oal_pcie_res* pst_pci_res)
         oal_pcie_mips_start(PCIE_MIPS_RX_QUEUE_POP);
         do
         {
-            /*ÕâÀïµÄËø¿ÉÒÔÓÅ»¯*/
+            /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å»ï¿½*/
             /*TBD:TBC*/
 
             oal_spin_lock_irq_save(&pst_pci_res->st_rx_res.lock, &flags);
-            /*Í·²¿³ö¶Ó*/
+            /*Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
             pst_netbuf = oal_netbuf_delist_nolock(pst_rxq);
             oal_spin_unlock_irq_restore(&pst_pci_res->st_rx_res.lock, &flags);
             if(NULL == pst_netbuf)
             {
                 oal_pcie_mips_end(PCIE_MIPS_RX_QUEUE_POP);
-                /*²»Ó¦¸ÃÎª¿Õ£¬countÓÐ¿ÉÄÜÓÐÎÊÌâ*/
+                /*ï¿½ï¿½Ó¦ï¿½ï¿½Îªï¿½Õ£ï¿½countï¿½Ð¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
                 PCI_PRINT_LOG(PCI_LOG_ERR, "rx chan:%d tx netbuf queue underflow[cnt:%d, qlen:%d]",i ,
                     cnt, oal_netbuf_list_len(pst_rxq));
                 DECLARE_DFT_TRACE_KEY_INFO("pcie rx done count error2", OAL_DFT_TRACE_EXCEP);
@@ -2876,7 +2872,7 @@ oal_void oal_pcie_d2h_transfer_done(oal_pcie_res* pst_pci_res)
 
         if(!cnt)
         {
-            /*Ò»¸öÍ¨µÀµÄµØÖ·´¦ÀíÍê³É*/
+            /*Ò»ï¿½ï¿½Í¨ï¿½ï¿½ï¿½Äµï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
             PCI_PRINT_LOG(PCI_LOG_DBG, "rx chan:%d all bus process done!",i);
             flag = 1;
         }
@@ -2897,8 +2893,8 @@ oal_void oal_pcie_d2h_transfer_done(oal_pcie_res* pst_pci_res)
 done:
     if(!flag)
     {
-        /*Î¬²â,Î´ÕÒµ½FIFOÖÐµÄµØÖ·£¬µØÖ·ÓÐ´í£¬»òÕßcountÓÐ´í,»òÕß¶ªÖÐ¶Ï
-          ÕâÀïÓ¦¸Ã´¥·¢DFR*/
+        /*Î¬ï¿½ï¿½,Î´ï¿½Òµï¿½FIFOï¿½ÐµÄµï¿½Ö·ï¿½ï¿½ï¿½ï¿½Ö·ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½countï¿½Ð´ï¿½,ï¿½ï¿½ï¿½ß¶ï¿½ï¿½Ð¶ï¿½
+          ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½Ã´ï¿½ï¿½ï¿½DFR*/
         /*TBD:TBC*/
         //DECLARE_DFT_TRACE_KEY_INFO("pcie rx done addr error", OAL_DFT_TRACE_EXCEP);
         oal_pcie_linux_res * pst_pci_lres = (oal_pcie_linux_res*)oal_pci_get_drvdata(PCIE_RES_TO_DEV(pst_pci_res));
@@ -2924,7 +2920,7 @@ done:
 #endif
 
         pst_pci_lres = (oal_pcie_linux_res*)oal_pci_get_drvdata(PCIE_RES_TO_DEV(pst_pci_res));
-        /*·¢ËÍÍê³É,»½ÐÑ·¢ËÍÏß³Ì*/
+        /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½Ñ·ï¿½ï¿½ï¿½ï¿½ß³ï¿½*/
         if(OAL_LIKELY(NULL != pst_pci_lres))
         {
             if(OAL_LIKELY(pst_pci_lres->pst_bus))
@@ -2932,7 +2928,7 @@ done:
             else
                 PCI_PRINT_LOG(PCI_LOG_ERR, "lres's bus is null! %p", pst_pci_lres);
 
-            /*Í¨ÖªÏß³Ì£¬²¹³äRXÄÚ´æ*/
+            /*Í¨Öªï¿½ß³Ì£ï¿½ï¿½ï¿½ï¿½ï¿½RXï¿½Ú´ï¿½*/
             oal_pcie_shced_rx_hi_thread(pst_pci_res);
         }
     }
@@ -2952,7 +2948,7 @@ oal_void oal_pcie_h2d_edma_isr(oal_pcie_res* pst_pci_res)
 
     PCI_PRINT_LOG(PCI_LOG_DBG, "oal_pcie_h2d_edma_isr enter");
 
-    /*¶Á¿Õsoft fifo*/
+    /*ï¿½ï¿½ï¿½ï¿½soft fifo*/
     for(;;)
     {
         if(OAL_SUCC != oal_pcie_ringbuf_read_wr(pst_pci_res, PCIE_COMM_RINGBUF_DMA_READ_FIFO))
@@ -2989,7 +2985,7 @@ oal_void oal_pcie_h2d_edma_isr(oal_pcie_res* pst_pci_res)
             pst_txq = &pst_pci_res->st_tx_res[soft_rd_item.qid].txq;
             if(OAL_UNLIKELY(oal_netbuf_list_empty(pst_txq)))
             {
-                /*¶ÓÁÐÎª¿Õ*/
+                /*ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½*/
                 PCI_PRINT_LOG(PCI_LOG_ERR,"invalid read item,qid:%u is empty", soft_rd_item.qid);
                 oal_print_hex_dump((oal_uint8 *)&soft_rd_item, OAL_SIZEOF(soft_rd_item), 32, "read item: ");
                 break;
@@ -3006,13 +3002,13 @@ oal_void oal_pcie_h2d_edma_isr(oal_pcie_res* pst_pci_res)
 
             if(OAL_UNLIKELY( netbuf_cnt < total_cnt))
             {
-                /*¶ÓÁÐÎª¿Õ*/
+                /*ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½*/
                 PCI_PRINT_LOG(PCI_LOG_ERR, "invalid read item,qid:%u had %u pkts less than %u", soft_rd_item.qid, netbuf_cnt, total_cnt);
                 oal_print_hex_dump((oal_uint8 *)&soft_rd_item, OAL_SIZEOF(soft_rd_item), 32, "read item: ");
                 break;
             }
 
-            /*±£Ö¤Ò»¸öµØ·½Èë¶Ó£¬ÕâÀï³ö¶Ó*/
+            /*ï¿½ï¿½Ö¤Ò»ï¿½ï¿½ï¿½Ø·ï¿½ï¿½ï¿½Ó£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
             pst_netbuf = (oal_netbuf_stru*)OAL_NETBUF_NEXT(pst_txq);
             if(OAL_TRUE != oal_pcie_tx_dma_addr_match_low(pst_netbuf, soft_rd_item.address))
             {
@@ -3025,13 +3021,13 @@ oal_void oal_pcie_h2d_edma_isr(oal_pcie_res* pst_pci_res)
 
             do
             {
-                /*Í·²¿³ö¶Ó*/
+                /*Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
                 oal_spin_lock_irq_save(&pst_pci_res->st_tx_res[soft_rd_item.qid].lock, &flags);
                 pst_netbuf = oal_netbuf_delist_nolock(pst_txq);
                 oal_spin_unlock_irq_restore(&pst_pci_res->st_tx_res[soft_rd_item.qid].lock, &flags);
                 if(OAL_UNLIKELY(NULL == pst_netbuf))
                 {
-                    /*²»Ó¦¸ÃÎª¿Õ£¬countÓÐ¿ÉÄÜÓÐÎÊÌâ*/
+                    /*ï¿½ï¿½Ó¦ï¿½ï¿½Îªï¿½Õ£ï¿½countï¿½Ð¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
                     PCI_PRINT_LOG(PCI_LOG_ERR, "[q:%d]tx netbuf queue underflow[curr_cnt:%d:%d], qlen:%d",soft_rd_item.qid, curr_cnt, total_cnt, netbuf_cnt);
                     DECLARE_DFT_TRACE_KEY_INFO("pcie tx done count error", OAL_DFT_TRACE_EXCEP);
                     return;
@@ -3045,12 +3041,12 @@ oal_void oal_pcie_h2d_edma_isr(oal_pcie_res* pst_pci_res)
             }while(--total_cnt);
 
 
-            /*·¢ËÍÍê³É,»½ÐÑ·¢ËÍÏß³Ì*/
+            /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½Ñ·ï¿½ï¿½ï¿½ï¿½ß³ï¿½*/
             if(OAL_LIKELY(NULL != pst_pci_lres))
             {
                 PCI_PRINT_LOG(PCI_LOG_DBG, "pcie sched hcc thread, qid:%d", soft_rd_item.qid);
 
-                oal_atomic_set(&pst_pci_res->st_tx_res[soft_rd_item.qid].tx_ringbuf_sync_cond, 1);/*ÏÂ°ë²¿Ë¢ÐÂ£¬±£³ÖÒ»ÖÂÐÔ*/
+                oal_atomic_set(&pst_pci_res->st_tx_res[soft_rd_item.qid].tx_ringbuf_sync_cond, 1);/*ï¿½Â°ë²¿Ë¢ï¿½Â£ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½*/
                 hcc_sched_transfer(HBUS_TO_HCC(pst_pci_lres->pst_bus));
             }
             /*get read item*/
@@ -3086,7 +3082,7 @@ oal_void oal_pcie_d2h_edma_isr(oal_pcie_res* pst_pci_res)
 
     PCI_PRINT_LOG(PCI_LOG_DBG, "oal_pcie_d2h_edma_isr enter");
 
-    /*¶Á¿Õsoft write fifo*/
+    /*ï¿½ï¿½ï¿½ï¿½soft write fifo*/
     for(;;)
     {
         if(OAL_SUCC != oal_pcie_ringbuf_read_wr(pst_pci_res, PCIE_COMM_RINGBUF_DMA_WRITE_FIFO))
@@ -3127,14 +3123,14 @@ oal_void oal_pcie_d2h_edma_isr(oal_pcie_res* pst_pci_res)
 
             if(OAL_UNLIKELY( netbuf_cnt < total_cnt))
             {
-                /*¶ÓÁÐÎª¿Õ*/
+                /*ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½*/
                 PCI_PRINT_LOG(PCI_LOG_ERR,"invalid write item, had %u pkts less than %u", netbuf_cnt, total_cnt);
                 oal_print_hex_dump((oal_uint8 *)&soft_wr_item, OAL_SIZEOF(soft_wr_item), 32, "write item: ");
                 flag = 0;
                 goto done;
             }
 
-            /*±£Ö¤Ò»¸öµØ·½Èë¶Ó£¬ÕâÀï³ö¶Ó*/
+            /*ï¿½ï¿½Ö¤Ò»ï¿½ï¿½ï¿½Ø·ï¿½ï¿½ï¿½Ó£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
             pst_netbuf = (oal_netbuf_stru*)OAL_NETBUF_NEXT(pst_rxq);
             if(OAL_UNLIKELY(NULL == pst_netbuf))
             {
@@ -3155,16 +3151,16 @@ oal_void oal_pcie_d2h_edma_isr(oal_pcie_res* pst_pci_res)
             /*get the rx netbuf list*/
             do
             {
-                /*ÕâÀïµÄËø¿ÉÒÔÓÅ»¯*/
+                /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å»ï¿½*/
                 /*TBD:TBC*/
 
                 oal_spin_lock_irq_save(&pst_pci_res->st_rx_res.lock, &flags);
-                /*Í·²¿³ö¶Ó*/
+                /*Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
                 pst_netbuf = oal_netbuf_delist_nolock(pst_rxq);
                 oal_spin_unlock_irq_restore(&pst_pci_res->st_rx_res.lock, &flags);
                 if(NULL == pst_netbuf)
                 {
-                    /*²»Ó¦¸ÃÎª¿Õ£¬countÓÐ¿ÉÄÜÓÐÎÊÌâ*/
+                    /*ï¿½ï¿½Ó¦ï¿½ï¿½Îªï¿½Õ£ï¿½countï¿½Ð¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
                     PCI_PRINT_LOG(PCI_LOG_ERR, "rx  netbuf queue underflow[netbuf_cnt:%d, total_count:%d]",
                         netbuf_cnt, total_cnt);
                     DECLARE_DFT_TRACE_KEY_INFO("pcie rx edma done count error", OAL_DFT_TRACE_EXCEP);
@@ -3208,8 +3204,8 @@ oal_void oal_pcie_d2h_edma_isr(oal_pcie_res* pst_pci_res)
 done:
     if(!flag)
     {
-        /*Î¬²â,Î´ÕÒµ½FIFOÖÐµÄµØÖ·£¬µØÖ·ÓÐ´í£¬»òÕßcountÓÐ´í,»òÕß¶ªÖÐ¶Ï
-          ÕâÀïÓ¦¸Ã´¥·¢DFR*/
+        /*Î¬ï¿½ï¿½,Î´ï¿½Òµï¿½FIFOï¿½ÐµÄµï¿½Ö·ï¿½ï¿½ï¿½ï¿½Ö·ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½countï¿½Ð´ï¿½,ï¿½ï¿½ï¿½ß¶ï¿½ï¿½Ð¶ï¿½
+          ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½Ã´ï¿½ï¿½ï¿½DFR*/
         /*TBD:TBC*/
         //DECLARE_DFT_TRACE_KEY_INFO("pcie rx done addr error", OAL_DFT_TRACE_EXCEP);
         PCI_PRINT_LOG(PCI_LOG_ERR, "pcie rx done addr error");
@@ -3226,7 +3222,7 @@ done:
     {
         PCI_PRINT_LOG(PCI_LOG_DBG, "d2h trigger hcc_sched_transfer, dev:%p, lres:%p",
                        PCIE_RES_TO_DEV(pst_pci_res),  oal_pci_get_drvdata(PCIE_RES_TO_DEV(pst_pci_res)));
-        /*·¢ËÍÍê³É,»½ÐÑ·¢ËÍÏß³Ì*/
+        /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½Ñ·ï¿½ï¿½ï¿½ï¿½ß³ï¿½*/
         if(OAL_LIKELY(NULL != pst_pci_lres))
         {
             if(OAL_LIKELY(pst_pci_lres->pst_bus))
@@ -3234,14 +3230,14 @@ done:
             else
                 PCI_PRINT_LOG(PCI_LOG_ERR, "lres's bus is null! %p", pst_pci_lres);
 
-            /*Í¨ÖªÏß³Ì£¬²¹³äRXÄÚ´æ*/
+            /*Í¨Öªï¿½ß³Ì£ï¿½ï¿½ï¿½ï¿½ï¿½RXï¿½Ú´ï¿½*/
             oal_pcie_shced_rx_hi_thread(pst_pci_res);
         }
     }
 }
 
 #ifdef _PRE_PLAT_FEATURE_PCIE_EDMA_ORI
-/*Ô­ÉúEDMA, Not Finish*/
+/*Ô­ï¿½ï¿½EDMA, Not Finish*/
 oal_int32 oal_pcie_transfer_done(oal_pcie_res* pst_pci_res)
 {
     oal_int32 flag, trans_cnt;
@@ -3258,7 +3254,7 @@ oal_int32 oal_pcie_transfer_done(oal_pcie_res* pst_pci_res)
     pst_pci_res->stat.intx_total_count++;
     PCI_PRINT_LOG(PCI_LOG_DBG, "intx int count:%u", pst_pci_res->stat.intx_total_count);
 
-    /*HostÊÕµ½intxÖÐ¶Ï,±éÀúTX/RX FIFO¼Ä´æÆ÷*/
+    /*Hostï¿½Õµï¿½intxï¿½Ð¶ï¿½,ï¿½ï¿½ï¿½ï¿½TX/RX FIFOï¿½Ä´ï¿½ï¿½ï¿½*/
     if(OAL_UNLIKELY(NULL == pst_pci_res->pst_pci_dma_ctrl_base))
     {
         PCI_PRINT_LOG(PCI_LOG_ERR, "fifo base addr is null!");
@@ -3285,9 +3281,9 @@ oal_int32 oal_pcie_transfer_done(oal_pcie_res* pst_pci_res)
 
         if(stat.bits.pcie_edma_rx_intr_status)
         {
-            /*»ñÈ¡µ±Ç°½ÓÊÕµÄÃèÊö·û¸öÊý,ÊÍ·Åµ±Ç°¶ÓÍ·µÄnetbuf*/
+            /*ï¿½ï¿½È¡ï¿½ï¿½Ç°ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½Í·Åµï¿½Ç°ï¿½ï¿½Í·ï¿½ï¿½netbuf*/
             #error
-            /*device to host edma ´«ÊäÍê³É, ´¥·¢h2d doorbellÍ¨ÖªDEVICE ²éÖÐ¶Ï*/
+            /*device to host edma ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½h2d doorbellÍ¨ÖªDEVICE ï¿½ï¿½ï¿½Ð¶ï¿½*/
             oal_pcie_h2d_doorbell(pst_pci_res);
             trans_cnt++;
         }
@@ -3310,8 +3306,8 @@ oal_int32 oal_pcie_transfer_done(oal_pcie_res* pst_pci_res)
     oal_int32 trans_cnt, old_cnt;
     MSG_FIFO_STAT msg_fifo_stat;
 
-    /*ÕâÀïµÄmask Ö»ÊÇmask ×´Ì¬Î»£¬²¢²»ÊÇmaskÖÐ¶Ï£¬
-      ÕâÀïµÄmaskÖ»ÓÃÀ´±ê¼ÇÊÇ·ñ´¦ÀíÕâ¸öÖÐ¶Ï*/
+    /*ï¿½ï¿½ï¿½ï¿½ï¿½mask Ö»ï¿½ï¿½mask ×´Ì¬Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½maskï¿½Ð¶Ï£ï¿½
+      ï¿½ï¿½ï¿½ï¿½ï¿½maskÖ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½*/
     HOST_INTR_STATUS stat, mask;
 
     if(OAL_UNLIKELY(NULL == pst_pci_res))
@@ -3323,7 +3319,7 @@ oal_int32 oal_pcie_transfer_done(oal_pcie_res* pst_pci_res)
     pst_pci_res->stat.intx_total_count++;
     PCI_PRINT_LOG(PCI_LOG_DBG, "intx int count:%u", pst_pci_res->stat.intx_total_count);
 
-    /*HostÊÕµ½intxÖÐ¶Ï,±éÀúTX/RX FIFO¼Ä´æÆ÷*/
+    /*Hostï¿½Õµï¿½intxï¿½Ð¶ï¿½,ï¿½ï¿½ï¿½ï¿½TX/RX FIFOï¿½Ä´ï¿½ï¿½ï¿½*/
     if(OAL_UNLIKELY(NULL == pst_pci_res->pst_pci_dma_ctrl_base))
     {
         PCI_PRINT_LOG(PCI_LOG_ERR, "fifo base addr is null!");
@@ -3388,7 +3384,7 @@ oal_int32 oal_pcie_transfer_done(oal_pcie_res* pst_pci_res)
 
         if((pst_pci_res->revision >= PCIE_REVISION_5_00A) && (pcie_soft_fifo_enable))
         {
-            /*¶Á¿ÕSoft FIFO*/
+            /*ï¿½ï¿½ï¿½ï¿½Soft FIFO*/
             if(stat.bits.pcie_hw_edma_tx_intr_status)
             {
                 oal_pcie_h2d_edma_isr(pst_pci_res);
@@ -3401,7 +3397,7 @@ oal_int32 oal_pcie_transfer_done(oal_pcie_res* pst_pci_res)
         }
         else
         {
-            /*¶Á¿ÕHardware FIFO*/
+            /*ï¿½ï¿½ï¿½ï¿½Hardware FIFO*/
             for(;;)
             {
                 old_cnt = trans_cnt;
@@ -3437,7 +3433,7 @@ oal_int32 oal_pcie_transfer_done(oal_pcie_res* pst_pci_res)
                 else
                 {
                     //if(++total_cnt > 20)
-                    //    break;/*·ÀÖ¹ÖÐ¶ÏÀïÃæÑ­»·´ÎÊýÌ«¶à Ó°ÏìÏµÍ³ÖÐ¶Ï´¦Àí*/
+                    //    break;/*ï¿½ï¿½Ö¹ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì«ï¿½ï¿½ Ó°ï¿½ï¿½ÏµÍ³ï¿½Ð¶Ï´ï¿½ï¿½ï¿½*/
                 }
             }
         }
@@ -3446,7 +3442,7 @@ oal_int32 oal_pcie_transfer_done(oal_pcie_res* pst_pci_res)
 
     PCI_PRINT_LOG(PCI_LOG_DBG, "trans done process %u cnt data", trans_cnt);
 
-    /*ÏàµÈËµÃ÷ÒÑ¾­¶Á¿Õ*/
+    /*ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½*/
     return !(old_cnt == trans_cnt);
 }
 #endif
@@ -3473,7 +3469,7 @@ oal_void oal_pcie_print_ringbuf_info(pcie_ringbuf* pst_ringbuf, PCI_LOG_TYPE lev
 /*ringbuf functions*/
 oal_uint32 oal_pcie_ringbuf_freecount(pcie_ringbuf* pst_ringbuf)
 {
-    /*ÎÞ·ûºÅ£¬ÒÑ¾­¿¼ÂÇÁË·­×ª*/
+    /*ï¿½Þ·ï¿½ï¿½Å£ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë·ï¿½×ª*/
     oal_uint32 len = pst_ringbuf->size - (pst_ringbuf->wr - pst_ringbuf->rd);
     if(0 == len)
     {
@@ -3491,7 +3487,7 @@ oal_uint32 oal_pcie_ringbuf_freecount(pcie_ringbuf* pst_ringbuf)
 
     if(pst_ringbuf->item_mask)
     {
-        /*item len Èç¹ûÊÇ2µÄN´ÎÃÝ£¬ÔòÒÆÎ»*/
+        /*item len ï¿½ï¿½ï¿½ï¿½ï¿½2ï¿½ï¿½Nï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½ï¿½ï¿½Î»*/
         len = len >> pst_ringbuf->item_mask;
     }
     else
@@ -3514,15 +3510,12 @@ oal_int32 oal_pcie_check_link_state(oal_pcie_res* pst_pci_res)
 {
     oal_int32 ret = -OAL_EFAIL;
     pci_addr_map addr_map;
-    pcie_dev_ptr share_mem_address;/*Device cpuµØÖ·*/
-    oal_pci_dev_stru *pst_pci_dev;
-
-    pst_pci_dev = PCIE_RES_TO_DEV(pst_pci_res);
+    pcie_dev_ptr share_mem_address;/*Device cpuï¿½ï¿½Ö·*/
 
     ret = oal_pcie_inbound_ca_to_va(pst_pci_res, PCIE_DEV_SHARE_MEM_CPU_ADDRESS, &addr_map);
     if(OAL_UNLIKELY(OAL_SUCC != ret))
     {
-        /*share mem µØÖ·Î´Ó³Éä!*/
+        /*share mem ï¿½ï¿½Ö·Î´Ó³ï¿½ï¿½!*/
         PCI_PRINT_LOG(PCI_LOG_ERR, "can not found mem map for dev cpu address 0x%x\n", PCIE_DEV_SHARE_MEM_CPU_ADDRESS);
         return OAL_FALSE;
     }
@@ -3578,26 +3571,23 @@ oal_void oal_pcie_share_mem_res_unmap(oal_pcie_res* pst_pci_res)
     OAL_MEMZERO((oal_void*)&pst_pci_res->dev_share_mem, OAL_SIZEOF(pst_pci_res->dev_share_mem));
 }
 
-/*µ÷ÓÃ±ØÐëÔÚiATUÅäÖÃ, pcie device Ê¹ÄÜÖ®ºó£¬*/
+/*ï¿½ï¿½ï¿½Ã±ï¿½ï¿½ï¿½ï¿½ï¿½iATUï¿½ï¿½ï¿½ï¿½, pcie device Ê¹ï¿½ï¿½Ö®ï¿½ï¿½*/
 oal_int32 oal_pcie_share_mem_res_map(oal_pcie_res* pst_pci_res)
 {
     oal_int32 ret = -OAL_EFAIL;
     oal_void* pst_share_mem_vaddr;
-    pcie_dev_ptr share_mem_address = 0xFFFFFFFF;/*Device cpuµØÖ·*/
+    pcie_dev_ptr share_mem_address = 0xFFFFFFFF;/*Device cpuï¿½ï¿½Ö·*/
     pci_addr_map addr_map, share_mem_map;
     unsigned long timeout, timeout1;
-    oal_pci_dev_stru *pst_pci_dev;
 
-    pst_pci_dev = PCIE_RES_TO_DEV(pst_pci_res);
-
-    /*Ã¦µÈ50ms Èô³¬Ê± ÔÙµÈ10S ³¬Ê±*/
+    /*Ã¦ï¿½ï¿½50ms ï¿½ï¿½ï¿½ï¿½Ê± ï¿½Ùµï¿½10S ï¿½ï¿½Ê±*/
     timeout  = jiffies + msecs_to_jiffies(50);/*50ms*/
     timeout1 = jiffies + msecs_to_jiffies(10000);/*10s*/
 
     ret = oal_pcie_inbound_ca_to_va(pst_pci_res, PCIE_DEV_SHARE_MEM_CPU_ADDRESS, &addr_map);
     if(OAL_SUCC != ret)
     {
-        /*share mem µØÖ·Î´Ó³Éä!*/
+        /*share mem ï¿½ï¿½Ö·Î´Ó³ï¿½ï¿½!*/
         PCI_PRINT_LOG(PCI_LOG_ERR, "can not found mem map for dev cpu address 0x%x\n", PCIE_DEV_SHARE_MEM_CPU_ADDRESS);
         return ret;
     }
@@ -3609,18 +3599,18 @@ oal_int32 oal_pcie_share_mem_res_map(oal_pcie_res* pst_pci_res)
     for(;;)
     {
 #ifdef CONFIG_PCIE_MEM_WR_CACHE_ENABLE
-        /*cache ÎÞÐ§»¯*/
-        oal_pci_cache_inv(pst_pci_dev, (oal_void*)addr_map.pa, sizeof(pcie_dev_ptr));
+        /*cache ï¿½ï¿½Ð§ï¿½ï¿½*/
+        oal_pci_cache_inv((oal_void*)addr_map.pa, sizeof(pcie_dev_ptr));
 #endif
 
         /*Get sharemem's dev_cpu address*/
         oal_pcie_memcopy((oal_ulong)&share_mem_address, (oal_ulong)pst_share_mem_vaddr, sizeof(share_mem_address));
 
-        /*Í¨¹ý¼ì²éµØÖ·×ª»»¿ÉÒÔÅÐ¶Ï¶Á³öµÄsharememµØÖ·ÊÇ·ñÊÇÓÐÐ§Öµ*/
+        /*Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶Ï¶ï¿½ï¿½ï¿½ï¿½ï¿½sharememï¿½ï¿½Ö·ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½Ð§Öµ*/
         ret = oal_pcie_inbound_ca_to_va(pst_pci_res, share_mem_address, &share_mem_map);
         if(OAL_SUCC == ret)
         {
-            /*Device ³õÊ¼»¯Íê³É  & PCIE Í¨ÐÅÕý³£*/
+            /*Device ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½  & PCIE Í¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
             if(share_mem_address != 0)/*TBD:TBC*/
             {
                 /*TBD:TBC*/
@@ -3636,16 +3626,16 @@ oal_int32 oal_pcie_share_mem_res_map(oal_pcie_res* pst_pci_res)
         if(!time_after(jiffies, timeout))
         {
             cpu_relax();
-            continue;/*Î´³¬Ê±£¬¼ÌÐø*/
+            continue;/*Î´ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
         }
 
-        /*50ms ³¬Ê±, ¿ªÊ¼10S³¬Ê±Ì½²â*/
+        /*50ms ï¿½ï¿½Ê±, ï¿½ï¿½Ê¼10Sï¿½ï¿½Ê±Ì½ï¿½ï¿½*/
         if(!time_after(jiffies, timeout1))
         {
             oal_msleep(1);
-            continue;/*Î´³¬Ê±£¬¼ÌÐø*/
+            continue;/*Î´ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
         } else {
-            /*10s+50ms ³¬Ê±£¬ÍË³ö*/
+            /*10s+50ms ï¿½ï¿½Ê±ï¿½ï¿½ï¿½Ë³ï¿½*/
             PCI_PRINT_LOG(PCI_LOG_ERR, "share_mem_address 0x%x, jiffies:0x%lx, timeout:0x%lx, timeout1:0x%lx", share_mem_address, jiffies, timeout, timeout1);
             ret = -OAL_ETIMEDOUT;
             break;
@@ -3749,7 +3739,7 @@ oal_int32 oal_pcie_read_dsm32(oal_pcie_res* pst_pci_res, PCIE_SHARED_DEVICE_ADDR
 #ifdef CONFIG_PCIE_MEM_WR_CACHE_ENABLE
     if(NULL != pst_pci_dev)
     {
-        /*cache ÎÞÐ§»¯*/
+        /*cache ï¿½ï¿½Ð§ï¿½ï¿½*/
         oal_pci_cache_inv(pst_pci_dev, (oal_void*)pst_pci_res->st_device_shared_addr_map[type].pa, sizeof(*val));
     }
 #endif
@@ -3882,10 +3872,10 @@ oal_void oal_pcie_set_voltage_bias_param(oal_uint32 phy_0v9_bias, oal_uint32 phy
     oal_print_hi11xx_log(HI11XX_LOG_INFO, "param 0v9=%u 1v8=%u", phy_0v9_bias, phy_1v8_bias);
 }
 
-/*µçÑ¹À­Æ«³õÊ¼»¯*/
+/*ï¿½ï¿½Ñ¹ï¿½ï¿½Æ«ï¿½ï¿½Ê¼ï¿½ï¿½*/
 oal_int32 oal_pcie_voltage_bias_init(oal_pcie_res* pst_pci_res)
 {
-    /*vp,vptx,vph ½µÑ¹ 5%*/
+    /*vp,vptx,vph ï¿½ï¿½Ñ¹ 5%*/
     oal_int32 ret;
     oal_uint32 value, phy_0v9_bias, phy_1v8_bias;
     pci_addr_map addr_map;
@@ -3962,7 +3952,6 @@ oal_int32 oal_pcie_device_changeto_high_cpufreq(oal_pcie_res* pst_pci_res)
 {
     oal_int32 ret;
     pci_addr_map addr_map;
-    oal_void* pst_glb_ctrl;/*0x50000000*/
     oal_void* pst_pmu_cmu_ctrl;/*0x50002000*/
     oal_void* pst_pmu2_cmu_ir_ctrl;/*0x50003000*/
     oal_void* pst_wctrl;
@@ -3979,8 +3968,6 @@ oal_int32 oal_pcie_device_changeto_high_cpufreq(oal_pcie_res* pst_pci_res)
         oal_print_hi11xx_log(HI11XX_LOG_ERR, "can not found mem map for dev cpu address 0x%x\n", HI1103_PA_GLB_CTL_BASE_ADDR);
         return -OAL_EFAIL;
     }
-
-    pst_glb_ctrl = (oal_void*)addr_map.va;
 
     ret = oal_pcie_inbound_ca_to_va(pst_pci_res, HI1103_PA_PMU_CMU_CTL_BASE, &addr_map);
     if(OAL_UNLIKELY(OAL_SUCC != ret))
@@ -4168,7 +4155,7 @@ oal_int32 oal_pcie_device_changeto_high_cpufreq(oal_pcie_res* pst_pci_res)
         oal_setl_bit(HI1103_W_CTL_W_TCXO_SEL_REG, 0);
 
         oal_print_hi11xx_log(HI11XX_LOG_INFO, "change 640M wait start");
-        oal_msleep(10);/*·ÀÖ¹ÕâÀï¸ßÆµÇÐ³öÎÊÌâ£¬ÏÂÃæÖ»»Ø¶ÁÒ»´Î*/
+        oal_msleep(10);/*ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½Ð³ï¿½ï¿½ï¿½ï¿½â£¬ï¿½ï¿½ï¿½ï¿½Ö»ï¿½Ø¶ï¿½Ò»ï¿½ï¿½*/
         {
             oal_uint32 value = oal_readl(HI1103_W_CTL_CLKMUX_STS_REG);
             if((value & 0x2) != 0x2)
@@ -4210,7 +4197,7 @@ oal_int32 oal_pcie_device_check_alive(oal_pcie_res* pst_pci_res)
     ret = oal_pcie_inbound_ca_to_va(pst_pci_res, 0x50000000, &addr_map);
     if(OAL_UNLIKELY(OAL_SUCC != ret))
     {
-        /*share mem µØÖ·Î´Ó³Éä!*/
+        /*share mem ï¿½ï¿½Ö·Î´Ó³ï¿½ï¿½!*/
         oal_print_hi11xx_log(HI11XX_LOG_ERR, "can not found mem map for dev cpu address 0x%x\n", 0x50000000);
         return -OAL_EFAIL;
     }
@@ -4259,7 +4246,7 @@ oal_int32 oal_pcie_print_device_aer_cap_reg(oal_pcie_res* pst_pci_res)
         return -OAL_EFAIL;
     }
 
-    /*×´Ì¬¼Ä´æÆ÷¶ÁÇå*/
+    /*×´Ì¬ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
     if (oal_pci_read_config_dword(pst_pci_dev, pos_cap_aer + PCI_ERR_UNCOR_STATUS, &uncor))
     {
         oal_print_hi11xx_log(HI11XX_LOG_ERR, "PCI_ERR_UNCOR_STATUS: read fail");
@@ -4323,7 +4310,7 @@ oal_int32 oal_pcie_check_device_link_errors(oal_pcie_res* pst_pci_res)
 
     if(msg_intr_status.bits.soc_pcie_send_f_err_status)
     {
-        /*Á´Â·ÐÅºÅ¼«²î*/
+        /*ï¿½ï¿½Â·ï¿½ÅºÅ¼ï¿½ï¿½ï¿½*/
         oal_print_hi11xx_log(HI11XX_LOG_ERR, "f_err found, intr_status=0x%8x", msg_intr_status.AsDword);
         oal_pcie_print_device_aer_cap_reg(pst_pci_res);
         /*Clear the int*/
@@ -4342,7 +4329,7 @@ oal_int32 oal_pcie_check_device_link_errors(oal_pcie_res* pst_pci_res)
 
     if(msg_intr_status.bits.soc_pcie_send_nf_err_status)
     {
-        /*Á´Â·ÐÅºÅ²î*/
+        /*ï¿½ï¿½Â·ï¿½ÅºÅ²ï¿½*/
         oal_print_hi11xx_log(HI11XX_LOG_ERR, "nf_err found, intr_status=0x%8x", msg_intr_status.AsDword);
         oal_pcie_print_device_aer_cap_reg(pst_pci_res);
         /*Clear the int*/
@@ -4361,7 +4348,7 @@ oal_int32 oal_pcie_check_device_link_errors(oal_pcie_res* pst_pci_res)
 
     if(msg_intr_status.bits.soc_pcie_send_cor_err_status)
     {
-        /*¿ÉºöÂÔµÄ´íÎó*/
+        /*ï¿½Éºï¿½ï¿½ÔµÄ´ï¿½ï¿½ï¿½*/
         oal_print_hi11xx_log(HI11XX_LOG_WARN, "cor_err found, intr_status=0x%8x", msg_intr_status.AsDword);
         oal_pcie_print_device_aer_cap_reg(pst_pci_res);
         DECLARE_DFT_TRACE_KEY_INFO("soc_pcie_send_cor_err",OAL_DFT_TRACE_SUCC);
@@ -4414,7 +4401,7 @@ oal_int32 oal_pcie_device_mem_check_burst(oal_pcie_res* pst_pci_res, oal_uint32 
 
     oal_memset(pst_ddr_buf, test_value, burst_size);
 
-    /*ÏÈÁ¬ÐøÐ´ÔÙÁ¬Ðø¶Á£¬Á¬ÐøÐ´ÐÔÄÜ×îÓÅ*/
+    /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
     remain_size = length;
     offset = 0;
     total_size = 0;
@@ -4568,7 +4555,7 @@ oal_int32 oal_pcie_device_mem_check(oal_pcie_res* pst_pci_res, oal_ulong start, 
     return OAL_SUCC;
 }
 
-/*Ò»´ÎÐÔÐ´ÈëÈ«²¿µÄµØÖ·Öµ*/
+/*Ò»ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½È«ï¿½ï¿½ï¿½Äµï¿½Ö·Öµ*/
 oal_int32 oal_pcie_device_mem_write_address_onetime(oal_pcie_res* pst_pci_res, oal_ulong start, oal_ulong length)
 {
     oal_int32 ret;
@@ -4608,7 +4595,7 @@ oal_int32 oal_pcie_device_mem_write_address_onetime(oal_pcie_res* pst_pci_res, o
     remain_size = length;
     offset = 0;
 
-    /*4×Ö½ÚÐ´*/
+    /*4ï¿½Ö½ï¿½Ð´*/
     for(;;)
     {
         if(0 == remain_size)
@@ -4620,7 +4607,7 @@ oal_int32 oal_pcie_device_mem_write_address_onetime(oal_pcie_res* pst_pci_res, o
 
         for(i = 0; i < copy_size; i += 4)
         {
-            *(oal_uint32*)(pst_ddr_buf + i) = start + offset + i;/*CPUµØÖ·*/
+            *(oal_uint32*)(pst_ddr_buf + i) = start + offset + i;/*CPUï¿½ï¿½Ö·*/
         }
 
         oal_pcie_memcopy((oal_ulong)addr_map.va + offset, (oal_ulong)pst_ddr_buf, copy_size);
@@ -4639,7 +4626,7 @@ oal_int32 oal_pcie_device_mem_write_address_onetime(oal_pcie_res* pst_pci_res, o
     return OAL_SUCC;
 }
 
-/*Ò»´ÎÐÔ¶Á³öÈ«²¿µÄµØÖ·Öµ²¢ÇÒÐ£Ñé*/
+/*Ò»ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½È«ï¿½ï¿½ï¿½Äµï¿½Ö·Öµï¿½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½*/
 oal_int32 oal_pcie_device_mem_read_address_onetime(oal_pcie_res* pst_pci_res, oal_ulong start, oal_ulong length)
 {
     oal_int32 ret;
@@ -4679,7 +4666,7 @@ oal_int32 oal_pcie_device_mem_read_address_onetime(oal_pcie_res* pst_pci_res, oa
     remain_size = length;
     offset = 0;
 
-    /*4×Ö½ÚÐ´*/
+    /*4ï¿½Ö½ï¿½Ð´*/
     for(;;)
     {
         if(0 == remain_size)
@@ -4694,7 +4681,7 @@ oal_int32 oal_pcie_device_mem_read_address_onetime(oal_pcie_res* pst_pci_res, oa
         for(i = 0; i < copy_size; i += 4)
         {
             oal_uint32 value = *((oal_uint32*)(pst_ddr_buf + i));
-            oal_uint32 cpu_address = start + offset + i;/*CPUµØÖ·*/
+            oal_uint32 cpu_address = start + offset + i;/*CPUï¿½ï¿½Ö·*/
             if(OAL_UNLIKELY(value != cpu_address))
             {
                 oal_print_hi11xx_log(HI11XX_LOG_ERR, "mem check address verify failed, [0x%lx--0x%lx] at 0x%x, write 0x%x read 0x%x",
@@ -4769,7 +4756,7 @@ oal_int32 oal_pcie_device_mem_performance(oal_pcie_res* pst_pci_res, oal_ulong s
 
         oal_get_time_cost_start(cost);
 
-        /*Ð´ÐÔÄÜ, Ð´¿ÉÒÔ¸²¸Ç¶Á*/
+        /*Ð´ï¿½ï¿½ï¿½ï¿½, Ð´ï¿½ï¿½ï¿½Ô¸ï¿½ï¿½Ç¶ï¿½*/
         remain_size = 0;
         total_size = 0;
 
@@ -4819,7 +4806,7 @@ oal_int32 oal_pcie_device_mem_performance(oal_pcie_res* pst_pci_res, oal_ulong s
 
         oal_get_time_cost_start(cost);
 
-        /*¶ÁÐÔÄÜ, Ð´¿ÉÒÔ¸²¸Ç¶Á*/
+        /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, Ð´ï¿½ï¿½ï¿½Ô¸ï¿½ï¿½Ç¶ï¿½*/
         remain_size = 0;
         total_size = 0;
 
@@ -4935,7 +4922,7 @@ oal_int32 oal_pcie_device_scan_wmem(oal_pcie_res* pst_pci_res)
     else
     {
         oal_get_time_cost_start(cost);
-        /*Á¬ÐøÐ´£¬Á¬Ðø¶Á£¬SocÒªÇóÐ´Èëµ±Ç°µØÖ·µÄÖµ*/
+        /*ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½SocÒªï¿½ï¿½Ð´ï¿½ëµ±Ç°ï¿½ï¿½Ö·ï¿½ï¿½Öµ*/
         for(i = 0; i < scan_nums; i++)
         {
             cpu_start = pst_scan_base[i][0];
@@ -5015,7 +5002,7 @@ oal_int32 oal_pcie_device_dereset_bcpu(oal_pcie_res* pst_pci_res)
 
     oal_print_hi11xx_log(HI11XX_LOG_INFO, "bcpu dereset, reg=0x%x", oal_readl(pst_glb_ctrl + 0x94));
 
-    /*bcpu mem½â¸´Î»ÐèÒªÊ±¼ä, 1103 32K¼ÆÊý, 230us*/
+    /*bcpu memï¿½â¸´Î»ï¿½ï¿½ÒªÊ±ï¿½ï¿½, 1103 32Kï¿½ï¿½ï¿½ï¿½, 230us*/
     oal_msleep(1);
 
     return OAL_SUCC;
@@ -5081,7 +5068,7 @@ oal_int32 oal_pcie_device_scan_bmem(oal_pcie_res* pst_pci_res)
     }
     else
     {
-        /*Á¬ÐøÐ´£¬Á¬Ðø¶Á£¬SocÒªÇóÐ´Èëµ±Ç°µØÖ·µÄÖµ*/
+        /*ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½SocÒªï¿½ï¿½Ð´ï¿½ëµ±Ç°ï¿½ï¿½Ö·ï¿½ï¿½Öµ*/
         for(i = 0; i < scan_nums; i++)
         {
             cpu_start = pst_scan_base[i][0];
@@ -5239,7 +5226,7 @@ oal_int32 oal_pcie_copy_to_device_by_dword(oal_pcie_res* pst_pci_res,
     return (oal_int32)data_size;
 }
 
-/*Ê±ÖÓ·ÖÆµÒªÔÚµÍ¹¦ºÄ¹Ø±ÕÏÂÅäÖÃ*/
+/*Ê±ï¿½Ó·ï¿½ÆµÒªï¿½ÚµÍ¹ï¿½ï¿½Ä¹Ø±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 oal_int32 oal_pcie_device_auxclk_init(oal_pcie_res* pst_pci_res)
 {
     oal_int32  ret;
@@ -5252,7 +5239,7 @@ oal_int32 oal_pcie_device_auxclk_init(oal_pcie_res* pst_pci_res)
     value |= 0x1;
     oal_writel(value , pst_pci_res->pst_pci_dbi_base + PCIE_AUX_CLK_FREQ_OFF);
 
-    /*tcxo 38.4M 39·ÖÆµ = 0.98M ½Ó½ü1M*/
+    /*tcxo 38.4M 39ï¿½ï¿½Æµ = 0.98M ï¿½Ó½ï¿½1M*/
     ret = oal_pcie_inbound_ca_to_va(pst_pci_res, (0x50000000 + 0x2c), &st_map);
     if(OAL_SUCC != ret)
     {
@@ -5325,7 +5312,7 @@ oal_int32 oal_pcie_comm_ringbuf_res_map(oal_pcie_res* pst_pci_res)
 {
     oal_int32 i;
     oal_int32 ret;
-    pci_addr_map      st_map;/*DEVICE CPUµØÖ·*/
+    pci_addr_map      st_map;/*DEVICE CPUï¿½ï¿½Ö·*/
 
     for(i = 0; i < PCIE_COMM_RINGBUF_BUTT; i++)
     {
@@ -5347,7 +5334,7 @@ oal_int32 oal_pcie_comm_ringbuf_res_map(oal_pcie_res* pst_pci_res)
 
         PCI_PRINT_LOG(PCI_LOG_DBG, "comm ringbuf %d base address is 0x%llx", i, pst_pci_res->st_ringbuf.st_ringbuf[i].base_addr);
 
-        /*comm ringbuf data ËùÔÚDMAµØÖ·*/
+        /*comm ringbuf data ï¿½ï¿½ï¿½ï¿½DMAï¿½ï¿½Ö·*/
         oal_memcopy((oal_void*)&pst_pci_res->st_ringbuf_res.comm_rb_res[i].data_daddr,
                         (oal_void*)&st_map, sizeof(st_map));
 
@@ -5390,7 +5377,7 @@ oal_int32 oal_pcie_ringbuf_h2d_refresh(oal_pcie_res* pst_pci_res)
     oal_int32 ret;
     oal_int32 i;
     pcie_share_mem_stru st_share_mem;
-    pci_addr_map      st_map;/*DEVICE CPUµØÖ·*/
+    pci_addr_map      st_map;/*DEVICE CPUï¿½ï¿½Ö·*/
 
     oal_pcie_memcopy((oal_ulong)&st_share_mem,  (oal_ulong)pst_pci_res->dev_share_mem.va, sizeof(pcie_share_mem_stru));
 
@@ -5405,15 +5392,15 @@ oal_int32 oal_pcie_ringbuf_h2d_refresh(oal_pcie_res* pst_pci_res)
     /*h->h*/
     oal_memcopy(&pst_pci_res->st_ringbuf_map, &st_map, sizeof(pst_pci_res->st_ringbuf_map));
 
-    /*deviceµÄringbuf¹ÜÀí½á¹¹Í¬²½µ½Host*/
+    /*deviceï¿½ï¿½ringbufï¿½ï¿½ï¿½ï¿½ï¿½á¹¹Í¬ï¿½ï¿½ï¿½ï¿½Host*/
 #ifdef CONFIG_PCIE_MEM_WR_CACHE_ENABLE
     //oal_pci_cache_inv(pst_pci_dev, (oal_void*)pst_pci_res->st_ringbuf_map.pa, sizeof(pst_pci_res->st_ringbuf));
 #endif
 
-    /*ÕâÀïÖØÐÂË¢ÐÂh2d ringbuf Ö¸Õë*/
+    /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¢ï¿½ï¿½h2d ringbuf Ö¸ï¿½ï¿½*/
     oal_pcie_memcopy((oal_ulong)&pst_pci_res->st_ringbuf, (oal_ulong)pst_pci_res->st_ringbuf_map.va, sizeof(pst_pci_res->st_ringbuf));
 
-    /*³õÊ¼»¯RX BUFF*/
+    /*ï¿½ï¿½Ê¼ï¿½ï¿½RX BUFF*/
     for(i = 0 ; i < PCIE_H2D_QTYPE_BUTT; i++)
     {
         oal_ulong offset;
@@ -5433,14 +5420,14 @@ oal_int32 oal_pcie_ringbuf_h2d_refresh(oal_pcie_res* pst_pci_res)
     return OAL_SUCC;
 }
 
-/*³õÊ¼»¯Host ringbuf ºÍ Device ringbuf µÄÓ³Éä*/
+/*ï¿½ï¿½Ê¼ï¿½ï¿½Host ringbuf ï¿½ï¿½ Device ringbuf ï¿½ï¿½Ó³ï¿½ï¿½*/
 oal_int32 oal_pcie_ringbuf_res_map(oal_pcie_res* pst_pci_res)
 {
     oal_int32 ret;
     oal_int32 i;
     oal_uint8 reg = 0;
     oal_pci_dev_stru *pst_pci_dev;
-    pci_addr_map      st_map;/*DEVICE CPUµØÖ·*/
+    pci_addr_map      st_map;/*DEVICE CPUï¿½ï¿½Ö·*/
     pcie_share_mem_stru st_share_mem;
 
     pst_pci_dev = PCIE_RES_TO_DEV(pst_pci_res);
@@ -5469,19 +5456,19 @@ oal_int32 oal_pcie_ringbuf_res_map(oal_pcie_res* pst_pci_res)
     /*h->h*/
     oal_memcopy(&pst_pci_res->st_ringbuf_map, &st_map, sizeof(pst_pci_res->st_ringbuf_map));
 
-    /*deviceµÄringbuf¹ÜÀí½á¹¹Í¬²½µ½Host*/
+    /*deviceï¿½ï¿½ringbufï¿½ï¿½ï¿½ï¿½ï¿½á¹¹Í¬ï¿½ï¿½ï¿½ï¿½Host*/
 #ifdef CONFIG_PCIE_MEM_WR_CACHE_ENABLE
     oal_pci_cache_inv(pst_pci_dev, (oal_void*)pst_pci_res->st_ringbuf_map.pa, sizeof(pst_pci_res->st_ringbuf));
 #endif
     oal_pcie_memcopy((oal_ulong)&pst_pci_res->st_ringbuf, (oal_ulong)pst_pci_res->st_ringbuf_map.va, sizeof(pst_pci_res->st_ringbuf));
 
-    /*³õÊ¼»¯ringbuf ¹ÜÀí½á¹¹ÌåµÄÓ³Éä*/
+    /*ï¿½ï¿½Ê¼ï¿½ï¿½ringbuf ï¿½ï¿½ï¿½ï¿½ï¿½á¹¹ï¿½ï¿½ï¿½Ó³ï¿½ï¿½*/
     pst_pci_res->st_rx_res.ringbuf_ctrl_dma_addr.pa = pst_pci_res->st_ringbuf_map.pa + OAL_OFFSET_OF(pcie_ringbuf_res,st_d2h_buf);
     pst_pci_res->st_rx_res.ringbuf_ctrl_dma_addr.va = pst_pci_res->st_ringbuf_map.va + OAL_OFFSET_OF(pcie_ringbuf_res,st_d2h_buf);
 
 
     /*TBD:TBC*/
-    /*³õÊ¼»¯TX BUFF, ²»¿¼ÂÇ´óÐ¡¶Ë£¬host/dev ¶¼ÊÇÐ¡¶Ë£¬·ñÕßÕâÀïµÄbase_addrÐèÒª×ª»»*/
+    /*ï¿½ï¿½Ê¼ï¿½ï¿½TX BUFF, ï¿½ï¿½ï¿½ï¿½ï¿½Ç´ï¿½Ð¡ï¿½Ë£ï¿½host/dev ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½Ë£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½base_addrï¿½ï¿½Òª×ªï¿½ï¿½*/
     ret = oal_pcie_inbound_ca_to_va(pst_pci_res, pst_pci_res->st_ringbuf.st_d2h_buf.base_addr, &st_map);
     if(OAL_SUCC != ret)
     {
@@ -5492,7 +5479,7 @@ oal_int32 oal_pcie_ringbuf_res_map(oal_pcie_res* pst_pci_res)
     oal_memcopy((oal_void*)&pst_pci_res->st_rx_res.ringbuf_data_dma_addr, (oal_void*)&st_map, sizeof(pst_pci_res->st_rx_res.ringbuf_data_dma_addr));
 
 
-    /*³õÊ¼»¯RX BUFF*/
+    /*ï¿½ï¿½Ê¼ï¿½ï¿½RX BUFF*/
     for(i = 0 ; i < PCIE_H2D_QTYPE_BUTT; i++)
     {
         oal_ulong offset;
@@ -5509,7 +5496,7 @@ oal_int32 oal_pcie_ringbuf_res_map(oal_pcie_res* pst_pci_res)
         pst_pci_res->st_tx_res[i].ringbuf_ctrl_dma_addr.va = pst_pci_res->st_ringbuf_map.va + offset;
     }
 
-    /*³õÊ¼»¯ÏûÏ¢TX RINGBUFF*/
+    /*ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Ï¢TX RINGBUFF*/
     ret = oal_pcie_inbound_ca_to_va(pst_pci_res, pst_pci_res->st_ringbuf.st_h2d_msg.base_addr, &st_map);
     if(OAL_SUCC != ret)
     {
@@ -5517,15 +5504,15 @@ oal_int32 oal_pcie_ringbuf_res_map(oal_pcie_res* pst_pci_res)
         return -OAL_ENOMEM;
     }
 
-    /*h2d message data ËùÔÚDMAµØÖ·*/
+    /*h2d message data ï¿½ï¿½ï¿½ï¿½DMAï¿½ï¿½Ö·*/
     oal_memcopy((oal_void*)&pst_pci_res->st_message_res.h2d_res.ringbuf_data_dma_addr,
                     (oal_void*)&st_map, sizeof(st_map));
 
-    /*h2d message ctrl ½á¹¹Ìå ËùÔÚDMAµØÖ·*/
+    /*h2d message ctrl ï¿½á¹¹ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½DMAï¿½ï¿½Ö·*/
     pst_pci_res->st_message_res.h2d_res.ringbuf_ctrl_dma_addr.va = pst_pci_res->st_ringbuf_map.va + OAL_OFFSET_OF(pcie_ringbuf_res,st_h2d_msg);
     pst_pci_res->st_message_res.h2d_res.ringbuf_ctrl_dma_addr.pa = pst_pci_res->st_ringbuf_map.pa + OAL_OFFSET_OF(pcie_ringbuf_res,st_h2d_msg);
 
-    /*³õÊ¼»¯ÏûÏ¢RX RINGBUFF*/
+    /*ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Ï¢RX RINGBUFF*/
     ret = oal_pcie_inbound_ca_to_va(pst_pci_res, pst_pci_res->st_ringbuf.st_d2h_msg.base_addr, &st_map);
     if(OAL_SUCC != ret)
     {
@@ -5533,11 +5520,11 @@ oal_int32 oal_pcie_ringbuf_res_map(oal_pcie_res* pst_pci_res)
         return -OAL_ENOMEM;
     }
 
-    /*d2h message data ËùÔÚDMAµØÖ·*/
+    /*d2h message data ï¿½ï¿½ï¿½ï¿½DMAï¿½ï¿½Ö·*/
     oal_memcopy((oal_void*)&pst_pci_res->st_message_res.d2h_res.ringbuf_data_dma_addr,
                     (oal_void*)&st_map, sizeof(st_map));
 
-    /*d2h message ctrl ½á¹¹Ìå ËùÔÚDMAµØÖ·*/
+    /*d2h message ctrl ï¿½á¹¹ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½DMAï¿½ï¿½Ö·*/
     pst_pci_res->st_message_res.d2h_res.ringbuf_ctrl_dma_addr.va = pst_pci_res->st_ringbuf_map.va + OAL_OFFSET_OF(pcie_ringbuf_res,st_d2h_msg);
     pst_pci_res->st_message_res.d2h_res.ringbuf_ctrl_dma_addr.pa = pst_pci_res->st_ringbuf_map.pa + OAL_OFFSET_OF(pcie_ringbuf_res,st_d2h_msg);
 
@@ -5575,17 +5562,15 @@ oal_int32 oal_pcie_ringbuf_res_map(oal_pcie_res* pst_pci_res)
 
 }
 
-/*edma read ¶ÔÓ¦device->host, ringbuf_write Ö¸¸üÐÂÐ´Ö¸Õë*/
+/*edma read ï¿½ï¿½Ó¦device->host, ringbuf_write Ö¸ï¿½ï¿½ï¿½ï¿½Ð´Ö¸ï¿½ï¿½*/
 oal_int32 oal_pcie_d2h_ringbuf_write(oal_pcie_res* pst_pci_res,
                                                     pci_addr_map*     pst_map,
                                                     pcie_write_ringbuf_item* pst_item)
 {
-    /*²»ÅÐ¶ÏÐ´Ö¸Õë£¬´Ëº¯ÊýÖ»Ö´ÐÐÐ´²Ù×÷*/
-    oal_pci_dev_stru *pst_pci_dev;
+    /*ï¿½ï¿½ï¿½Ð¶ï¿½Ð´Ö¸ï¿½ë£¬ï¿½Ëºï¿½ï¿½ï¿½Ö»Ö´ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½*/
     oal_uint32 real_wr;
 
     pcie_ringbuf* pst_ringbuf = &pst_pci_res->st_ringbuf.st_d2h_buf;
-    pst_pci_dev = PCIE_RES_TO_DEV(pst_pci_res);
 
     /*Debug*/
     if(OAL_UNLIKELY(pst_ringbuf->item_len != sizeof(pcie_write_ringbuf_item)))
@@ -5605,7 +5590,7 @@ oal_int32 oal_pcie_d2h_ringbuf_write(oal_pcie_res* pst_pci_res,
     real_wr = pst_ringbuf->wr & (pst_ringbuf->size - 1);
     oal_pcie_memcopy((oal_ulong)((oal_ulong)pst_map->va + real_wr), (oal_ulong)pst_item, pst_ringbuf->item_len);
 #ifdef CONFIG_PCIE_MEM_WR_CACHE_ENABLE
-    oal_pci_cache_flush(pst_pci_dev, (oal_void*)pst_map->pa, pst_ringbuf->item_len);
+    oal_pci_cache_flush((oal_void*)pst_map->pa, pst_ringbuf->item_len);
 #endif
     pst_ringbuf->wr += pst_ringbuf->item_len;
     //oal_pcie_mips_end(PCIE_MIPS_RX_RINGBUF_WRITE);
@@ -5620,7 +5605,7 @@ oal_uint32 oal_pcie_d2h_ringbuf_freecount(oal_pcie_res* pst_pci_res, oal_int32 i
 
     if(OAL_TRUE == is_sync)
     {
-        /*Í¬²½Dev2HostµÄ¶ÁÖ¸Õë*/
+        /*Í¬ï¿½ï¿½Dev2Hostï¿½Ä¶ï¿½Ö¸ï¿½ï¿½*/
         oal_pcie_d2h_ringbuf_rd_update(pst_pci_res);
     }
 
@@ -5629,8 +5614,8 @@ oal_uint32 oal_pcie_d2h_ringbuf_freecount(oal_pcie_res* pst_pci_res, oal_int32 i
 
 oal_int32 oal_pcie_d2h_ringbuf_wr_update(oal_pcie_res* pst_pci_res)
 {
-    /*d2h·½Ïò£¬Í¬²½hostµÄringbuf¹ÜÀí½á¹¹ÌåµÄÐ´Ö¸Õëµ½DEVICE²à,
-      ÐèÒªË¢cache*/
+    /*d2hï¿½ï¿½ï¿½ï¿½Í¬ï¿½ï¿½hostï¿½ï¿½ringbufï¿½ï¿½ï¿½ï¿½ï¿½á¹¹ï¿½ï¿½ï¿½Ð´Ö¸ï¿½ëµ½DEVICEï¿½ï¿½,
+      ï¿½ï¿½ÒªË¢cache*/
     pci_addr_map st_map;
 
 #ifdef CONFIG_PCIE_MEM_WR_CACHE_ENABLE
@@ -5652,8 +5637,8 @@ oal_int32 oal_pcie_d2h_ringbuf_wr_update(oal_pcie_res* pst_pci_res)
 
 oal_int32 oal_pcie_d2h_ringbuf_rd_update(oal_pcie_res* pst_pci_res)
 {
-    /*d2h·½Ïò£¬Í¬²½deviceµÄ¶ÁÖ¸Õëµ½HOST ringbuf¹ÜÀí½á¹¹Ìå*/
-    /*ÐèÒªË¢cache*/
+    /*d2hï¿½ï¿½ï¿½ï¿½Í¬ï¿½ï¿½deviceï¿½Ä¶ï¿½Ö¸ï¿½ëµ½HOST ringbufï¿½ï¿½ï¿½ï¿½ï¿½á¹¹ï¿½ï¿½*/
+    /*ï¿½ï¿½ÒªË¢cache*/
     oal_uint32 rd;
     pci_addr_map st_map;
 #ifdef CONFIG_PCIE_MEM_WR_CACHE_ENABLE
@@ -5665,7 +5650,7 @@ oal_int32 oal_pcie_d2h_ringbuf_rd_update(oal_pcie_res* pst_pci_res)
     st_map.pa = pst_pci_res->st_rx_res.ringbuf_ctrl_dma_addr.pa + OAL_OFFSET_OF(pcie_ringbuf, rd);
 
 #ifdef CONFIG_PCIE_MEM_WR_CACHE_ENABLE
-    /*ÎÞÐ§»¯cache*/
+    /*ï¿½ï¿½Ð§ï¿½ï¿½cache*/
     oal_pci_cache_inv(pst_pci_dev, (oal_void*)st_map.pa, sizeof(pst_pci_res->st_ringbuf.st_d2h_buf.rd));
 #endif
 
@@ -5681,7 +5666,7 @@ oal_int32 oal_pcie_d2h_ringbuf_rd_update(oal_pcie_res* pst_pci_res)
     PCI_PRINT_LOG(PCI_LOG_DBG, "d2h ringbuf rd update:[0x%lx:rd:%u]", st_map.va, rd);
     if(OAL_UNLIKELY(rd < pst_pci_res->st_ringbuf.st_d2h_buf.rd))
     {
-        /*ÅÐ¶Ïrd ·­×ª*/
+        /*ï¿½Ð¶ï¿½rd ï¿½ï¿½×ª*/
         PCI_PRINT_LOG(PCI_LOG_INFO, "d2h new rd %u over old rd %u, wr:%u",
                                      rd, pst_pci_res->st_ringbuf.st_d2h_buf.rd,
                                     pst_pci_res->st_ringbuf.st_d2h_buf.wr);
@@ -5698,13 +5683,10 @@ oal_int32 oal_pcie_h2d_ringbuf_write(oal_pcie_res* pst_pci_res,
                                                     PCIE_H2D_RINGBUF_QTYPE qtype,
                                                     pcie_read_ringbuf_item* pst_item)
 {
-    /*²»ÅÐ¶ÏÐ´Ö¸Õë£¬´Ëº¯ÊýÖ»Ö´ÐÐÐ´²Ù×÷*/
-    oal_pci_dev_stru *pst_pci_dev;
+    /*ï¿½ï¿½ï¿½Ð¶ï¿½Ð´Ö¸ï¿½ë£¬ï¿½Ëºï¿½ï¿½ï¿½Ö»Ö´ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½*/
     oal_uint32 real_wr;
 
     pcie_ringbuf* pst_ringbuf = &pst_pci_res->st_ringbuf.st_h2d_buf[qtype];
-
-    pst_pci_dev = PCIE_RES_TO_DEV(pst_pci_res);
 
     /*Debug*/
     if(OAL_UNLIKELY(pst_pci_res->link_state < PCI_WLAN_LINK_WORK_UP ))
@@ -5743,7 +5725,7 @@ oal_int32 oal_pcie_h2d_ringbuf_write(oal_pcie_res* pst_pci_res,
         oal_print_hex_dump((oal_uint8 *)pst_item, pst_ringbuf->item_len, pst_ringbuf->item_len, "ringbuf write: ");
     }
 #ifdef CONFIG_PCIE_MEM_WR_CACHE_ENABLE
-    oal_pci_cache_flush(pst_pci_dev, (oal_void*)pst_map->pa, pst_ringbuf->item_len);
+    oal_pci_cache_flush((oal_void*)pst_map->pa, pst_ringbuf->item_len);
 #endif
     pst_ringbuf->wr += pst_ringbuf->item_len;
 
@@ -5753,8 +5735,8 @@ oal_int32 oal_pcie_h2d_ringbuf_write(oal_pcie_res* pst_pci_res,
 
 oal_int32 oal_pcie_h2d_ringbuf_wr_update(oal_pcie_res* pst_pci_res, PCIE_H2D_RINGBUF_QTYPE qtype)
 {
-    /*h2d·½Ïò£¬Í¬²½hostµÄringbuf¹ÜÀí½á¹¹ÌåµÄÐ´Ö¸Õëµ½DEVICE²à,
-      ÐèÒªË¢cache*/
+    /*h2dï¿½ï¿½ï¿½ï¿½Í¬ï¿½ï¿½hostï¿½ï¿½ringbufï¿½ï¿½ï¿½ï¿½ï¿½á¹¹ï¿½ï¿½ï¿½Ð´Ö¸ï¿½ëµ½DEVICEï¿½ï¿½,
+      ï¿½ï¿½ÒªË¢cache*/
     pci_addr_map st_map;
 #ifdef CONFIG_PCIE_MEM_WR_CACHE_ENABLE
     oal_pci_dev_stru *pst_pci_dev = PCIE_RES_TO_DEV(pst_pci_res);
@@ -5793,8 +5775,8 @@ oal_int32 oal_pcie_h2d_ringbuf_wr_update(oal_pcie_res* pst_pci_res, PCIE_H2D_RIN
 
 oal_int32 oal_pcie_h2d_ringbuf_rd_update(oal_pcie_res* pst_pci_res, PCIE_H2D_RINGBUF_QTYPE qtype)
 {
-    /*h2d·½Ïò£¬Í¬²½deviceµÄ¶ÁÖ¸Õëµ½HOST ringbuf¹ÜÀí½á¹¹Ìå*/
-    /*ÐèÒªË¢cache*/
+    /*h2dï¿½ï¿½ï¿½ï¿½Í¬ï¿½ï¿½deviceï¿½Ä¶ï¿½Ö¸ï¿½ëµ½HOST ringbufï¿½ï¿½ï¿½ï¿½ï¿½á¹¹ï¿½ï¿½*/
+    /*ï¿½ï¿½ÒªË¢cache*/
     oal_uint32 value;
     pci_addr_map st_map;
 #ifdef CONFIG_PCIE_MEM_WR_CACHE_ENABLE
@@ -5838,7 +5820,7 @@ oal_int32 oal_pcie_h2d_ringbuf_rd_update(oal_pcie_res* pst_pci_res, PCIE_H2D_RIN
     PCI_PRINT_LOG(PCI_LOG_DBG, "h2d ringbuf rd upate rd:%u, curr wr:%u", value, pst_pci_res->st_ringbuf.st_h2d_buf[qtype].wr);
     if(OAL_UNLIKELY(value < pst_pci_res->st_ringbuf.st_h2d_buf[qtype].rd))
     {
-        /*ÅÐ¶Ïrd ·­×ª*/
+        /*ï¿½Ð¶ï¿½rd ï¿½ï¿½×ª*/
         PCI_PRINT_LOG(PCI_LOG_INFO, "h2d qtype %d new rd %u over old rd %u, wr:%u", qtype,
                                     value, pst_pci_res->st_ringbuf.st_h2d_buf[qtype].rd,
                                     pst_pci_res->st_ringbuf.st_h2d_buf[qtype].wr);
@@ -5849,14 +5831,14 @@ oal_int32 oal_pcie_h2d_ringbuf_rd_update(oal_pcie_res* pst_pci_res, PCIE_H2D_RIN
     return OAL_SUCC;
 }
 
-/*»ñÈ¡ringbufÊ£Óà¿Õ¼ä´óÐ¡£¬is_syncÎªTRUEÊ± ÏÈ´ÓDEVICEÍ¬²½¶ÁÖ¸ÕëÔÙÅÐ¶Ï*/
+/*ï¿½ï¿½È¡ringbufÊ£ï¿½ï¿½Õ¼ï¿½ï¿½Ð¡ï¿½ï¿½is_syncÎªTRUEÊ± ï¿½È´ï¿½DEVICEÍ¬ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½*/
 oal_uint32 oal_pcie_h2d_ringbuf_freecount(oal_pcie_res* pst_pci_res, PCIE_H2D_RINGBUF_QTYPE qtype, oal_int32 is_sync)
 {
     pcie_ringbuf* pst_ringbuf = &pst_pci_res->st_ringbuf.st_h2d_buf[qtype];
 
     if(OAL_TRUE == is_sync)
     {
-        /*Í¬²½Host2DevµÄ¶ÁÖ¸Õë*/
+        /*Í¬ï¿½ï¿½Host2Devï¿½Ä¶ï¿½Ö¸ï¿½ï¿½*/
         oal_pcie_h2d_ringbuf_rd_update(pst_pci_res, qtype);
     }
 
@@ -5870,7 +5852,7 @@ oal_uint32 oal_pcie_h2d_ringbuf_is_empty(oal_pcie_res* pst_pci_res, PCIE_H2D_RIN
 
     if(OAL_TRUE == is_sync)
     {
-        /*Í¬²½Host2DevµÄ¶ÁÖ¸Õë*/
+        /*Í¬ï¿½ï¿½Host2Devï¿½Ä¶ï¿½Ö¸ï¿½ï¿½*/
         oal_pcie_h2d_ringbuf_rd_update(pst_pci_res, qtype);
     }
 
@@ -5880,7 +5862,7 @@ oal_uint32 oal_pcie_h2d_ringbuf_is_empty(oal_pcie_res* pst_pci_res, PCIE_H2D_RIN
 
 oal_int32 oal_pcie_h2d_doorbell(oal_pcie_res* pst_pci_res)
 {
-    /*ÇÃÁå,host->device ringbuf ÓÐÊý¾Ý¸üÐÂ,2¸ö¶ÓÁÐ¹²ÏíÒ»¸öÖÐ¶Ï*/
+    /*ï¿½ï¿½ï¿½ï¿½,host->device ringbuf ï¿½ï¿½ï¿½ï¿½ï¿½Ý¸ï¿½ï¿½ï¿½,2ï¿½ï¿½ï¿½ï¿½ï¿½Ð¹ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ð¶ï¿½*/
     /*TBD:TBC*/
     pst_pci_res->stat.h2d_doorbell_cnt++;
     PCI_PRINT_LOG(PCI_LOG_DBG, "oal_pcie_h2d_doorbell,cnt:%u", pst_pci_res->stat.h2d_doorbell_cnt);
@@ -5895,7 +5877,7 @@ oal_int32 oal_pcie_h2d_doorbell(oal_pcie_res* pst_pci_res)
 
 oal_int32 oal_pcie_d2h_doorbell(oal_pcie_res* pst_pci_res)
 {
-    /*ÇÃÁå,host->device ringbuf ÓÐÊý¾Ý¸üÐÂ,2¸ö¶ÓÁÐ¹²ÏíÒ»¸öÖÐ¶Ï*/
+    /*ï¿½ï¿½ï¿½ï¿½,host->device ringbuf ï¿½ï¿½ï¿½ï¿½ï¿½Ý¸ï¿½ï¿½ï¿½,2ï¿½ï¿½ï¿½ï¿½ï¿½Ð¹ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ð¶ï¿½*/
     /*TBD:TBC*/
     pst_pci_res->stat.d2h_doorbell_cnt++;
     PCI_PRINT_LOG(PCI_LOG_DBG, "oal_pcie_d2h_doorbell,cnt:%u", pst_pci_res->stat.d2h_doorbell_cnt);
@@ -5908,7 +5890,7 @@ oal_int32 oal_pcie_d2h_doorbell(oal_pcie_res* pst_pci_res)
     return OAL_SUCC;
 }
 
-/*¶ÓÁÐ´Ó¶ÓÍ·³ö¶Ó*/
+/*ï¿½ï¿½ï¿½Ð´Ó¶ï¿½Í·ï¿½ï¿½ï¿½ï¿½*/
 #ifdef _PRE_PLAT_FEATURE_HI110X_PCIE_H2D_BYPASS
 oal_int32 oal_pcie_send_netbuf(oal_pcie_res* pst_pci_res, oal_netbuf_stru *pst_netbuf, PCIE_H2D_RINGBUF_QTYPE qtype)
 {
@@ -5925,13 +5907,13 @@ oal_int32 oal_pcie_send_netbuf(oal_pcie_res* pst_pci_res, oal_netbuf_stru *pst_n
 
     if(queue_cnt > send_cnt)
     {
-        /*ringbuf ¿Õ¼ä²»¹», Ë¢ÐÂrdÖ¸Õë£¬ÖØÐÂÅÐ¶Ï*/
+        /*ringbuf ï¿½Õ¼ä²»ï¿½ï¿½, Ë¢ï¿½ï¿½rdÖ¸ï¿½ë£¬ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½*/
         send_cnt = oal_pcie_h2d_ringbuf_freecount(pst_pci_res, qtype, OAL_TRUE);
     }
 
     if(0 == send_cnt)
     {
-        /*ringbuf ÎªÂú*/
+        /*ringbuf Îªï¿½ï¿½*/
         return 0;
     }
 
@@ -5943,13 +5925,13 @@ oal_int32 oal_pcie_send_netbuf(oal_pcie_res* pst_pci_res, oal_netbuf_stru *pst_n
     //for(;;)
     //{
 
-        /*64bits ´«Êä, ²»¿¼ÂÇ´óÐ¡¶Ë*/
+        /*64bits ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½Ç´ï¿½Ð¡ï¿½ï¿½*/
         st_item.buff_paddr.addr = (oal_uint64)g_h2d_pci_dma_addr;
 
-        /*ÕâÀïµÄ³¤¶È°üº¬64BµÄÍ·*/
+        /*ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½È°ï¿½ï¿½ï¿½64Bï¿½ï¿½Í·*/
         if(OAL_LIKELY(OAL_NETBUF_LEN(pst_netbuf) > HCC_HDR_TOTAL_LEN))
         {
-            /*tx ringbufÖÐµÄ³¤¶È²»°üº¬Í·,¾ÍËã°üº¬Ò²Ö»ÊÇ¶à´«ÊäÒ»¸öÍ·µÄ³¤¶È*/
+            /*tx ringbufï¿½ÐµÄ³ï¿½ï¿½È²ï¿½ï¿½ï¿½ï¿½ï¿½Í·,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò²Ö»ï¿½Ç¶à´«ï¿½ï¿½Ò»ï¿½ï¿½Í·ï¿½Ä³ï¿½ï¿½ï¿½*/
             st_item.buf_len = PADDING((OAL_NETBUF_LEN(pst_netbuf) - HCC_HDR_TOTAL_LEN), 4) ;
         }
         else
@@ -5962,7 +5944,7 @@ oal_int32 oal_pcie_send_netbuf(oal_pcie_res* pst_pci_res, oal_netbuf_stru *pst_n
 
         PCI_PRINT_LOG(PCI_LOG_DBG, "h2d ringbuf write 0x%llx, len:%u", st_item.buff_paddr.addr, st_item.buf_len);
 
-        /*ÕâÀïÖ±½ÓÐ´£¬ÉÏÃæÒÑ¾­ÅÐ¶Ï¹ýringbufÓÐ¿Õ¼ä*/
+        /*ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½Ð¶Ï¹ï¿½ringbufï¿½Ð¿Õ¼ï¿½*/
         total_cnt += oal_pcie_h2d_ringbuf_write(pst_pci_res, &pst_pci_res->st_tx_res[qtype].ringbuf_data_dma_addr, qtype, &st_item);
     return total_cnt;
 }
@@ -6022,8 +6004,8 @@ oal_int32 oal_pcie_h2d_message_buf_write(oal_pcie_res* pst_pci_res, pcie_ringbuf
 
 oal_int32 oal_pcie_h2d_message_buf_rd_update(oal_pcie_res* pst_pci_res)
 {
-    /*ÐèÒªË¢cache*/
-    /*h2d·½Ïò£¬Í¬²½deviceµÄ¶ÁÖ¸Õëµ½HOST message ringbuf¹ÜÀí½á¹¹Ìå*/
+    /*ï¿½ï¿½ÒªË¢cache*/
+    /*h2dï¿½ï¿½ï¿½ï¿½Í¬ï¿½ï¿½deviceï¿½Ä¶ï¿½Ö¸ï¿½ëµ½HOST message ringbufï¿½ï¿½ï¿½ï¿½ï¿½á¹¹ï¿½ï¿½*/
     oal_uint32 rd;
     pci_addr_map st_map;
 
@@ -6035,7 +6017,7 @@ oal_int32 oal_pcie_h2d_message_buf_rd_update(oal_pcie_res* pst_pci_res)
     st_map.pa = pst_pci_res->st_message_res.h2d_res.ringbuf_ctrl_dma_addr.pa + OAL_OFFSET_OF(pcie_ringbuf, rd);
 
 #ifdef CONFIG_PCIE_MEM_WR_CACHE_ENABLE
-    /*ÎÞÐ§»¯cache*/
+    /*ï¿½ï¿½Ð§ï¿½ï¿½cache*/
     oal_pci_cache_inv(pst_pci_dev, (oal_void*)st_map.pa, sizeof(pst_pci_res->st_ringbuf.st_h2d_msg.rd));
 #endif
 
@@ -6056,8 +6038,8 @@ oal_int32 oal_pcie_h2d_message_buf_rd_update(oal_pcie_res* pst_pci_res)
 
 oal_int32 oal_pcie_h2d_message_buf_wr_update(oal_pcie_res* pst_pci_res)
 {
-    /*ÐèÒªË¢cache*/
-    /*h2d·½Ïò£¬Í¬²½deviceµÄ¶ÁÖ¸Õëµ½HOST message ringbuf¹ÜÀí½á¹¹Ìå*/
+    /*ï¿½ï¿½ÒªË¢cache*/
+    /*h2dï¿½ï¿½ï¿½ï¿½Í¬ï¿½ï¿½deviceï¿½Ä¶ï¿½Ö¸ï¿½ëµ½HOST message ringbufï¿½ï¿½ï¿½ï¿½ï¿½á¹¹ï¿½ï¿½*/
     oal_uint32 wr_back;
     pci_addr_map st_map;
 
@@ -6098,7 +6080,7 @@ oal_int32 oal_pcie_d2h_message_buf_wr_update(oal_pcie_res* pst_pci_res)
     st_map.pa = pst_pci_res->st_message_res.d2h_res.ringbuf_ctrl_dma_addr.pa + OAL_OFFSET_OF(pcie_ringbuf, wr);
 
 #ifdef CONFIG_PCIE_MEM_WR_CACHE_ENABLE
-    /*ÎÞÐ§»¯cache*/
+    /*ï¿½ï¿½Ð§ï¿½ï¿½cache*/
     oal_pci_cache_inv(pst_pci_dev, (oal_void*)st_map.pa, sizeof(pst_pci_res->st_ringbuf.st_d2h_msg.wr));
 #endif
     wr = oal_pcie_read_mem32(st_map.va);
@@ -6159,7 +6141,7 @@ oal_int32 oal_pcie_d2h_message_buf_read(oal_pcie_res* pst_pci_res, pcie_ringbuf*
     real_rd = rd & (pst_ringbuf->size -1);
 
 #ifdef CONFIG_PCIE_MEM_WR_CACHE_ENABLE
-    /*ÎÞÐ§»¯cache*/
+    /*ï¿½ï¿½Ð§ï¿½ï¿½cache*/
     oal_pci_cache_inv(pst_pci_dev, (oal_void*)pst_ringbuf_base->pa, pst_ringbuf->item_len);
 #endif
 
@@ -6257,7 +6239,7 @@ oal_int32 oal_pcie_ringbuf_read_rd(oal_pcie_res* pst_pci_res, PCIE_COMM_RINGBUF_
     st_map.pa = pst_pci_res->st_ringbuf_res.comm_rb_res[type].ctrl_daddr.pa + OAL_OFFSET_OF(pcie_ringbuf, rd);
 
 #ifdef CONFIG_PCIE_MEM_WR_CACHE_ENABLE
-    /*ÎÞÐ§»¯cache*/
+    /*ï¿½ï¿½Ð§ï¿½ï¿½cache*/
     oal_pci_cache_inv(pst_pci_dev, (oal_void*)st_map.pa, sizeof(pst_ringbuf->rd));
 #endif
 
@@ -6300,7 +6282,7 @@ oal_int32 oal_pcie_ringbuf_read_wr(oal_pcie_res* pst_pci_res, PCIE_COMM_RINGBUF_
     st_map.pa = pst_pci_res->st_ringbuf_res.comm_rb_res[type].ctrl_daddr.pa + OAL_OFFSET_OF(pcie_ringbuf, wr);
 
 #ifdef CONFIG_PCIE_MEM_WR_CACHE_ENABLE
-    /*ÎÞÐ§»¯cache*/
+    /*ï¿½ï¿½Ð§ï¿½ï¿½cache*/
     oal_pci_cache_inv(pst_pci_dev, (oal_void*)st_map.pa, sizeof(pst_ringbuf->wr));
 #endif
 
@@ -6366,7 +6348,7 @@ oal_int32 oal_pcie_ringbuf_read(oal_pcie_res* pst_pci_res, PCIE_COMM_RINGBUF_TYP
     real_rd = rd & (pst_ringbuf->size -1);
 
 #ifdef CONFIG_PCIE_MEM_WR_CACHE_ENABLE
-    /*ÎÞÐ§»¯cache*/
+    /*ï¿½ï¿½Ð§ï¿½ï¿½cache*/
     oal_pci_cache_inv(pst_pci_dev, (oal_void*)pst_ringbuf_base->pa, pst_ringbuf->item_len);
 #endif
 
@@ -6393,14 +6375,11 @@ oal_int32 oal_pcie_ringbuf_read(oal_pcie_res* pst_pci_res, PCIE_COMM_RINGBUF_TYP
 oal_int32 oal_pcie_ringbuf_write(oal_pcie_res* pst_pci_res,
                                                     PCIE_COMM_RINGBUF_TYPE type, oal_uint8* buf, oal_uint32 len)
 {
-    /*²»ÅÐ¶ÏÐ´Ö¸Õë£¬´Ëº¯ÊýÖ»Ö´ÐÐÐ´²Ù×÷*/
-    oal_pci_dev_stru *pst_pci_dev;
+    /*ï¿½ï¿½ï¿½Ð¶ï¿½Ð´Ö¸ï¿½ë£¬ï¿½Ëºï¿½ï¿½ï¿½Ö»Ö´ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½*/
     oal_uint32 real_wr;
 
     pcie_ringbuf* pst_ringbuf = &pst_pci_res->st_ringbuf.st_ringbuf[type];
     pci_addr_map* pst_ringbuf_base = &pst_pci_res->st_ringbuf_res.comm_rb_res[type].data_daddr;
-
-    pst_pci_dev = PCIE_RES_TO_DEV(pst_pci_res);
 
     /*Debug*/
     if(OAL_UNLIKELY(pst_pci_res->link_state < PCI_WLAN_LINK_RES_UP ))
@@ -6439,7 +6418,7 @@ oal_int32 oal_pcie_ringbuf_write(oal_pcie_res* pst_pci_res,
     }
 
 #ifdef CONFIG_PCIE_MEM_WR_CACHE_ENABLE
-    oal_pci_cache_flush(pst_pci_dev, (oal_void*)pst_ringbuf_base->pa, pst_ringbuf->item_len);
+    oal_pci_cache_flush((oal_void*)pst_ringbuf_base->pa, pst_ringbuf->item_len);
 #endif
 
     pst_ringbuf->wr += pst_ringbuf->item_len;
@@ -6554,10 +6533,10 @@ oal_int32 oal_pcie_send_message_to_dev(oal_pcie_res* pst_pci_res, oal_uint32 mes
         return -OAL_EIO;
     }
 
-    /*¸üÐÂÐ´Ö¸Õë*/
+    /*ï¿½ï¿½ï¿½ï¿½Ð´Ö¸ï¿½ï¿½*/
     oal_pcie_h2d_message_buf_wr_update(pst_pci_res);
 
-    /*´¥·¢h2d int*/
+    /*ï¿½ï¿½ï¿½ï¿½h2d int*/
     oal_writel(PCIE_H2D_TRIGGER_VALUE, pst_pci_res->pst_pci_ctrl_base + PCIE_D2H_DOORBELL_OFF);
 
     oal_spin_unlock(&pst_pci_res->st_message_res.h2d_res.lock);
@@ -6590,7 +6569,7 @@ oal_int32 oal_pcie_sleep_request_host_check(oal_pcie_res* pst_pci_res)
     oal_uint32 total_len = 0;
 
 
-    /*´ËÊ±allow sleep Ó¦¸ÃtxÒ²±»ÊÍ·Å*/
+    /*ï¿½ï¿½Ê±allow sleep Ó¦ï¿½ï¿½txÒ²ï¿½ï¿½ï¿½Í·ï¿½*/
     for(i = 0; i < PCIE_H2D_QTYPE_BUTT; i++)
     {
         len = oal_netbuf_list_len(&pst_pci_res->st_tx_res[i].txq);
@@ -6634,7 +6613,7 @@ oal_int32 oal_pcie_send_netbuf_list(oal_pcie_res* pst_pci_res, oal_netbuf_head_s
         return 0;
     }
 
-    /*´ýÓÅ»¯,TBD:TBC*/
+    /*ï¿½ï¿½ï¿½Å»ï¿½,TBD:TBC*/
     pst_pci_dev = PCIE_RES_TO_DEV(pst_pci_res);
     pst_pci_lres = (oal_pcie_linux_res*)oal_pci_get_drvdata(pst_pci_dev);
 
@@ -6659,13 +6638,13 @@ oal_int32 oal_pcie_send_netbuf_list(oal_pcie_res* pst_pci_res, oal_netbuf_head_s
 
     if(queue_cnt > send_cnt)
     {
-        /*ringbuf ¿Õ¼ä²»¹», Ë¢ÐÂrdÖ¸Õë£¬ÖØÐÂÅÐ¶Ï*/
+        /*ringbuf ï¿½Õ¼ä²»ï¿½ï¿½, Ë¢ï¿½ï¿½rdÖ¸ï¿½ë£¬ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½*/
         send_cnt = oal_pcie_h2d_ringbuf_freecount(pst_pci_res, qtype, OAL_TRUE);
     }
 
     if(0 == send_cnt)
     {
-        /*ringbuf ÎªÂú*/
+        /*ringbuf Îªï¿½ï¿½*/
         return 0;
     }
 
@@ -6675,7 +6654,7 @@ oal_int32 oal_pcie_send_netbuf_list(oal_pcie_res* pst_pci_res, oal_netbuf_head_s
 
     for(;;)
     {
-        /*Ìî³äringbuf*/
+        /*ï¿½ï¿½ï¿½ringbuf*/
         if(0 == oal_pcie_h2d_ringbuf_freecount(pst_pci_res, qtype, OAL_FALSE))
         {
             break;
@@ -6700,7 +6679,7 @@ oal_int32 oal_pcie_send_netbuf_list(oal_pcie_res* pst_pci_res, oal_netbuf_head_s
         pci_dma_addr = dma_map_single(&pst_pci_dev->dev, OAL_NETBUF_DATA(pst_netbuf), OAL_NETBUF_LEN(pst_netbuf), PCI_DMA_TODEVICE);
         if (dma_mapping_error(&pst_pci_dev->dev, pci_dma_addr))
         {
-            /*Ó³ÉäÊ§°ÜÏÈ¼òµ¥´¦Àí¶ªµônetbuf, dma mask ·¶Î§ÄÚ ÕâÀïÖ»ÊÇË¢Cache*/
+            /*Ó³ï¿½ï¿½Ê§ï¿½ï¿½ï¿½È¼òµ¥´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½netbuf, dma mask ï¿½ï¿½Î§ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½Ë¢Cache*/
             DECLARE_DFT_TRACE_KEY_INFO("pcie tx map failed", OAL_DFT_TRACE_OTHER);
             hcc_tx_netbuf_free(pst_netbuf);
             continue;
@@ -6714,13 +6693,13 @@ oal_int32 oal_pcie_send_netbuf_list(oal_pcie_res* pst_pci_res, oal_netbuf_head_s
                                 32, "netbuf: ");
         }
 
-        /*64bits ´«Êä, ²»¿¼ÂÇ´óÐ¡¶Ë*/
+        /*64bits ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½Ç´ï¿½Ð¡ï¿½ï¿½*/
         st_item.buff_paddr.addr = (oal_uint64)pci_dma_addr;
 
-        /*ÕâÀïµÄ³¤¶È°üº¬64BµÄÍ·*/
+        /*ï¿½ï¿½ï¿½ï¿½Ä³ï¿½ï¿½È°ï¿½ï¿½ï¿½64Bï¿½ï¿½Í·*/
         if(OAL_LIKELY(OAL_NETBUF_LEN(pst_netbuf) >= HCC_HDR_TOTAL_LEN))
         {
-            /*tx ringbufÖÐµÄ³¤¶È²»°üº¬Í·,¾ÍËã°üº¬Ò²Ö»ÊÇ¶à´«ÊäÒ»¸öÍ·µÄ³¤¶È*/
+            /*tx ringbufï¿½ÐµÄ³ï¿½ï¿½È²ï¿½ï¿½ï¿½ï¿½ï¿½Í·,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò²Ö»ï¿½Ç¶à´«ï¿½ï¿½Ò»ï¿½ï¿½Í·ï¿½Ä³ï¿½ï¿½ï¿½*/
             st_item.buf_len = PADDING((OAL_NETBUF_LEN(pst_netbuf) - HCC_HDR_TOTAL_LEN), 4) ;
         }
         else
@@ -6734,23 +6713,23 @@ oal_int32 oal_pcie_send_netbuf_list(oal_pcie_res* pst_pci_res, oal_netbuf_head_s
         st_cb_dma.paddr.addr = (oal_uint64)pci_dma_addr;
         st_cb_dma.len   = OAL_NETBUF_LEN(pst_netbuf);
 
-        /*dmaµØÖ·ºÍ³¤¶È´æÔÚCB×Ö¶ÎÖÐ£¬·¢ËÍÍê³ÉºóÊÍ·ÅDMAµØÖ·*/
+        /*dmaï¿½ï¿½Ö·ï¿½Í³ï¿½ï¿½È´ï¿½ï¿½ï¿½CBï¿½Ö¶ï¿½ï¿½Ð£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Éºï¿½ï¿½Í·ï¿½DMAï¿½ï¿½Ö·*/
         oal_memcopy((oal_uint8*)OAL_NETBUF_CB(pst_netbuf) + sizeof(struct hcc_tx_cb_stru), &st_cb_dma, sizeof(st_cb_dma));
 
-        /*netbufÈë¶Ó*/
+        /*netbufï¿½ï¿½ï¿½*/
         oal_spin_lock_irq_save(&pst_pci_res->st_tx_res[qtype].lock, &flags);
         oal_netbuf_list_tail_nolock(&pst_pci_res->st_tx_res[qtype].txq, pst_netbuf);
         oal_spin_unlock_irq_restore(&pst_pci_res->st_tx_res[qtype].lock, &flags);
 
         PCI_PRINT_LOG(PCI_LOG_DBG, "h2d ringbuf write 0x%llx, len:%u", st_item.buff_paddr.addr, st_item.buf_len);
 
-        /*ÕâÀïÖ±½ÓÐ´£¬ÉÏÃæÒÑ¾­ÅÐ¶Ï¹ýringbufÓÐ¿Õ¼ä*/
+        /*ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½Ð¶Ï¹ï¿½ringbufï¿½Ð¿Õ¼ï¿½*/
         total_cnt += oal_pcie_h2d_ringbuf_write(pst_pci_res, &pst_pci_res->st_tx_res[qtype].ringbuf_data_dma_addr, qtype, &st_item);
     }
 
     if(total_cnt)
     {
-        /*¸üÐÂdevice²àwrÖ¸Õë,Ë¢ringbuf cache*/
+        /*ï¿½ï¿½ï¿½ï¿½deviceï¿½ï¿½wrÖ¸ï¿½ï¿½,Ë¢ringbuf cache*/
         oal_pcie_h2d_ringbuf_wr_update(pst_pci_res, qtype);
 
         /*tx doorbell*/
@@ -6776,7 +6755,7 @@ oal_int32 oal_pcie_print_pcie_regs(oal_pcie_res* pst_pci_res, oal_uint32 base, o
     ret = oal_pcie_inbound_ca_to_va(pst_pci_res, base, &addr_map);
     if(OAL_UNLIKELY(OAL_SUCC != ret))
     {
-        /*share mem µØÖ·Î´Ó³Éä!*/
+        /*share mem ï¿½ï¿½Ö·Î´Ó³ï¿½ï¿½!*/
         oal_print_hi11xx_log(HI11XX_LOG_ERR, "can not found mem map for dev cpu address 0x%x\n", base);
         return -OAL_EFAIL;
     }
@@ -6928,7 +6907,6 @@ oal_void oal_pcie_print_transfer_info(oal_pcie_res* pst_pci_res, oal_uint64 prin
     oal_int32 i = 0;
     oal_int32 j = 0;
     oal_uint32 len = 0;
-    oal_uint32 total_len = 0;
 
     if(NULL == pst_pci_res)
         return;
@@ -6966,7 +6944,6 @@ oal_void oal_pcie_print_transfer_info(oal_pcie_res* pst_pci_res, oal_uint64 prin
         if(len)
         {
             PCI_PRINT_LOG(PCI_LOG_INFO, "[qid:%d]len=%d", i, len);
-            total_len += len;
         }
 
         PCI_PRINT_LOG(PCI_LOG_INFO,"[qid:%d]tx ringbuf cond is %d", i, oal_atomic_read(&pst_pci_res->st_tx_res[i].tx_ringbuf_sync_cond));
@@ -7568,7 +7545,7 @@ oal_int32 oal_pcie_savemem(oal_pcie_res* pst_pcie_res, char* file_name, oal_uint
 #ifdef CONFIG_PCIE_MEM_WR_CACHE_ENABLE
         oal_pci_cache_inv(pst_pci_dev, (oal_void*)addr_map.pa, sizeof(value));
 #endif
-        /*ÕâÀïÓÐ¿ÉÄÜ±£´æµÄÊÇ¼Ä´æÆ÷ÇøÓò£¬°´4×Ö½Ú¶ÔÆë·ÃÎÊ*/
+        /*ï¿½ï¿½ï¿½ï¿½ï¿½Ð¿ï¿½ï¿½Ü±ï¿½ï¿½ï¿½ï¿½ï¿½Ç¼Ä´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ò£¬°ï¿½4ï¿½Ö½Ú¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
         value = oal_readl((void*)addr_map.va);
         oal_writel(value, pst_buf + index);
     }
@@ -7656,7 +7633,7 @@ oal_int32 oal_pcie_save_hostmem(oal_pcie_res* pst_pcie_res, char* file_name, oal
 
     for(index = 0; index < length; index += 4)
     {
-        /*ÕâÀïÓÐ¿ÉÄÜ±£´æµÄÊÇ¼Ä´æÆ÷ÇøÓò£¬°´4×Ö½Ú¶ÔÆë·ÃÎÊ*/
+        /*ï¿½ï¿½ï¿½ï¿½ï¿½Ð¿ï¿½ï¿½Ü±ï¿½ï¿½ï¿½ï¿½ï¿½Ç¼Ä´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ò£¬°ï¿½4ï¿½Ö½Ú¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
         value = oal_readl(vaddr + index);
         oal_writel(value, pst_buf + index);
     }
@@ -7916,9 +7893,9 @@ oal_int32 oal_pcie_send_test_pkt(oal_int32 num)
     return OAL_SUCC;
 }
 
-/*²âÊÔoutboundÊÇ·ñÉúÐ§£¬·µ»ØDDRµØÖ·£¬
-  Í¨¹ýSSI»òÕßWCPU ¶ÁÐ´Device ²àPCIe SlaveµØÖ· ²é¿´DDRÊÇ·ñÓÐ¸Ä±ä,
-  1103 Slave ¿Õ¼äÎª256M*/
+/*ï¿½ï¿½ï¿½ï¿½outboundï¿½Ç·ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½DDRï¿½ï¿½Ö·ï¿½ï¿½
+  Í¨ï¿½ï¿½SSIï¿½ï¿½ï¿½ï¿½WCPU ï¿½ï¿½Ð´Device ï¿½ï¿½PCIe Slaveï¿½ï¿½Ö· ï¿½é¿´DDRï¿½Ç·ï¿½ï¿½Ð¸Ä±ï¿½,
+  1103 Slave ï¿½Õ¼ï¿½Îª256M*/
 oal_int32 oal_pcie_outbound_test(oal_pcie_res* pst_pcie_res, char*buf)
 {
     OAL_STATIC dma_addr_t g_outbound_dma_addr = 0;
@@ -8091,7 +8068,7 @@ typedef struct _memcheck_item_
     oal_uint32 size;/*device cpu address*/
 }memcheck_item;
 
-/*ÐèÒªWCPU´úÂëÔÚbootloader ½×¶Î*/
+/*ï¿½ï¿½ÒªWCPUï¿½ï¿½ï¿½ï¿½ï¿½ï¿½bootloader ï¿½×¶ï¿½*/
 oal_int32 oal_pcie_device_memcheck_auto(oal_pcie_res* pst_pcie_res)
 {
     oal_int32 ret, i;
@@ -8278,7 +8255,7 @@ oal_int32 oal_pci_sm_state_monitor(oal_void)
     unsigned int link_up_stable_counter = 0;
     void* __iomem pcie_sys_base_virt   = NULL;
     OAL_STATIC oal_uint32 old = 0;
-    /*µÈ´ý½¨Á´*/
+    /*ï¿½È´ï¿½ï¿½ï¿½ï¿½ï¿½*/
     pcie_sys_base_virt = ioremap_nocache(0x10100000, 0x1000);
     if(NULL == pcie_sys_base_virt)
     {
@@ -8341,11 +8318,11 @@ oal_int32 oal_pcie_debug_wlan_power_on(struct device *dev, struct device_attribu
 OAL_STATIC oal_int32 oal_pcie_resume_handler(void* data)
 {
     OAL_REFERENCE(data);
-    /*ÕâÀï±£Ö¤½â¸´Î»EP¿ØÖÆÆ÷Ê±efuseÒÑ¾­ÎÈ¶¨*/
+    /*ï¿½ï¿½ï¿½ï±£Ö¤ï¿½â¸´Î»EPï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±efuseï¿½Ñ¾ï¿½ï¿½È¶ï¿½*/
     board_host_wakeup_dev_set(1);
     /*TBD:TBC ,
-      dev wakeup host ±»¸´ÓÃ³ÉÁËpanicÏûÏ¢£¬ÕâÀïÐèÒª´¦Àí*/
-    oal_msleep(25);/*ÕâÀïÒªÓÃGPIO ×öACK ÑÓ³Ù²»¿É¿¿, MPW2 Ó²¼þ»½ÐÑ15ms,Èí¼þ6ms*/
+      dev wakeup host ï¿½ï¿½ï¿½ï¿½ï¿½Ã³ï¿½ï¿½ï¿½panicï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½*/
+    oal_msleep(25);/*ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½GPIO ï¿½ï¿½ACK ï¿½Ó³Ù²ï¿½ï¿½É¿ï¿½, MPW2 Ó²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½15ms,ï¿½ï¿½ï¿½ï¿½6ms*/
     PCI_PRINT_LOG(PCI_LOG_DBG, "oal_pcie_resume_handler, pull up gpio");
     return 0;
 }
@@ -8435,7 +8412,7 @@ oal_int32 oal_pcie_debug_testcase(struct device *dev, struct device_attribute *a
     }
     if(!oal_strcmp(casename, "wlan_poweron_2g"))
     {
-        /*FPGA Ä¬ÈÏÇÐ»»µ½Gen 1*/
+        /*FPGA Ä¬ï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½Gen 1*/
         OAL_STATIC oal_uint32 change_2g = 0;
         if(!change_2g)
         {
@@ -8581,7 +8558,7 @@ oal_int32 oal_pcie_debug_testcase(struct device *dev, struct device_attribute *a
 
     if(!oal_strcmp(casename, "ram_memcheck"))
     {
-        /*±éÀúitcm,dtcm,pktmem,É¨ÄÚ´æ*/
+        /*ï¿½ï¿½ï¿½ï¿½itcm,dtcm,pktmem,É¨ï¿½Ú´ï¿½*/
         oal_pcie_device_memcheck_auto(pst_pcie_res);
     }
 
@@ -8656,26 +8633,26 @@ oal_int32 oal_pcie_debug_testcase(struct device *dev, struct device_attribute *a
         else
         {
 #if 1
-            /* ²Ù×÷Ð¾Æ¬1µÄÉÏÏÂµç¸´Î» */
-            /*1.ÉèÖÃ³ÉÈí¼þÄ£Ê½,ÅäÖÃ¼Ä´æÆ÷0x149001a0µÚ7bitÎª1 */
+            /* ï¿½ï¿½ï¿½ï¿½Ð¾Æ¬1ï¿½ï¿½ï¿½ï¿½ï¿½Âµç¸´Î» */
+            /*1.ï¿½ï¿½ï¿½Ã³ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½,ï¿½ï¿½ï¿½Ã¼Ä´ï¿½ï¿½ï¿½0x149001a0ï¿½ï¿½7bitÎª1 */
             ul_val = oal_readl(pst_gpio_mode + 0x1a0);
             ul_val |= BIT11;
             oal_writel(ul_val, pst_gpio_mode + 0x1a0);
 #endif
 
-            /*2.ÉèÖÃÊý¾Ý·½Ïò£¬ÅäÖÃ¼Ä´æÆ÷0x10108004µÚ21bitÎª1 */
+            /*2.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¼Ä´ï¿½ï¿½ï¿½0x10108004ï¿½ï¿½21bitÎª1 */
             ul_val =  oal_readl(pst_gpio_base + 0x4);
             ul_val |= BIT23;
             oal_writel(ul_val, pst_gpio_base + 0x4);
 
-            /*3.ÉèÖÃGPIO87À­µÍ£¬GPIOÐ¾Æ¬1ÏÂµç */
+            /*3.ï¿½ï¿½ï¿½ï¿½GPIO87ï¿½ï¿½ï¿½Í£ï¿½GPIOÐ¾Æ¬1ï¿½Âµï¿½ */
             ul_val =  oal_readl(pst_gpio_base + 0x0);
             ul_val &= ~BIT23;
             oal_writel(ul_val, pst_gpio_base + 0x0);
 
             oal_udelay(10);
 
-            /*4.ÉèÖÃGPIO87À­¸ß£¬GPIOÐ¾Æ¬1ÉÏµç */
+            /*4.ï¿½ï¿½ï¿½ï¿½GPIO87ï¿½ï¿½ï¿½ß£ï¿½GPIOÐ¾Æ¬1ï¿½Ïµï¿½ */
             ul_val =  oal_readl(pst_gpio_base + 0x0);
             ul_val |= BIT23;
             oal_writel(ul_val, pst_gpio_base + 0x0);
@@ -8735,7 +8712,7 @@ oal_int32 oal_pcie_debug_testcase(struct device *dev, struct device_attribute *a
         }
     }
 
-    /*ÖØÐÂÉÏÏÂµç*/
+    /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½*/
     if(!oal_strcmp(casename, "pcie_powerdown"))
     {
 #ifdef CONFIG_ARCH_SD56XX
@@ -8751,7 +8728,7 @@ oal_int32 oal_pcie_debug_testcase(struct device *dev, struct device_attribute *a
 #ifdef CONFIG_ARCH_SD56XX
         hcc_bus_power_action(hcc_get_current_110x_bus(), HCC_BUS_POWER_PATCH_LOAD_PREPARE);
         oal_pci_wlan_power_on(1);
-        /*¼ì²é½¨Á´ÊÇ·ñÍê³É*/
+        /*ï¿½ï¿½é½¨ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½*/
         if(OAL_SUCC != oal_pcie_check_link_up())
         {
             PCI_PRINT_LOG(PCI_LOG_ERR, "power test relink failed!\n");
@@ -8811,7 +8788,7 @@ oal_int32 oal_pcie_debug_testcase(struct device *dev, struct device_attribute *a
 
     if(!oal_strcmp(casename, "pcie_enum_download"))
     {
-        /*µÚÒ»´ÎÃ¶¾ÙÏÂÔØPATCH*/
+        /*ï¿½ï¿½Ò»ï¿½ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½PATCH*/
         hcc_bus_power_action(hcc_get_current_110x_bus(), HCC_BUS_POWER_PATCH_LOAD_PREPARE);
 #ifdef CONFIG_ARCH_SD56XX
         if(OAL_SUCC != oal_pcie_check_link_up())
@@ -8897,9 +8874,9 @@ oal_int32 oal_pcie_debug_testcase(struct device *dev, struct device_attribute *a
 	if(!oal_strcmp(casename, "turnoff_message"))
 	{
 #ifdef CONFIG_ARCH_KIRIN_PCIE
-        /*×ßµ½ÕâÀïËµÃ÷wakelockÒÑ¾­ÊÍ·Å£¬WIFIÒÑ¾­ÉîË¯,Í¨ÖªRC/EPÏÂµç£¬
-      ·¢ËÍTurnOff Message*/
-        /*ÏÂµçÖ®Ç°¹Ø±Õ PCIE HOST ¿ØÖÆÆ÷*/
+        /*ï¿½ßµï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½wakelockï¿½Ñ¾ï¿½ï¿½Í·Å£ï¿½WIFIï¿½Ñ¾ï¿½ï¿½ï¿½Ë¯,Í¨ÖªRC/EPï¿½Âµç£¬
+      ï¿½ï¿½ï¿½ï¿½TurnOff Message*/
+        /*ï¿½Âµï¿½Ö®Ç°ï¿½Ø±ï¿½ PCIE HOST ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
         PCI_PRINT_LOG(PCI_LOG_INFO, "turnoff_message kirin");
         kirin_pcie_power_notifiy_register(kirin_rc_idx, NULL, NULL, NULL);
         kirin_pcie_pm_control(0, kirin_rc_idx);
@@ -8910,9 +8887,9 @@ oal_int32 oal_pcie_debug_testcase(struct device *dev, struct device_attribute *a
 	{
 #ifdef CONFIG_ARCH_KIRIN_PCIE
         oal_int32 ret;
-        /*×ßµ½ÕâÀïËµÃ÷wakelockÒÑ¾­ÊÍ·Å£¬WIFIÒÑ¾­ÉîË¯,Í¨ÖªRC/EPÏÂµç£¬
-      ·¢ËÍTurnOff Message*/
-        /*ÏÂµçÖ®Ç°¹Ø±Õ PCIE HOST ¿ØÖÆÆ÷*/
+        /*ï¿½ßµï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½wakelockï¿½Ñ¾ï¿½ï¿½Í·Å£ï¿½WIFIï¿½Ñ¾ï¿½ï¿½ï¿½Ë¯,Í¨ÖªRC/EPï¿½Âµç£¬
+      ï¿½ï¿½ï¿½ï¿½TurnOff Message*/
+        /*ï¿½Âµï¿½Ö®Ç°ï¿½Ø±ï¿½ PCIE HOST ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
         PCI_PRINT_LOG(PCI_LOG_INFO, "suspend_test kirin");
 
         oal_pcie_change_link_state(pst_pcie_res, PCI_WLAN_LINK_DOWN);
@@ -8932,9 +8909,9 @@ oal_int32 oal_pcie_debug_testcase(struct device *dev, struct device_attribute *a
 	{
 #ifdef CONFIG_ARCH_KIRIN_PCIE
         oal_int32 ret;
-        /*×ßµ½ÕâÀïËµÃ÷wakelockÒÑ¾­ÊÍ·Å£¬WIFIÒÑ¾­ÉîË¯,Í¨ÖªRC/EPÏÂµç£¬
-      ·¢ËÍTurnOff Message*/
-        /*ÏÂµçÖ®Ç°¹Ø±Õ PCIE HOST ¿ØÖÆÆ÷*/
+        /*ï¿½ßµï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½wakelockï¿½Ñ¾ï¿½ï¿½Í·Å£ï¿½WIFIï¿½Ñ¾ï¿½ï¿½ï¿½Ë¯,Í¨ÖªRC/EPï¿½Âµç£¬
+      ï¿½ï¿½ï¿½ï¿½TurnOff Message*/
+        /*ï¿½Âµï¿½Ö®Ç°ï¿½Ø±ï¿½ PCIE HOST ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
         PCI_PRINT_LOG(PCI_LOG_INFO, "resume_test kirin");
         kirin_pcie_power_notifiy_register(kirin_rc_idx, oal_pcie_resume_handler, NULL, NULL);
         ret = kirin_pcie_pm_control(1, kirin_rc_idx);
@@ -9152,7 +9129,7 @@ oal_int32 oal_pcie_performance_netbuf_alloc(oal_pcie_res* pst_pcie_res,
         pst_cb_res->len = OAL_NETBUF_LEN(pst_netbuf);
 
 
-        /*ÊÍ·ÅÄÚ´æ*/
+        /*ï¿½Í·ï¿½ï¿½Ú´ï¿½*/
         dma_unmap_single(&pst_pci_dev->dev, (dma_addr_t)pst_cb_res->paddr.addr, pst_cb_res->len, PCI_DMA_FROMDEVICE);
         oal_netbuf_free(pst_netbuf);
 
@@ -9268,7 +9245,7 @@ oal_int32 oal_pcie_performance_netbuf_queue(oal_pcie_res* pst_pcie_res,
             }
 
             pst_cb_res = (pcie_cb_dma_res*)OAL_NETBUF_CB(pst_netbuf);
-            /*ÊÍ·ÅÄÚ´æ*/
+            /*ï¿½Í·ï¿½ï¿½Ú´ï¿½*/
             dma_unmap_single(&pst_pci_dev->dev, (dma_addr_t)pst_cb_res->paddr.addr, pst_cb_res->len, PCI_DMA_FROMDEVICE);
             oal_netbuf_free(pst_netbuf);
             count++;
@@ -9310,7 +9287,7 @@ oal_int32 oal_pcie_performance_cpu(oal_pcie_res* pst_pcie_res,
     ktime_t trans_time;
     oal_uint64  trans_us;
     oal_uint64  trans_size, us_to_s, total_size;
-    oal_uint32 size, copy_size, remainder;
+    oal_uint32 copy_size, remainder;
     oal_void* pst_burst_buf_src;
     oal_void* pst_burst_buf_dst;
     oal_pci_dev_stru *pst_pci_dev;
@@ -9353,7 +9330,6 @@ oal_int32 oal_pcie_performance_cpu(oal_pcie_res* pst_pcie_res,
     start_time= ktime_get();
     for(i = 0; i < times ;i++)
     {
-        size = 0;
         remainder = length;
         for(;;)
         {
@@ -9366,7 +9342,6 @@ oal_int32 oal_pcie_performance_cpu(oal_pcie_res* pst_pcie_res,
 
             oal_memcopy(pst_burst_buf_dst, pst_burst_buf_src, copy_size);
             remainder -= copy_size;
-            size += copy_size;
             trans_size += copy_size;
         }
         //oal_schedule();
@@ -9638,7 +9613,7 @@ oal_int32 oal_pcie_performance_h2d_bypass(oal_pcie_res* pst_pcie_res,
             {
                 if(flag)
                 {
-                    /*¸üÐÂdevice²àwrÖ¸Õë,Ë¢ringbuf cache*/
+                    /*ï¿½ï¿½ï¿½ï¿½deviceï¿½ï¿½wrÖ¸ï¿½ï¿½,Ë¢ringbuf cache*/
                     oal_pcie_h2d_ringbuf_wr_update(pst_pcie_res, PCIE_H2D_QTYPE_NORMAL);
 
                     /*tx doorbell*/
@@ -9654,21 +9629,21 @@ oal_int32 oal_pcie_performance_h2d_bypass(oal_pcie_res* pst_pcie_res,
             }
         }
 
-        /*¸üÐÂdevice²àwrÖ¸Õë,Ë¢ringbuf cache*/
+        /*ï¿½ï¿½ï¿½ï¿½deviceï¿½ï¿½wrÖ¸ï¿½ï¿½,Ë¢ringbuf cache*/
         oal_pcie_h2d_ringbuf_wr_update(pst_pcie_res, PCIE_H2D_QTYPE_NORMAL);
 
         /*tx doorbell*/
         oal_pcie_h2d_doorbell(pst_pcie_res);
     }
 
-    /*¸üÐÂdevice²àwrÖ¸Õë,Ë¢ringbuf cache*/
+    /*ï¿½ï¿½ï¿½ï¿½deviceï¿½ï¿½wrÖ¸ï¿½ï¿½,Ë¢ringbuf cache*/
     oal_pcie_h2d_ringbuf_wr_update(pst_pcie_res, PCIE_H2D_QTYPE_NORMAL);
 
     /*tx doorbell*/
     oal_pcie_h2d_doorbell(pst_pcie_res);
 
 
-    /*µÈ´ý »ØÀ´µÄ °ü¸öÊý */
+    /*ï¿½È´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 
     timeout = jiffies + OAL_MSECS_TO_JIFFIES(10000);
     for(;;)
@@ -9794,14 +9769,14 @@ oal_int32 oal_pcie_performance_d2h_bypass(oal_pcie_res* pst_pcie_res,
     oal_pcie_rx_ringbuf_bypass_supply(pst_pcie_res, OAL_TRUE, OAL_TRUE, PCIE_RX_RINGBUF_SUPPLY_ALL);
     //start_time= ktime_get();
 
-    /*Æô¶¯RX*/
+    /*ï¿½ï¿½ï¿½ï¿½RX*/
     g_d2h_bypass_total_pkt_num = pkt_num;
     oal_writel((oal_uint16)pkt_len << 16 | ((oal_uint16) pkt_num ), pst_pcie_res->pst_pci_ctrl_base + PCIE_HOST_DEVICE_REG0);
     oal_writel(PCIE_H2D_TRIGGER_VALUE, pst_pcie_res->pst_pci_ctrl_base + PCIE_D2H_DOORBELL_OFF);
 
     oal_pcie_mips_start(PCIE_MIPS_HCC_RX_TOTAL);
     start_time= ktime_get();
-    /*²¹³äÄÚ´æ*/
+    /*ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½*/
 
     ret = wait_for_completion_interruptible(&g_d2h_test_done);
     if(ret < 0)
@@ -10112,7 +10087,7 @@ OAL_STATIC ssize_t  oal_pcie_set_debug_info(struct device *dev, struct device_at
     oal_int32 i;
     oal_pcie_res* pst_pcie_res = oal_get_default_pcie_handler();
 
-    if(buf[count] != '\0') /*È·±£´«½øÀ´µÄbufÊÇÒ»¸ö×Ö·û´®, count²»°üº¬½áÊø·û*/
+    if(buf[count] != '\0') /*È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½bufï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½, countï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
     {
         PCI_PRINT_LOG(PCI_LOG_ERR, "invalid pci cmd\n");
         return 0;
@@ -10126,7 +10101,7 @@ OAL_STATIC ssize_t  oal_pcie_set_debug_info(struct device *dev, struct device_at
             if((count >= OAL_STRLEN(g_pci_debug[i].name)) &&
                 !oal_memcmp(g_pci_debug[i].name, buf, OAL_STRLEN(g_pci_debug[i].name)))
             {
-                /*ÅÐ¶Ï×îºóÒ»¸ö×Ö·ûÊÇ»Ø³µ»¹ÊÇ¿Õ¸ñ*/
+                /*ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ö·ï¿½ï¿½Ç»Ø³ï¿½ï¿½ï¿½ï¿½Ç¿Õ¸ï¿½*/
                 char last_c = *(buf + OAL_STRLEN(g_pci_debug[i].name));
                 if(last_c == '\n' || last_c == ' ' || last_c == '\0')
                 {
@@ -10220,7 +10195,6 @@ oal_int32 oal_pcie_rx_thread_condtion(oal_atomic* pst_ato)
 oal_int32 oal_pcie_rx_hi_thread(oal_void *data)
 {
     oal_int32 ret = OAL_SUCC;
-    oal_int32 supply_num;
     oal_pcie_res* pst_pcie_res = (oal_pcie_res*)data;
 
     if(OAL_WARN_ON(NULL == pst_pcie_res))
@@ -10255,10 +10229,9 @@ oal_int32 oal_pcie_rx_hi_thread(oal_void *data)
         }
         else
         {
-            supply_num = oal_pcie_rx_ringbuf_supply(pst_pcie_res, OAL_TRUE, OAL_TRUE, PCIE_RX_RINGBUF_SUPPLY_ALL, GFP_ATOMIC|__GFP_NOWARN, &ret);
             if(OAL_SUCC != ret)
             {
-                /*²¹³äÄÚ´æÊ§°Ü£¬³É¹¦ÔòºöÂÔ£¬ÓÐ¿ÉÄÜµ±Ç°²»ÐèÒª²¹³äÄÚ´æÒ²ÊÓÎª³É¹¦*/
+                /*ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½Ê§ï¿½Ü£ï¿½ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½Ô£ï¿½ï¿½Ð¿ï¿½ï¿½Üµï¿½Ç°ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½Ò²ï¿½ï¿½Îªï¿½É¹ï¿½*/
                 oal_pcie_shced_rx_normal_thread(pst_pcie_res);
             }
         }
@@ -10273,7 +10246,6 @@ oal_int32 oal_pcie_rx_normal_thread(oal_void *data)
 {
     oal_int32 resched = 0;
     oal_int32 ret = OAL_SUCC;
-    oal_int32 supply_num;
     oal_pcie_res* pst_pcie_res = (oal_pcie_res*)data;
 
     if(OAL_WARN_ON(NULL == pst_pcie_res))
@@ -10309,7 +10281,6 @@ oal_int32 oal_pcie_rx_normal_thread(oal_void *data)
         }
         else
         {
-            supply_num = oal_pcie_rx_ringbuf_supply(pst_pcie_res, OAL_TRUE, OAL_TRUE, PCIE_RX_RINGBUF_SUPPLY_ALL, GFP_KERNEL, &ret);
             if(OAL_SUCC != ret)
             {
                 resched = 1;
@@ -10320,8 +10291,8 @@ oal_int32 oal_pcie_rx_normal_thread(oal_void *data)
 
         if(resched)
         {
-            /*²¹³äÄÚ´æÊ§°Ü£¬³É¹¦ÔòºöÂÔ£¬ÓÐ¿ÉÄÜµ±Ç°²»ÐèÒª²¹³äÄÚ´æÒ²ÊÓÎª³É¹¦,
-              Èç¹ûGFP_KERNEL ·½Ê½²¹³äÊ§°Ü£¬ÔòÆô¶¯ÂÖÑ¯,Ñ­»·ÉêÇë*/
+            /*ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½Ê§ï¿½Ü£ï¿½ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½Ô£ï¿½ï¿½Ð¿ï¿½ï¿½Üµï¿½Ç°ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½Ò²ï¿½ï¿½Îªï¿½É¹ï¿½,
+              ï¿½ï¿½ï¿½GFP_KERNEL ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯,Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
             oal_schedule();
             oal_pcie_shced_rx_normal_thread(pst_pcie_res);
         }
@@ -10352,7 +10323,7 @@ oal_int32 oal_pcie_task_init(oal_pcie_res* pst_pcie_res)
     oal_atomic_set(&pst_pcie_res->rx_hi_cond,     0);
     oal_atomic_set(&pst_pcie_res->rx_normal_cond, 0);
 
-    /*¸ßÓÅÏÈ¼¶ÄÚ´æÓÃÓÚ²¹³äÄÚ´æ µÍºÄÊ±*/
+    /*ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½ï¿½Ú´ï¿½ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ ï¿½Íºï¿½Ê±*/
     pst_pcie_res->pst_rx_hi_task = oal_thread_create_etc(oal_pcie_rx_hi_thread,
                                                     (oal_void*)pst_pcie_res,
                                                     NULL,
@@ -10366,7 +10337,7 @@ oal_int32 oal_pcie_task_init(oal_pcie_res* pst_pcie_res)
         return -OAL_EFAIL;
     }
 
-    /*µÍÓÅÏÈ¼¶Ïß³ÌÓÃÓÚ²¹³äÄÚ´æ  ¸ßºÄÊ±£¬ÉêÇë²»µ½¾ÍÂÖÑ¯*/
+    /*ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½ï¿½ß³ï¿½ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½Ú´ï¿½  ï¿½ßºï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ë²»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯*/
     pst_pcie_res->pst_rx_normal_task = oal_thread_create_etc(oal_pcie_rx_normal_thread,
                                                     (oal_void*)pst_pcie_res,
                                                     NULL,
@@ -10393,7 +10364,7 @@ oal_void oal_pcie_sysfs_exit(oal_pcie_res* pst_pcie_res)
     g_conn_syfs_pci_object = NULL;
 }
 
-/*Ô­Éúdma rxÍê³ÉMSIÖÐ¶Ï*/
+/*Ô­ï¿½ï¿½dma rxï¿½ï¿½ï¿½MSIï¿½Ð¶ï¿½*/
 irqreturn_t oal_pcie_edma_rx_intr_status_handler(int irq, void*dev_id)
 {
     /*log for msi bbit, del later*/
@@ -10446,9 +10417,9 @@ OAL_STATIC oal_void oal_pcie_hw_edma_intr_status_handler(oal_pcie_res* pst_pci_r
             break;
         else
         {
-            /*ÕâÀï²»ÄÜbreak ·ñÕß»áµ¼ÖÂ¶ªÖÐ¶Ï*/
+            /*ï¿½ï¿½ï¿½ï²»ï¿½ï¿½break ï¿½ï¿½ï¿½ß»áµ¼ï¿½Â¶ï¿½ï¿½Ð¶ï¿½*/
             //if(++total_cnt > 5)
-            //    break;/*·ÀÖ¹ÖÐ¶Ï´¦ÀíÊ±¼ä¹ý³¤*/
+            //    break;/*ï¿½ï¿½Ö¹ï¿½Ð¶Ï´ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½*/
         }
     }
 }
@@ -10526,7 +10497,7 @@ oal_pcie_res* oal_pcie_host_init(oal_void* data, oal_pcie_msi_stru* pst_msi, oal
     pst_msi->func = g_msi_110x_callback;
     pst_msi->msi_num = (oal_int32)(OAL_SIZEOF(g_msi_110x_callback)/OAL_SIZEOF(oal_irq_handler_t));
 
-    /*³õÊ¼»¯tx/rx¶ÓÁÐ*/
+    /*ï¿½ï¿½Ê¼ï¿½ï¿½tx/rxï¿½ï¿½ï¿½ï¿½*/
     oal_spin_lock_init(&pst_pci_res->st_rx_res.lock);
     oal_netbuf_list_head_init(&pst_pci_res->st_rx_res.rxq);
 

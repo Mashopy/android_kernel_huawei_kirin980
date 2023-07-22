@@ -652,7 +652,7 @@ int32 uart_wifi_open(void)
         return -EINVAL;
     }
 
-    /*Èç¹ûBFGINË¯Ãß£¬Ôò»½ÐÑÖ®*/
+    /*ï¿½ï¿½ï¿½BFGINË¯ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½Ö®*/
     ret = prepare_to_visit_node(ps_core_d);
     if (ret < 0)
     {
@@ -699,7 +699,7 @@ int32 uart_wifi_close(void)
         return -EINVAL;
     }
 
-    /*Èç¹ûBFGINË¯Ãß£¬Ôò»½ÐÑÖ®*/
+    /*ï¿½ï¿½ï¿½BFGINË¯ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½Ö®*/
     ret = prepare_to_visit_node(ps_core_d);
     if (ret < 0)
     {
@@ -748,13 +748,13 @@ int32 uart_bfgx_close_cmd(void)
         return -EINVAL;
     }
 
-    /* µ¥ºìÍâdev²»´¦ÀíÏµÍ³ÏûÏ¢ */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½devï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÏµÍ³ï¿½ï¿½Ï¢ */
     if (g_b_ir_only_mode)
     {
         return SUCCESS;
     }
 
-    /*Èç¹ûBFGINË¯Ãß£¬Ôò»½ÐÑÖ®*/
+    /*ï¿½ï¿½ï¿½BFGINË¯ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½Ö®*/
     ret = prepare_to_visit_node(ps_core_d);
     if (ret < 0)
     {
@@ -762,7 +762,7 @@ int32 uart_bfgx_close_cmd(void)
         return ret;
     }
 
-    /*ÏÂ·¢BFGIN shutdownÃüÁî*/
+    /*ï¿½Â·ï¿½BFGIN shutdownï¿½ï¿½ï¿½ï¿½*/
     PS_PRINT_INFO("uart shutdown BCPU\n");
 
     ps_uart_state_pre(ps_core_d->tty);
@@ -804,7 +804,7 @@ int32 bfgx_open_cmd_send(uint32 subsys)
         return -EINVAL;
     }
 
-    /* µ¥ºìÍâdev²»´¦ÀíÏµÍ³ÏûÏ¢ */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½devï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÏµÍ³ï¿½ï¿½Ï¢ */
     if (g_b_ir_only_mode)
     {
         return SUCCESS;
@@ -881,7 +881,7 @@ int32 bfgx_close_cmd_send(uint32 subsys)
         return -EINVAL;
     }
 
-    /* µ¥ºìÍâdev²»´¦ÀíÏµÍ³ÏûÏ¢ */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½devï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÏµÍ³ï¿½ï¿½Ï¢ */
     if (g_b_ir_only_mode)
     {
         return SUCCESS;
@@ -928,7 +928,7 @@ int32 bfgx_close_cmd_send(uint32 subsys)
     return 0;
 }
 
-/*µ¥ºìÍâÄ£Ê½´ò¿ªÆäËû×ÓÏµÍ³Ê±µ÷ÓÃ,¹Ø±ÕºìÍâ*/
+/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÏµÍ³Ê±ï¿½ï¿½ï¿½ï¿½,ï¿½Ø±Õºï¿½ï¿½ï¿½*/
 int32 hw_ir_only_open_other_subsys(void)
 {
     int32 ret = 0;
@@ -975,7 +975,7 @@ int32 hw_bfgx_open(uint32 subsys)
         return -ENOMEM;
     }
 
-    /*µ±µ¥ºìÍâÄ£Ê½´ò¿ªÆäËû×ÓÏµÍ³Ê±£¬ÐèÒª¹Ø±Õµ¥ºìÍâ²ÅÄÜÆäËû×ÓÏµÍ³Õý³£ÉÏµç*/
+    /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÏµÍ³Ê±ï¿½ï¿½ï¿½ï¿½Òªï¿½Ø±Õµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÏµÍ³ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½*/
     if (g_b_ir_only_mode && BFGX_IR != subsys)
     {
         if (hw_ir_only_open_other_subsys() != BFGX_POWER_SUCCESS)
@@ -1007,7 +1007,7 @@ int32 hw_bfgx_open(uint32 subsys)
         goto bfgx_open_cmd_fail;
     }
 
-    /* µ¥ºìÍâÃ»ÓÐµÍ¹¦ºÄ */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ÐµÍ¹ï¿½ï¿½ï¿½ */
     if (!g_b_ir_only_mode)
     {
         mod_timer(&ps_core_d->ps_pm->pm_priv_data->bfg_timer, jiffies + (BT_SLEEP_TIME * HZ/1000));
@@ -1062,14 +1062,14 @@ int32 hw_bfgx_close(uint32 subsys)
     ret = prepare_to_visit_node(ps_core_d);
     if (ret < 0)
     {
-        /*»½ÐÑÊ§°Ü£¬bfgx closeÊ±µÄ»½ÐÑÊ§°Ü²»½øÐÐDFR»Ö¸´*/
+        /*ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½bfgx closeÊ±ï¿½Ä»ï¿½ï¿½ï¿½Ê§ï¿½Ü²ï¿½ï¿½ï¿½ï¿½ï¿½DFRï¿½Ö¸ï¿½*/
         PS_PRINT_ERR("prepare work FAIL\n");
     }
 
     ret = bfgx_close_cmd_send(subsys);
     if (ret < 0)
     {
-        /*·¢ËÍcloseÃüÁîÊ§°Ü£¬²»½øÐÐDFR£¬¼ÌÐø½øÐÐÏÂµçÁ÷³Ì£¬DFR»Ö¸´ÑÓ³Ùµ½ÏÂ´ÎopenÊ±»òÕßÆäËûÒµÎñÔËÐÐÊ±½øÐÐ*/
+        /*ï¿½ï¿½ï¿½ï¿½closeï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½DFRï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½ï¿½Ì£ï¿½DFRï¿½Ö¸ï¿½ï¿½Ó³Ùµï¿½ï¿½Â´ï¿½openÊ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½*/
         PS_PRINT_ERR("bfgx close cmd fail\n");
     }
 
@@ -1089,7 +1089,7 @@ int32 hw_bfgx_close(uint32 subsys)
     ret = ps_core_d->ps_pm->bfg_power_set(subsys, BFG_POWER_GPIO_DOWN);
     if (ret)
     {
-        /*ÏÂµçÊ§°Ü£¬²»½øÐÐDFR£¬DFR»Ö¸´ÑÓ³Ùµ½ÏÂ´ÎopenÊ±»òÕßÆäËûÒµÎñÔËÐÐÊ±½øÐÐ*/
+        /*ï¿½Âµï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½DFRï¿½ï¿½DFRï¿½Ö¸ï¿½ï¿½Ó³Ùµï¿½ï¿½Â´ï¿½openÊ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½*/
         PS_PRINT_ERR("set %s power off err!ret = %d", g_bfgx_subsys_name[subsys], ret);
     }
 
@@ -1244,7 +1244,7 @@ STATIC ssize_t hw_bt_write(struct file *filp, const int8 __user *buf, size_t cou
         return -EINVAL;
     }
 
-    /*ÊÊÅäAndroid O£¬BTÊý¾Ý·ÖÁ½´ÎÏÂ·¢£¬ÏÈ·¢Êý¾ÝÀàÐÍ£¬³¤¶È¹Ì¶¨Îª1Byte£¬È»ºó·¢Êý¾Ý£¬ÐèÒªÔÚÇý¶¯ÖÐ×éºÏÆðÀ´·¢¸ødevice*/
+    /*ï¿½ï¿½ï¿½ï¿½Android Oï¿½ï¿½BTï¿½ï¿½ï¿½Ý·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½ï¿½È¹Ì¶ï¿½Îª1Byteï¿½ï¿½È»ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½device*/
     if (BT_TYPE_DATA_LEN == count)
     {
         get_user(type, puser);
@@ -2261,7 +2261,7 @@ STATIC ssize_t hw_gnss_read(struct file *filp, int8 __user *buf, size_t count, l
             spin_unlock(&ps_core_d->gnss_rx_lock);
             if (0 != read_queue.qlen)
             {
-                //Ã»ÓÐÕÒµ½last°ü£¬skb queue¾Í¿ÕÁË
+                //Ã»ï¿½ï¿½ï¿½Òµï¿½lastï¿½ï¿½ï¿½ï¿½skb queueï¿½Í¿ï¿½ï¿½ï¿½
                 PS_PRINT_ERR("skb dequeue error, qlen=%x!\n", read_queue.qlen);
                 goto skb_dequeue_error;
             }
@@ -2659,7 +2659,7 @@ STATIC int64 hw_debug_ioctl(struct file *file, uint32 cmd, uint64 arg)
             plat_beatTimer_timeOut_reset_cfg_set(arg);
             break;
         case PLAT_BFGX_CALI_CMD:
-        // TODO:  1102A host¹²Æ½Ì¨ÊÊÅä
+        // TODO:  1102A hostï¿½ï¿½Æ½Ì¨ï¿½ï¿½ï¿½ï¿½
         #if (_PRE_PRODUCT_ID == _PRE_PRODUCT_ID_HI1103_HOST)
             bfgx_cali_data_init();
         #endif
@@ -3356,7 +3356,7 @@ int32 uart_download_test(uint8* baud, uint32 file_len)
     tty_recv = ps_recv_patch;
     PS_PRINT_INFO("#@open uart succ");
 
-    /*³õÊ¼»¯»Øµ÷º¯Êý±äÁ¿*/
+    /*ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
     l_ret = patch_init(ENUM_INFO_UART);
     if (l_ret)
     {
@@ -3804,7 +3804,7 @@ int32 uart_loop_test(void)
     {
         if (g_pst_uart_loop_test_info->test_cfg->uart_loop_tx_random_enable)
         {
-            uart_loop_test_tx_buf_init(puc_buf, pkt_len); // ³õÊ¼»¯tx_bufÎªËæ»úÊý
+            uart_loop_test_tx_buf_init(puc_buf, pkt_len); // ï¿½ï¿½Ê¼ï¿½ï¿½tx_bufÎªï¿½ï¿½ï¿½ï¿½ï¿½
         }
 
         start_time = ktime_get();
@@ -4065,7 +4065,7 @@ STATIC int32 ps_probe(struct platform_device *pdev)
 
     strncpy(hisi_platform_data.dev_name, bd_info->uart_port, strlen(bd_info->uart_port));
 
-    /*FPGA°æ±¾Ö§³Ö2M£¬¶¯Ì¬ÐÞ¸Ä*/
+    /*FPGAï¿½æ±¾Ö§ï¿½ï¿½2Mï¿½ï¿½ï¿½ï¿½Ì¬ï¿½Þ¸ï¿½*/
     if(!isAsic())
     {
         hisi_platform_data.baud_rate = LOW_FREQ_BAUD_RATE;
@@ -4333,11 +4333,9 @@ int32 ps_resume(struct platform_device *pdev)
 STATIC int32 ps_remove(struct platform_device *pdev)
 {
     struct ps_plat_s *ps_plat_d;
-    struct hw_ps_plat_data *pdata;
 
     PS_PRINT_FUNCTION_NAME;
 
-    pdata = pdev->dev.platform_data;
     ps_plat_d = dev_get_drvdata(&pdev->dev);
     if (NULL == ps_plat_d)
     {

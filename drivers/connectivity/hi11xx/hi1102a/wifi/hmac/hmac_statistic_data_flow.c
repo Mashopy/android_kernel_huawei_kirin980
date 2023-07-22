@@ -9,7 +9,7 @@ extern "C" {
 
 #if (_PRE_MULTI_CORE_MODE_OFFLOAD_DMAC == _PRE_MULTI_CORE_MODE)
 /*****************************************************************************
-  1 Í·ÎÄ¼þ°üº¬
+  1 Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 #include  "oal_net.h"
 #include  "oal_types.h"
@@ -36,7 +36,7 @@ extern "C" {
 #define THIS_FILE_ID OAM_FILE_ID_MAC_STATISTIC_DATA_FLOW_C
 
 /*****************************************************************************
-  2 È«¾Ö±äÁ¿¶¨Òå
+  2 È«ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 OAL_STATIC wifi_txrx_pkt_statis_stru g_st_wifi_rxtx_statis = {0};
 extern hmac_rxdata_thread_stru     g_st_rxdata_thread;
@@ -46,14 +46,14 @@ statis_wifi_load_stru g_st_wifi_load = {0};
 #ifdef _PRE_WLAN_FEATURE_AUTO_FREQ
 
 host_speed_freq_level_stru g_host_speed_freq_level[] = {
-    /*ppsÃÅÏÞ                   CPUÖ÷ÆµÏÂÏÞ                     DDRÖ÷ÆµÏÂÏÞ*/
+    /*ppsï¿½ï¿½ï¿½ï¿½                   CPUï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½                     DDRï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½*/
     {PPS_VALUE_0,          CPU_MIN_FREQ_VALUE_0,            DDR_MIN_FREQ_VALUE_0},
     {PPS_VALUE_1,          CPU_MIN_FREQ_VALUE_1,            DDR_MIN_FREQ_VALUE_1},
     {PPS_VALUE_2,          CPU_MIN_FREQ_VALUE_2,            DDR_MIN_FREQ_VALUE_2},
     {PPS_VALUE_3,          CPU_MIN_FREQ_VALUE_3,            DDR_MIN_FREQ_VALUE_3},
 };
 device_speed_freq_level_stru g_device_speed_freq_level[] = {
-    /*deviceÖ÷ÆµÀàÐÍ*/
+    /*deviceï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½*/
     {FREQ_IDLE},
     {FREQ_MIDIUM},
     {FREQ_HIGHEST},
@@ -62,7 +62,7 @@ device_speed_freq_level_stru g_device_speed_freq_level[] = {
 thread_bindcpu_stru g_st_thread_bindcpu = {OAL_TRUE, WLAN_BINDCPU_DEFAULT_MASK, WLAN_TX_BUSY_CPU_THROUGHT,WLAN_TX_IDLE_CPU_THROUGHT,WLAN_RX_BUSY_CPU_THROUGHT, WLAN_RX_IDLE_CPU_THROUGHT};
 #endif
 /*****************************************************************************
-  3 º¯ÊýÊµÏÖ
+  3 ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
 *****************************************************************************/
 
 oal_void hmac_wifi_statistic_rx_packets(oal_uint32 ul_pkt_count)
@@ -95,18 +95,13 @@ oal_bool_enum_uint8 hmac_wifi_alg_txop_opt(oal_uint32 ul_tx_throughput_mbps)
 {
     mac_ioctl_alg_param_stru     st_alg_param;
     oal_uint                     us_len          = OAL_SIZEOF(mac_ioctl_alg_param_stru);
-    mac_device_stru             *pst_device;
     mac_vap_stru                *pst_mac_vap;
-    oal_uint32                   ul_ret;
     oal_uint8                    uc_txop_limit_en = g_st_wifi_rxtx_statis.uc_txop_limit_en;
 
     st_alg_param.en_alg_cfg  = MAC_ALG_CFG_TXOP_LIMIT_STA_EN;
     st_alg_param.ul_value    = 0;
 
-    pst_device      = mac_res_get_dev(0);
-    /* UPµÄVAP£¬²»ÒÀÀµÓÚSTA P2P´´½¨µÄË³Ðò */
-    ul_ret = mac_device_find_up_vap(pst_device, &pst_mac_vap);
-
+    /* UPï¿½ï¿½VAPï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½STA P2Pï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë³ï¿½ï¿½ */
     if( pst_mac_vap != OAL_PTR_NULL)
     {
         if(ul_tx_throughput_mbps > STA_OPEN_TXOPLIMIT_THROUGHTPUT)
@@ -124,7 +119,7 @@ oal_bool_enum_uint8 hmac_wifi_alg_txop_opt(oal_uint32 ul_tx_throughput_mbps)
 
     if ( uc_txop_limit_en != g_st_wifi_rxtx_statis.uc_txop_limit_en)
     {
-        /* ÏÂ·¢¹Ø±Õ¶¯Ì¬µ÷½ÚtxopÊÂ¼þ */
+        /* ï¿½Â·ï¿½ï¿½Ø±Õ¶ï¿½Ì¬ï¿½ï¿½ï¿½ï¿½txopï¿½Â¼ï¿½ */
         hmac_config_alg_send_event(pst_mac_vap, WLAN_CFGID_ALG_PARAM, us_len, (oal_uint8 *)&st_alg_param);
         OAM_WARNING_LOG2(pst_mac_vap->uc_vap_id, OAM_SF_ANY, "hmac_wifi_alg_txop_opt: txop opt open[%d],tx[%d]Mbps", st_alg_param.ul_value,ul_tx_throughput_mbps);
     }
@@ -202,7 +197,7 @@ oal_void hmac_thread_bindcpu(oal_uint32 ul_tx_throughput_mbps, oal_uint32 ul_rx_
         return;
     }
 
-    /* ¸ù¾ÝÁ÷Á¿¾ö¶¨°óºËÄ£Ê½ */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½ */
     if ((ul_tx_throughput_mbps > g_st_thread_bindcpu.us_tx_throughput_irq_high) ||
         (ul_rx_throughput_mbps > g_st_thread_bindcpu.us_rx_throughput_irq_high))
     {
@@ -218,13 +213,13 @@ oal_void hmac_thread_bindcpu(oal_uint32 ul_tx_throughput_mbps, oal_uint32 ul_rx_
         return;
     }
 
-    /* °óºË×´Ì¬±ä¶¯Ê±²ÅÐèÒªÖ´ÐÐ°óºË¶¯×÷ */
+    /* ï¿½ï¿½ï¿½×´Ì¬ï¿½ä¶¯Ê±ï¿½ï¿½ï¿½ï¿½ÒªÖ´ï¿½Ð°ï¿½Ë¶ï¿½ï¿½ï¿½ */
     if (uc_req_irq_cpu != g_st_wifi_rxtx_statis.uc_req_irq_cpu)
     {
         OAM_WARNING_LOG3(0,OAM_SF_ANY, "{hmac_rxdata_thread_bindcpu:rxdata_thread bind cpu:[%d] rx = %d , tx = %d}",
             uc_req_irq_cpu, ul_rx_throughput_mbps, ul_tx_throughput_mbps);
 
-        /* Á÷Á¿½Ï´óÊ±½«ÊÕ·¢Ïß³Ì°ó¶¨ÔÚ´óºË */
+        /* ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½Ê±ï¿½ï¿½ï¿½Õ·ï¿½ï¿½ß³Ì°ï¿½ï¿½Ú´ï¿½ï¿½ */
         if (WLAN_IRQ_AFFINITY_BUSY_CPU == uc_req_irq_cpu)
         {
             hmac_thread_bind_fast_cpu();
@@ -234,7 +229,7 @@ oal_void hmac_thread_bindcpu(oal_uint32 ul_tx_throughput_mbps, oal_uint32 ul_rx_
             hmac_thread_bind_slow_cpu();
         }
 
-        /* ¸üÐÂ×´Ì¬ */
+        /* ï¿½ï¿½ï¿½ï¿½×´Ì¬ */
         g_st_wifi_rxtx_statis.uc_req_irq_cpu = uc_req_irq_cpu;
     }
 #endif
@@ -250,22 +245,22 @@ oal_void hmac_wifi_calculate_throughput(oal_void)
     oal_uint32          ul_rx_throughput_mbps = 0;
     oal_uint32          ul_tx_throughput_mbps = 0;
 
-    /* ¶¨Ê±Æ÷Ñ­»·´ÎÊýÍ³¼Æ */
+    /* ï¿½ï¿½Ê±ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í³ï¿½ï¿½ */
     g_st_wifi_rxtx_statis.uc_timer_cycles++;
 
-    /* ½ÓÊÕ·¢ËÍÊý¾ÝÍ³¼Æ */
+    /* ï¿½ï¿½ï¿½Õ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í³ï¿½ï¿½ */
     ul_trx_total = g_st_wifi_rxtx_statis.ul_rx_pkts + g_st_wifi_rxtx_statis.ul_tx_pkts;
 
     ul_cur_time = (oal_uint32)OAL_TIME_GET_STAMP_MS();
     ul_dur_ms = OAL_TIME_GET_RUNTIME(g_st_wifi_rxtx_statis.ul_pre_time, ul_cur_time);
 
-    /* Èç¹ûµ±Ç°Í³¼ÆÊ±¼ä²»×ã¶¨Ê±Æ÷ÖÜÆÚµÄÒ»°ë,»áµ¼ÖÂÍ³¼ÆPPSÖµÆ«´ó·µ»Ø */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½Ç°Í³ï¿½ï¿½Ê±ï¿½ä²»ï¿½ã¶¨Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½Ò»ï¿½ï¿½,ï¿½áµ¼ï¿½ï¿½Í³ï¿½ï¿½PPSÖµÆ«ï¿½ó·µ»ï¿½ */
     if ((0 == ul_dur_ms) || (ul_dur_ms < (WLAN_STATIS_DATA_TIMER_PERIOD >> 1)))
     {
         return ;
     }
 
-    /* ³¬¹ýÒ»¶¨Ê±³£Ôò²»Í³¼Æ£¬ÅÅ³ý¶¨Ê±Æ÷Òì³£ */
+    /* ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Í³ï¿½Æ£ï¿½ï¿½Å³ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ì³£ */
     if(ul_dur_ms > (WLAN_STATIS_DATA_TIMER_PERIOD * WLAN_THROUGHPUT_STA_PERIOD) << 2)
     {
         g_st_wifi_rxtx_statis.ul_pre_time = (oal_uint32)OAL_TIME_GET_STAMP_MS();
@@ -278,16 +273,16 @@ oal_void hmac_wifi_calculate_throughput(oal_void)
         return;
     }
 
-    /* ¸ù¾ÝÊý¾Ý°üµÄÊýÁ¿¼ÆËãPPS */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½PPS */
     g_st_wifi_rxtx_statis.ul_total_sdio_pps = (ul_trx_total * 1000) / ul_dur_ms;
     g_st_wifi_rxtx_statis.ul_tx_pps         = (g_st_wifi_rxtx_statis.ul_tx_pkts * 1000) / ul_dur_ms;
     g_st_wifi_rxtx_statis.ul_rx_pps         = (g_st_wifi_rxtx_statis.ul_rx_pkts * 1000) / ul_dur_ms;
 
-    /* ¸ù¾Ý×Ü×Ö½ÚÊý¼ÆËãmbps */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½mbps */
     ul_rx_throughput_mbps = (g_st_wifi_rxtx_statis.ul_rx_bytes >> 7) / ul_dur_ms;
     ul_tx_throughput_mbps = (g_st_wifi_rxtx_statis.ul_tx_bytes >> 7) / ul_dur_ms;
 
-    /* Wi-Fi ÒµÎñ¸ºÔØ±ê¼Ç */
+    /* Wi-Fi Òµï¿½ï¿½ï¿½Ø±ï¿½ï¿½ */
     if(ul_rx_throughput_mbps <= WLAN_THROUGHPUT_LOAD_LOW)
     {
         g_st_wifi_load.en_wifi_rx_busy = OAL_FALSE;
@@ -298,7 +293,7 @@ oal_void hmac_wifi_calculate_throughput(oal_void)
     }
 
 #ifdef _PRE_WLAN_FEATURE_MULTI_NETBUF_AMSDU
-    /* AMSDU+AMPDU¾ÛºÏÇÐ»»Èë¿Ú */
+    /* AMSDU+AMPDUï¿½Ûºï¿½ï¿½Ð»ï¿½ï¿½ï¿½ï¿½ */
     hmac_tx_amsdu_ampdu_switch(ul_tx_throughput_mbps);
 #endif
     hmac_tx_small_amsdu_switch(ul_rx_throughput_mbps, g_st_wifi_rxtx_statis.ul_tx_pps);
@@ -308,12 +303,12 @@ oal_void hmac_wifi_calculate_throughput(oal_void)
 #endif
 
 #ifdef _PRE_WLAN_TCP_OPT
-    /* ¸ù¾ÝrxÁ÷Á¿Mbps À´¿ØÖÆ Æô¶¯/¹Ø±Õ TCP_ACK filterÓÅ»¯¹¦ÄÜ */
+    /* ï¿½ï¿½ï¿½ï¿½rxï¿½ï¿½ï¿½ï¿½Mbps ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½/ï¿½Ø±ï¿½ TCP_ACK filterï¿½Å»ï¿½ï¿½ï¿½ï¿½ï¿½ */
     hmac_tcp_ack_opt_switch_ctrol(ul_rx_throughput_mbps);
 #endif
 
 #ifdef _PRE_WLAN_FEATURE_DYN_BYPASS_EXTLNA
-    /* ¸ù¾ÝÍÌÍÂÁ¿£¬ÅÐ¶ÏÊÇ·ñÐèÒªbypass ÍâÖÃLNA */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªbypass ï¿½ï¿½ï¿½ï¿½LNA */
     hmac_rx_dyn_bypass_extlna_switch(ul_tx_throughput_mbps, ul_rx_throughput_mbps);
 #endif
 
@@ -323,16 +318,16 @@ oal_void hmac_wifi_calculate_throughput(oal_void)
 
     //hmac_wifi_alg_txop_opt(ul_tx_throughput_mbps);
 
-    /* irq 2s Ì½²âÒ»´Î */
+    /* irq 2s Ì½ï¿½ï¿½Ò»ï¿½ï¿½ */
     if(g_st_wifi_rxtx_statis.uc_timer_cycles < WLAN_THROUGHPUT_STA_PERIOD)
     {
         return;
     }
 
-    /* Æ½»¬´¦Àí£¬Ã¿2s¼ì²éÒ»´ÎÊÇ·ñÐèÒªÐÞ¸ÄµÍ¹¦ºÄ¶¨Ê±Æ÷µÄÖµ */
+    /* Æ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¿2sï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½Þ¸ÄµÍ¹ï¿½ï¿½Ä¶ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Öµ */
     hmac_set_psm_activity_timer(g_st_wifi_rxtx_statis.ul_total_sdio_pps);
 
-    /* 2sÖÜÆÚÇåÁãÒ»´Î */
+    /* 2sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ */
     g_st_wifi_rxtx_statis.uc_timer_cycles = 0;
     g_st_wifi_rxtx_statis.ul_rx_bytes = 0;
     g_st_wifi_rxtx_statis.ul_tx_bytes = 0;
@@ -354,7 +349,7 @@ oal_void hmac_wifi_statis_data_timeout(oal_void)
 oal_void  hmac_wifi_statis_data_timer_init(oal_void)
 {
 
-    /*Èç¹ûÕâ¸ö¶¨Ê±Æ÷ÒÑ¾­×¢²á³É¹¦£¬Ôò²»ÄÜÔÙ´Î±»×¢²á£¡*/
+    /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½Ñ¾ï¿½×¢ï¿½ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù´Î±ï¿½×¢ï¿½á£¡*/
     if (OAL_TRUE == g_st_wifi_rxtx_statis.st_statis_data_timer.en_is_registerd
 #if (_PRE_MULTI_CORE_MODE_OFFLOAD_DMAC == _PRE_MULTI_CORE_MODE)&&(_PRE_OS_VERSION_LINUX == _PRE_OS_VERSION)
     || OAL_FALSE == wlan_pm_is_poweron()
@@ -364,7 +359,7 @@ oal_void  hmac_wifi_statis_data_timer_init(oal_void)
          return;
     }
 
-    /* Çå¿ÕÍ³¼Æ */
+    /* ï¿½ï¿½ï¿½Í³ï¿½ï¿½ */
     OAL_MEMZERO(&g_st_wifi_rxtx_statis, (OAL_SIZEOF(g_st_wifi_rxtx_statis) - OAL_SIZEOF(g_st_wifi_rxtx_statis.st_statis_data_timer)));
 
     FRW_TIMER_CREATE_TIMER(&g_st_wifi_rxtx_statis.st_statis_data_timer, //pst_timeout
@@ -392,12 +387,12 @@ oal_void  hmac_wifi_pm_state_notify(oal_bool_enum_uint8 en_wake_up)
 {
     if (OAL_TRUE == en_wake_up)
     {
-        /* WIFI»½ÐÑ,Æô¶¯ÍÌÍÂÁ¿Í³¼Æ¶¨Ê±Æ÷ */
+        /* WIFIï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í³ï¿½Æ¶ï¿½Ê±ï¿½ï¿½ */
         hmac_wifi_statis_data_timer_init();
     }
     else
     {
-        /* WIFIË¯Ãß,¹Ø±ÕÍÌÍÂÁ¿Í³¼Æ¶¨Ê±Æ÷ */
+        /* WIFIË¯ï¿½ï¿½,ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í³ï¿½Æ¶ï¿½Ê±ï¿½ï¿½ */
         hmac_wifi_statis_data_timer_deinit();
     }
 
@@ -408,18 +403,18 @@ oal_void  hmac_wifi_state_notify(oal_bool_enum_uint8 en_wifi_on)
 {
     if (OAL_TRUE == en_wifi_on)
     {
-        /* WIFIÉÏµç,Æô¶¯ÍÌÍÂÁ¿Í³¼Æ¶¨Ê±Æ÷,´ò¿ªµ÷Æµ¹¦ÄÜ */
+        /* WIFIï¿½Ïµï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í³ï¿½Æ¶ï¿½Ê±ï¿½ï¿½,ï¿½ò¿ªµï¿½Æµï¿½ï¿½ï¿½ï¿½ */
 #ifdef _PRE_WLAN_FEATURE_AUTO_FREQ
         hmac_set_device_freq_mode(H2D_FREQ_MODE_ENABLE);
 #endif
-        /* WIFI´ò¿ªÊ±,¶¨Ê±Æ÷²ÎÊý¸üÐÂ */
+        /* WIFIï¿½ï¿½Ê±,ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
         g_st_wifi_rxtx_statis.ul_pre_time = (oal_uint32)OAL_TIME_GET_STAMP_MS();
 
         hmac_wifi_statis_data_timer_init();
     }
     else
     {
-        /* WIFIÏÂµç,¹Ø±ÕÍÌÍÂÁ¿Í³¼Æ¶¨Ê±Æ÷,¹Ø±Õµ÷Æµ¹¦ÄÜ */
+        /* WIFIï¿½Âµï¿½,ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í³ï¿½Æ¶ï¿½Ê±ï¿½ï¿½,ï¿½Ø±Õµï¿½Æµï¿½ï¿½ï¿½ï¿½ */
         hmac_wifi_statis_data_timer_deinit();
 
 #ifdef _PRE_WLAN_FEATURE_AUTO_FREQ

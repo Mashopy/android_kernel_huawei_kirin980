@@ -3246,7 +3246,6 @@ int32 hwifi_config_init_etc(int32 cus_tag)
 {
     int32               l_cfg_id;
     int32               l_ret = INI_FAILED;
-    int32               l_ori_val;
     wlan_cfg_cmd*       pgast_wifi_config;
     int32*              pgal_params;
     int32               l_cfg_value = 0;
@@ -3288,11 +3287,7 @@ int32 hwifi_config_init_etc(int32 cus_tag)
             OAM_WARNING_LOG2(0, OAM_SF_CUSTOM, "hwifi_config_init_etc read ini file cfg_id[%d]tag[%d] not exist!", l_cfg_id, cus_tag);
             continue;
         }
-        l_ori_val = pgal_params[pgast_wifi_config[l_cfg_id].case_entry];
         pgal_params[pgast_wifi_config[l_cfg_id].case_entry] = l_cfg_value;
-
-        //OAM_WARNING_LOG4(0, OAM_SF_CUSTOM, "hwifi_config_init_etc [id:%d tag:%d] changed from [%d]to[%d]",
-                        //pgast_wifi_config[l_cfg_id].case_entry, cus_tag, l_ori_val, pgal_params[pgast_wifi_config[l_cfg_id].case_entry]);
     }
 
     return INI_SUCC;

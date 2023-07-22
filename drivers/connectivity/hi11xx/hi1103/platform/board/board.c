@@ -751,7 +751,7 @@ int32 get_download_channel_etc(void)
     ret = find_download_channel_etc(wlan_mode, INI_WLAN_DOWNLOAD_CHANNEL);
     if (BOARD_SUCC != ret)
     {
-        /*¼æÈÝ1102,1102ÎÞ´ËÅäÖÃÏî*/
+        /*ï¿½ï¿½ï¿½ï¿½1102,1102ï¿½Þ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
         g_board_info_etc.wlan_download_channel = MODE_SDIO;
         PS_PRINT_WARNING("can not find wlan_download_channel ,choose default:%s\n", device_download_mode_list_etc[0].name);
         hcc_bus_cap_init(HCC_CHIP_110X_DEV, NULL);
@@ -771,7 +771,7 @@ int32 get_download_channel_etc(void)
     ret = find_download_channel_etc(bfgn_mode, INI_BFGX_DOWNLOAD_CHANNEL);
     if (BOARD_SUCC != ret)
     {
-        /*Èç¹û²»´æÔÚ¸ÃÏî£¬ÔòÄ¬ÈÏ±£³ÖºÍwlanÒ»ÖÂ*/
+        /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¸ï¿½ï¿½î£¬ï¿½ï¿½Ä¬ï¿½Ï±ï¿½ï¿½Öºï¿½wlanÒ»ï¿½ï¿½*/
         g_board_info_etc.bfgn_download_channel = g_board_info_etc.wlan_download_channel;
         PS_PRINT_WARNING("can not find bfgn_download_channel ,choose default:%s\n", device_download_mode_list_etc[0].name);
         return BOARD_SUCC;
@@ -795,7 +795,7 @@ int32 get_ssi_dump_cfg(void)
     int32               l_cfg_value = 0;
     int32               l_ret = INI_FAILED;
 
-    /* »ñÈ¡iniµÄÅäÖÃÖµ */
+    /* ï¿½ï¿½È¡iniï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµ */
     l_ret = get_cust_conf_int32_etc(INI_MODU_PLAT, INI_SSI_DUMP_EN, &l_cfg_value);
 
     if (INI_FAILED == l_ret)
@@ -993,7 +993,7 @@ int32 hi110x_board_resume_etc(struct platform_device *pdev)
 
 
 /*********************************************************************/
-/********************   SSIµ÷ÊÔ´úÂëstart   ***************************/
+/********************   SSIï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½start   ***************************/
 /*********************************************************************/
 #ifdef _PRE_CONFIG_GPIO_TO_SSI_DEBUG
 #define HI110X_SSI_CLK_GPIO_NAME  ("hi110x ssi clk")
@@ -1029,7 +1029,7 @@ char* g_ssi_hi1103_pilot_cpu_st_str[] =
     "PROTECTING"/*0x7*/
 };
 
-static uint32 g_halt_det_cnt = 0;/*¼ì²âsocÒì³£´ÎÊý*/
+static uint32 g_halt_det_cnt = 0;/*ï¿½ï¿½ï¿½socï¿½ì³£ï¿½ï¿½ï¿½ï¿½*/
 typedef struct _ssi_cpu_info_
 {
     uint32 cpu_state;
@@ -1050,15 +1050,15 @@ static ssi_cpu_infos g_st_ssi_cpu_infos;
 #define SSI_WRITE_DATA 0x5a5a
 ssi_trans_test_st ssi_test_st = {0};
 
-uint32 g_ssi_clk_etc  = 0;              /*Ä£ÄâssiÊ±ÖÓµÄGPIO¹Ü½ÅºÅ*/
-uint32 g_ssi_data_etc = 0;              /*Ä£ÄâssiÊý¾ÝÏßµÄGPIO¹Ü½ÅºÅ*/
-uint16 g_ssi_base_etc = 0x8000;         /*ssi»ùÖ·*/
-uint32 g_interval_etc = INTERVAL_TIME;  /*GPIOÀ­³öÀ´µÄ²¨ÐÎ±£³ÖÊ±¼ä£¬µ¥Î»us*/
+uint32 g_ssi_clk_etc  = 0;              /*Ä£ï¿½ï¿½ssiÊ±ï¿½Óµï¿½GPIOï¿½Ü½Åºï¿½*/
+uint32 g_ssi_data_etc = 0;              /*Ä£ï¿½ï¿½ssiï¿½ï¿½ï¿½ï¿½ï¿½ßµï¿½GPIOï¿½Ü½Åºï¿½*/
+uint16 g_ssi_base_etc = 0x8000;         /*ssiï¿½ï¿½Ö·*/
+uint32 g_interval_etc = INTERVAL_TIME;  /*GPIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä²ï¿½ï¿½Î±ï¿½ï¿½ï¿½Ê±ï¿½ä£¬ï¿½ï¿½Î»us*/
 uint32 g_delay_etc    = 5;
 
-/*ssi ¹¤×÷Ê±±ØÐëÇÐ»»ssi clock,
-  ´ËÊ±aon»áÊÜµ½Ó°Ïì£¬
-  BCPU/WCPU ÓÐ¿ÉÄÜÒì³££¬É÷ÓÃ!*/
+/*ssi ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½ssi clock,
+  ï¿½ï¿½Ê±aonï¿½ï¿½ï¿½Üµï¿½Ó°ï¿½ì£¬
+  BCPU/WCPU ï¿½Ð¿ï¿½ï¿½ï¿½ï¿½ì³£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!*/
 int32 ssi_try_lock(void)
 {
     oal_ulong flags;
@@ -1092,7 +1092,7 @@ int32 wait_for_ssi_idle_timeout(int32 mstimeout)
     else {
         can_sleep = 1;
     }
-    /*¿¼ÂÇÐ§ÂÊ£¬ÕâÀïÐèÒªÅÐ¶ÏÊÇ·ñ¿ÉÒÔË¯Ãß*/
+    /*ï¿½ï¿½ï¿½ï¿½Ð§ï¿½Ê£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½Ë¯ï¿½ï¿½*/
     while(ssi_try_lock()){
         if (can_sleep) {
             msleep(1);
@@ -1229,17 +1229,17 @@ int32 ssi_write_data_etc(uint16 addr, uint16 value)
         ssi_data_output_etc(0);
     }
 
-    /*·¢ËÍSYNCÎ»*/
+    /*ï¿½ï¿½ï¿½ï¿½SYNCÎ»*/
     PS_PRINT_DBG("tx sync bit\n");
     ssi_clk_output_etc();
     ssi_data_output_etc(1);
 
-    /*Ö¸Ê¾±¾´Î²Ù×÷ÎªÐ´£¬¸ß¶ÁµÍÐ´*/
+    /*Ö¸Ê¾ï¿½ï¿½ï¿½Î²ï¿½ï¿½ï¿½ÎªÐ´ï¿½ï¿½ï¿½ß¶ï¿½ï¿½ï¿½Ð´*/
     PS_PRINT_DBG("tx r/w->w\n");
     ssi_clk_output_etc();
     ssi_data_output_etc(0);
 
-    /*·¢ËÍµØÖ·*/
+    /*ï¿½ï¿½ï¿½Íµï¿½Ö·*/
     PS_PRINT_DBG("write addr:0x%x\n", addr);
     for (i = 0; i < SSI_DATA_LEN; i++)
     {
@@ -1249,7 +1249,7 @@ int32 ssi_write_data_etc(uint16 addr, uint16 value)
         ssi_data_output_etc(tx);
     }
 
-    /*·¢ËÍÊý¾Ý*/
+    /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
     PS_PRINT_DBG("write value:0x%x\n", value);
     for (i = 0; i < SSI_DATA_LEN; i++)
     {
@@ -1259,7 +1259,7 @@ int32 ssi_write_data_etc(uint16 addr, uint16 value)
         ssi_data_output_etc(tx);
     }
 
-    /*Êý¾Ý·¢ËÍÍê³ÉÒÔºó£¬±£³Ödelay¸öÖÜÆÚµÄ0*/
+    /*ï¿½ï¿½ï¿½Ý·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôºó£¬±ï¿½ï¿½ï¿½delayï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½0*/
     PS_PRINT_DBG("ssi write:finish, delay %d cycle\n", g_delay_etc);
     for (i = 0; i < g_delay_etc; i++)
     {
@@ -1285,17 +1285,17 @@ uint16 ssi_read_data_etc(uint16 addr)
         ssi_data_output_etc(0);
     }
 
-    /*·¢ËÍSYNCÎ»*/
+    /*ï¿½ï¿½ï¿½ï¿½SYNCÎ»*/
     PS_PRINT_DBG("tx sync bit\n");
     ssi_clk_output_etc();
     ssi_data_output_etc(1);
 
-    /*Ö¸Ê¾±¾´Î²Ù×÷Îª¶Á£¬¸ß¶ÁµÍÐ´*/
+    /*Ö¸Ê¾ï¿½ï¿½ï¿½Î²ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ß¶ï¿½ï¿½ï¿½Ð´*/
     PS_PRINT_DBG("tx r/w->r\n");
     ssi_clk_output_etc();
     ssi_data_output_etc(1);
 
-    /*·¢ËÍµØÖ·*/
+    /*ï¿½ï¿½ï¿½Íµï¿½Ö·*/
     PS_PRINT_DBG("read addr:0x%x\n", addr);
     for (i = 0; i < SSI_DATA_LEN; i++)
     {
@@ -1305,15 +1305,15 @@ uint16 ssi_read_data_etc(uint16 addr)
         ssi_data_output_etc(tx);
     }
 
-    /*ÑÓ³ÙÒ»¸öclk£¬·ñÔòÉÏÒ»¸öÊý¾ÝÖ»±£³ÖÁË°ë¸öÊ±ÖÓÖÜÆÚ*/
+    /*ï¿½Ó³ï¿½Ò»ï¿½ï¿½clkï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½ï¿½ï¿½ï¿½Ë°ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
     ssi_clk_output_etc();
 
-    /*ÉèÖÃdataÏßGPIOÎªÊäÈë£¬×¼±¸¶ÁÈ¡Êý¾Ý*/
+    /*ï¿½ï¿½ï¿½ï¿½dataï¿½ï¿½GPIOÎªï¿½ï¿½ï¿½ë£¬×¼ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½*/
     gpio_direction_input(g_ssi_data_etc);
 
     PS_PRINT_DBG("data in mod, current gpio level is %d\n", gpio_get_value(g_ssi_data_etc));
 
-    /*¶ÁÈ¡SYNCÍ¬²½Î»*/
+    /*ï¿½ï¿½È¡SYNCÍ¬ï¿½ï¿½Î»*/
     do
     {
         ssi_clk_output_etc();
@@ -1342,7 +1342,7 @@ uint16 ssi_read_data_etc(uint16 addr)
         data = data | (rx << (SSI_DATA_LEN - i - 1));
     }
 
-    /*»Ö¸´dataÏßGPIOÎªÊä³ö£¬²¢Êä³ö0*/
+    /*ï¿½Ö¸ï¿½dataï¿½ï¿½GPIOÎªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½0*/
     ssi_data_output_etc(0);
 
     return data;
@@ -1390,14 +1390,14 @@ int32 ssi_write32_etc(uint32 addr, uint16 value)
     addr_half_word_high = (addr >> 16) & 0xffff;
     addr_half_word_low  = (addr & 0xffff) >> 1;
 
-    /*Íù»ùµØÖ·Ð´µØÖ·µÄ¸ß16Î»*/
+    /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·Ð´ï¿½ï¿½Ö·ï¿½Ä¸ï¿½16Î»*/
     if (ssi_write16_etc(g_ssi_base_etc, addr_half_word_high) < 0)
     {
         PS_PRINT_ERR("ssi write: 0x%x=0x%x fail\n", addr, value);
         return BOARD_FAIL;
     }
 
-    /*µÍµØÖ·Ð´Êµ¼ÊÒªÐ´ÈëµÄvalue*/
+    /*ï¿½Íµï¿½Ö·Ð´Êµï¿½ï¿½ÒªÐ´ï¿½ï¿½ï¿½value*/
     if (ssi_write16_etc(addr_half_word_low, value) < 0)
     {
         PS_PRINT_ERR("ssi write: 0x%x=0x%x fail\n", addr, value);
@@ -1446,17 +1446,17 @@ int32 ssi_read_data16(uint16 addr, uint16 *value)
         ssi_data_output_etc(0);
     }
 
-    /*·¢ËÍSYNCÎ»*/
+    /*ï¿½ï¿½ï¿½ï¿½SYNCÎ»*/
     PS_PRINT_DBG("tx sync bit\n");
     ssi_clk_output_etc();
     ssi_data_output_etc(1);
 
-    /*Ö¸Ê¾±¾´Î²Ù×÷Îª¶Á£¬¸ß¶ÁµÍÐ´*/
+    /*Ö¸Ê¾ï¿½ï¿½ï¿½Î²ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ß¶ï¿½ï¿½ï¿½Ð´*/
     PS_PRINT_DBG("tx r/w->r\n");
     ssi_clk_output_etc();
     ssi_data_output_etc(1);
 
-    /*·¢ËÍµØÖ·*/
+    /*ï¿½ï¿½ï¿½Íµï¿½Ö·*/
     PS_PRINT_DBG("read addr:0x%x\n", addr);
     for (i = 0; i < SSI_DATA_LEN; i++)
     {
@@ -1466,15 +1466,15 @@ int32 ssi_read_data16(uint16 addr, uint16 *value)
         ssi_data_output_etc(tx);
     }
 
-    /*ÑÓ³ÙÒ»¸öclk£¬·ñÔòÉÏÒ»¸öÊý¾ÝÖ»±£³ÖÁË°ë¸öÊ±ÖÓÖÜÆÚ*/
+    /*ï¿½Ó³ï¿½Ò»ï¿½ï¿½clkï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½ï¿½ï¿½ï¿½Ë°ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
     ssi_clk_output_etc();
 
-    /*ÉèÖÃdataÏßGPIOÎªÊäÈë£¬×¼±¸¶ÁÈ¡Êý¾Ý*/
+    /*ï¿½ï¿½ï¿½ï¿½dataï¿½ï¿½GPIOÎªï¿½ï¿½ï¿½ë£¬×¼ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½*/
     gpio_direction_input(g_ssi_data_etc);
 
     PS_PRINT_DBG("data in mod, current gpio level is %d\n", gpio_get_value(g_ssi_data_etc));
 
-    /*¶ÁÈ¡SYNCÍ¬²½Î»*/
+    /*ï¿½ï¿½È¡SYNCÍ¬ï¿½ï¿½Î»*/
     do
     {
         ssi_clk_output_etc();
@@ -1503,7 +1503,7 @@ int32 ssi_read_data16(uint16 addr, uint16 *value)
         data = data | (rx << (SSI_DATA_LEN - i - 1));
     }
 
-    /*»Ö¸´dataÏßGPIOÎªÊä³ö£¬²¢Êä³ö0*/
+    /*ï¿½Ö¸ï¿½dataï¿½ï¿½GPIOÎªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½0*/
     ssi_data_output_etc(0);
 
     *value = data;
@@ -1540,11 +1540,11 @@ int32 ssi_read_value16(uint32 addr, uint16* value, int16 last_high_addr)
 
 /*32bits address,
   32bits value
-  gpioÄ£ÄâSSI ¶Á32BIT value
-  1.ÅäÖÃSSI Îª32BITÄ£Ê½
-  2.µÚÒ»´Î¶Á16BIT²Ù×÷£¬SOC·¢Æð32BIT²Ù×÷£¬·µ»ØµÍ16BIT¸øHOST
-  3.µÚ¶þ´Î¶ÁÍ¬Ò»µØÖ·16BIT²Ù×÷£¬SOC²»·¢Æð×ÜÏß²Ù×÷£¬·µ»Ø¸ß16BIT¸øHOST
-  4.Èç¹ûÌø¹ý²½Öè3 ¶ÁÆäËûµØÖ·£¬SOC²à¸ß16BIT »á±»¶ªÆú*/
+  gpioÄ£ï¿½ï¿½SSI ï¿½ï¿½32BIT value
+  1.ï¿½ï¿½ï¿½ï¿½SSI Îª32BITÄ£Ê½
+  2.ï¿½ï¿½Ò»ï¿½Î¶ï¿½16BITï¿½ï¿½ï¿½ï¿½ï¿½ï¿½SOCï¿½ï¿½ï¿½ï¿½32BITï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½16BITï¿½ï¿½HOST
+  3.ï¿½Ú¶ï¿½ï¿½Î¶ï¿½Í¬Ò»ï¿½ï¿½Ö·16BITï¿½ï¿½ï¿½ï¿½ï¿½ï¿½SOCï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø¸ï¿½16BITï¿½ï¿½HOST
+  4.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½3 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½SOCï¿½ï¿½ï¿½16BIT ï¿½á±»ï¿½ï¿½ï¿½ï¿½*/
 int32 ssi_read_value32(uint32 addr, uint32* value, int16 last_high_addr)
 {
     int32 ret;
@@ -1597,14 +1597,14 @@ int32 ssi_write_value32(uint32 addr, uint32 value)
     addr_half_word_low  = (addr & 0xffff) >> 1;
     addr_half_word_low_incr  = ((addr + 2) & 0xffff) >> 1;
 
-    /*Íù»ùµØÖ·Ð´µØÖ·µÄ¸ß16Î»*/
+    /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·Ð´ï¿½ï¿½Ö·ï¿½Ä¸ï¿½16Î»*/
     if (ssi_write_data_etc(g_ssi_base_etc, addr_half_word_high) < 0)
     {
         PS_PRINT_ERR("ssi write high addr: 0x%x=0x%x fail\n", addr, value);
         return BOARD_FAIL;
     }
 
-    /*µÍµØÖ·Ð´Êµ¼ÊÒªÐ´ÈëµÄvalue*/
+    /*ï¿½Íµï¿½Ö·Ð´Êµï¿½ï¿½ÒªÐ´ï¿½ï¿½ï¿½value*/
     if (ssi_write_data_etc(addr_half_word_low, value & 0xffff) < 0)
     {
         PS_PRINT_ERR("ssi write low value: 0x%x=0x%x fail\n", addr, value);
@@ -1862,7 +1862,7 @@ int32 ssi_file_test(ssi_trans_test_st* pst_ssi_test)
     /*reset wcpu */
     if (BOARD_SUCC != ssi_write32_etc(0x40000030, 0xfe5e))
     {
-         //Âö³å¸´Î»
+         //ï¿½ï¿½ï¿½å¸´Î»
          //PS_PRINT_ERR("reset wcpu fail\n");
          //return BOARD_FAIL;
     }
@@ -1936,7 +1936,7 @@ int32 do_ssi_mem_test(ssi_trans_test_st* pst_ssi_test)
 
     for (i = 0; i < pst_ssi_test->trans_len; i++ )
     {
-        ul_addr = ul_write_base + 2*i;  //°´2×Ö½Ú¶ÁÐ´
+        ul_addr = ul_write_base + 2*i;  //ï¿½ï¿½2ï¿½Ö½Ú¶ï¿½Ð´
         l_ret = ssi_write32_etc(ul_addr, SSI_WRITE_DATA);
         if (BOARD_SUCC != l_ret)
         {
@@ -2012,7 +2012,7 @@ ssi_reg_info hi1103_w_ctrl_full =    {0x40000000, 0x408, SSI_RW_WORD_MOD};
 ssi_reg_info hi1103_w_key_mem  =    {0x2001e620, 0x80, SSI_RW_DWORD_MOD};
 ssi_reg_info hi1103_b_ctrl_full =    {0x48000000, 0x40c, SSI_RW_WORD_MOD};
 ssi_reg_info hi1103_pcie_ctrl_full = {0x40007000, 0x4c8, SSI_RW_DWORD_MOD};
-ssi_reg_info hi1103_pcie_dbi_full = {0x40102000, 0x900, SSI_RW_DWORD_MOD};/*Ã»½¨Á´Ö®Ç°²»ÄÜ¶Á*/
+ssi_reg_info hi1103_pcie_dbi_full = {0x40102000, 0x900, SSI_RW_DWORD_MOD};/*Ã»ï¿½ï¿½ï¿½ï¿½Ö®Ç°ï¿½ï¿½ï¿½Ü¶ï¿½*/
 ssi_reg_info hi1103_pcie_pilot_iatu_full = {0x40104000, 0x2000, SSI_RW_DWORD_MOD};/*8KB*/
 ssi_reg_info hi1103_pcie_pilot_dma_full = {0x40106000, 0x1000, SSI_RW_DWORD_MOD};/*4KB*/
 ssi_reg_info hi1103_pcie_dma_ctrl_full = {0x40008000, 0x34, SSI_RW_DWORD_MOD};
@@ -2422,13 +2422,12 @@ int ssi_check_bcpu_is_working(void)
 #define TCXO_LIMIT_THRESHOLD (5)
 int ssi_detect_tcxo_is_normal(void)
 {
-    /*tcxo detect ÒÀÀµtcxoÊ±ÖÓ£¬
-       Èç¹ûÔÚÆô¶¯ºótcxo Òì³£ÄÇÃ´tcxo_32k_det_result Îª¾ÉÖµ
-       Èç¹ûÔÚÆô¶¯ºó32kÒì³£ ÄÇÃ´sytem_tickÎª¾ÉÖµ*/
+    /*tcxo detect ï¿½ï¿½ï¿½ï¿½tcxoÊ±ï¿½Ó£ï¿½
+       ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½tcxo ï¿½ì³£ï¿½ï¿½Ã´tcxo_32k_det_result Îªï¿½ï¿½Öµ
+       ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½32kï¿½ì³£ ï¿½ï¿½Ã´sytem_tickÎªï¿½ï¿½Öµ*/
     int ret  = 0;
     char* tcxo_str = "";
     int tcxo_is_abnormal = 0;
-    uint32 reg;
     uint32 tcxo_enable;
     uint32 tcxo_det_value_src, tcxo_det_value_target;
     oal_uint32 clock_32k = 0;
@@ -2471,7 +2470,7 @@ int ssi_detect_tcxo_is_normal(void)
     tcxo_det_value_target = TCXO_32K_DET_VALUE;
     if(tcxo_det_value_src == tcxo_det_value_target)
     {
-        /*¸Õ×ö¹ýdetect,¸Ä±ädet_value£¬¹Û²âÖµÊÇ·ñ¸Ä±ä*/
+        /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½detect,ï¿½Ä±ï¿½det_valueï¿½ï¿½ï¿½Û²ï¿½Öµï¿½Ç·ï¿½Ä±ï¿½*/
         tcxo_det_value_target = TCXO_32K_DET_VALUE + 2;
     }
 
@@ -2482,7 +2481,7 @@ int ssi_detect_tcxo_is_normal(void)
     sys_tick_old = (uint32)ssi_read32_etc(0x500000d0);
     tcxo_det_res_old = (uint32)ssi_read32_etc(0x50000708);
 
-    ssi_write32_etc(0x500000c0, 0x2);/*ÇåÁãw systick*/
+    ssi_write32_etc(0x500000c0, 0x2);/*ï¿½ï¿½ï¿½ï¿½w systick*/
     oal_get_time_cost_start(cost);
 
     if(tcxo_enable)
@@ -2523,7 +2522,6 @@ int ssi_detect_tcxo_is_normal(void)
 
     sys_tick_new = (uint32)ssi_read32_etc(0x500000d0);
 
-    reg = (uint32)ssi_read32_etc(0x50000700);
     tcxo_det_res_new = (uint32)ssi_read32_etc(0x50000708);
 
     /*32k detect*/
@@ -2535,7 +2533,7 @@ int ssi_detect_tcxo_is_normal(void)
     {
         oal_uint64  us_to_s;
         us_to_s = time_cost_var_sub(cost);
-        us_to_s += 1446;/*¾­ÑéÖµ,Îó²î1446us*/
+        us_to_s += 1446;/*ï¿½ï¿½ï¿½ï¿½Öµ,ï¿½ï¿½ï¿½1446us*/
         clock_32k = (sys_tick_new*1000)/(oal_uint32)us_to_s;
         PS_PRINT_ERR("32k runtime:%llu us , sys_tick:%u\n", us_to_s, sys_tick_new);
         PS_PRINT_ERR("32k realclock real= %u Khz[base=32768]\n", clock_32k);
@@ -2547,7 +2545,7 @@ int ssi_detect_tcxo_is_normal(void)
     {
         if(tcxo_det_res_new == tcxo_det_res_old)
         {
-            /*tcxo Èí¼þÅäÖÃÎª´ò¿ª´ËÊ±Ó¦¸ÃÓÐÊ±ÖÓ*/
+            /*tcxo ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ò¿ª´ï¿½Ê±Ó¦ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½*/
             PS_PRINT_ERR("tcxo don't change after detect, tcxo or 32k maybe abnormal, tcxo=0x%x\n", tcxo_det_res_new);
             if(0 == tcxo_det_res_new)
             {
@@ -2556,8 +2554,8 @@ int ssi_detect_tcxo_is_normal(void)
             }
             else
             {
-                /*ÕâÀï¿ÉÄÜÊÇÎÞÐ§µÄÌ½²â£¬
-                   Òª½áºÏÏêÏ¸ÈÕÖ¾·ÖÎö£¬´Ë´¦DSMºöÂÔ¸Ä·ÖÖ§£¬²»ÉÏ±¨*/
+                /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½Ì½ï¿½â£¬
+                   Òªï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë´ï¿½DSMï¿½ï¿½ï¿½Ô¸Ä·ï¿½Ö§ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½*/
                 tcxo_is_abnormal = 0;
                 tcxo_str = "tcxo-detect-invalid";
             }
@@ -2570,7 +2568,7 @@ int ssi_detect_tcxo_is_normal(void)
             div_clock = div_u64(div_clock, 1000000);
             if((clock_tcxo < tcxo_limit_low) || (clock_tcxo > tcxo_limit_high))
             {
-                /*Ê±ÖÓÎó²î³¬¹ýãÐÖµ*/
+                /*Ê±ï¿½ï¿½ï¿½ï¿½î³¬ï¿½ï¿½ï¿½ï¿½Öµ*/
                 tcxo_is_abnormal = 2;
                 tcxo_str = "tcxo clock-abnormal";
             }
@@ -3075,14 +3073,14 @@ void dsm_cpu_info_dump(void)
     int32 ret = 0;
     int32 count = 0;
     char buf[DSM_CPU_INFO_SIZE];
-    /*dsm cpuÐÅÏ¢ÉÏ±¨*/
+    /*dsm cpuï¿½ï¿½Ï¢ï¿½Ï±ï¿½*/
     if(g_halt_det_cnt || (hi11xx_kernel_crash))
     {
         PS_PRINT_INFO("g_halt_det_cnt=%u hi11xx_kernel_crash=%d dsm_cpu_info_dump return\n", g_halt_det_cnt, hi11xx_kernel_crash);
         return;
     }
 
-    /*Ã»ÓÐ¼ì²âµ½Òì³££¬ÉÏ±¨¼ÇÂ¼µÄCPUÐÅÏ¢*/
+    /*Ã»ï¿½Ð¼ï¿½âµ½ï¿½ì³£ï¿½ï¿½ï¿½Ï±ï¿½ï¿½ï¿½Â¼ï¿½ï¿½CPUï¿½ï¿½Ï¢*/
     oal_memset((void*)buf, 0, sizeof(buf));
     ret = snprintf(buf + count, DSM_CPU_INFO_SIZE - count, "wcpu_state=0x%x %s, bcpu_state=0x%x %s ",
        g_st_ssi_cpu_infos.wcpu_info.cpu_state, ssi_is_pilot ? (g_ssi_hi1103_pilot_cpu_st_str[g_st_ssi_cpu_infos.wcpu_info.cpu_state & 0x7]):(g_ssi_hi1103_mpw2_cpu_st_str[g_st_ssi_cpu_infos.wcpu_info.cpu_state & 0x3]),
@@ -3156,7 +3154,7 @@ int ssi_dump_device_regs(unsigned long long module_set)
     int ret;
     struct st_exception_info *pst_exception_data = NULL;
 
-    /*ÏµÍ³crashºóÇ¿ÐÐdump,ÏµÍ³Õý³£Ê±user°æ±¾ÊÜ¿Ø*/
+    /*ÏµÍ³crashï¿½ï¿½Ç¿ï¿½ï¿½dump,ÏµÍ³ï¿½ï¿½ï¿½ï¿½Ê±userï¿½æ±¾ï¿½Ü¿ï¿½*/
     if((HI1XX_ANDROID_BUILD_VARIANT_USER == hi11xx_get_android_build_variant()) && (0 == hi11xx_kernel_crash))
     {
         /*user build, limit the ssi dump*/
@@ -3436,7 +3434,7 @@ ssi_fail:
 #endif
 
 /*********************************************************************/
-/********************   SSIµ÷ÊÔ´úÂëend    ****************************/
+/********************   SSIï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½end    ****************************/
 /*********************************************************************/
 
 #ifdef _PRE_CONFIG_USE_DTS

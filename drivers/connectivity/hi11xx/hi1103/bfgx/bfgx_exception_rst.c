@@ -1,7 +1,7 @@
 
 
 /*****************************************************************************
-  1 Í·ÎÄ¼þ°üº¬
+  1 Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 #include <linux/delay.h>
 #include <linux/rtc.h>
@@ -25,7 +25,7 @@
 #include "oam_rdr.h"
 
 /*****************************************************************************
-  3 È«¾Ö±äÁ¿¶¨Òå
+  3 È«ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 struct st_exception_info *g_pst_exception_info_etc = NULL;
 struct sdio_dump_bcpu_buff st_bcpu_dump_buff_etc = {NULL, 0, 0};
@@ -229,7 +229,7 @@ exception_bcpu_dump_msg g_sdio_read_bcpu_mem_info_etc[BFGX_SHARE_RAM_NUM] =
 };
 exception_bcpu_dump_msg g_sdio_read_bcpu_priv_reg_info_etc[BFGX_PRIV_REG_NUM] =
 {
-	/*Ë½ÓÐ¼Ä´æÆ÷Ö»ÄÜ¿½±´2¸ö*/
+	/*Ë½ï¿½Ð¼Ä´ï¿½ï¿½ï¿½Ö»ï¿½Ü¿ï¿½ï¿½ï¿½2ï¿½ï¿½*/
     //{GNSS_SUB_FILE_NAME,             BFGX_GNSS_SUB_ADDR,             ALIGN_2_BYTE, BFGX_GNSS_SUB_LEN},
     {B_CTL_WDT_TIMER_UART_FILE_NAME, BFGX_B_CTL_WDT_TIMER_UART_ADDR, ALIGN_2_BYTE, BFGX_B_CTL_WDT_TIMER_UART_LEN},
     {IR_SUB_FILE_NAME,               BFGX_IR_SUB_ADDR,               ALIGN_2_BYTE, BFGX_IR_SUB_LEN},
@@ -265,7 +265,7 @@ memdump_info_t bcpu_memdump_cfg_etc;
 memdump_info_t wcpu_memdump_cfg_etc;
 #endif
 /*****************************************************************************
-  2 º¯ÊýÊµÏÖ
+  2 ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
 *****************************************************************************/
 void  bfgx_beat_timer_expire_etc(uint64 data);
 int32 get_exception_info_reference_etc(struct st_exception_info **exception_data);
@@ -383,7 +383,7 @@ void bfgx_beat_timer_expire_etc(uint64 data)
 
     ps_core_d = pst_exception_data->ps_plat_d->core_data;
 
-    /*bfgxË¯ÃßÊ±£¬Ã»ÓÐÐÄÌøÏûÏ¢ÉÏ±¨*/
+    /*bfgxË¯ï¿½ï¿½Ê±ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½Ï±ï¿½*/
     if (BFGX_SLEEP == ps_core_d->ps_pm->bfgx_dev_state_get())
     {
         PS_PRINT_INFO("bfgx has sleep!\n");
@@ -701,7 +701,7 @@ int32 plat_power_fail_exception_info_set_etc(uint32 subsys_type, uint32 thread_t
         pst_exception_data->thread_type   = thread_type;
         pst_exception_data->excetion_type = exception_type;
 
-        /*µ±Ç°Òì³£Ã»ÓÐ´¦ÀíÍê³ÉÖ®Ç°£¬²»ÔÊÐí´¦ÀíÐÂµÄÒì³£*/
+        /*ï¿½ï¿½Ç°ï¿½ì³£Ã»ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö®Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½ï¿½ì³£*/
         atomic_set(&pst_exception_data->is_reseting_device, PLAT_EXCEPTION_RESET_BUSY);
     }
     else
@@ -712,7 +712,7 @@ int32 plat_power_fail_exception_info_set_etc(uint32 subsys_type, uint32 thread_t
         return -EXCEPTION_FAIL;
     }
 
-    /*Ôö¼ÓÍ³¼ÆÐÅÏ¢*/
+    /*ï¿½ï¿½ï¿½ï¿½Í³ï¿½ï¿½ï¿½ï¿½Ï¢*/
     pst_exception_data->etype_info[exception_type].excp_cnt += 1;
 
     spin_unlock_irqrestore(&pst_exception_data->exception_spin_lock, flag);
@@ -785,7 +785,7 @@ int32 plat_exception_handler_etc(uint32 subsys_type, uint32 thread_type, uint32 
         return EXCEPTION_SUCCESS;
     }
 
-    /*ÕâÀïÖ»ÄÜÓÃspin lock£¬ÒòÎª¸Ãº¯Êý»á±»ÐÄÌø³¬Ê±º¯Êýµ÷ÓÃ£¬ÐÄÌø³¬Ê±º¯ÊýÊôÓÚÈíÖÐ¶Ï£¬²»ÔÊÐíË¯Ãß*/
+    /*ï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½ï¿½ï¿½spin lockï¿½ï¿½ï¿½ï¿½Îªï¿½Ãºï¿½ï¿½ï¿½ï¿½á±»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶Ï£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¯ï¿½ï¿½*/
     spin_lock_irqsave(&pst_exception_data->exception_spin_lock, flag);
     if (PLAT_EXCEPTION_RESET_IDLE == atomic_read(&pst_exception_data->is_reseting_device))
     {
@@ -793,7 +793,7 @@ int32 plat_exception_handler_etc(uint32 subsys_type, uint32 thread_type, uint32 
         pst_exception_data->thread_type   = thread_type;
         pst_exception_data->excetion_type = exception_type;
 
-        /*µ±Ç°Òì³£Ã»ÓÐ´¦ÀíÍê³ÉÖ®Ç°£¬²»ÔÊÐí´¦ÀíÐÂµÄÒì³£*/
+        /*ï¿½ï¿½Ç°ï¿½ì³£Ã»ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö®Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½ï¿½ì³£*/
         atomic_set(&pst_exception_data->is_reseting_device, PLAT_EXCEPTION_RESET_BUSY);
     }
     else
@@ -806,7 +806,7 @@ int32 plat_exception_handler_etc(uint32 subsys_type, uint32 thread_type, uint32 
     spin_unlock_irqrestore(&pst_exception_data->exception_spin_lock, flag);
 
 #ifdef _PRE_CONFIG_GPIO_TO_SSI_DEBUG
-    /*µÈ´ýSSI²Ù×÷Íê³É£¬·ÀÖ¹NOC*/
+    /*ï¿½È´ï¿½SSIï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É£ï¿½ï¿½ï¿½Ö¹NOC*/
     timeout = wait_for_ssi_idle_timeout(HI110X_DFR_WAIT_SSI_IDLE_MS);
     if(timeout <= 0) {
         PS_PRINT_ERR("[HI110X_DFR]wait for ssi idle failed\n");
@@ -822,7 +822,7 @@ int32 plat_exception_handler_etc(uint32 subsys_type, uint32 thread_type, uint32 
          pm_data->bfg_timer_mod_cnt = 0;
          pm_data->bfg_timer_mod_cnt_pre = 0;
 
-        /*timer time out ÖÐ¶Ïµ÷ÓÃÊ±£¬²»ÄÜÔÙÕâÀïÉ¾³ý£¬ËÀËø*/
+        /*timer time out ï¿½Ð¶Ïµï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
         if (exception_type != BFGX_BEATHEART_TIMEOUT)
         {
                 pm_data->ps_pm_interface->operate_beat_timer(BEAT_TIMER_DELETE);
@@ -834,8 +834,8 @@ int32 plat_exception_handler_etc(uint32 subsys_type, uint32 thread_type, uint32 
                                pst_exception_data->subsys_type, pst_exception_data->excetion_type);
     plat_bbox_msg_hander(subsys_type, exception_type);
 
-    oal_wake_lock_timeout(&pst_exception_data->plat_exception_rst_wlock, 10*1000);/*´¦ÀíÒì³££¬³ÖËø10Ãë*/
-    /*´¥·¢Òì³£´¦Àíworker*/
+    oal_wake_lock_timeout(&pst_exception_data->plat_exception_rst_wlock, 10*1000);/*ï¿½ï¿½ï¿½ï¿½ï¿½ì³£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½10ï¿½ï¿½*/
+    /*ï¿½ï¿½ï¿½ï¿½ï¿½ì³£ï¿½ï¿½ï¿½ï¿½worker*/
     queue_work(pst_exception_data->plat_exception_rst_workqueue, &pst_exception_data->plat_exception_rst_work);
 
     return EXCEPTION_SUCCESS;
@@ -908,7 +908,7 @@ void plat_exception_reset_work_etc(struct work_struct *work)
 #endif
         PS_PRINT_WARNING("[HI110X_DFR]plat execption recovery success, current time [%llu]ms, max time [%llu]ms\n",total_time, pst_exception_data->etype_info[pst_exception_data->excetion_type].maxtime );
     }
-    /*Ã¿´ÎdfrÍê³É£¬ÏÔÊ¾ÀúÊ·dfr´¦Àí½á¹û*/
+    /*Ã¿ï¿½ï¿½dfrï¿½ï¿½É£ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ê·dfrï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
     plat_print_dfr_info();
 
 exit_exception:
@@ -934,7 +934,6 @@ int32 is_subsystem_rst_enable(void)
 int32 wifi_exception_handler_etc(void)
 {
     int32 ret = -EXCEPTION_FAIL;
-    uint32 exception_type;
     struct st_exception_info *pst_exception_data = NULL;
 
     get_exception_info_reference_etc(&pst_exception_data);
@@ -944,9 +943,7 @@ int32 wifi_exception_handler_etc(void)
         return -EXCEPTION_FAIL;
     }
 
-    exception_type = pst_exception_data->excetion_type;
-
-    /*Èç¹ûbfgxÒÑ¾­´ò¿ª£¬Ö´ÐÐwifi×ÓÏµÍ³¸´Î»Á÷³Ì£¬·ñÔòÖ´ÐÐwifiÈ«ÏµÍ³¸´Î»Á÷³Ì*/
+    /*ï¿½ï¿½ï¿½bfgxï¿½Ñ¾ï¿½ï¿½ò¿ª£ï¿½Ö´ï¿½ï¿½wifiï¿½ï¿½ÏµÍ³ï¿½ï¿½Î»ï¿½ï¿½ï¿½Ì£ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½wifiÈ«ÏµÍ³ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½*/
     if (!bfgx_is_shutdown_etc())
     {
         PS_PRINT_INFO("bfgx is opened, start wifi subsystem reset!\n");
@@ -1042,7 +1039,7 @@ int32 wifi_subsystem_reset_etc(void)
     }
 
 #ifdef _PRE_PLAT_FEATURE_CUSTOMIZE
-    //ÏÂ·¢¶¨ÖÆ»¯²ÎÊýµ½deviceÈ¥
+    //ï¿½Â·ï¿½ï¿½ï¿½ï¿½Æ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½deviceÈ¥
     hwifi_hcc_customize_h2d_data_cfg();
 #endif
 
@@ -1074,7 +1071,7 @@ int32 wifi_system_reset_etc(void)
         return -EXCEPTION_FAIL;
     }
 
-    /*ÖØÐÂÉÏµç£¬firmwareÖØÐÂ¼ÓÔØ*/
+    /*ï¿½ï¿½ï¿½ï¿½ï¿½Ïµç£¬firmwareï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½*/
     hcc_bus_power_action(hcc_get_current_110x_bus(), HCC_BUS_POWER_PATCH_LOAD_PREPARE);
 
     if (!bfgx_is_shutdown_etc())
@@ -1115,7 +1112,7 @@ int32 wifi_system_reset_etc(void)
     }
 
 #ifdef _PRE_PLAT_FEATURE_CUSTOMIZE
-        //ÏÂ·¢¶¨ÖÆ»¯²ÎÊýµ½deviceÈ¥
+        //ï¿½Â·ï¿½ï¿½ï¿½ï¿½Æ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½deviceÈ¥
     hwifi_hcc_customize_h2d_data_cfg();
 #endif
     if (!bfgx_is_shutdown_etc())
@@ -1156,7 +1153,7 @@ int32 wifi_system_reset_etc(void)
 
         bfgx_pm_feature_set_etc();
 
-        /*»Ö¸´bfgxÒµÎñ×´Ì¬*/
+        /*ï¿½Ö¸ï¿½bfgxÒµï¿½ï¿½×´Ì¬*/
         if (EXCEPTION_SUCCESS != bfgx_status_recovery_etc())
         {
             PS_PRINT_ERR("bfgx status revocery failed!\n");
@@ -1299,7 +1296,7 @@ int32 wifi_device_reset(void)
         return -EXCEPTION_FAIL;
     }
 
-    /*1102Í¨¹ýBCPU¸´Î»WCPU*/
+    /*1102Í¨ï¿½ï¿½BCPUï¿½ï¿½Î»WCPU*/
     if (BOARD_VERSION_HI1102 == l_subchip_type)
     {
         PS_PRINT_INFO("reset wifi device by BCPU\n");
@@ -1337,7 +1334,7 @@ int32 wifi_device_reset(void)
             return -EXCEPTION_FAIL;
         }
     }
-    else /*1103 Í¨¹ýw_en¸´Î»*/
+    else /*1103 Í¨ï¿½ï¿½w_enï¿½ï¿½Î»*/
     {
         PS_PRINT_INFO("reset wifi device by w_en gpio\n");
         hi1103_wifi_disable();
@@ -1571,20 +1568,20 @@ int32 bfgx_exception_handler_etc(void)
 
     if (pst_exception_data->excetion_type == BFGX_BEATHEART_TIMEOUT)
     {
-        /*bfgxÒì³££¬ÏÈÉ¾³ýbfg timerºÍÐÄÌøtimer£¬·ÀÖ¹ÖØ¸´´¥·¢bfgxÒì³£*/
+        /*bfgxï¿½ì³£ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½bfg timerï¿½ï¿½ï¿½ï¿½ï¿½ï¿½timerï¿½ï¿½ï¿½ï¿½Ö¹ï¿½Ø¸ï¿½ï¿½ï¿½ï¿½ï¿½bfgxï¿½ì³£*/
         pm_data->ps_pm_interface->operate_beat_timer(BEAT_TIMER_DELETE);
     }
 
     exception_type = pst_exception_data->excetion_type;
 
-    /*ioctlÏÂÀ´µÄÒì³£Ö´ÐÐÏß³Ì¸´Î»Á÷³Ì,µ±Ç°Ö´ÐÐÏµÍ³È«¸´Î»*/
+    /*ioctlï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì³£Ö´ï¿½ï¿½ï¿½ß³Ì¸ï¿½Î»ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½Ç°Ö´ï¿½ï¿½ÏµÍ³È«ï¿½ï¿½Î»*/
     if (exception_type == BFGX_TIMER_TIMEOUT || exception_type == BFGX_ARP_TIMEOUT)
     {
         ret = bfgx_subthread_reset_etc();
     }
     else
     {
-        /*Òì³£»Ö¸´Ö®Ç°£¬³¢ÊÔÓÃÆ½Ì¨ÃüÁî¶ÁÕ»£¬²»ÄÜ±£Ö¤Ò»¶¨³É¹¦£¬ÒòÎª´ËÊ±uart¿ÉÄÜ²»Í¨*/
+        /*ï¿½ì³£ï¿½Ö¸ï¿½Ö®Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ½Ì¨ï¿½ï¿½ï¿½ï¿½ï¿½Õ»ï¿½ï¿½ï¿½ï¿½ï¿½Ü±ï¿½Ö¤Ò»ï¿½ï¿½ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½Ê±uartï¿½ï¿½ï¿½Ü²ï¿½Í¨*/
         bfgx_dump_stack_etc();
 
         ret = bfgx_subsystem_reset_etc();
@@ -1607,7 +1604,7 @@ int32 bfgx_exception_handler_etc(void)
 
 int32 bfgx_subthread_reset_etc(void)
 {
-    /*ÕâÀïÖ´ÐÐÐ¾Æ¬È«ÏµÍ³¸´Î»£¬±£Ö¤Ð¾Æ¬ÏÂµç*/
+    /*ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½Ð¾Æ¬È«ÏµÍ³ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½Ö¤Ð¾Æ¬ï¿½Âµï¿½*/
     return bfgx_system_reset_etc();
 }
 
@@ -1862,7 +1859,7 @@ int32 bfgx_system_reset_etc(void)
         }
     }
 
-    /*ÖØÐÂÉÏµç£¬firmwareÖØÐÂ¼ÓÔØ*/
+    /*ï¿½ï¿½ï¿½ï¿½ï¿½Ïµç£¬firmwareï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½*/
     if (EXCEPTION_SUCCESS != bfgx_power_reset_etc())
     {
         PS_PRINT_ERR("bfgx power reset failed!\n");
@@ -1966,7 +1963,7 @@ int32 bfgx_store_stack_mem_to_file_etc(void)
         }
         OS_MEM_SET(filename, 0, sizeof(filename));
         snprintf(filename, sizeof(filename),BFGX_DUMP_PATH"/%s_%s.bin", UART_STORE_BFGX_STACK, pst_mem_info->file_name);
-        /*´ò¿ªÎÄ¼þ£¬×¼±¸±£´æ½ÓÊÕµ½µÄÄÚ´æ*/
+        /*ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½×¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½Ú´ï¿½*/
         fp = filp_open(filename, O_RDWR | O_CREAT, 0664);
         if (OAL_IS_ERR_OR_NULL(fp))
         {
@@ -1974,7 +1971,7 @@ int32 bfgx_store_stack_mem_to_file_etc(void)
             continue;
         }
 
-        /*½«½ÓÊÕµ½µÄÄÚ´æÐ´Èëµ½ÎÄ¼þÖÐ*/
+        /*ï¿½ï¿½ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½Ú´ï¿½Ð´ï¿½ëµ½ï¿½Ä¼ï¿½ï¿½ï¿½*/
         fs = get_fs();
         set_fs(KERNEL_DS);
         //l_ret = vfs_llseek(fp, 0, SEEK_END);
@@ -2024,7 +2021,7 @@ void bfgx_dump_stack_etc(void)
 
     INIT_COMPLETION(pst_exception_data->wait_read_bfgx_stack);
 
-    /*µÈ´ý¶ÁÕ»²Ù×÷Íê³É*/
+    /*ï¿½È´ï¿½ï¿½ï¿½Õ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
     timeleft = wait_for_completion_timeout(&pst_exception_data->wait_read_bfgx_stack, msecs_to_jiffies(WAIT_BFGX_READ_STACK_TIME));
     if (!timeleft)
     {
@@ -2194,7 +2191,7 @@ int32 __store_wifi_mem_to_file_etc(void)
         block_size      = g_uart_read_wifi_mem_info_etc[index].block_info[i].size;
         block_file_name = g_uart_read_wifi_mem_info_etc[index].block_info[i].file_name;
         snprintf(filename, sizeof(filename),BFGX_DUMP_PATH"/%s_%s.bin", UART_STORE_WIFI_MEM, block_file_name);
-        /*´ò¿ªÎÄ¼þ£¬×¼±¸±£´æ½ÓÊÕµ½µÄÄÚ´æ*/
+        /*ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½×¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½Ú´ï¿½*/
         fp = filp_open(filename, O_RDWR | O_CREAT, 0664);
         if (OAL_IS_ERR_OR_NULL(fp))
         {
@@ -2202,7 +2199,7 @@ int32 __store_wifi_mem_to_file_etc(void)
             return -EXCEPTION_FAIL;
         }
 
-        /*½«½ÓÊÕµ½µÄÄÚ´æÐ´Èëµ½ÎÄ¼þÖÐ*/
+        /*ï¿½ï¿½ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½Ú´ï¿½Ð´ï¿½ëµ½ï¿½Ä¼ï¿½ï¿½ï¿½*/
         fs = get_fs();
         set_fs(KERNEL_DS);
         //l_ret = vfs_llseek(fp, 0, SEEK_END);
@@ -2388,7 +2385,7 @@ int32 sdio_halt_bcpu_etc(void)
     ret = hcc_bus_send_message(pst_wlan_pm->pst_bus, H2D_MSG_HALT_BCPU);
     if(0 == ret)
     {
-        /*µÈ´ýdeviceÖ´ÐÐÃüÁî*/
+        /*ï¿½È´ï¿½deviceÖ´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
         timeleft = wait_for_completion_timeout(&pst_wlan_pm->st_halt_bcpu_done,msecs_to_jiffies(WLAN_HALT_BCPU_TIMEOUT));
         if(0 == timeleft)
         {
@@ -2405,7 +2402,7 @@ int32 sdio_halt_bcpu_etc(void)
 
 int32 allocate_data_save_buffer_etc(uint32 len)
 {
-    //ÁÙÊ±buffÅäÖÃ,ÓÃÓÚ´«ËÍÊý¾Ý
+    //ï¿½ï¿½Ê±buffï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     st_bcpu_dump_buff_etc.mem_addr = OS_VMALLOC_GFP(len);
     if (NULL == st_bcpu_dump_buff_etc.mem_addr)
     {
@@ -2433,7 +2430,7 @@ int32 allocate_send_netbuf_etc(uint32 len)
 
 int32 dump_header_init_etc(exception_bcpu_dump_header* header, uint32 align_type, uint32 addr, uint32 send_len)
 {
-    /*cmd ³õÊ¼»¯*/
+    /*cmd ï¿½ï¿½Ê¼ï¿½ï¿½*/
     header->align_type = align_type;
     header->start_addr = addr;
     header->men_len    = send_len;
@@ -2446,7 +2443,7 @@ int32 init_hcc_head_and_send_etc(struct hcc_transfer_param st_hcc_transfer_param
 {
     uint64 timeleft;
     int32 l_ret;
-    //·¢ËÍ
+    //ï¿½ï¿½ï¿½ï¿½
     INIT_COMPLETION(pst_exception_data->wait_sdio_d2h_dump_ack);
     l_ret = hcc_tx_etc(hcc_get_110x_handler(), st_bcpu_dump_netbuf_etc, &st_hcc_transfer_param);
     if (OAL_SUCC != l_ret)
@@ -2456,7 +2453,7 @@ int32 init_hcc_head_and_send_etc(struct hcc_transfer_param st_hcc_transfer_param
         st_bcpu_dump_netbuf_etc = NULL;
         return -EXCEPTION_FAIL;
     }
-    /*µÈ´ýSDIO¶ÁÊý¾ÝÍê³É*/
+    /*ï¿½È´ï¿½SDIOï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
     timeleft = wait_for_completion_timeout(&pst_exception_data->wait_sdio_d2h_dump_ack, msecs_to_jiffies(wait_time));
     if (!timeleft)
     {
@@ -2510,7 +2507,7 @@ int32 sdio_get_and_save_data_etc(exception_bcpu_dump_msg* sdio_read_info, uint32
     {
         index = 0;
         snprintf(filename, sizeof(filename),BFGX_DUMP_PATH"/%s_%s.bin", SDIO_STORE_BFGX_REGMEM, sdio_read_info[i].file_name);
-        /*×¼±¸ÎÄ¼þ¿Õ¼ä*/
+        /*×¼ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Õ¼ï¿½*/
         fp = filp_open(filename, O_RDWR | O_CREAT, 0664);
         if (OAL_IS_ERR_OR_NULL(fp))
         {
@@ -2579,7 +2576,7 @@ int32 sdio_get_and_save_data_etc(exception_bcpu_dump_msg* sdio_read_info, uint32
 
             oal_memcopy(oal_netbuf_put(st_bcpu_dump_netbuf_etc, netbuf_len), &dump_header, sizeof(exception_bcpu_dump_header));
 
-            //·¢ËÍ
+            //ï¿½ï¿½ï¿½ï¿½
             if (EXCEPTION_SUCCESS != init_hcc_head_and_send_etc(st_hcc_transfer_param, pst_exception_data, WIFI_DUMP_BCPU_TIMEOUT))
             {
                 error = -EXCEPTION_FAIL;
@@ -2654,7 +2651,7 @@ int32 debug_sdio_read_bfgx_reg_and_mem_etc(uint32 which_mem)
         PS_PRINT_INFO("wifi is open!\n");
     }
 
-    //È¥ÄÜexceptionÉèÖÃ,halt bcpu²»Òý·¢DFR
+    //È¥ï¿½ï¿½exceptionï¿½ï¿½ï¿½ï¿½,halt bcpuï¿½ï¿½ï¿½ï¿½ï¿½ï¿½DFR
     pst_exception_data->exception_reset_enable = PLAT_EXCEPTION_DISABLE;
 
     //plat_wait_last_rotate_finish_etc();
@@ -2685,7 +2682,7 @@ int32 debug_sdio_read_bfgx_reg_and_mem_etc(uint32 which_mem)
 
     PS_PRINT_INFO("dump complete, recovery begin\n");
 
-    //Ê¹ÄÜDFR, recovery
+    //Ê¹ï¿½ï¿½DFR, recovery
     pst_exception_data->exception_reset_enable = PLAT_EXCEPTION_ENABLE;
     plat_exception_handler_etc(SUBSYS_BFGX, THREAD_IDLE, SDIO_DUMPBCPU_FAIL);
 
@@ -2918,7 +2915,7 @@ int32 bfgx_status_recovery_etc(void)
 
     post_to_visit_node_etc(ps_core_d);
 
-    /*½öµ÷ÊÔÊ¹ÓÃ*/
+    /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½*/
     PS_PRINT_INFO("exception: set debug beat flag to 1\n");
     pst_exception_data->debug_beat_flag = 1;
 
@@ -2997,7 +2994,7 @@ int32 plat_wifi_exception_rst_register_etc(void *data)
         return -EXCEPTION_FAIL;
     }
 
-    /*wifiÒì³£»Øµ÷º¯Êý×¢²á*/
+    /*wifiï¿½ì³£ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½*/
     pst_wifi_callback = (struct st_wifi_dfr_callback *)data;
     pst_exception_data->wifi_callback = pst_wifi_callback;
 
@@ -3032,27 +3029,27 @@ int32 plat_exception_reset_init_etc(void)
     atomic_set(&p_exception_data->bfgx_beat_flag, BFGX_NOT_RECV_BEAT_INFO);
     atomic_set(&p_exception_data->is_reseting_device, PLAT_EXCEPTION_RESET_IDLE);
 
-    /*³õÊ¼»¯Òì³£´¦ÀíworkqueueºÍwork*/
+    /*ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ì³£ï¿½ï¿½ï¿½ï¿½workqueueï¿½ï¿½work*/
     p_exception_data->plat_exception_rst_workqueue = create_singlethread_workqueue("plat_exception_reset_queue");
     INIT_WORK(&p_exception_data->plat_exception_rst_work, plat_exception_reset_work_etc);
     oal_wake_lock_init(&p_exception_data->plat_exception_rst_wlock, "hi11xx_excep_rst_wlock");
     INIT_WORK(&p_exception_data->uart_store_wifi_mem_to_file_work, store_wifi_mem_to_file_work_etc);
 
-    /*³õÊ¼»¯ÐÄÌøtimer*/
+    /*ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½timer*/
     init_timer(&p_exception_data->bfgx_beat_timer);
     p_exception_data->bfgx_beat_timer.function = bfgx_beat_timer_expire_etc;
     p_exception_data->bfgx_beat_timer.expires  = jiffies + BFGX_BEAT_TIME*HZ;
     p_exception_data->bfgx_beat_timer.data     = 0;
 
-    /*³õÊ¼»¯Òì³£´¦Àí×ÔÐýËø*/
+    /*ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ì³£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
     spin_lock_init(&p_exception_data->exception_spin_lock);
 
-    /*³õÊ¼»¯bfgx¶ÁÕ»Íê³ÉÁ¿*/
+    /*ï¿½ï¿½Ê¼ï¿½ï¿½bfgxï¿½ï¿½Õ»ï¿½ï¿½ï¿½ï¿½ï¿½*/
     init_completion(&p_exception_data->wait_read_bfgx_stack);
-    /*³õÊ¼»¯sdio¶ÁÈ¡bcpuÍê³ÉÁ¿*/
+    /*ï¿½ï¿½Ê¼ï¿½ï¿½sdioï¿½ï¿½È¡bcpuï¿½ï¿½ï¿½ï¿½ï¿½*/
     init_completion(&p_exception_data->wait_sdio_d2h_dump_ack);
 
-    /*µ÷ÊÔÊ¹ÓÃµÄ±äÁ¿³õÊ¼»¯*/
+    /*ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ÃµÄ±ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½*/
     p_exception_data->debug_beat_flag          = 1;
     atomic_set(&p_exception_data->is_memdump_runing, 0);
     p_exception_data->wifi_open_bcpu_enable    = false;
@@ -3062,7 +3059,7 @@ int32 plat_exception_reset_init_etc(void)
 
     g_pst_exception_info_etc = p_exception_data;
 
-    /*³õÊ¼»¯dumpÎÄ¼þÂÖÌæÄ£¿é*/
+    /*ï¿½ï¿½Ê¼ï¿½ï¿½dumpï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½*/
     plat_exception_dump_file_rotate_init_etc();
 
     hisi_conn_rdr_init();

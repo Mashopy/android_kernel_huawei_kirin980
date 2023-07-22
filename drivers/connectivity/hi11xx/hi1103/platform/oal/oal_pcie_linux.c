@@ -43,8 +43,8 @@ extern oal_int32 pcie_ringbuf_bugfix_enable;
 extern oal_atomic g_bus_powerup_dev_wait_ack;
 OAL_STATIC oal_pcie_linux_res *g_pcie_linux_res = NULL;
 
-oal_completion          g_probe_complete;/*³õÊ¼»¯ÐÅºÅÁ¿*/
-OAL_VOLATILE oal_int32               g_probe_ret;     /*probe ·µ»ØÖµ*/
+oal_completion          g_probe_complete;/*ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½Åºï¿½ï¿½ï¿½*/
+OAL_VOLATILE oal_int32               g_probe_ret;     /*probe ï¿½ï¿½ï¿½ï¿½Öµ*/
 
 #ifdef CONFIG_ARCH_SD56XX
 oal_void* g_pcie_sys_ctrl = NULL;
@@ -52,7 +52,7 @@ oal_void* g_pcie_sys_ctrl = NULL;
 
 oal_int32 g_pcie_enum_fail_reg_dump_flag = 0;
 
-/*1103 MPW2 ÏÈÊ¹ÓÃINTX ÖÐ¶Ï*/
+/*1103 MPW2 ï¿½ï¿½Ê¹ï¿½ï¿½INTX ï¿½Ð¶ï¿½*/
 oal_int32 hipci_msi_enable = 0;  /* 0 -intx 1-pci*/
 oal_int32 hipci_gen_select = PCIE_GEN2;
 oal_int32 ft_pcie_aspm_check_bypass = 0;
@@ -80,7 +80,7 @@ oal_debug_module_param(pcie_aspm_enable, int, S_IRUGO | S_IWUSR);
 oal_int32 pcie_performance_mode = 0;
 oal_debug_module_param(pcie_performance_mode, int, S_IRUGO | S_IWUSR);
 
-oal_int32 pcie_rc_bar_bypass = 1;/*Çåµôrc bar¼Ä´æÆ÷*/
+oal_int32 pcie_rc_bar_bypass = 1;/*ï¿½ï¿½ï¿½rc barï¿½Ä´ï¿½ï¿½ï¿½*/
 oal_debug_module_param(pcie_rc_bar_bypass, int, S_IRUGO | S_IWUSR);
 
 oal_int32 pcie_shutdown_panic = 0;
@@ -163,7 +163,7 @@ oal_int32 oal_pcie_enable_device(oal_pcie_linux_res * pst_pci_lres)
 	 */
 	pci_load_and_free_saved_state(pst_pcie_dev, &pst_pci_lres->default_state);
 
-	/*Update default state*//*TBD:Ó¦¸ÃÔÚ³õÊ¼»¯Íê³Éºó±£´æ£¬ÕâÀïÓÐ¿ÉÄÜPCI»¹²»ÄÜÕý³£·ÃÎÊ*/
+	/*Update default state*//*TBD:Ó¦ï¿½ï¿½ï¿½Ú³ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Éºó±£´æ£¬ï¿½ï¿½ï¿½ï¿½ï¿½Ð¿ï¿½ï¿½ï¿½PCIï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 	pst_pci_lres->default_state = pci_store_saved_state(pst_pcie_dev);
 #else
 	pci_load_saved_state(pst_pcie_dev, pst_pci_lres->default_state);
@@ -240,8 +240,8 @@ oal_int32 oal_pcie_save_default_resource(oal_pcie_linux_res * pst_pci_lres)
 irqreturn_t oal_pcie_intx_isr(int irq, void*dev_id)
 {
     //oal_task_sched(&((oal_pcie_linux_res*)dev_id)->st_rx_task);
-    /*ÖÐ¶Ï´¦ÀíÄÚÈÝÌ«¶à£¬Ä¿Ç°ÎÞ·¨ÏÂÒÆ£¬ÒòÎªÖÐ¶ÏÐèÒªÃ¿´Î¶Á¿Õ £¬¶ø²»ÔÚÖÐ¶Ï¶ÁµÄ»°£¬
-      ÒªÏÈËø×¡ÖÐ¶Ï£¬·ñÔòÖÐ¶Ï»á¿ñ±¨*/
+    /*ï¿½Ð¶Ï´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì«ï¿½à£¬Ä¿Ç°ï¿½Þ·ï¿½ï¿½ï¿½ï¿½Æ£ï¿½ï¿½ï¿½Îªï¿½Ð¶ï¿½ï¿½ï¿½ÒªÃ¿ï¿½Î¶ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶Ï¶ï¿½ï¿½Ä»ï¿½ï¿½ï¿½
+      Òªï¿½ï¿½ï¿½ï¿½×¡ï¿½Ð¶Ï£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶Ï»ï¿½ï¿½*/
     oal_pcie_linux_res * pst_pci_lres = (oal_pcie_linux_res*)dev_id;
     if(OAL_UNLIKELY(oal_pcie_transfer_done(pst_pci_lres->pst_pci_res) < 0))
     {
@@ -254,7 +254,7 @@ irqreturn_t oal_pcie_intx_isr(int irq, void*dev_id)
         hcc_bus_exception_submit(pst_pci_lres->pst_bus, WIFI_TRANS_FAIL);
 
         CHR_EXCEPTION_REPORT(CHR_PLATFORM_EXCEPTION_EVENTID, CHR_SYSTEM_WIFI, CHR_LAYER_DRV, CHR_WIFI_DRV_EVENT_PLAT, CHR_PLAT_DRV_ERROR_INTX_ISR_PCIE_LINK_DOWN);
-        /*¹Ø±ÕµÍ¹¦ºÄ*/
+        /*ï¿½Ø±ÕµÍ¹ï¿½ï¿½ï¿½*/
 
     }
     return IRQ_HANDLED;
@@ -266,7 +266,7 @@ oal_void oal_pcie_intx_task(oal_ulong data)
     oal_pcie_mips_start(PCIE_MIPS_HCC_RX_TOTAL);
     if(oal_pcie_transfer_done(pst_pci_lres->pst_pci_res))
     {
-        /*·Ç0ËµÃ÷»¹ÐèÒªµ÷¶È*/
+        /*ï¿½ï¿½0Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½*/
         oal_pcie_mips_end(PCIE_MIPS_HCC_RX_TOTAL);
         oal_task_sched(&pst_pci_lres->st_rx_task);
     }
@@ -408,12 +408,11 @@ failed_request_msi:
     return ret;
 }
 
-/*Ì½²âµ½Ò»¸öPCIEÉè±¸, probe º¯Êý¿ÉÄÜ»á´¥·¢¶à´Î*/
+/*Ì½ï¿½âµ½Ò»ï¿½ï¿½PCIEï¿½è±¸, probe ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü»á´¥ï¿½ï¿½ï¿½ï¿½ï¿½*/
 OAL_STATIC oal_int32  oal_pcie_probe(oal_pci_dev_stru *pst_pci_dev, OAL_CONST oal_pci_device_id_stru *pst_id)
 {
     oal_uint8 reg8 = 0;
     oal_int32 ret = OAL_SUCC;
-    unsigned short device_id;
     hcc_bus* pst_bus;
     oal_pcie_linux_res * pst_pci_lres;
 
@@ -426,9 +425,7 @@ OAL_STATIC oal_int32  oal_pcie_probe(oal_pci_dev_stru *pst_pci_dev, OAL_CONST oa
         return -OAL_EIO;
     }
 
-    device_id = OAL_PCI_GET_DEV_ID(pst_pci_dev);
-
-    /*Éè±¸ID ºÍ ²úÆ·ID*/
+    /*ï¿½è±¸ID ï¿½ï¿½ ï¿½ï¿½Æ·ID*/
     oal_print_hi11xx_log(HI11XX_LOG_DBG, "[PCIe][%s]devfn:0x%x , vendor:0x%x , device:0x%x , subsystem_vendor:0x%x , subsystem_device:0x%x , class:0x%x \n",
                 dev_name(&pst_pci_dev->dev),
                 pst_pci_dev->devfn,
@@ -438,7 +435,7 @@ OAL_STATIC oal_int32  oal_pcie_probe(oal_pci_dev_stru *pst_pci_dev, OAL_CONST oa
                 pst_pci_dev->subsystem_device,
                 pst_pci_dev->class);
 
-    /*TBD:TBC ÔÝÊ±Ö»¿¼ÂÇÒ»¸öPCIEÉè±¸*/
+    /*TBD:TBC ï¿½ï¿½Ê±Ö»ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½PCIEï¿½è±¸*/
     if(g_pcie_linux_res)
     {
         OAL_IO_PRINT("pcie device init failed, already init!\n");
@@ -514,7 +511,7 @@ OAL_STATIC oal_int32  oal_pcie_probe(oal_pci_dev_stru *pst_pci_dev, OAL_CONST oa
 
     hcc_bus_message_register(pst_bus, D2H_MSG_SHUTDOWN_IP_PRE_RESPONSE, oal_pcie_shutdown_pre_respone, (oal_void*)pst_pci_lres);
 
-    /*Ó²¼þÉè±¸×ÊÔ´³õÊ¼»¯, 5610+1103 FPGA Ã»ÓÐÉÏÏÂµç½Ó¿Ú*/
+    /*Ó²ï¿½ï¿½ï¿½è±¸ï¿½ï¿½Ô´ï¿½ï¿½Ê¼ï¿½ï¿½, 5610+1103 FPGA Ã»ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½Ó¿ï¿½*/
     ret = oal_pcie_dev_init(pst_pci_lres->pst_pci_res);
     if(OAL_SUCC != ret)
     {
@@ -680,11 +677,11 @@ OAL_STATIC oal_void  oal_pcie_remove(oal_pci_dev_stru *pst_pci_dev)
 OAL_STATIC oal_int32 oal_pcie_device_wakeup_handler(void* data)
 {
     OAL_REFERENCE(data);
-    /*ÕâÀï±£Ö¤½â¸´Î»EP¿ØÖÆÆ÷Ê±efuseÒÑ¾­ÎÈ¶¨*/
+    /*ï¿½ï¿½ï¿½ï±£Ö¤ï¿½â¸´Î»EPï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±efuseï¿½Ñ¾ï¿½ï¿½È¶ï¿½*/
     board_host_wakeup_dev_set(1);
     /*TBD:TBC ,
-      dev wakeup host ±»¸´ÓÃ³ÉÁËpanicÏûÏ¢£¬ÕâÀïÐèÒª´¦Àí*/
-    //oal_msleep(25);/*ÕâÀïÒªÓÃGPIO ×öACK ÑÓ³Ù²»¿É¿¿, MPW2 Ó²¼þ»½ÐÑ15ms,Èí¼þ6ms*/
+      dev wakeup host ï¿½ï¿½ï¿½ï¿½ï¿½Ã³ï¿½ï¿½ï¿½panicï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½*/
+    //oal_msleep(25);/*ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½GPIO ï¿½ï¿½ACK ï¿½Ó³Ù²ï¿½ï¿½É¿ï¿½, MPW2 Ó²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½15ms,ï¿½ï¿½ï¿½ï¿½6ms*/
     PCI_PRINT_LOG(PCI_LOG_INFO, "pcie wakeup device control, pull up gpio");
     return 0;
 }
@@ -704,14 +701,14 @@ retry:
     }
 
     oal_atomic_set(&g_bus_powerup_dev_wait_ack,1);
-    /*ÕâÀï±£Ö¤½â¸´Î»EP¿ØÖÆÆ÷Ê±efuseÒÑ¾­ÎÈ¶¨*/
+    /*ï¿½ï¿½ï¿½ï±£Ö¤ï¿½â¸´Î»EPï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±efuseï¿½Ñ¾ï¿½ï¿½È¶ï¿½*/
     board_host_wakeup_dev_set(1);
     if(NULL != pst_wlan_pm)
     {
         ul_ret = oal_wait_for_completion_timeout(&pst_wlan_pm->st_wifi_powerup_done, (oal_uint32)OAL_MSECS_TO_JIFFIES(2000));
         if(OAL_UNLIKELY(0 == ul_ret))
         {
-            /*³¬Ê±²»×ö´¦Àí¼ÌÐø³¢ÊÔ½¨Á´*/
+            /*ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ï¿½ï¿½*/
             DECLARE_DFT_TRACE_KEY_INFO("pcie_resume_powerup ack timeout", OAL_DFT_TRACE_FAIL);
             if(HI1XX_ANDROID_BUILD_VARIANT_USER != hi11xx_get_android_build_variant())
             {
@@ -756,7 +753,7 @@ retry:
     }
     else
     {
-        oal_msleep(100);/*ÕâÀïÒªÓÃGPIO ×öACK ÑÓ³Ù²»¿É¿¿, S/R »½ÐÑ Ê±¼ä½Ï³¤*/
+        oal_msleep(100);/*ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½GPIO ï¿½ï¿½ACK ï¿½Ó³Ù²ï¿½ï¿½É¿ï¿½, S/R ï¿½ï¿½ï¿½ï¿½ Ê±ï¿½ï¿½Ï³ï¿½*/
     }
 
     oal_atomic_set(&g_bus_powerup_dev_wait_ack,0);
@@ -768,18 +765,18 @@ OAL_STATIC oal_int32 oal_pcie_device_suspend_handler(void* data)
 {
     oal_pcie_linux_res * pst_pci_lres = (oal_pcie_linux_res*)data;
 #if 0
-    /*×ßµ½ÕâÀïËµÃ÷wakelockÒÑ¾­ÊÍ·Å£¬WIFIÒÑ¾­ÉîË¯,Í¨ÖªRC/EPÏÂµç£¬
-      ·¢ËÍTurnOff Message*/
-    /*ÏÂµçÖ®Ç°¹Ø±Õ PCIE HOST ¿ØÖÆÆ÷*/
+    /*ï¿½ßµï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½wakelockï¿½Ñ¾ï¿½ï¿½Í·Å£ï¿½WIFIï¿½Ñ¾ï¿½ï¿½ï¿½Ë¯,Í¨ÖªRC/EPï¿½Âµç£¬
+      ï¿½ï¿½ï¿½ï¿½TurnOff Message*/
+    /*ï¿½Âµï¿½Ö®Ç°ï¿½Ø±ï¿½ PCIE HOST ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
     kirin_pcie_power_notifiy_register(kirin_rc_idx, NULL, NULL, NULL);
     kirin_pcie_pm_control(0, kirin_rc_idx);
 #else
-    /*ÏÂµçÔÚ÷è÷ë´úÂëÖÐ´¦Àí
+    /*ï¿½Âµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½
       kirin_pcie_suspend_noirq,
-      ÎÞ·¨ÅÐ¶Ïturnoff ÊÇ·ñ³É¹¦·¢ËÍ*/
+      ï¿½Þ·ï¿½ï¿½Ð¶ï¿½turnoff ï¿½Ç·ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½*/
 #endif
 
-    /*´Ë´¦²»Ò»¶¨ÊÇÕæµÄÏÂµçÁË*/
+    /*ï¿½Ë´ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½*/
     pst_pci_lres->power_status = PCIE_EP_IP_POWER_DOWN;
 
     oal_pcie_change_link_state(pst_pci_lres->pst_pci_res, PCI_WLAN_LINK_DEEPSLEEP);
@@ -829,7 +826,7 @@ OAL_STATIC oal_int32 oal_pcie_suspend(oal_pci_dev_stru *pst_pci_dev,oal_pm_messa
 
     if(pst_bus != HDEV_TO_HBUS(HBUS_TO_DEV(pst_bus)))
     {
-        /*pcie·Çµ±Ç°½Ó¿Ú*/
+        /*pcieï¿½Çµï¿½Ç°ï¿½Ó¿ï¿½*/
         oal_print_hi11xx_log(HI11XX_LOG_INFO, "pcie is not current bus, return");
         return OAL_SUCC;
     }
@@ -904,7 +901,7 @@ OAL_STATIC oal_int32 oal_pcie_resume(oal_pci_dev_stru *pst_pci_dev)
 
     if(pst_bus != HDEV_TO_HBUS(HBUS_TO_DEV(pst_bus)))
     {
-        /*pcie·Çµ±Ç°½Ó¿Ú*/
+        /*pcieï¿½Çµï¿½Ç°ï¿½Ó¿ï¿½*/
         oal_print_hi11xx_log(HI11XX_LOG_INFO, "pcie is not current bus, return");
         return OAL_SUCC;
     }
@@ -1225,8 +1222,8 @@ oal_int32 oal_pcie_shutdown_pre_respone(oal_void* data)
 oal_int32 oal_pcie_switch_clean_res(hcc_bus* pst_bus)
 {
     oal_int32 ret;
-    /*Çå¿ÕPCIE Í¨µÀ£¬Í¨ÖªDevice¹Ø±Õ·¢ËÍÍ¨µÀ£¬
-      µÈ´ýDMAÍê³ÉËùÓÐ´«Êäºó·µ»Ø*/
+    /*ï¿½ï¿½ï¿½PCIE Í¨ï¿½ï¿½ï¿½ï¿½Í¨ÖªDeviceï¿½Ø±Õ·ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½
+      ï¿½È´ï¿½DMAï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ó·µ»ï¿½*/
 
     oal_pcie_linux_res* pst_pci_lres = (oal_pcie_linux_res*)pst_bus->data;
 
@@ -1266,13 +1263,13 @@ OAL_STATIC oal_int32 oal_pcie_reinit(hcc_bus *pst_bus)
     oal_get_time_cost_start(reinit);
 
     oal_print_hi11xx_log(HI11XX_LOG_INFO, "wake_sema_count=%d", pst_bus->sr_wake_sema.count);
-    sema_init(&pst_bus->sr_wake_sema, 1);/*S/RÐÅºÅÁ¿*/
+    sema_init(&pst_bus->sr_wake_sema, 1);/*S/Rï¿½Åºï¿½ï¿½ï¿½*/
 
     hcc_bus_disable_state(pst_bus, OAL_BUS_STATE_ALL);
     ret = oal_pcie_enable_device(pst_pci_lres);
     if(OAL_SUCC == ret)
     {
-        /*ÐèÒªÔÚ³õÊ¼»¯Íê³Éºó´ò¿ª*/
+        /*ï¿½ï¿½Òªï¿½Ú³ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Éºï¿½ï¿½*/
         //hcc_bus_enable_state(pst_bus, OAL_BUS_STATE_ALL);
     }
 
@@ -1297,7 +1294,7 @@ OAL_STATIC oal_int32 oal_pcie_reinit(hcc_bus *pst_bus)
         }
     }
 
-    /*³õÊ¼»¯PCIE×ÊÔ´*/
+    /*ï¿½ï¿½Ê¼ï¿½ï¿½PCIEï¿½ï¿½Ô´*/
     ret = oal_pcie_enable_regions(pst_pci_lres->pst_pci_res);
     if(ret)
     {
@@ -1331,20 +1328,20 @@ oal_int32 oal_pci_wlan_power_on(oal_int32 power_on)
     else
     {
 #if 1
-        /* ²Ù×÷Ð¾Æ¬1µÄÉÏÏÂµç¸´Î» */
-        /*1.ÉèÖÃ³ÉÈí¼þÄ£Ê½,ÅäÖÃ¼Ä´æÆ÷0x149001a0µÚ7bitÎª1 */
+        /* ï¿½ï¿½ï¿½ï¿½Ð¾Æ¬1ï¿½ï¿½ï¿½ï¿½ï¿½Âµç¸´Î» */
+        /*1.ï¿½ï¿½ï¿½Ã³ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½,ï¿½ï¿½ï¿½Ã¼Ä´ï¿½ï¿½ï¿½0x149001a0ï¿½ï¿½7bitÎª1 */
         ul_val = oal_readl(pst_gpio_mode + 0x1a0);
         ul_val |= BIT11;
         oal_writel(ul_val, pst_gpio_mode + 0x1a0);
 #endif
 
-        /*2.ÉèÖÃÊý¾Ý·½Ïò£¬ÅäÖÃ¼Ä´æÆ÷0x10108004µÚ23bitÎª1 */
+        /*2.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¼Ä´ï¿½ï¿½ï¿½0x10108004ï¿½ï¿½23bitÎª1 */
         ul_val =  oal_readl(pst_gpio_base + 0x4);
         ul_val |= BIT23;
         oal_writel(ul_val, pst_gpio_base + 0x4);
 
 
-        /*3.ÉèÖÃGPIO87À­µÍ£¬GPIOÐ¾Æ¬1ÏÂµç */
+        /*3.ï¿½ï¿½ï¿½ï¿½GPIO87ï¿½ï¿½ï¿½Í£ï¿½GPIOÐ¾Æ¬1ï¿½Âµï¿½ */
         ul_val =  oal_readl(pst_gpio_base + 0x0);
         ul_val &= ~BIT23;
         oal_writel(ul_val, pst_gpio_base + 0x0);
@@ -1354,7 +1351,7 @@ oal_int32 oal_pci_wlan_power_on(oal_int32 power_on)
             //oal_udelay(10);
             oal_msleep(100);
 
-            /*4.ÉèÖÃGPIO87À­¸ß£¬GPIOÐ¾Æ¬1ÉÏµç */
+            /*4.ï¿½ï¿½ï¿½ï¿½GPIO87ï¿½ï¿½ï¿½ß£ï¿½GPIOÐ¾Æ¬1ï¿½Ïµï¿½ */
             ul_val =  oal_readl(pst_gpio_base + 0x0);
             ul_val |= BIT23;
             oal_writel(ul_val, pst_gpio_base + 0x0);
@@ -1381,7 +1378,7 @@ oal_int32 oal_pcie_check_link_up(oal_void)
 	unsigned int loop = 0;
 	unsigned int link_up_stable_counter = 0;
     void* __iomem pcie_sys_base_virt   = NULL;
-    /*µÈ´ý½¨Á´*/
+    /*ï¿½È´ï¿½ï¿½ï¿½ï¿½ï¿½*/
     pcie_sys_base_virt = ioremap_nocache(0x10100000, 0x1000);
     if(NULL == pcie_sys_base_virt)
     {
@@ -1450,7 +1447,7 @@ oal_int32 oal_pci_card_detect(oal_void)
 	unsigned int loop = 0;
 	unsigned int link_up_stable_counter = 0;
     void* __iomem pcie_sys_base_virt   = NULL;
-    /*µÈ´ý½¨Á´*/
+    /*ï¿½È´ï¿½ï¿½ï¿½ï¿½ï¿½*/
     pcie_sys_base_virt = ioremap_nocache(0x10100000, 0x1000);
     if(NULL == pcie_sys_base_virt)
     {
@@ -1537,19 +1534,15 @@ OAL_STATIC oal_int32 oal_pcie_tx_condition(hcc_bus* pst_bus, hcc_netbuf_queue_ty
 
 OAL_STATIC oal_int32 oal_pcie_host_lock(hcc_bus* pst_bus)
 {
-    oal_pcie_linux_res * pst_pci_lres;
-    pst_pci_lres = (oal_pcie_linux_res*)pst_bus->data;
     return OAL_SUCC;
 }
 
 OAL_STATIC oal_int32 oal_pcie_host_unlock(hcc_bus* pst_bus)
 {
-    oal_pcie_linux_res * pst_pci_lres;
-    pst_pci_lres = (oal_pcie_linux_res*)pst_bus->data;
     return OAL_SUCC;
 }
 
-/*1103 PCIE Í¨¹ý host_wakeup_dev gpio À´»½ÐÑºÍÍ¨ÖªWCPUË¯Ãß*/
+/*1103 PCIE Í¨ï¿½ï¿½ host_wakeup_dev gpio ï¿½ï¿½ï¿½ï¿½ï¿½Ñºï¿½Í¨ÖªWCPUË¯ï¿½ï¿½*/
 OAL_STATIC oal_int32 oal_pcie_sleep_request(hcc_bus* pst_bus)
 {
     oal_pcie_linux_res * pst_pci_lres;
@@ -1557,8 +1550,8 @@ OAL_STATIC oal_int32 oal_pcie_sleep_request(hcc_bus* pst_bus)
 
     oal_disable_pcie_irq(pst_pci_lres);
 
-    /*À­µÍGPIO£¬PCIEÖ»ÓÐÔÚsystem suspendµÄÊ±ºò²Å»áÏÂµç
-      GPIO À­µÍÖ®ºó DEV ËæÊ±¿ÉÄÜ½øÉîË¯£¬²»ÔÊÐíÔÙÍ¨¹ýPCIE ·ÃÎÊ*/
+    /*ï¿½ï¿½ï¿½ï¿½GPIOï¿½ï¿½PCIEÖ»ï¿½ï¿½ï¿½ï¿½system suspendï¿½ï¿½Ê±ï¿½ï¿½Å»ï¿½ï¿½Âµï¿½
+      GPIO ï¿½ï¿½ï¿½ï¿½Ö®ï¿½ï¿½ DEV ï¿½ï¿½Ê±ï¿½ï¿½ï¿½Ü½ï¿½ï¿½ï¿½Ë¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½PCIE ï¿½ï¿½ï¿½ï¿½*/
     mutex_lock(&pst_pci_lres->pst_pci_res->st_rx_mem_lock);
     oal_pcie_change_link_state(pst_pci_lres->pst_pci_res, PCI_WLAN_LINK_UP);
     mutex_unlock(&pst_pci_lres->pst_pci_res->st_rx_mem_lock);
@@ -1600,8 +1593,8 @@ OAL_STATIC oal_int32 oal_pcie_wakeup_request(hcc_bus* pst_bus)
     oal_pcie_linux_res * pst_pci_lres;
     pst_pci_lres = (oal_pcie_linux_res*)pst_bus->data;
 
-    //1.À­¸ß Host WakeUp Device gpio
-    //2.µ÷ÓÃkirin_pcie_pm_control ÉÏµçRC ¼ì²é½¨Á´
+    //1.ï¿½ï¿½ï¿½ï¿½ Host WakeUp Device gpio
+    //2.ï¿½ï¿½ï¿½ï¿½kirin_pcie_pm_control ï¿½Ïµï¿½RC ï¿½ï¿½é½¨ï¿½ï¿½
     //3.restore state, load iatu config
 
     if(OAL_UNLIKELY(pst_pci_lres->pst_pci_res->link_state <= PCI_WLAN_LINK_DOWN))
@@ -1624,7 +1617,7 @@ OAL_STATIC oal_int32 oal_pcie_wakeup_request(hcc_bus* pst_bus)
 
         oal_atomic_set(&g_bus_powerup_dev_wait_ack, 1);
 #if 0
-        /*suspend »áÏÂµçPCIE£¬ÕâÀïÈç¹ûÒÑ¾­ÏÂµçÐèÒªÖØÐÂ³õÊ¼»¯PCIE,»Ö¸´iatu±íÏî*/
+        /*suspend ï¿½ï¿½ï¿½Âµï¿½PCIEï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½Âµï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½Â³ï¿½Ê¼ï¿½ï¿½PCIE,ï¿½Ö¸ï¿½iatuï¿½ï¿½ï¿½ï¿½*/
         ret = kirin_pcie_power_notifiy_register(kirin_rc_idx, oal_pcie_device_wakeup_handler,
                                             NULL, NULL);
         if(ret)
@@ -1635,7 +1628,7 @@ OAL_STATIC oal_int32 oal_pcie_wakeup_request(hcc_bus* pst_bus)
         ret = kirin_pcie_pm_control(1, kirin_rc_idx);
         if(ret)
         {
-            /*ÕâÀï¿ÉÒÔÔö¼ÓDFRÁ÷³Ì£¬÷è÷ëLINKUP Ö»ÓÐ20msµÄ³¬Ê±Ê±¼ä*/
+            /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½DFRï¿½ï¿½ï¿½Ì£ï¿½ï¿½ï¿½ï¿½ï¿½LINKUP Ö»ï¿½ï¿½20msï¿½Ä³ï¿½Ê±Ê±ï¿½ï¿½*/
             OAL_IO_PRINT(KERN_ERR"kirin_pcie_pm_control 1 failed!ret=%d\n", ret);
             return ret;
         }
@@ -1646,7 +1639,7 @@ OAL_STATIC oal_int32 oal_pcie_wakeup_request(hcc_bus* pst_bus)
             ul_ret = oal_wait_for_completion_timeout(&pst_wlan_pm->st_wifi_powerup_done, (oal_uint32)OAL_MSECS_TO_JIFFIES(2000));
             if(OAL_UNLIKELY(0 == ul_ret))
             {
-                /*³¬Ê±²»×ö´¦Àí¼ÌÐø³¢ÊÔ½¨Á´*/
+                /*ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô½ï¿½ï¿½ï¿½*/
                 DECLARE_DFT_TRACE_KEY_INFO("pcie_powerup_wakeup ack timeout", OAL_DFT_TRACE_FAIL);
             }
         }
@@ -1678,7 +1671,7 @@ OAL_STATIC oal_int32 oal_pcie_wakeup_request(hcc_bus* pst_bus)
             return -OAL_ENODEV;
         }
 
-        /*»½ÐÑÁ÷³Ì£¬RESÒÑ¾­³õÊ¼»¯*/
+        /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì£ï¿½RESï¿½Ñ¾ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½*/
         oal_pcie_change_link_state(pst_pci_lres->pst_pci_res, PCI_WLAN_LINK_RES_UP);
 
         oal_atomic_set(&pst_pci_lres->st_pcie_wakeup_flag, 1);
@@ -1706,7 +1699,7 @@ OAL_STATIC oal_int32 oal_pcie_wakeup_request(hcc_bus* pst_bus)
     }
     else
     {
-        /*Õý³£µ¥Ð¾Æ¬»½ÐÑÀ­¸ßGPIO¼´¿É*/
+        /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¾Æ¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½GPIOï¿½ï¿½ï¿½ï¿½*/
         oal_pcie_device_wakeup_handler(NULL);
         pci_set_master(pst_pci_lres->pst_pcie_dev);
     }
@@ -1815,7 +1808,7 @@ oal_int32 oal_pcie_enable_device_func(oal_pcie_linux_res* pst_pci_lres)
             continue;
         }
 
-        /*µÚÒ»¸öÖÐ¶ÏÓÐ¿ÉÄÜÔÚÖÐ¶ÏÊ¹ÄÜÖ®Ç°ÉÏ±¨£¬Ç¿ÖÆµ÷¶ÈÒ»´ÎRX Thread*/
+        /*ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½Ð¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½Ê¹ï¿½ï¿½Ö®Ç°ï¿½Ï±ï¿½ï¿½ï¿½Ç¿ï¿½Æµï¿½ï¿½ï¿½Ò»ï¿½ï¿½RX Thread*/
         up(&pst_bus->rx_sema);
 
         if(0 == oal_wait_for_completion_timeout(&pst_pci_lres->st_pcie_ready, (oal_uint32)OAL_MSECS_TO_JIFFIES(HOST_WAIT_BOTTOM_INIT_TIMEOUT)))
@@ -1837,7 +1830,7 @@ oal_int32 oal_pcie_enable_device_func(oal_pcie_linux_res* pst_pci_lres)
             }
             else
             {
-                /*Ç¿ÖÆµ÷¶È³É¹¦£¬ËµÃ÷ÓÐ¿ÉÄÜÊÇGPIOÖÐ¶ÏÎ´ÏìÓ¦*/
+                /*Ç¿ï¿½Æµï¿½ï¿½È³É¹ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½Ð¿ï¿½ï¿½ï¿½ï¿½ï¿½GPIOï¿½Ð¶ï¿½Î´ï¿½ï¿½Ó¦*/
                 OAL_IO_PRINT(KERN_WARNING"[E]retry succ, maybe gpio interrupt issue");
                 DECLARE_DFT_TRACE_KEY_INFO("pcie gpio int issue",OAL_DFT_TRACE_FAIL);
                 break;
@@ -1857,7 +1850,7 @@ oal_int32 oal_pcie_enable_device_func(oal_pcie_linux_res* pst_pci_lres)
     return OAL_SUCC;
 }
 
-/*·ÇÖÐ¶Ï´¥·¢£¬ÂÖÑ¯ÏûÏ¢*/
+/*ï¿½ï¿½ï¿½Ð¶Ï´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½Ï¢*/
 oal_int32 oal_pcie_enable_device_func_polling(oal_pcie_linux_res* pst_pci_lres)
 {
     oal_int32 ret;
@@ -1874,10 +1867,10 @@ oal_int32 oal_pcie_enable_device_func_polling(oal_pcie_linux_res* pst_pci_lres)
 
     OAL_INIT_COMPLETION(&pst_pci_lres->st_pcie_ready);
 
-   /*µÈ´ýdevice³õÊ¼»¯Íê³É*/
+   /*ï¿½È´ï¿½deviceï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½*/
     //oal_wlan_gpio_intr_enable_etc(HBUS_TO_DEV(pst_pci_lres->pst_bus), OAL_FALSE);
 
-    /*Í¨ÖªDeviceÒÑ¾­³õÊ¼»¯Íê³É*/
+    /*Í¨ÖªDeviceï¿½Ñ¾ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½*/
     ret = oal_pcie_send_message2dev(pst_pci_lres, PCIE_H2D_MESSAGE_HOST_READY);
     if(OAL_SUCC != ret)
     {
@@ -2013,7 +2006,7 @@ OAL_STATIC oal_int32 oal_pcie_host_aspm_init(oal_pcie_linux_res* pst_pci_lres)
     oal_pci_dev_stru *pst_rc_dev;
     pst_rc_dev = pci_upstream_bridge(pst_pci_lres->pst_pcie_dev);
 
-    /*Ê¹ÄÜ/È¥Ê¹ÄÜASPM£¬RC & EP*/
+    /*Ê¹ï¿½ï¿½/È¥Ê¹ï¿½ï¿½ASPMï¿½ï¿½RC & EP*/
     kirin_pcie_lp_ctrl(kirin_rc_idx, 0);
     if(pcie_aspm_enable)
     {
@@ -2180,7 +2173,7 @@ oal_void oal_pcie_print_chip_info(oal_pcie_linux_res* pst_pci_lres,  oal_uint32 
         }
         else
         {
-            /*½¨Á´¹ý³ÌÖÐ»á½øÈë2´Î*/
+            /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½ï¿½2ï¿½ï¿½*/
             oal_print_hi11xx_log(HI11XX_LOG_INFO, "link_state stable, l1 excp count:%u", l1_err_cnt);
         }
 
@@ -2317,7 +2310,7 @@ oal_int32 oal_pcie_ip_l1pm_check(oal_pcie_linux_res* pst_pci_lres)
 
 oal_int32 oal_pcie_gen_mode_check(oal_pcie_linux_res* pst_pci_lres)
 {
-    /*¸ù¾ÝÊµ¼Ê²úÆ·À´ÅÐ¶Ïµ±Ç°Á´Â·×´Ì¬ÊÇ·ñÕý³£*/
+    /*ï¿½ï¿½ï¿½ï¿½Êµï¿½Ê²ï¿½Æ·ï¿½ï¿½ï¿½Ð¶Ïµï¿½Ç°ï¿½ï¿½Â·×´Ì¬ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½*/
     oal_int32 gen_select = oal_pcie_get_gen_mode(pst_pci_lres->pst_pci_res);
 
     if(ft_pcie_gen_check_bypass)
@@ -2366,7 +2359,7 @@ oal_int32 oal_pcie_ip_init(hcc_bus *pst_bus)
     if(ret)
         return ret;
 
-    /*Ê¹ÄÜµÍ¹¦ºÄ*/
+    /*Ê¹ï¿½ÜµÍ¹ï¿½ï¿½ï¿½*/
     ret = oal_pcie_host_aspm_init(pst_pci_lres);
     if(ret)
         return ret;
@@ -2492,13 +2485,13 @@ oal_int32 oal_pcie_rc_slt_chip_transfer(hcc_bus *pst_bus, oal_void* ddr_address,
 
 oal_void oal_pcie_power_down(hcc_bus *pst_bus)
 {
-    /*¹ØµôLINKDOWN×¢²á»Øµ÷º¯Êý TBD:TBC*/
+    /*ï¿½Øµï¿½LINKDOWN×¢ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½ TBD:TBC*/
     oal_pcie_linux_res * pst_pci_lres;
     PCIE_EP_IP_STATUS       old_power_status;
 
     pst_pci_lres = (oal_pcie_linux_res*)pst_bus->data;
 
-    /*disable intx gpio... µÈ´ýÖÐ¶Ï´¦ÀíÍê*/
+    /*disable intx gpio... ï¿½È´ï¿½ï¿½Ð¶Ï´ï¿½ï¿½ï¿½ï¿½ï¿½*/
     oal_disable_pcie_irq(pst_pci_lres);
 
     old_power_status = pst_pci_lres->power_status;
@@ -2527,7 +2520,7 @@ oal_void oal_pcie_power_down(hcc_bus *pst_bus)
     //hcc_transfer_unlock(HBUS_TO_HCC(pst_bus));
 #ifdef CONFIG_ARCH_KIRIN_PCIE
     kirin_pcie_deregister_event(&pst_pci_lres->pcie_event);
-    /*ÏÂµçÖ®Ç°¹Ø±Õ PCIE HOST ¿ØÖÆÆ÷*/
+    /*ï¿½Âµï¿½Ö®Ç°ï¿½Ø±ï¿½ PCIE HOST ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
     {
         oal_int32 ret;
         ret = kirin_pcie_pm_control(0, kirin_rc_idx);
@@ -2598,7 +2591,7 @@ OAL_STATIC oal_int32 oal_pcie_power_action(hcc_bus *pst_bus, HCC_BUS_POWER_ACTIO
 
     if(HCC_BUS_POWER_DOWN == action)
     {
-        /*¹ØµôLINKDOWN×¢²á»Øµ÷º¯Êý TBD:TBC*/
+        /*ï¿½Øµï¿½LINKDOWN×¢ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½ TBD:TBC*/
         hcc_disable_etc(HBUS_TO_HCC(pst_bus), OAL_TRUE);
         oal_wlan_gpio_intr_enable_etc(HBUS_TO_DEV(pst_bus), OAL_FALSE);
         hcc_transfer_lock(HBUS_TO_HCC(pst_bus));
@@ -2614,7 +2607,7 @@ OAL_STATIC oal_int32 oal_pcie_power_action(hcc_bus *pst_bus, HCC_BUS_POWER_ACTIO
 
     if(HCC_BUS_POWER_UP == action || HCC_BUS_SW_POWER_UP == action)
     {
-        /*ÉÏµçÖ®Ç°´ò¿ªPCIE HOST ¿ØÖÆÆ÷*/
+        /*ï¿½Ïµï¿½Ö®Ç°ï¿½ï¿½PCIE HOST ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 #ifdef CONFIG_ARCH_KIRIN_PCIE
         declare_time_cost_stru(cost);
         if(HCC_BUS_POWER_UP == action)
@@ -2693,7 +2686,7 @@ OAL_STATIC oal_int32 oal_pcie_power_action(hcc_bus *pst_bus, HCC_BUS_POWER_ACTIO
     if(HCC_BUS_POWER_PATCH_LAUCH == action)
     {
         OAL_IO_PRINT("power patch lauch\n");
-        /*PatchÏÂÔØÍêºó ³õÊ¼»¯Í¨µÀ×ÊÔ´£¬È»ºóµÈ´ýÒµÎñ³õÊ¼»¯Íê³É*/
+        /*Patchï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ê¼ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½È»ï¿½ï¿½È´ï¿½Òµï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½*/
 
         ret = oal_pcie_transfer_res_init(pst_pci_lres->pst_pci_res);
         if(ret)
@@ -2726,7 +2719,7 @@ OAL_STATIC oal_int32 oal_pcie_power_action(hcc_bus *pst_bus, HCC_BUS_POWER_ACTIO
             }
             else
             {
-                /*Ç¿ÖÆµ÷¶È³É¹¦£¬ËµÃ÷ÓÐ¿ÉÄÜÊÇGPIOÖÐ¶ÏÎ´ÏìÓ¦*/
+                /*Ç¿ï¿½Æµï¿½ï¿½È³É¹ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½Ð¿ï¿½ï¿½ï¿½ï¿½ï¿½GPIOï¿½Ð¶ï¿½Î´ï¿½ï¿½Ó¦*/
                 OAL_IO_PRINT(KERN_WARNING"[E]retry succ, maybe gpio interrupt issue");
                 DECLARE_DFT_TRACE_KEY_INFO("pcie gpio int issue",OAL_DFT_TRACE_FAIL);
             }
@@ -2747,7 +2740,7 @@ OAL_STATIC oal_int32 oal_pcie_power_action(hcc_bus *pst_bus, HCC_BUS_POWER_ACTIO
 
         hcc_enable_etc(HBUS_TO_HCC(pst_bus), OAL_TRUE);
 
-        /*µ÷¶ÈÒ»´ÎÊý¾ÝRXÍ¨µÀ, PCIE Êý¾Ý×ßINTX£¬ÏûÏ¢×ßGPIO*/
+        /*ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½RXÍ¨ï¿½ï¿½, PCIE ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½INTXï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½GPIO*/
         //oal_task_sched(&pst_pci_lres->st_rx_task);
 
         //oal_wake_lock(&pst_pci_lres->st_sr_bugfix);/*hold the AP*/
@@ -2757,7 +2750,7 @@ OAL_STATIC oal_int32 oal_pcie_power_action(hcc_bus *pst_bus, HCC_BUS_POWER_ACTIO
     if(HCC_BUS_SW_POWER_PATCH_LAUCH == action)
     {
         OAL_IO_PRINT("HCC_BUS_SW_POWER_PATCH_LAUCH\n");
-        /*PatchÏÂÔØÍêºó ³õÊ¼»¯Í¨µÀ×ÊÔ´£¬È»ºóµÈ´ýÒµÎñ³õÊ¼»¯Íê³É*/
+        /*Patchï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ê¼ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½È»ï¿½ï¿½È´ï¿½Òµï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½*/
 
         ret = oal_pcie_transfer_res_init(pst_pci_lres->pst_pci_res);
         if(ret)
@@ -2772,7 +2765,7 @@ OAL_STATIC oal_int32 oal_pcie_power_action(hcc_bus *pst_bus, HCC_BUS_POWER_ACTIO
 
         oal_enable_pcie_irq(pst_pci_lres);
 
-        /*´ËÊ±GPIO²»ÄÜÊ¹ÓÃ£¬BUS»¹Î´ÇÐ»»*/
+        /*ï¿½ï¿½Ê±GPIOï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ã£ï¿½BUSï¿½ï¿½Î´ï¿½Ð»ï¿½*/
         ret = oal_pcie_enable_device_func_polling(pst_pci_lres);
         if(OAL_SUCC != ret)
         {
@@ -2897,7 +2890,7 @@ OAL_STATIC oal_int32 oal_pcie_gpio_irq(hcc_bus *hi_bus, oal_int32 irq)
 
     if(0 == ul_state)
     {
-        /*0==HOST_DISALLOW_TO_SLEEP±íÊ¾²»ÔÊÐíÐÝÃß*/
+        /*0==HOST_DISALLOW_TO_SLEEPï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
         hi_bus->data_int_count++;
         /*PCIE message use gpio interrupt*/
         PCI_PRINT_LOG(PCI_LOG_DBG, "pcie message come..");
@@ -2906,7 +2899,7 @@ OAL_STATIC oal_int32 oal_pcie_gpio_irq(hcc_bus *hi_bus, oal_int32 irq)
     }
     else
     {
-        /*1==HOST_ALLOW_TO_SLEEP±íÊ¾µ±Ç°ÊÇÐÝÃß£¬»½ÐÑhost*/
+        /*1==HOST_ALLOW_TO_SLEEPï¿½ï¿½Ê¾ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½host*/
         if(OAL_WARN_ON(!hi_bus->pst_pm_callback->pm_wakeup_host))
         {
             PCI_PRINT_LOG(PCI_LOG_ERR, "%s error:hi_bus->pst_pm_callback->pm_wakeup_host is null",__FUNCTION__);
@@ -3094,9 +3087,9 @@ OAL_STATIC hcc_bus* oal_pcie_bus_init(oal_pcie_linux_res * pst_pci_lres)
 
     pst_bus->bus_type = HCC_BUS_PCIE;
     pst_bus->bus_id   = 0x0;
-    pst_bus->dev_id = HCC_CHIP_110X_DEV;/*ÕâÀï¿ÉÒÔ¸ù¾Ý vendor id Çø·Ö110X ºÍ118X*/
+    pst_bus->dev_id = HCC_CHIP_110X_DEV;/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¸ï¿½ï¿½ï¿½ vendor id ï¿½ï¿½ï¿½ï¿½110X ï¿½ï¿½118X*/
 
-    /*PCIE Ö»ÐèÒª4×Ö½Ú¶ÔÆë, burst´óÐ¡¶ÔÐÔÄÜµÄÓ°ÏìÓÐÏÞ*/
+    /*PCIE Ö»ï¿½ï¿½Òª4ï¿½Ö½Ú¶ï¿½ï¿½ï¿½, burstï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½Üµï¿½Ó°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
     pst_bus->cap.align_size[HCC_TX] = 4;
     pst_bus->cap.align_size[HCC_RX] = 4;
     pst_bus->cap.max_trans_size = 0x7fffffff;
@@ -3137,7 +3130,7 @@ oal_int32 wlan_first_power_on_callback(void* data)
 oal_int32 wlan_first_power_off_fail_callback(void* data)
 {
     OAL_REFERENCE(data);
-    /*×èÖ¹÷è÷ëÃ¶¾ÙÊ§°ÜºóÏÂµç¹ØÊ±ÖÓ*/
+    /*ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½Ã¶ï¿½ï¿½Ê§ï¿½Üºï¿½ï¿½Âµï¿½ï¿½Ê±ï¿½ï¿½*/
     OAL_IO_PRINT("wlan_first_power_off_fail_callback\n");
     g_pcie_enum_fail_reg_dump_flag = 1;
     if(HI1XX_ANDROID_BUILD_VARIANT_USER == hi11xx_get_android_build_variant())
@@ -3278,7 +3271,7 @@ oal_int32 oal_pcie_110x_init(oal_void)
     oal_pci_wlan_power_on(OAL_TRUE);
 #endif
 #ifdef CONFIG_ARCH_KIRIN_PCIE
-    /*´ò¿ª²Î¿¼Ê±ÖÓ*/
+    /*ï¿½ò¿ª²Î¿ï¿½Ê±ï¿½ï¿½*/
     ret = kirin_pcie_power_notifiy_register(kirin_rc_idx, wlan_first_power_on_callback, wlan_first_power_off_fail_callback, NULL);
     if(OAL_SUCC != ret)
     {
@@ -3353,7 +3346,7 @@ oal_int32 oal_pcie_110x_init(oal_void)
     if(g_pcie_linux_res)
     {
         hcc_bus_disable_state(g_pcie_linux_res->pst_bus, OAL_BUS_STATE_ALL);
-        /*±£´æPCIE ÅäÖÃ¼Ä´æÆ÷*/
+        /*ï¿½ï¿½ï¿½ï¿½PCIE ï¿½ï¿½ï¿½Ã¼Ä´ï¿½ï¿½ï¿½*/
         ret = oal_pcie_save_default_resource(g_pcie_linux_res);
         if(OAL_SUCC != ret)
         {
@@ -3372,7 +3365,7 @@ oal_int32 oal_pcie_110x_init(oal_void)
 #endif
         oal_disable_pcie_irq(g_pcie_linux_res);
         oal_pcie_power_action(g_pcie_linux_res->pst_bus, HCC_BUS_POWER_DOWN);
-        /*µÈµ½¶ÁÈ¡ÍênfcµÍµçµÄlogÊý¾ÝÔÙÀ­µÍGPIO*/
+        /*ï¿½Èµï¿½ï¿½ï¿½È¡ï¿½ï¿½nfcï¿½Íµï¿½ï¿½logï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½GPIO*/
         hi_wlan_power_set_etc(0);
 #endif
     }
@@ -3435,7 +3428,7 @@ oal_int32 oal_wifi_platform_load_pcie(oal_void)
         return OAL_SUCC;
     }
 
-    /*WiFi Ð¾Æ¬ÉÏµç + PCIE Ã¶¾Ù*/
+    /*WiFi Ð¾Æ¬ï¿½Ïµï¿½ + PCIE Ã¶ï¿½ï¿½*/
 #ifdef _PRE_PLAT_FEATURE_HI110X_PCIE
     ret = oal_pcie_110x_init();
 #endif

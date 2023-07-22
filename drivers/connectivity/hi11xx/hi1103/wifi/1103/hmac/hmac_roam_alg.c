@@ -9,7 +9,7 @@ extern "C" {
 
 #ifdef _PRE_WLAN_FEATURE_ROAM
 /*****************************************************************************
-  1 Í·ÎÄ¼ş°üº¬
+  1 Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 #include "oam_ext_if.h"
 #include "mac_ie.h"
@@ -31,7 +31,7 @@ extern "C" {
 #define THIS_FILE_ID OAM_FILE_ID_HMAC_ROAM_ALG_C
 
 /*****************************************************************************
-  2 È«¾Ö±äÁ¿¶¨Òå
+  2 È«ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 hmac_roam_rssi_capacity_stru   gst_rssi_table_11a_ofdm_etc[ROAM_RSSI_LEVEL] = {
     {-75,               29300},
@@ -66,7 +66,7 @@ hmac_roam_rssi_capacity_stru   gst_rssi_table_vht80_ofdm_etc[ROAM_RSSI_LEVEL] = 
 };
 
 /*****************************************************************************
-  3 º¯ÊıÊµÏÖ
+  3 ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
 *****************************************************************************/
 
 oal_void hmac_roam_alg_init_etc(hmac_roam_info_stru *pst_roam_info, oal_int8 c_current_rssi)
@@ -97,7 +97,7 @@ oal_void hmac_roam_alg_init_etc(hmac_roam_info_stru *pst_roam_info, oal_int8 c_c
     pst_roam_alg->c_current_rssi        = c_current_rssi;
     pst_roam_alg->c_max_rssi            = 0;
     pst_roam_alg->uc_another_bss_scaned = 0;
-    /* Ê×´Î¹ØÁªÊ±³õÊ¼»¯ pst_roam_alg->uc_invalid_scan_cnt   = 0x0; */
+    /* ï¿½×´Î¹ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Ê¼ï¿½ï¿½ pst_roam_alg->uc_invalid_scan_cnt   = 0x0; */
     pst_roam_alg->pst_max_rssi_bss      = OAL_PTR_NULL;
 
     return;
@@ -188,7 +188,7 @@ OAL_STATIC oal_int16 hmac_roam_alg_compare_rssi_increase(hmac_roam_info_stru *ps
 
     if (uc_delta_rssi >= ROAM_RSSI_DIFF_4_DB + 2)
     {
-        /* ²½½ø2DBÖÁ4DB*/
+        /* ï¿½ï¿½ï¿½ï¿½2DBï¿½ï¿½4DB*/
         uc_delta_rssi -= 2;
     }
 
@@ -199,7 +199,7 @@ OAL_STATIC oal_int16 hmac_roam_alg_compare_rssi_increase(hmac_roam_info_stru *ps
 
     if (uc_delta_rssi >= ROAM_RSSI_DIFF_4_DB + 2)
     {
-        /* ²½½ø2DBÖÁ4DB*/
+        /* ï¿½ï¿½ï¿½ï¿½2DBï¿½ï¿½4DB*/
         uc_delta_rssi -= 2;
     }
 
@@ -232,7 +232,7 @@ OAL_STATIC oal_uint32 hmac_roam_alg_add_bsslist(hmac_roam_bss_list_stru *pst_roa
         ul_timeout = (oal_uint32)pst_cur_bss->ul_timeout;
         if (0 == oal_compare_mac_addr(pst_cur_bss->auc_bssid, puc_bssid))
         {
-            /* ÓÅÏÈ²éÕÒÒÑ´æÔÚµÄ¼ÇÂ¼£¬Èç¹ûÃûµ¥³¬Ê±¸üĞÂÊ±¼ä´Á£¬·ñÔò¸üĞÂcount */
+            /* ï¿½ï¿½ï¿½È²ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½ï¿½ÚµÄ¼ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½count */
 
             if (OAL_TIME_GET_RUNTIME(pst_cur_bss->ul_time_stamp, ul_now) > ul_timeout)
             {
@@ -250,7 +250,7 @@ OAL_STATIC oal_uint32 hmac_roam_alg_add_bsslist(hmac_roam_bss_list_stru *pst_roa
             return OAL_SUCC;
         }
 
-        /* ¼ÇÂ¼µÚÒ»¸ö¿Õ¼ÇÂ¼ */
+        /* ï¿½ï¿½Â¼ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Õ¼ï¿½Â¼ */
         if (OAL_PTR_NULL != pst_zero_bss)
         {
             continue;
@@ -262,7 +262,7 @@ OAL_STATIC oal_uint32 hmac_roam_alg_add_bsslist(hmac_roam_bss_list_stru *pst_roa
             continue;
         }
 
-        /* ¼ÇÂ¼Ò»¸ö·Ç¿Õ×îÀÏ¼ÇÂ¼ */
+        /* ï¿½ï¿½Â¼Ò»ï¿½ï¿½ï¿½Ç¿ï¿½ï¿½ï¿½ï¿½Ï¼ï¿½Â¼ */
         if (OAL_PTR_NULL == pst_oldest_bss)
         {
             pst_oldest_bss = pst_cur_bss;
@@ -312,7 +312,7 @@ OAL_STATIC oal_bool_enum_uint8 hmac_roam_alg_find_in_bsslist(hmac_roam_bss_list_
 
         if (0 == oal_compare_mac_addr(pst_cur_bss->auc_bssid, puc_bssid))
         {
-            /* Èç¹ûÔÚ³¬Ê±Ê±¼äÄÚ³öÏÖcount_limit´ÎÒÔÉÏ¼ÇÂ¼ */
+            /* ï¿½ï¿½ï¿½ï¿½Ú³ï¿½Ê±Ê±ï¿½ï¿½ï¿½Ú³ï¿½ï¿½ï¿½count_limitï¿½ï¿½ï¿½ï¿½ï¿½Ï¼ï¿½Â¼ */
             ul_delta_time = OAL_TIME_GET_RUNTIME(pst_cur_bss->ul_time_stamp, ul_now);
             if ((ul_delta_time <= ul_timeout) &&
                 (pst_cur_bss->us_count >= us_count_limit))
@@ -607,7 +607,7 @@ OAL_STATIC oal_uint32 hmac_roam_alg_calc_avail_channel_capacity(mac_bss_dscr_str
     uc_ie_offset = MAC_80211_FRAME_LEN + MAC_TIME_STAMP_LEN + MAC_BEACON_INTERVAL_LEN + MAC_CAP_INFO_LEN;
     puc_obss_ie = mac_find_ie_etc(MAC_EID_QBSS_LOAD, (oal_uint8 *)(pst_bss_dscr->auc_mgmt_buff + uc_ie_offset), (oal_int32)(pst_bss_dscr->ul_mgmt_len - uc_ie_offset));
     /*lint +e416*/
-    /* ³¤¶ÈÒªµ½´ïChannelUtilizationÕâ¸öÓò£¬ÖÁÉÙÎª3 */
+    /* ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ChannelUtilizationï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª3 */
     if (puc_obss_ie && (puc_obss_ie[1] >= 3))
     {
         uc_channel_utilization = *(puc_obss_ie + 4);
@@ -649,14 +649,14 @@ oal_uint32 hmac_roam_alg_bss_in_ess_etc(hmac_roam_info_stru *pst_roam_info, mac_
         return OAL_SUCC;
     }
 
-    /* ÌôÑ¡HMAC_SCAN_MAX_VALID_SCANNED_BSS_EXPIREÊ±¼äÒÔÄÚµÄÓĞĞ§bss */
+    /* ï¿½ï¿½Ñ¡HMAC_SCAN_MAX_VALID_SCANNED_BSS_EXPIREÊ±ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½Ğ§bss */
     if (oal_time_after32(OAL_TIME_GET_STAMP_MS(), (pst_bss_dscr->ul_timestamp + HMAC_SCAN_MAX_VALID_SCANNED_BSS_EXPIRE)))
     {
         return OAL_SUCC;
     }
 
     pst_roam_alg = &(pst_roam_info->st_alg);
-    /* ÊÇ·ñÉ¨Ãèµ½ÁËµ±Ç°¹ØÁªµÄ bss, ½öÖÃÎ»£¬²»¹ıÂË */
+    /* ï¿½Ç·ï¿½É¨ï¿½èµ½ï¿½Ëµï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ bss, ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     if (0 != oal_compare_mac_addr(pst_mac_vap->auc_bssid, pst_bss_dscr->auc_bssid))
     {
         pst_roam_alg->uc_another_bss_scaned = 1;
@@ -726,14 +726,14 @@ oal_uint32 hmac_roam_alg_bss_check_etc(hmac_roam_info_stru *pst_roam_info, mac_b
     }
     pst_roam_alg = &(pst_roam_info->st_alg);
 
-    /* ¼ì²éÂşÓÎµ½×Ô¼º */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îµï¿½ï¿½Ô¼ï¿½ */
     if ((OAL_FALSE == pst_roam_info->en_current_bss_ignore)
         && oal_memcmp(pst_mac_vap->auc_bssid, pst_bss_dscr->auc_bssid, OAL_MAC_ADDR_LEN))
     {
         return OAL_ERR_CODE_ROAM_NO_VALID_BSS;
     }
 
-    /* ¼ì²éÌØ¶¨BSSIDµÄÂşÓÎ */
+    /* ï¿½ï¿½ï¿½ï¿½Ø¶ï¿½BSSIDï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     if (oal_memcmp(pst_roam_info->auc_target_bssid, pst_bss_dscr->auc_bssid, OAL_MAC_ADDR_LEN)
         && (ROAM_TRIGGER_BSSID == pst_roam_info->en_roam_trigger))
     {
@@ -742,7 +742,7 @@ oal_uint32 hmac_roam_alg_bss_check_etc(hmac_roam_info_stru *pst_roam_info, mac_b
 
     if (OAL_TRUE == pst_roam_info->en_current_bss_ignore)
     {
-        /*·ÇvoeÈÏÖ¤, ÌôÑ¡HMAC_SCAN_MAX_VALID_SCANNED_BSS_EXPIREÊ±¼äÒÔÄÚµÄÓĞĞ§bss */
+        /*ï¿½ï¿½voeï¿½ï¿½Ö¤, ï¿½ï¿½Ñ¡HMAC_SCAN_MAX_VALID_SCANNED_BSS_EXPIREÊ±ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½Ğ§bss */
 #if defined(_PRE_WLAN_FEATURE_11K) || defined(_PRE_WLAN_FEATURE_11R) || defined(_PRE_WLAN_FEATURE_11K_EXTERN)
         if(0 == pst_hmac_vap->bit_voe_11r_auth)
 #endif
@@ -754,7 +754,7 @@ oal_uint32 hmac_roam_alg_bss_check_etc(hmac_roam_info_stru *pst_roam_info, mac_b
         }
     }
 
-    /* ¼ì²éºÚÃûµ¥ */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     ul_ret = hmac_roam_alg_find_in_blacklist_etc(pst_roam_info, pst_bss_dscr->auc_bssid);
     if (OAL_TRUE == ul_ret)
     {
@@ -772,17 +772,17 @@ oal_uint32 hmac_roam_alg_bss_check_etc(hmac_roam_info_stru *pst_roam_info, mac_b
     }
 #endif
 
-    /* ¼ì²éÂşÓÎµ½ÆäËüBSSID */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½BSSID */
     if (OAL_TRUE == pst_roam_info->en_current_bss_ignore)
     {
-        /* ÅÅ³ıµ±Ç°bssµÄrssiÖµ¼ÆËã£¬±¾µØÒÑ¾­±£´æÁËdmacÉÏ±¨µÄrssi */
+        /* ï¿½Å³ï¿½ï¿½ï¿½Ç°bssï¿½ï¿½rssiÖµï¿½ï¿½ï¿½ã£¬ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½dmacï¿½Ï±ï¿½ï¿½ï¿½rssi */
         if (0 == oal_compare_mac_addr(pst_mac_vap->auc_bssid, pst_bss_dscr->auc_bssid))
         {
             return OAL_ERR_CODE_ROAM_NO_VALID_BSS;
         }
     }
 
-    /*  wepµÄbssÖ±½Ó¹ıÂËµô */
+    /*  wepï¿½ï¿½bssÖ±ï¿½Ó¹ï¿½ï¿½Ëµï¿½ */
     pst_cap_info = (mac_cap_info_stru *)&pst_bss_dscr->us_cap_info;
     if ((OAL_PTR_NULL == pst_bss_dscr->puc_rsn_ie) &&
         (OAL_PTR_NULL == pst_bss_dscr->puc_wpa_ie) &&
@@ -791,7 +791,7 @@ oal_uint32 hmac_roam_alg_bss_check_etc(hmac_roam_info_stru *pst_roam_info, mac_b
         return OAL_ERR_CODE_ROAM_NO_VALID_BSS;
     }
 
-    /*  open¼ÓÃÜ·½Ê½µ½wpa/wpa2Ö±½Ó¹ıÂËµô */
+    /*  openï¿½ï¿½ï¿½Ü·ï¿½Ê½ï¿½ï¿½wpa/wpa2Ö±ï¿½Ó¹ï¿½ï¿½Ëµï¿½ */
     /*lint -e731*/
     if ((0 == pst_cap_info->bit_privacy) != (OAL_TRUE != mac_mib_get_privacyinvoked(&pst_hmac_vap->st_vap_base_info)))
     {
@@ -800,7 +800,7 @@ oal_uint32 hmac_roam_alg_bss_check_etc(hmac_roam_info_stru *pst_roam_info, mac_b
     /*lint +e731*/
 
     c_tmp_rssi = pst_bss_dscr->c_rssi;
-    //ÖÕ¶ËÆÀÉó: 2.4GºòÑ¡APĞ¡ÓÚ-80dB²»ÔÙÂşÓÎ£¬5GºòÑ¡APĞ¡ÓÚ-78dB²»ÔÙÂşÓÎ
+    //ï¿½Õ¶ï¿½ï¿½ï¿½ï¿½ï¿½: 2.4Gï¿½ï¿½Ñ¡APĞ¡ï¿½ï¿½-80dBï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î£ï¿½5Gï¿½ï¿½Ñ¡APĞ¡ï¿½ï¿½-78dBï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     if (((c_tmp_rssi < ROAM_RSSI_NE80_DB) && (WLAN_BAND_2G == pst_bss_dscr->st_channel.en_band))
         || ((c_tmp_rssi < ROAM_RSSI_NE78_DB) && (WLAN_BAND_5G == pst_bss_dscr->st_channel.en_band)))
     {
@@ -812,7 +812,7 @@ oal_uint32 hmac_roam_alg_bss_check_etc(hmac_roam_info_stru *pst_roam_info, mac_b
         c_tmp_rssi = hmac_roam_alg_adjust_5G_rssi_weight(c_tmp_rssi);
     }
 
-    /* c_current_rssiÎª0Ê±£¬±íÊ¾linklossÉÏ±¨µÄ´¥·¢£¬²»ĞèÒª¿¼ÂÇrssiÔöÒæ */
+    /* c_current_rssiÎª0Ê±ï¿½ï¿½ï¿½ï¿½Ê¾linklossï¿½Ï±ï¿½ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½rssiï¿½ï¿½ï¿½ï¿½ */
     s_delta_rssi = hmac_roam_alg_compare_rssi_increase(pst_roam_info, pst_bss_dscr, c_tmp_rssi);
     if (s_delta_rssi <= 0)
     {
@@ -824,12 +824,12 @@ oal_uint32 hmac_roam_alg_bss_check_etc(hmac_roam_info_stru *pst_roam_info, mac_b
         ((OAL_PTR_NULL == pst_roam_alg->pst_max_capacity_bss) ||
         (ul_avail_channel_capacity > pst_roam_alg->ul_max_capacity)))
     {
-	    //ÔİÊ±²»¿¼ÂÇÈİÁ¿
+	    //ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         //pst_roam_alg->ul_max_capacity      = ul_avail_channel_capacity;
         //pst_roam_alg->pst_max_capacity_bss = pst_bss_dscr;
     }
 
-    /* ¶ÔÓÚÒÑ´æÔÚpmk»º´æµÄbss½øĞĞ¼Ó·Ö´¦Àí */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½ï¿½ï¿½pmkï¿½ï¿½ï¿½ï¿½ï¿½bssï¿½ï¿½ï¿½Ğ¼Ó·Ö´ï¿½ï¿½ï¿½ */
     puc_pmkid = hmac_vap_get_pmksa_etc(pst_hmac_vap, pst_bss_dscr->auc_bssid);
     if (OAL_PTR_NULL != puc_pmkid)
     {
@@ -843,7 +843,7 @@ oal_uint32 hmac_roam_alg_bss_check_etc(hmac_roam_info_stru *pst_roam_info, mac_b
         pst_roam_alg->pst_max_rssi_bss  = pst_bss_dscr;
     }
 
-    /* µ±2G AP RSSIºÍ5G AP¼ÓÈ¨RSSIÏàµÈÊ±£¬ÓÅÑ¡5GµÍband AP */
+    /* ï¿½ï¿½2G AP RSSIï¿½ï¿½5G APï¿½ï¿½È¨RSSIï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Ñ¡5Gï¿½ï¿½band AP */
     if ((c_tmp_rssi == pst_roam_alg->c_max_rssi)
         && (WLAN_BAND_2G == pst_roam_alg->pst_max_rssi_bss->st_channel.en_band) && (WLAN_BAND_5G == pst_bss_dscr->st_channel.en_band))
     {
@@ -898,7 +898,6 @@ oal_bool_enum_uint8 hmac_roam_alg_need_to_stop_roam_trigger_etc(hmac_roam_info_s
 mac_bss_dscr_stru *hmac_roam_alg_select_bss_etc(hmac_roam_info_stru *pst_roam_info)
 {
     hmac_vap_stru              *pst_hmac_vap;
-    mac_vap_stru               *pst_mac_vap;
     mac_bss_dscr_stru          *pst_bss_dscr;
     hmac_roam_alg_stru         *pst_roam_alg;
     oal_int16                   s_delta_rssi = 0;
@@ -914,16 +913,14 @@ mac_bss_dscr_stru *hmac_roam_alg_select_bss_etc(hmac_roam_info_stru *pst_roam_in
         return OAL_PTR_NULL;
     }
 
-    pst_mac_vap   = &(pst_hmac_vap->st_vap_base_info);
-
     pst_roam_alg = &(pst_roam_info->st_alg);
 
-    /* È¡µÃ×î´ó rssi µÄ bss */
+    /* È¡ï¿½ï¿½ï¿½ï¿½ï¿½ rssi ï¿½ï¿½ bss */
     pst_bss_dscr = pst_roam_alg->pst_max_rssi_bss;
 
     if ((OAL_PTR_NULL != pst_roam_alg->pst_max_capacity_bss) && (pst_roam_alg->ul_max_capacity >= ROAM_THROUGHPUT_THRESHOLD))
     {
-        /* È¡µÃ×î´ó capacity µÄ bss*/
+        /* È¡ï¿½ï¿½ï¿½ï¿½ï¿½ capacity ï¿½ï¿½ bss*/
         pst_bss_dscr = pst_roam_alg->pst_max_capacity_bss;
     }
 
@@ -933,7 +930,7 @@ mac_bss_dscr_stru *hmac_roam_alg_select_bss_etc(hmac_roam_info_stru *pst_roam_in
         return OAL_PTR_NULL;
     }
 
-    /* rssiÔöÒæ´¦Àí */
+    /* rssiï¿½ï¿½ï¿½æ´¦ï¿½ï¿½ */
     s_delta_rssi = hmac_roam_alg_compare_rssi_increase(pst_roam_info, pst_bss_dscr, pst_roam_alg->c_max_rssi);
     if (s_delta_rssi <= 0)
     {

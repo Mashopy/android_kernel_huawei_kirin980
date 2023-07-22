@@ -604,7 +604,7 @@ int32 uart_wifi_open(void)
         return -EINVAL;
     }
 
-    /*Èç¹ûBFGINË¯Ãß£¬Ôò»½ÐÑÖ®*/
+    /*ï¿½ï¿½ï¿½BFGINË¯ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½Ö®*/
     ret = prepare_to_visit_node(ps_core_d);
     if (ret < 0)
     {
@@ -651,7 +651,7 @@ int32 uart_wifi_close(void)
         return -EINVAL;
     }
 
-    /*Èç¹ûBFGINË¯Ãß£¬Ôò»½ÐÑÖ®*/
+    /*ï¿½ï¿½ï¿½BFGINË¯ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½Ö®*/
     ret = prepare_to_visit_node(ps_core_d);
     if (ret < 0)
     {
@@ -700,7 +700,7 @@ int32 uart_bfgx_close_cmd(void)
         return -EINVAL;
     }
 
-    /*Èç¹ûBFGINË¯Ãß£¬Ôò»½ÐÑÖ®*/
+    /*ï¿½ï¿½ï¿½BFGINË¯ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½Ö®*/
     ret = prepare_to_visit_node(ps_core_d);
     if (ret < 0)
     {
@@ -708,7 +708,7 @@ int32 uart_bfgx_close_cmd(void)
         return ret;
     }
 
-    /*ÏÂ·¢BFGIN shutdownÃüÁî*/
+    /*ï¿½Â·ï¿½BFGIN shutdownï¿½ï¿½ï¿½ï¿½*/
     PS_PRINT_INFO("uart shutdown BCPU\n");
 
     ps_uart_state_pre(ps_core_d->tty);
@@ -1024,7 +1024,7 @@ STATIC ssize_t hw_bt_write(struct file *filp, const int8 __user *buf, size_t cou
         return -EINVAL;
     }
 
-    /*ÊÊÅäAndroid O£¬BTÊý¾Ý·ÖÁ½´ÎÏÂ·¢£¬ÏÈ·¢Êý¾ÝÀàÐÍ£¬³¤¶È¹Ì¶¨Îª1Byte£¬È»ºó·¢Êý¾Ý£¬ÐèÒªÔÚÇý¶¯ÖÐ×éºÏÆðÀ´·¢¸ødevice*/
+    /*ï¿½ï¿½ï¿½ï¿½Android Oï¿½ï¿½BTï¿½ï¿½ï¿½Ý·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½ï¿½È¹Ì¶ï¿½Îª1Byteï¿½ï¿½È»ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½device*/
     if (BT_TYPE_DATA_LEN == count)
     {
         get_user(type, puser);
@@ -1198,14 +1198,14 @@ STATIC int32 hw_bt_release(struct inode *inode, struct file *filp)
     ret = prepare_to_visit_node(ps_core_d);
     if (ret < 0)
     {
-        /*»½ÐÑÊ§°Ü£¬bfgx closeÊ±µÄ»½ÐÑÊ§°Ü²»½øÐÐDFR»Ö¸´*/
+        /*ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½bfgx closeÊ±ï¿½Ä»ï¿½ï¿½ï¿½Ê§ï¿½Ü²ï¿½ï¿½ï¿½ï¿½ï¿½DFRï¿½Ö¸ï¿½*/
         PS_PRINT_ERR("prepare work FAIL\n");
     }
 
     ret = bfgx_close_cmd_send(BFGX_BT);
     if (ret < 0)
     {
-        /*·¢ËÍcloseÃüÁîÊ§°Ü£¬²»½øÐÐDFR£¬¼ÌÐø½øÐÐÏÂµçÁ÷³Ì£¬DFR»Ö¸´ÑÓ³Ùµ½ÏÂ´ÎopenÊ±»òÕßÆäËûÒµÎñÔËÐÐÊ±½øÐÐ*/
+        /*ï¿½ï¿½ï¿½ï¿½closeï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½DFRï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½ï¿½Ì£ï¿½DFRï¿½Ö¸ï¿½ï¿½Ó³Ùµï¿½ï¿½Â´ï¿½openÊ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½*/
         PS_PRINT_ERR("bfgx close cmd fail\n");
     }
 
@@ -1217,7 +1217,7 @@ STATIC int32 hw_bt_release(struct inode *inode, struct file *filp)
         ret = ps_core_d->ps_pm->bfg_power_set(BFGX_BT, BFG_POWER_GPIO_DOWN);
         if (ret)
         {
-            /*ÏÂµçÊ§°Ü£¬²»½øÐÐDFR£¬DFR»Ö¸´ÑÓ³Ùµ½ÏÂ´ÎopenÊ±»òÕßÆäËûÒµÎñÔËÐÐÊ±½øÐÐ*/
+            /*ï¿½Âµï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½DFRï¿½ï¿½DFRï¿½Ö¸ï¿½ï¿½Ó³Ùµï¿½ï¿½Â´ï¿½openÊ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½*/
             PS_PRINT_ERR("set bt power off err!ret = %d\n", ret);
         }
     }
@@ -2318,7 +2318,7 @@ STATIC ssize_t hw_gnss_read(struct file *filp, int8 __user *buf, size_t count, l
             spin_unlock(&ps_core_d->gnss_rx_lock);
             if (0 != read_queue.qlen)
             {
-                //Ã»ÓÐÕÒµ½last°ü£¬skb queue¾Í¿ÕÁË
+                //Ã»ï¿½ï¿½ï¿½Òµï¿½lastï¿½ï¿½ï¿½ï¿½skb queueï¿½Í¿ï¿½ï¿½ï¿½
                 PS_PRINT_ERR("skb dequeue error, qlen=%x!\n", read_queue.qlen);
                 goto skb_dequeue_error;
             }
@@ -3999,11 +3999,9 @@ int32 ps_resume(struct platform_device *pdev)
 STATIC int32 ps_remove(struct platform_device *pdev)
 {
     struct ps_plat_s *ps_plat_d;
-    struct hw_ps_plat_data *pdata;
 
     PS_PRINT_FUNCTION_NAME;
 
-    pdata = pdev->dev.platform_data;
     ps_plat_d = dev_get_drvdata(&pdev->dev);
     if (NULL == ps_plat_d)
     {

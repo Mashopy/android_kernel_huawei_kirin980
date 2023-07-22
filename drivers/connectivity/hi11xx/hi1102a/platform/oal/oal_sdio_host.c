@@ -216,7 +216,7 @@ OAL_STATIC oal_int32 oal_sdio_power_action(hcc_bus *pst_bus, HCC_BUS_POWER_ACTIO
         oal_wlan_gpio_intr_enable(HBUS_TO_DEV(pst_bus), OAL_FALSE);
         hcc_disable(HBUS_TO_HCC(pst_bus), OAL_TRUE);
 #ifdef CONFIG_MMC
-        /*ÏÂµçÖ®Ç°¹Ø±Õ SDIO HOST ¿ØÖÆÆ÷Ê±ÖÓ*/
+        /*ï¿½Âµï¿½Ö®Ç°ï¿½Ø±ï¿½ SDIO HOST ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½*/
         mmc_power_save_host(hi_sdio->func->card->host);
 #endif
     }
@@ -229,7 +229,7 @@ OAL_STATIC oal_int32 oal_sdio_power_action(hcc_bus *pst_bus, HCC_BUS_POWER_ACTIO
         hcc_bus_disable_state(pst_bus, OAL_BUS_STATE_ALL);
         /*close sdio master*/
 #ifdef CONFIG_MMC
-        /*¹Ø±Õ SDIO HOST ¿ØÖÆÆ÷Ê±ÖÓ, ´ËÊ±slaveÒÑ¾­ÏÂµç*/
+        /*ï¿½Ø±ï¿½ SDIO HOST ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½, ï¿½ï¿½Ê±slaveï¿½Ñ¾ï¿½ï¿½Âµï¿½*/
         mmc_power_save_host(hi_sdio->func->card->host);
 #endif
 
@@ -250,10 +250,10 @@ OAL_STATIC oal_int32 oal_sdio_power_action(hcc_bus *pst_bus, HCC_BUS_POWER_ACTIO
 
     if(HCC_BUS_POWER_PATCH_LAUCH == action)
     {
-        /*PatchÏÂÔØÍêºó ³õÊ¼»¯Í¨µÀ×ÊÔ´£¬È»ºóµÈ´ýÒµÎñ³õÊ¼»¯Íê³É*/
+        /*Patchï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ê¼ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½È»ï¿½ï¿½È´ï¿½Òµï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½*/
         oal_wlan_gpio_intr_enable(HBUS_TO_DEV(pst_bus), OAL_TRUE);
 
-        /*µÚÒ»¸öÖÐ¶ÏÓÐ¿ÉÄÜÔÚÖÐ¶ÏÊ¹ÄÜÖ®Ç°ÉÏ±¨£¬Ç¿ÖÆµ÷¶ÈÒ»´ÎRX Thread*/
+        /*ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½Ð¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½Ê¹ï¿½ï¿½Ö®Ç°ï¿½Ï±ï¿½ï¿½ï¿½Ç¿ï¿½Æµï¿½ï¿½ï¿½Ò»ï¿½ï¿½RX Thread*/
         up(&pst_bus->rx_sema);
 
         if(0 == oal_wait_for_completion_timeout(&pst_bus->st_device_ready, (oal_uint32)OAL_MSECS_TO_JIFFIES(HOST_WAIT_BOTTOM_INIT_TIMEOUT)))
@@ -269,7 +269,7 @@ OAL_STATIC oal_int32 oal_sdio_power_action(hcc_bus *pst_bus, HCC_BUS_POWER_ACTIO
             }
             else
             {
-                /*Ç¿ÖÆµ÷¶È³É¹¦£¬ËµÃ÷ÓÐ¿ÉÄÜÊÇGPIOÖÐ¶ÏÎ´ÏìÓ¦*/
+                /*Ç¿ï¿½Æµï¿½ï¿½È³É¹ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½Ð¿ï¿½ï¿½ï¿½ï¿½ï¿½GPIOï¿½Ð¶ï¿½Î´ï¿½ï¿½Ó¦*/
                 oal_print_hi11xx_log(HI11XX_LOG_WARN, KERN_WARNING"[E]retry succ, maybe gpio interrupt issue");
                 DECLARE_DFT_TRACE_KEY_INFO("sdio gpio int issue",OAL_DFT_TRACE_FAIL);
             }
@@ -330,7 +330,7 @@ oal_int32 sdio_dev_init(struct sdio_func *func)
         oal_print_hi11xx_log(HI11XX_LOG_ERR, "failed to set sdio blk size! ret=%d", ret);
     }
 
-	/*func 1 enable Ö®ºó, device ·¢µÄÏûÏ¢»á±»ÕâÀïÇåµô*/
+	/*func 1 enable Ö®ï¿½ï¿½, device ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½á±»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 #if 0
     /* before enable sdio function 1, clear its interrupt flag, no matter it exist or not */
     oal_sdio_writeb(func, HISDIO_FUNC1_INT_MASK, HISDIO_REG_FUNC1_INT_STATUS, &ret);
@@ -377,14 +377,14 @@ oal_int32 oal_sdio_shutdown_pre_respone(oal_void* data)
 oal_int32 oal_sdio_switch_clean_res(hcc_bus* pst_bus)
 {
     oal_int32 ret;
-    /*Çå¿ÕSDIO Í¨µÀ£¬Í¨ÖªDevice¹Ø±Õ·¢ËÍÍ¨µÀ£¬
-      µÈ´ýDMAÍê³ÉËùÓÐ´«Êäºó·µ»Ø*/
+    /*ï¿½ï¿½ï¿½SDIO Í¨ï¿½ï¿½ï¿½ï¿½Í¨ÖªDeviceï¿½Ø±Õ·ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½
+      ï¿½È´ï¿½DMAï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ó·µ»ï¿½*/
 
     struct oal_sdio* hi_sdio = (struct oal_sdio*)pst_bus->data;
 
     OAL_INIT_COMPLETION(&hi_sdio->st_sdio_shutdown_response);
 
-    /*ÇåÀíSDIO¾ÛºÏ±¨ÎÄ*/
+    /*ï¿½ï¿½ï¿½ï¿½SDIOï¿½ÛºÏ±ï¿½ï¿½ï¿½*/
     hcc_restore_assemble_netbuf_list(HBUS_TO_HCC(pst_bus));
 
     ret = oal_sdio_send_msg(pst_bus, H2D_MSG_SHUTDOWN_IP_PRE);
@@ -636,7 +636,7 @@ OAL_STATIC OAL_INLINE oal_int32 oal_sdio_msg_stat(struct oal_sdio *hi_sdio, oal_
     }
 #ifdef CONFIG_SDIO_D2H_MSG_ACK
     /*read from old register*/
-    /*µ±Ê¹ÓÃ0x30¼Ä´æÆ÷Ê±ÐèÒªÏÂ·¢CMD52¶Á0x2B ²Å»á²úÉúHOST2ARM ACKÖÐ¶Ï*/
+    /*ï¿½ï¿½Ê¹ï¿½ï¿½0x30ï¿½Ä´ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Òªï¿½Â·ï¿½CMD52ï¿½ï¿½0x2B ï¿½Å»ï¿½ï¿½ï¿½ï¿½HOST2ARM ACKï¿½Ð¶ï¿½*/
     (void)oal_sdio_readb(hi_sdio->func, HISDIO_REG_FUNC1_MSG_HIGH_FROM_DEV, &ret);
     if (ret)
     {
@@ -654,12 +654,9 @@ OAL_STATIC OAL_INLINE oal_int32 oal_sdio_msg_stat(struct oal_sdio *hi_sdio, oal_
 oal_int32 oal_sdio_msg_irq(struct oal_sdio *hi_sdio)
 {
     oal_int32 bit = 0;
-    struct sdio_func    *func;
     oal_uint32           msg   = 0;
     oal_int32            ret   = 0;
     unsigned long        msg64 = 0;
-
-    func       = hi_sdio->func;
 
     /* reading interrupt form ARM Gerneral Purpose Register(0x28)  */
     ret = oal_sdio_msg_stat(hi_sdio, &msg);
@@ -693,7 +690,7 @@ oal_int32 oal_sdio_msg_irq(struct oal_sdio *hi_sdio)
     oal_sdio_release_host(hi_sdio);
     hcc_bus_rx_transfer_unlock(hi_sdio->pst_bus);
 
-    /*ÓÅÏÈ´¦ÀíPanicÏûÏ¢*/
+    /*ï¿½ï¿½ï¿½È´ï¿½ï¿½ï¿½Panicï¿½ï¿½Ï¢*/
     if(test_and_clear_bit(D2H_MSG_DEVICE_PANIC, &msg64))
     {
         bit = D2H_MSG_DEVICE_PANIC;
@@ -782,7 +779,7 @@ oal_int32 oal_sdio_extend_buf_get(struct oal_sdio *hi_sdio)
 			                    HISDIO_COMM_REG_SEQ_GET(hi_sdio->sdio_extend->credit_info));
             oal_print_hex_dump((oal_void*)hi_sdio->sdio_extend,sizeof(struct hisdio_extend_func),32,"extend :");
 
-            /* ´Ëcredit¸üÐÂÖ»ÔÚµ÷ÊÔÊ±Ê¹ÓÃ */
+            /* ï¿½ï¿½creditï¿½ï¿½ï¿½ï¿½Ö»ï¿½Úµï¿½ï¿½ï¿½Ê±Ê¹ï¿½ï¿½ */
             if(oal_sdio_credit_info_update(hi_sdio))
             {
                 if(OAL_LIKELY(hi_sdio->credit_update_cb))
@@ -901,7 +898,7 @@ oal_void oal_sdio_build_rx_netbuf_list_work(oal_work_stru *pst_work)
          return ;
     };
 
-    /* ²¹³äÉêÇënetbuf,²¹µ½HCC_BUS_MEMALLOC_MAX */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½netbuf,ï¿½ï¿½ï¿½ï¿½HCC_BUS_MEMALLOC_MAX */
     while(oal_netbuf_list_len(phead) < HCC_BUS_MEMALLOC_MAX)
     {
         netbuf = oal_sdio_alloc_rx_netbuf(WLAN_LARGE_NETBUF_SIZE);
@@ -959,7 +956,7 @@ oal_int32 oal_sdio_build_rx_netbuf_list(struct oal_sdio *hi_sdio,
             netbuf = oal_netbuf_delist_tail(&hi_sdio->pst_bus->rx_netbuf_head);
             if(NULL == netbuf)
             {
-                /*Èç¹û´ÓÌáÇ°ÉêÇënetbufÖÐ»ñÈ¡Ê§°Ü£¬ÔÚÕâÀïÔÙÉêÇëÒ»´Î*/
+                /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½netbufï¿½Ð»ï¿½È¡Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½*/
                 netbuf = oal_sdio_alloc_rx_netbuf(buff_len_t);
             }
         }
@@ -1002,7 +999,7 @@ oal_int32 oal_sdio_build_rx_netbuf_list(struct oal_sdio *hi_sdio,
     netbuf = oal_netbuf_delist_tail(&hi_sdio->pst_bus->rx_netbuf_head);
     if(NULL == netbuf || buff_len_t > WLAN_LARGE_NETBUF_SIZE)
     {
-        /*Èç¹û´ÓÌáÇ°ÉêÇënetbufÖÐ»ñÈ¡Ê§°Ü£¬ÔÚÕâÀïÔÙÉêÇëÒ»´Î*/
+        /*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½netbufï¿½Ð»ï¿½È¡Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½*/
         netbuf = oal_sdio_alloc_rx_netbuf(buff_len_t);
     }
 
@@ -1108,9 +1105,6 @@ oal_int32 oal_sdio_do_isr(struct oal_sdio *hi_sdio)
 {
     oal_uint8                   int_mask;
     oal_int32                   ret;
-    struct sdio_func       *func;
-
-    func       = hi_sdio->func;
 
     /*sdio bus state access lock by sdio bus claim locked.*/
     if(OAL_UNLIKELY(OAL_TRUE != oal_sdio_get_state(hi_sdio->pst_bus,OAL_BUS_STATE_RX)))
@@ -2439,7 +2433,6 @@ oal_int32 oal_sdio_transfer_rebuild_sglist(struct oal_sdio *hi_sdio,
     oal_netbuf_stru* netbuf = NULL;
     oal_netbuf_stru* tmp = NULL;
 
-    oal_uint32 align_len = 0;
     oal_uint32 align_t = 0;
 
 #if defined(CONFIG_HISDIO_H2D_SCATT_LIST_ASSEMBLE) || defined(CONFIG_HISDIO_D2H_SCATT_LIST_ASSEMBLE)
@@ -2454,7 +2447,7 @@ oal_int32 oal_sdio_transfer_rebuild_sglist(struct oal_sdio *hi_sdio,
 #if defined(CONFIG_HISDIO_H2D_SCATT_LIST_ASSEMBLE)
     if(SDIO_WRITE == rw)
     {
-        /*·¢ËÍÄÚ´æ¿½±´£¬ºÏ²¢³ÉÒ»¿éÄÚ´æ*/
+        /*ï¿½ï¿½ï¿½ï¿½ï¿½Ú´æ¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï²ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ú´ï¿½*/
         skb_queue_walk_safe(head, netbuf, tmp)
         {
             oal_memcopy(hi_sdio->tx_scatt_buff.buff + offset, OAL_NETBUF_DATA(netbuf), OAL_NETBUF_LEN(netbuf));
@@ -2462,8 +2455,7 @@ oal_int32 oal_sdio_transfer_rebuild_sglist(struct oal_sdio *hi_sdio,
         }
 
         align_t = HISDIO_ALIGN_4_OR_BLK(offset);
-        align_len = align_t - offset;
-        offset = align_t;/*¶ÔÆë³¤¶ÈÓÃÄÚ´æÌî³ä*/
+        offset = align_t;/*ï¿½ï¿½ï¿½ë³¤ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½ï¿½*/
 
         /*build tx sg list*/
         left_size = offset;
@@ -2502,8 +2494,7 @@ oal_int32 oal_sdio_transfer_rebuild_sglist(struct oal_sdio *hi_sdio,
         }
 
         align_t = HISDIO_ALIGN_4_OR_BLK(offset);
-        align_len = align_t - offset;
-        offset = align_t;/*¶ÔÆë³¤¶ÈÓÃÄÚ´æÌî³ä*/
+        offset = align_t;/*ï¿½ï¿½ï¿½ë³¤ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½ï¿½*/
 
         /*build rx sg list*/
         left_size = offset;
@@ -2573,7 +2564,7 @@ oal_int32 oal_sdio_transfer_restore_sglist(struct oal_sdio *hi_sdio,
 
     if(SDIO_READ == rw)
     {
-        /*½ÓÊÕÄÚ´æ¿½±´£¬·ÖÉ¢³ÉÀëÉ¢ÄÚ´æ*/
+        /*ï¿½ï¿½ï¿½ï¿½ï¿½Ú´æ¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¢ï¿½ï¿½ï¿½ï¿½É¢ï¿½Ú´ï¿½*/
         skb_queue_walk_safe(head, netbuf, tmp)
         {
             oal_memcopy(OAL_NETBUF_DATA(netbuf), hi_sdio->rx_scatt_buff.buff + offset,  OAL_NETBUF_LEN(netbuf));
@@ -2737,7 +2728,7 @@ OAL_STATIC oal_int32 oal_sdio_suspend(struct device *dev)
 
     if(hi_sdio->pst_bus != HDEV_TO_HBUS(HBUS_TO_DEV(hi_sdio->pst_bus)))
     {
-        /*sdio·Çµ±Ç°½Ó¿Ú*/
+        /*sdioï¿½Çµï¿½Ç°ï¿½Ó¿ï¿½*/
         oal_print_hi11xx_log(HI11XX_LOG_INFO, "sdio is not current bus, return");
         return OAL_SUCC;
     }
@@ -2804,7 +2795,7 @@ OAL_STATIC oal_int32 oal_sdio_resume(struct device *dev)
 
     if(hi_sdio->pst_bus != HDEV_TO_HBUS(HBUS_TO_DEV(hi_sdio->pst_bus)))
     {
-        /*sdio·Çµ±Ç°½Ó¿Ú*/
+        /*sdioï¿½Çµï¿½Ç°ï¿½Ó¿ï¿½*/
         oal_print_hi11xx_log(HI11XX_LOG_INFO, "sdio is not current bus, return");
         return OAL_SUCC;
     }
@@ -2924,7 +2915,7 @@ OAL_STATIC oal_int32 oal_sdio_trigger_probe(oal_void)
         oal_sdio_claim_host(_hi_sdio_);
         hcc_bus_disable_state(_hi_sdio_->pst_bus, OAL_BUS_STATE_ALL);
 #ifndef HAVE_HISI_NFC
-        /*µÈµ½¶ÁÈ¡ÍênfcµÍµçµÄlogÊý¾ÝÔÙÀ­µÍGPIO*/
+        /*ï¿½Èµï¿½ï¿½ï¿½È¡ï¿½ï¿½nfcï¿½Íµï¿½ï¿½logï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½GPIO*/
         //oal_sdio_power_action(_hi_sdio_->pst_bus, 0);
         hi_wlan_power_set(0);
 #endif
@@ -2987,7 +2978,7 @@ oal_int32 oal_sdio_func_probe(struct oal_sdio* hi_sdio)
     oal_sdio_claim_host(hi_sdio);
     hcc_bus_disable_state(hi_sdio->pst_bus, OAL_BUS_STATE_ALL);
 #ifndef HAVE_HISI_NFC
-    /*µÈµ½¶ÁÈ¡ÍênfcµÍµçµÄlogÊý¾ÝÔÙÀ­µÍGPIO*/
+    /*ï¿½Èµï¿½ï¿½ï¿½È¡ï¿½ï¿½nfcï¿½Íµï¿½ï¿½logï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½GPIO*/
     hi_wlan_power_set(0);
 #endif
     oal_sdio_release_host(hi_sdio);
@@ -3461,17 +3452,17 @@ OAL_STATIC oal_int32 oal_sdio_gpio_flowctrl_irq(hcc_bus *pst_hi_bus, oal_int32 l
         return -OAL_EFAIL;
     }
 
-    /* »ñÈ¡Á÷¿ØGPIO¹Ü½Åµ±Ç°µçÆ½ */
+    /* ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½GPIOï¿½Ü½Åµï¿½Ç°ï¿½ï¿½Æ½ */
     l_gpio_val = oal_gpio_get_value(g_board_info.flowctrl_gpio);
 
     if (1 == l_gpio_val)
     {
-        /* ¸ßµçÆ½, Á÷¿Ø¿ªÆô, ÎÞ·¨·¢ËÍ */
+        /* ï¿½ßµï¿½Æ½, ï¿½ï¿½ï¿½Ø¿ï¿½ï¿½ï¿½, ï¿½Þ·ï¿½ï¿½ï¿½ï¿½ï¿½ */
         hcc_dev_flowctrl_off(pst_hcc);
     }
     else if (0 == l_gpio_val)
     {
-        /* µÍµçÆ½, Á÷¿Ø¹Ø±Õ, ¿ÉÒÔ·¢ËÍ */
+        /* ï¿½Íµï¿½Æ½, ï¿½ï¿½ï¿½Ø¹Ø±ï¿½, ï¿½ï¿½ï¿½Ô·ï¿½ï¿½ï¿½ */
         hcc_dev_flowctrl_on(pst_hcc, OAL_FALSE);
     }
     else
@@ -3511,7 +3502,7 @@ OAL_STATIC oal_int32 oal_sdio_gpio_irq(hcc_bus *hi_bus, oal_int32 irq)
 
     if(0 == ul_state)
     {
-        /*0==HOST_DISALLOW_TO_SLEEP±íÊ¾²»ÔÊÐíÐÝÃß*/
+        /*0==HOST_DISALLOW_TO_SLEEPï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
         hi_bus->data_int_count++;
 
         oal_print_hi11xx_log(HI11XX_LOG_DBG, "Gpio Rx Data Interrupt.");
@@ -3521,7 +3512,7 @@ OAL_STATIC oal_int32 oal_sdio_gpio_irq(hcc_bus *hi_bus, oal_int32 irq)
     }
     else
     {
-        /*1==HOST_ALLOW_TO_SLEEP±íÊ¾µ±Ç°ÊÇÐÝÃß£¬»½ÐÑhost*/
+        /*1==HOST_ALLOW_TO_SLEEPï¿½ï¿½Ê¾ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½host*/
         if(OAL_WARN_ON(!hi_bus->pst_pm_callback->pm_wakeup_host))
         {
             oal_print_hi11xx_log(HI11XX_LOG_DBG, "%s error:hi_bus->pst_pm_callback->pm_wakeup_host is null",__FUNCTION__);
@@ -3607,9 +3598,9 @@ OAL_STATIC hcc_bus* oal_sdio_bus_init(struct oal_sdio* hi_sdio)
 
     pst_bus->data = (oal_void*)hi_sdio;
 
-    /*³õÊ¼»¯rx netbuf head¶ÓÁÐ*/
+    /*ï¿½ï¿½Ê¼ï¿½ï¿½rx netbuf headï¿½ï¿½ï¿½ï¿½*/
     oal_netbuf_head_init(&pst_bus->rx_netbuf_head);
-    /*³õÊ¼»¯spin_lock*/
+    /*ï¿½ï¿½Ê¼ï¿½ï¿½spin_lock*/
     oal_spin_lock_init(&pst_bus->st_mealloc_lock);
 
     OAL_INIT_WORK(&pst_bus->st_bus_irq_memalloc_work, oal_sdio_build_rx_netbuf_list_work);

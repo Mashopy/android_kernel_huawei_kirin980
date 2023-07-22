@@ -9,7 +9,7 @@ extern "C" {
 
 
 /*****************************************************************************
-  1 Í·ÎÄ¼þ°üº¬
+  1 Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 #include "wlan_types.h"
 #include "wal_dfx.h"
@@ -42,11 +42,11 @@ extern "C" {
 #define THIS_FILE_ID OAM_FILE_ID_WAL_DFX_C
 
 /*****************************************************************************
-  2 È«¾Ö±äÁ¿¶¨Òå
+  2 È«ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 *****************************************************************************/
 #ifdef _PRE_WLAN_FEATURE_DFR
 
-#define DFR_WAIT_PLAT_FINISH_TIME   (25000) /* µÈ´ýÆ½Ì¨Íê³Édfr¹¤×÷µÄµÈ´ýÊ±¼ä */
+#define DFR_WAIT_PLAT_FINISH_TIME   (25000) /* ï¿½È´ï¿½Æ½Ì¨ï¿½ï¿½ï¿½dfrï¿½ï¿½ï¿½ï¿½ï¿½ÄµÈ´ï¿½Ê±ï¿½ï¿½ */
 
 oal_int8 *g_auc_dfr_error_type_etc[] = {   \
             "AP",    \
@@ -56,7 +56,7 @@ oal_int8 *g_auc_dfr_error_type_etc[] = {   \
             "CLIENT",  \
             "DFR UNKOWN ERR TYPE!!"};
 
-/* ´ËÃ¶¾ÙÎªg_auc_dfr_error_type×Ö·û´®µÄindx¼¯ºÏ */
+/* ï¿½ï¿½Ã¶ï¿½ï¿½Îªg_auc_dfr_error_typeï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½indxï¿½ï¿½ï¿½ï¿½ */
 typedef enum
 {
     DFR_ERR_TYPE_AP = 0,
@@ -74,7 +74,7 @@ extern struct st_exception_info *g_pst_exception_info_etc;
 #else
 struct st_exception_info
 {
-    /* wifiÒì³£´¥·¢ */
+    /* wifiï¿½ì³£ï¿½ï¿½ï¿½ï¿½ */
     oal_work_stru               wifi_excp_worker;
     oal_workqueue_stru         *wifi_exception_workqueue;
 	oal_work_stru               wifi_excp_recovery_worker;
@@ -97,7 +97,7 @@ extern hmac_dfr_info_stru g_st_dfr_info_etc;
 
 #endif //_PRE_WLAN_FEATURE_DFR
 /*****************************************************************************
-  3 º¯ÊýÊµÏÖ
+  3 ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
 *****************************************************************************/
 
 #ifdef _PRE_WLAN_FEATURE_DFR
@@ -112,11 +112,11 @@ OAL_STATIC oal_int32  wal_dfr_kick_all_user(hmac_vap_stru *pst_hmac_vap)
 
     WAL_WRITE_MSG_HDR_INIT(&st_write_msg, WLAN_CFGID_KICK_USER, OAL_SIZEOF(mac_cfg_kick_user_param_stru));
 
-    /* ÉèÖÃÅäÖÃÃüÁî²ÎÊý */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     pst_kick_user_param = (mac_cfg_kick_user_param_stru *)(st_write_msg.auc_value);
     oal_set_mac_addr(pst_kick_user_param->auc_mac_addr, BROADCAST_MACADDR);
 
-    /* ÌîÐ´È¥¹ØÁªreason code */
+    /* ï¿½ï¿½Ð´È¥ï¿½ï¿½ï¿½ï¿½reason code */
     pst_kick_user_param->us_reason_code = MAC_UNSPEC_REASON;
     if (OAL_PTR_NULL == pst_hmac_vap->pst_net_device)
     {
@@ -138,7 +138,7 @@ OAL_STATIC oal_int32  wal_dfr_kick_all_user(hmac_vap_stru *pst_hmac_vap)
     }
 
 
-    /* ´¦Àí·µ»ØÏûÏ¢ */
+    /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ */
     ul_err_code = wal_check_and_release_msg_resp_etc(pst_rsp_msg);
     if(OAL_SUCC != ul_err_code)
     {
@@ -164,13 +164,13 @@ oal_uint32  wal_process_p2p_excp_etc(hmac_vap_stru *pst_hmac_vap)
                      IS_P2P_CL(pst_mac_vap),
                      IS_P2P_GO(pst_mac_vap));
 
-    /* É¾³ýÓÃ»§ */
+    /* É¾ï¿½ï¿½ï¿½Ã»ï¿½ */
     wal_dfr_kick_all_user(pst_hmac_vap);
 
-    /* APÄ£Ê½»¹ÊÇSTAÄ£Ê½ */
+    /* APÄ£Ê½ï¿½ï¿½ï¿½ï¿½STAÄ£Ê½ */
     if (IS_AP(pst_mac_vap))
     {
-        /* vapÐÅÏ¢³õÊ¼»¯ */
+        /* vapï¿½ï¿½Ï¢ï¿½ï¿½Ê¼ï¿½ï¿½ */
         //hmac_dfr_reinit_ap(pst_hmac_vap);
     }
     else if (IS_STA(pst_mac_vap))
@@ -184,7 +184,7 @@ oal_uint32  wal_process_p2p_excp_etc(hmac_vap_stru *pst_hmac_vap)
 
             return OAL_ERR_CODE_MAC_DEVICE_NULL;
         }
-        /* É¾³ýÉ¨ÃèÐÅÏ¢ÁÐ±í£¬Í£Ö¹É¨Ãè */
+        /* É¾ï¿½ï¿½É¨ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½Ð±ï¿½ï¿½ï¿½Í£Ö¹É¨ï¿½ï¿½ */
         if (pst_hmac_dev->st_scan_mgmt.st_scan_record_mgmt.uc_vap_id == pst_mac_vap->uc_vap_id)
         {
             pst_hmac_dev->st_scan_mgmt.st_scan_record_mgmt.p_fn_cb = OAL_PTR_NULL;
@@ -204,7 +204,7 @@ oal_uint32  wal_process_ap_excp_etc(hmac_vap_stru *pst_hmac_vap)
                      "{hmac_process_sta_excp::Now begin AP exception recovery program, when AP have [%d] USERs.}",
                      pst_mac_vap->us_user_nums);
 
-    /* É¾³ýÓÃ»§ */
+    /* É¾ï¿½ï¿½ï¿½Ã»ï¿½ */
     wal_dfr_kick_all_user(pst_hmac_vap);
     return OAL_SUCC;
 }
@@ -229,10 +229,10 @@ oal_uint32  wal_process_sta_excp_etc(hmac_vap_stru *pst_hmac_vap)
                      "{hmac_process_sta_excp::Now begin STA exception recovery program, when sta have [%d] users.}",
                      pst_mac_vap->us_user_nums);
 
-    /* ¹ØÁª×´Ì¬ÏÂÉÏ±¨¹ØÁªÊ§°Ü£¬É¾³ýÓÃ»§ */
+    /* ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½ï¿½ï¿½Ï±ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½Ü£ï¿½É¾ï¿½ï¿½ï¿½Ã»ï¿½ */
     wal_dfr_kick_all_user(pst_hmac_vap);
 
-    /* É¾³ýÉ¨ÃèÐÅÏ¢ÁÐ±í£¬Í£Ö¹É¨Ãè */
+    /* É¾ï¿½ï¿½É¨ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½Ð±ï¿½ï¿½ï¿½Í£Ö¹É¨ï¿½ï¿½ */
     if (pst_hmac_dev->st_scan_mgmt.st_scan_record_mgmt.uc_vap_id == pst_mac_vap->uc_vap_id)
     {
         pst_hmac_dev->st_scan_mgmt.st_scan_record_mgmt.p_fn_cb = OAL_PTR_NULL;
@@ -268,7 +268,7 @@ OAL_STATIC oal_int32  wal_dfr_destroy_vap(oal_net_device_stru *pst_netdev)
         return l_ret;
     }
 
-    /* ¶ÁÈ¡·µ»ØµÄ´íÎóÂë */
+    /* ï¿½ï¿½È¡ï¿½ï¿½ï¿½ØµÄ´ï¿½ï¿½ï¿½ï¿½ï¿½ */
     ul_err_code = wal_check_and_release_msg_resp_etc(pst_rsp_msg);
     if(OAL_SUCC != ul_err_code)
     {
@@ -309,7 +309,7 @@ OAL_STATIC oal_uint32  wal_dfr_recovery_env(void)
     OAM_WARNING_LOG2(0, OAM_SF_ANY, "wal_dfr_recovery_env: get plat_process_comp signal after[%u]ms, netdev_num=%d!",
         (oal_uint32)OAL_JIFFIES_TO_MSECS(OAL_MSECS_TO_JIFFIES(DFR_WAIT_PLAT_FINISH_TIME) - ul_timeleft), g_st_dfr_info_etc.ul_netdev_num);
 
-    /* »Ö¸´vap, ÉÏ±¨Òì³£¸øÉÏ²ã */
+    /* ï¿½Ö¸ï¿½vap, ï¿½Ï±ï¿½ï¿½ì³£ï¿½ï¿½ï¿½Ï²ï¿½ */
     for (; (g_st_dfr_info_etc.ul_netdev_num > 0 && g_st_dfr_info_etc.ul_netdev_num<WLAN_VAP_SUPPORT_MAX_NUM_LIMIT); g_st_dfr_info_etc.ul_netdev_num--)
     {
         ul_ret = OAL_SUCC;
@@ -329,7 +329,7 @@ OAL_STATIC oal_uint32  wal_dfr_recovery_env(void)
                 return OAL_FAIL;
             }
 
-            /* host device_stru³õÊ¼»¯*/
+            /* host device_struï¿½ï¿½Ê¼ï¿½ï¿½*/
             l_ret = wal_host_dev_init_etc(pst_netdev);
             if(OAL_SUCC != l_ret)
             {
@@ -352,7 +352,7 @@ OAL_STATIC oal_uint32  wal_dfr_recovery_env(void)
         {
             pst_wireless_dev = OAL_NETDEVICE_WDEV(pst_netdev);
 
-            /* È¥×¢²ánetdev */
+            /* È¥×¢ï¿½ï¿½netdev */
             oal_net_unregister_netdev(pst_netdev);
             OAL_MEM_FREE(pst_wireless_dev, OAL_TRUE);
 
@@ -369,7 +369,7 @@ OAL_STATIC oal_uint32  wal_dfr_recovery_env(void)
         }
 
 
-        /* ÉÏ±¨Òì³£ */
+        /* ï¿½Ï±ï¿½ï¿½ì³£ */
         oal_cfg80211_rx_exception_etc(pst_netdev,
                                 (oal_uint8 *)g_auc_dfr_error_type_etc[en_err_type],
                                 OAL_STRLEN(g_auc_dfr_error_type_etc[en_err_type]));
@@ -398,9 +398,6 @@ oal_uint32  wal_dfr_excp_process_etc(mac_device_stru *pst_mac_device, oal_uint32
     mac_vap_stru                *pst_mac_vap;
     oal_uint8                    uc_vap_idx;
     oal_int32                    l_ret;
-#if (_PRE_MULTI_CORE_MODE_OFFLOAD_DMAC == _PRE_MULTI_CORE_MODE)&&(_PRE_OS_VERSION_LINUX == _PRE_OS_VERSION)
-    oal_int32                    l_plat_ret = OAL_SUCC;
-#endif
     oal_net_device_stru          *pst_netdev = OAL_PTR_NULL;
 #ifdef _PRE_WLAN_FEATURE_P2P
     oal_net_device_stru          *pst_p2p0_netdev = OAL_PTR_NULL;
@@ -419,7 +416,7 @@ oal_uint32  wal_dfr_excp_process_etc(mac_device_stru *pst_mac_device, oal_uint32
 
     for (uc_vap_idx = pst_mac_device->uc_vap_num; uc_vap_idx > 0; uc_vap_idx--)
     {
-        /* »ñÈ¡×îÓÒ±ßÒ»Î»Îª1µÄÎ»Êý£¬´ËÖµ¼´ÎªvapµÄÊý×éÏÂ±ê */
+        /* ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ò±ï¿½Ò»Î»Îª1ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½Îªvapï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â±ï¿½ */
         pst_hmac_vap    = (hmac_vap_stru *)mac_res_get_hmac_vap(pst_mac_device->auc_vap_id[uc_vap_idx-1]);
         if (OAL_PTR_NULL == pst_hmac_vap)
         {
@@ -507,11 +504,8 @@ oal_uint32  wal_dfr_excp_process_etc(mac_device_stru *pst_mac_device, oal_uint32
 
     /* device close& open */
     OAL_INIT_COMPLETION(&g_st_dfr_info_etc.st_plat_process_comp);
-#if (_PRE_MULTI_CORE_MODE_OFFLOAD_DMAC == _PRE_MULTI_CORE_MODE)&&(_PRE_OS_VERSION_LINUX == _PRE_OS_VERSION)
-    l_plat_ret = plat_exception_handler_etc(SUBSYS_WIFI, THREAD_WIFI, ul_exception_type);
-#endif
 
-    //¿ªÊ¼dfr»Ö¸´¶¯×÷: wal_dfr_recovery_env();
+    //ï¿½ï¿½Ê¼dfrï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½: wal_dfr_recovery_env();
     g_st_dfr_info_etc.bit_ready_to_recovery_flag = OAL_TRUE;
     oal_queue_work(g_pst_exception_info_etc->wifi_exception_workqueue, &g_pst_exception_info_etc->wifi_excp_recovery_worker);
 
@@ -541,8 +535,8 @@ oal_uint32 wal_dfr_excp_rx_etc(oal_uint8 uc_device_id, oal_uint32 ul_exception_t
         return OAL_ERR_CODE_PTR_NULL;
     }
 
-    /* 03ÔÝ×÷Òì³£ÏÖ³¡±£Áô£¬²»¸´Î» */
-    /*  Òì³£¸´Î»¿ª¹ØÊÇ·ñ¿ªÆô */
+    /* 03ï¿½ï¿½ï¿½ï¿½ï¿½ì³£ï¿½Ö³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î» */
+    /*  ï¿½ì³£ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ */
     if ((!g_st_dfr_info_etc.bit_device_reset_enable) || g_st_dfr_info_etc.bit_device_reset_process_flag)
     {
         OAM_ERROR_LOG1(0 , OAM_SF_DFR, "wal_dfr_excp_rx_etc:ERROR now in DFR process! bit_device_reset_process_flag=%d",
@@ -554,15 +548,15 @@ oal_uint32 wal_dfr_excp_rx_etc(oal_uint8 uc_device_id, oal_uint32 ul_exception_t
     g_st_dfr_info_etc.bit_user_disconnect_flag      = OAL_TRUE;
     g_st_dfr_info_etc.ul_dfr_num++;
 
-    /* logÏÖÔÚ½øÈëÒì³£´¦ÀíÁ÷³Ì */
+    /* logï¿½ï¿½ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ì³£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
     OAM_WARNING_LOG3(0, OAM_SF_DFR, "{wal_dfr_excp_rx_etc:: Enter the exception processing[%d], type[%d] dev_ID[%d].}",
         g_st_dfr_info_etc.ul_dfr_num, ul_exception_type, uc_device_id);
 
-    /* °´ÕÕÃ¿¸övapÄ£Ê½½øÐÐÒì³£´¦Àí */
+    /* ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½vapÄ£Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ì³£ï¿½ï¿½ï¿½ï¿½ */
     for (uc_vap_idx = 0; uc_vap_idx < pst_mac_dev->uc_vap_num; uc_vap_idx++)
     {
 
-        /* »ñÈ¡×îÓÒ±ßÒ»Î»Îª1µÄÎ»Êý£¬´ËÖµ¼´ÎªvapµÄÊý×éÏÂ±ê */
+        /* ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ò±ï¿½Ò»Î»Îª1ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½Îªvapï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â±ï¿½ */
         pst_hmac_vap = (hmac_vap_stru *)mac_res_get_hmac_vap(pst_mac_dev->auc_vap_id[uc_vap_idx]);
         if (OAL_PTR_NULL == pst_hmac_vap)
         {
@@ -611,7 +605,7 @@ void  wal_dfr_excp_work_etc(oal_work_stru *work)
 
     ul_exception_type = wal_dfr_get_excp_type_etc();
 
-    /* ÔÝ²»Ö§³Ö¶àchip */
+    /* ï¿½Ý²ï¿½Ö§ï¿½Ö¶ï¿½chip */
     if (1 != WLAN_CHIP_MAX_NUM_PER_BOARD)
     {
         OAM_ERROR_LOG1(0, OAM_SF_DFR, "DFR Can not support muti_chip[%d].\n", WLAN_CHIP_MAX_NUM_PER_BOARD);
@@ -679,10 +673,10 @@ OAL_STATIC oal_uint32 wal_dfr_excp_init_handler(oal_void)
             return OAL_ERR_CODE_PTR_NULL;
         }
     }
-    /* ³õÊ¼»¯dfr¿ª¹Ø */
+    /* ï¿½ï¿½Ê¼ï¿½ï¿½dfrï¿½ï¿½ï¿½ï¿½ */
     wal_dfr_init_param_etc();
 
-    /* ¹Ò½Óµ÷ÓÃ¹³×Ó */
+    /* ï¿½Ò½Óµï¿½ï¿½Ã¹ï¿½ï¿½ï¿½ */
     if (OAL_PTR_NULL != g_pst_exception_info_etc)
     {
         OAL_INIT_WORK(&g_pst_exception_info_etc->wifi_excp_worker, wal_dfr_excp_work_etc);

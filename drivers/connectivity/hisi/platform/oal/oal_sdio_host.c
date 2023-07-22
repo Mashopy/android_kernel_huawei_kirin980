@@ -199,7 +199,7 @@ oal_void oal_sdio_exception_submit(struct oal_sdio *hi_sdio, oal_int32 excep_typ
         return;
     }
 
-    /*ÏÈ»ñÈ¡claim hostËø£¬×ÔÑ¡ËøÄÚ±ØÐëÈ·±£ÒÑ¾­»ñÈ¡µ½Ëø¡£*/
+    /*ï¿½È»ï¿½È¡claim hostï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½Ú±ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
     oal_sdio_claim_host(hi_sdio);
     oal_spin_lock_irq_save(&hi_sdio->sdio_excp_lock, &flags);
     if(work_busy(&hi_sdio->sdio_excp_worker))
@@ -557,7 +557,7 @@ OAL_STATIC OAL_INLINE oal_int32 oal_sdio_msg_stat(struct oal_sdio *hi_sdio, oal_
     }
 #ifdef CONFIG_SDIO_D2H_MSG_ACK
     /*read from old register*/
-    /*µ±Ê¹ÓÃ0x30¼Ä´æÆ÷Ê±ÐèÒªÏÂ·¢CMD52¶Á0x2B ²Å»á²úÉúHOST2ARM ACKÖÐ¶Ï*/
+    /*ï¿½ï¿½Ê¹ï¿½ï¿½0x30ï¿½Ä´ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Òªï¿½Â·ï¿½CMD52ï¿½ï¿½0x2B ï¿½Å»ï¿½ï¿½ï¿½ï¿½HOST2ARM ACKï¿½Ð¶ï¿½*/
     (void)oal_sdio_readb(hi_sdio->func, HISDIO_REG_FUNC1_MSG_HIGH_FROM_DEV, &ret);
     if (ret)
     {
@@ -575,12 +575,9 @@ OAL_STATIC OAL_INLINE oal_int32 oal_sdio_msg_stat(struct oal_sdio *hi_sdio, oal_
 oal_int32 oal_sdio_msg_irq(struct oal_sdio *hi_sdio)
 {
     oal_int32 bit = 0;
-    struct sdio_func    *func;
     oal_uint32           msg     = 0;
     unsigned long        msg64 = 0;
     oal_int32            ret;
-
-    func       = hi_sdio->func;
 
     /* reading interrupt form ARM Gerneral Purpose Register(0x28)  */
     ret = oal_sdio_msg_stat(hi_sdio, &msg);
@@ -615,7 +612,7 @@ oal_int32 oal_sdio_msg_irq(struct oal_sdio *hi_sdio)
     oal_sdio_release_host(hi_sdio);
     oal_sdio_rx_transfer_unlock(hi_sdio);
 
-    /*ÓÅÏÈ´¦ÀíPanicÏûÏ¢*/
+    /*ï¿½ï¿½ï¿½È´ï¿½ï¿½ï¿½Panicï¿½ï¿½Ï¢*/
     if(test_and_clear_bit(D2H_MSG_DEVICE_PANIC, &msg64))
     {
         bit = D2H_MSG_DEVICE_PANIC;
@@ -704,7 +701,7 @@ OAL_STATIC OAL_INLINE oal_int32 oal_sdio_extend_buf_get(struct oal_sdio *hi_sdio
 			                    HISDIO_COMM_REG_SEQ_GET(hi_sdio->sdio_extend->credit_info));
             oal_print_hex_dump((oal_void*)hi_sdio->sdio_extend,sizeof(struct hisdio_extend_func),32,"extend :");
 
-            /* ´Ëcredit¸üÐÂÖ»ÔÚµ÷ÊÔÊ±Ê¹ÓÃ */
+            /* ï¿½ï¿½creditï¿½ï¿½ï¿½ï¿½Ö»ï¿½Úµï¿½ï¿½ï¿½Ê±Ê¹ï¿½ï¿½ */
             if(oal_sdio_credit_info_update(hi_sdio))
             {
                 if(OAL_LIKELY(hi_sdio->credit_update_cb))
@@ -968,9 +965,6 @@ oal_int32 oal_sdio_do_isr(struct oal_sdio *hi_sdio)
 {
     oal_uint8                   int_mask;
     oal_int32                   ret;
-    struct sdio_func       *func;
-
-    func       = hi_sdio->func;
 
     /*sdio bus state access lock by sdio bus claim locked.*/
     if(OAL_UNLIKELY(OAL_TRUE != oal_sdio_get_state(hi_sdio, OAL_SDIO_RX)))
@@ -1221,7 +1215,7 @@ OAL_STATIC irqreturn_t wlan_gpio_irq(oal_int32 irq, oal_void *dev_id)
     //OAL_IO_PRINT(KERN_ERR"[SDIO][DBG]wlan_gpio_irq get pm state=%d\r\n",(oal_uint32)ul_state);
     if(0 == ul_state)
     {
-        /*0==HOST_DISALLOW_TO_SLEEP±íÊ¾²»ÔÊÐíÐÝÃß*/
+        /*0==HOST_DISALLOW_TO_SLEEPï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
         hi_sdio->data_int_count++;
 
         //OAL_IO_PRINT("[SDIO][DBG]Sdio Rx Data Interrupt.\n");
@@ -1231,7 +1225,7 @@ OAL_STATIC irqreturn_t wlan_gpio_irq(oal_int32 irq, oal_void *dev_id)
     }
     else
     {
-        /*1==HOST_ALLOW_TO_SLEEP±íÊ¾µ±Ç°ÊÇÐÝÃß£¬»½ÐÑhost*/
+        /*1==HOST_ALLOW_TO_SLEEPï¿½ï¿½Ê¾ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½host*/
         OAL_BUG_ON(!hi_sdio->pst_pm_callback->wlan_pm_wakeup_host);
         hi_sdio->wakeup_int_count++;
         g_ul_pm_wakeup_event = OAL_TRUE;
@@ -2444,7 +2438,7 @@ oal_int32 oal_sdio_func_probe(struct oal_sdio* hi_sdio)
     oal_sdio_claim_host(hi_sdio);
     oal_disable_sdio_state(hi_sdio, OAL_SDIO_ALL);
 #ifndef HAVE_HISI_NFC
-    /*µÈµ½¶ÁÈ¡ÍênfcµÍµçµÄlogÊý¾ÝÔÙÀ­µÍGPIO*/
+    /*ï¿½Èµï¿½ï¿½ï¿½È¡ï¿½ï¿½nfcï¿½Íµï¿½ï¿½logï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½GPIO*/
     hi_wlan_power_set(0);
 #endif
     oal_sdio_release_host(hi_sdio);
@@ -2480,7 +2474,7 @@ oal_int32 oal_sdio_device_panic_callback(void *data)
 	return OAL_SUCC;
 }
 
-/*¼ì²éDEVICE WAKEUP HOST gpio ÊÇ·ñÀ­¸ß¡£*/
+/*ï¿½ï¿½ï¿½DEVICE WAKEUP HOST gpio ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ß¡ï¿½*/
 oal_int32 oal_dev2host_gpio_hold_time_check(oal_uint32 switch_timeout, oal_uint32 hold_time)
 {
     oal_ulong timeout;
