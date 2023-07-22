@@ -42,10 +42,6 @@ static inline void set_syn_rtt(struct sock *sk, u32 srtt_us)
 
 static inline void update_syn_retrans(struct sock *sk)
 {
-	struct tcp_statistics *p = NULL;
-
-	if (sk && sk->sk_tcp_statis)
-		p = sk->sk_tcp_statis;
 }
 
 static inline void update_snd_zero_win_cnts(struct sock *sk)
