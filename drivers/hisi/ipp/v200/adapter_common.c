@@ -465,10 +465,8 @@ int cmdlst_eop_handler(cmdlst_eof_mode_e mode)
     struct list_head *ready_list = NULL;
     ready_list = &g_cmdlst_priv.cmdlst_chan[channel_id].ready_list;
 
-    schedule_cmdlst_link_t *cur_cmdlst_link = container_of(ready_list->next, schedule_cmdlst_link_t, list_link);
     while(!list_empty(ready_list))
     {
-        cur_cmdlst_link = container_of(ready_list->next, schedule_cmdlst_link_t, list_link);
         list_del(ready_list->next);
     }
     if(0 == channel_id)
@@ -546,10 +544,6 @@ static int cmdlst_enqueue(unsigned int channel_id,cmdlst_para_t * cmdlst_para)
 static int cmdlst_start(cfg_tab_cmdlst_t* cmdlst_cfg, unsigned int channel_id)
 {
     D("[%s] +\n", __func__);
-    
-    struct list_head *cmdlst_insert_queue = NULL;
-
-    cmdlst_insert_queue       = &g_cmdlst_priv.cmdlst_chan[channel_id].ready_list;
 
     if (NULL != cmdlst_cfg)
     {

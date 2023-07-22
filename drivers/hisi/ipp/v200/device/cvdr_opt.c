@@ -79,18 +79,7 @@ int calculate_cvdr_bw_limiter(cvdr_bw_cfg_t *bw, unsigned int throughput)
 
 int calculate_cvdr_allocated_du(unsigned int pclk, unsigned int throughput, int is_dgen)
 {
-    unsigned int num_du;
-
-    if (throughput > 0)
-    {
-//        num_du = ((int)(1.1*throughput) + 127) / 128 + 1;
-    }
-    else
-    {
-        num_du = 0;
-    }
     return 6;
-    //return num_du;
 }
 
 /* when in multple stripes mode, the width in cfmt is the full frame width*/
