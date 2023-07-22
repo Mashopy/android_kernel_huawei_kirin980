@@ -22,16 +22,11 @@
 
 #ifndef FTS_SOFTWARE_H
 #define FTS_SOFTWARE_H
+#include <asm-generic/int-ll64.h>
 #include <linux/types.h>
 #include "ftsHardware.h"
 
 #define EVT_ID_EXT_POINTER     0x63
-
-/* unsigned types */
-typedef uint8_t u8;	/* /< basic type that represent one byte (or 8 bits) */
-typedef uint16_t u16;	/* /< basic type that represent 2 bytes (or 16 bits) */
-typedef uint32_t u32;	/* /< basic type that represent 4 bytes (or 32 bits) */
-typedef uint64_t u64;	/* /< basic type that represent 8 bytes (or 64 bits) */
 
 /* signed type */
 typedef signed char i8;	/* /< basic type that represent one signed byte (or 8
