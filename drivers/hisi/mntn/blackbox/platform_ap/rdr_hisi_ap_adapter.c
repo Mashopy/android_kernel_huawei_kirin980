@@ -1,7 +1,7 @@
 
 
 /*******************************************************************************
-  1 Í·ÎÄ¼þ°üº¬
+  1 Í·ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
  *******************************************************************************/
 #include <linux/module.h>
 #include <linux/kernel.h>
@@ -76,7 +76,7 @@ static u64 g_mi_notify_lpm3_addr;
 static unsigned long long g_pmu_reset_reg;
 static unsigned long long g_pmu_subtype_reg;
 int g_bbox_fpga_flag = -1;
-/* -1 Î´³õÊ¼»¯£»0 ·Çfpga°å£»1 fpga°å */
+/* -1 Î´ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½0 ï¿½ï¿½fpgaï¿½å£»1 fpgaï¿½ï¿½ */
 
 static unsigned int g_dump_buffer_size_tbl[HK_MAX] = {0};
 static unsigned int last_task_struct_size = 0;
@@ -179,7 +179,7 @@ struct rdr_exception_info_s einfo[] = {
 	 "audio codec error", "audio codec error", 0, 0, 0},
 };
 
-/* ÒÔÏÂÊÇ¸øAPµÄÆäËûÎ¬²âÄ£¿é¡¢IPÊ¹ÓÃµÄdumpÄÚ´æ */
+/* ï¿½ï¿½ï¿½ï¿½ï¿½Ç¸ï¿½APï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¬ï¿½ï¿½Ä£ï¿½é¡¢IPÊ¹ï¿½Ãµï¿½dumpï¿½Ú´ï¿½ */
 static unsigned int g_dump_modu_mem_size_tbl[MODU_MAX] = {0};
 static char g_dump_modu_compatible[MODU_MAX][AMNTN_MODULE_COMP_LEN] = {
 	[MODU_NOC] = {"ap_dump_mem_modu_noc_size"},
@@ -241,10 +241,10 @@ static unsigned long exception_buf_len __attribute__((__section__(".data")));
 
 /*******************************************************************************
 Function:         get_ap_trace_mem_size_from_dts
-Description:      ´ÓdtsÖÐ¶ÁÈ¡ap²à¸÷¹ì¼£µÄÄÚ´æ´óÐ¡
+Description:      ï¿½ï¿½dtsï¿½Ð¶ï¿½È¡apï¿½ï¿½ï¿½ï¿½ì¼£ï¿½ï¿½ï¿½Ú´ï¿½ï¿½Ð¡
 Input:            NA
 Output:           NA
-Return:           0:¶ÁÈ¡³É¹¦, ·Ç0:Ê§°Ü
+Return:           0:ï¿½ï¿½È¡ï¿½É¹ï¿½, ï¿½ï¿½0:Ê§ï¿½ï¿½
 ********************************************************************************/
 static int get_ap_trace_mem_size_from_dts(void)
 {
@@ -357,10 +357,10 @@ static int get_ap_trace_mem_size_from_dts(void)
 
 /*******************************************************************************
 Function:         get_ap_dump_mem_modu_size_from_dts
-Description:      ´ÓdtsÖÐ¶ÁÈ¡ap²à¸÷Ä£¿éµÄdumpÄÚ´æ´óÐ¡
+Description:      ï¿½ï¿½dtsï¿½Ð¶ï¿½È¡apï¿½ï¿½ï¿½Ä£ï¿½ï¿½ï¿½dumpï¿½Ú´ï¿½ï¿½Ð¡
 Input:            NA
 Output:           NA
-Return:           0:¶ÁÈ¡³É¹¦, ·Ç0:Ê§°Ü
+Return:           0:ï¿½ï¿½È¡ï¿½É¹ï¿½, ï¿½ï¿½0:Ê§ï¿½ï¿½
 ********************************************************************************/
 static int get_ap_dump_mem_modu_size_from_dts(void)
 {
@@ -396,10 +396,10 @@ static int get_ap_dump_mem_modu_size_from_dts(void)
 
 /*******************************************************************************
 Function:         ap_last_task_switch
-Description:      ´ÓdtsÖÐ¶ÁÈ¡ap_last_taskÄÚ´æ·ÖÅäµÄ¿ª¹Ø
+Description:      ï¿½ï¿½dtsï¿½Ð¶ï¿½È¡ap_last_taskï¿½Ú´ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½
 Input:            NA
 Output:           NA
-Return:           0:¶ÁÈ¡Ê§°Ü»ò¿ª¹Ø¹Ø±Õ, ·Ç0:¿ª¹Ø´ò¿ª
+Return:           0:ï¿½ï¿½È¡Ê§ï¿½Ü»ò¿ª¹Ø¹Ø±ï¿½, ï¿½ï¿½0:ï¿½ï¿½ï¿½Ø´ï¿½
 ********************************************************************************/
 static unsigned int get_ap_last_task_switch_from_dts(void)
 {
@@ -429,8 +429,8 @@ static unsigned int get_ap_last_task_switch_from_dts(void)
 
 /*******************************************************************************
 Function:       set_exception_info
-Description:    ÉèÖÃµ÷ÓÃ__show_regsµÄÒì³£µÄpc
-Input:          buf:µ÷ÓÃ__show_regsµÄÒì³£µÄpcµÄµØÖ·
+Description:    ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½__show_regsï¿½ï¿½ï¿½ì³£ï¿½ï¿½pc
+Input:          buf:ï¿½ï¿½ï¿½ï¿½__show_regsï¿½ï¿½ï¿½ì³£ï¿½ï¿½pcï¿½Äµï¿½Ö·
 Output:         NA
 Return:         NA
 ********************************************************************************/
@@ -442,9 +442,9 @@ void set_exception_info(unsigned long address)
 
 /*******************************************************************************
 Function:       get_exception_info
-Description:    »ñÈ¡µ÷ÓÃ__show_regsµÄÒì³£µÄpc
+Description:    ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½__show_regsï¿½ï¿½ï¿½ì³£ï¿½ï¿½pc
 Input:          NA
-Output:         buf:µ÷ÓÃ__show_regsµÄÒì³£µÄpcµÄµØÖ·£»buf_len:»ñÈ¡µÄbufµÄ³¤¶È
+Output:         buf:ï¿½ï¿½ï¿½ï¿½__show_regsï¿½ï¿½ï¿½ì³£ï¿½ï¿½pcï¿½Äµï¿½Ö·ï¿½ï¿½buf_len:ï¿½ï¿½È¡ï¿½ï¿½bufï¿½Ä³ï¿½ï¿½ï¿½
 Return:         NA
 ********************************************************************************/
 void get_exception_info(unsigned long *buf, unsigned long *buf_len)
@@ -473,8 +473,8 @@ void get_product_version(char *version, size_t count)
 	}
 	memset(version, 0, count);
 
-	/* µÈ´ýÎÄ¼þÏµÍ³ok£¬¶ÁÈ¡/system/build.propµÄro.confg.hw_systemversion=BalongV100R001C50B310ÊôÐÔ */
-	/* ²»ÄÜÔÚmodule_initµ÷ÓÃ */
+	/* ï¿½È´ï¿½ï¿½Ä¼ï¿½ÏµÍ³okï¿½ï¿½ï¿½ï¿½È¡/system/build.propï¿½ï¿½ro.confg.hw_systemversion=BalongV100R001C50B310ï¿½ï¿½ï¿½ï¿½ */
+	/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½module_initï¿½ï¿½ï¿½ï¿½ */
 	while (rdr_wait_partition("/data/lost+found", 1000) != 0)
 		;
 
@@ -490,11 +490,11 @@ void get_product_version(char *version, size_t count)
 		vfs_read(fp, buf, BUFFER_SIZE, &fp->f_pos)) > 0) { /*lint !e613 */
 		for (i = 0; i < BUFFER_SIZE; i++) {
 			if ('\n' == buf[i])
-				break;	/* ÕÒµ½ÍêÕû1ÐÐ */
+				break;	/* ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½ */
 		}
 		memset(buf, '\0', BUFFER_SIZE);
 		vfs_llseek(fp, -length, SEEK_CUR);
-		if (BUFFER_SIZE == i) {	/* 1ÐÐ³¬¹ý128byte */
+		if (BUFFER_SIZE == i) {	/* 1ï¿½Ð³ï¿½ï¿½ï¿½128byte */
 			i--;
 		}
 		if (0 != i) {
@@ -511,7 +511,7 @@ void get_product_version(char *version, size_t count)
 			}
 			memset(buf, '\0', BUFFER_SIZE);
 		} else {
-			vfs_llseek(fp, 1, SEEK_CUR);	/* È¥µô¿ÕÐÐ */
+			vfs_llseek(fp, 1, SEEK_CUR);	/* È¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 		}
 	}
 
@@ -567,7 +567,7 @@ static int check_addr_overflow(unsigned char *addr)
 	return 0;
 }
 
-/* ²»°üÀ¨AP_EH_ROOTËùÕ¼1K¿Õ¼ä */
+/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½AP_EH_ROOTï¿½ï¿½Õ¼1Kï¿½Õ¼ï¿½ */
 static unsigned char *get_rdr_hisiap_dump_start_addr(void)
 {
 	unsigned char *addr;
@@ -725,7 +725,7 @@ static unsigned int get_total_regdump_region_size(regs_info *regs_info)
 	return total;
 }
 
-/*ÖÐ¶Ï¡¢ÈÎÎñ¡¢cpuidle¸ù¾ÝcpuÆµ·±¶È»®·ÖÇøÓò£¬ÒÔ¼°ÆäËû²»Çø·ÖcpuµÄ¹ì¼£ÇøÓò³õÊ¼»¯*/
+/*ï¿½Ð¶Ï¡ï¿½ï¿½ï¿½ï¿½ï¿½cpuidleï¿½ï¿½ï¿½ï¿½cpuÆµï¿½ï¿½ï¿½È»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½cpuï¿½Ä¹ì¼£ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½*/
 int __init hook_buffer_alloc(void)
 {
 	int ret;
@@ -956,7 +956,7 @@ void module_dump_mem_init(void)
 		       g_rdr_ap_root->module_dump_info[i].dump_addr,
 		       g_rdr_ap_root->module_dump_info[i].dump_size);
 	}
-	/*ap_last_task_switch¹Ø±ÕÊ±£¬½«last_task structºÍstackµÄdumpÄÚ´æÆðÊ¼µØÖ·¸³0*/
+	/*ap_last_task_switchï¿½Ø±ï¿½Ê±ï¿½ï¿½ï¿½ï¿½last_task structï¿½ï¿½stackï¿½ï¿½dumpï¿½Ú´ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½Ö·ï¿½ï¿½0*/
 	if (!get_ap_last_task_switch_from_dts()) {
 		for (i = 0; i < NR_CPUS; i++) {
 			g_rdr_ap_root->last_task_struct_dump_addr[i] = 0;
@@ -969,7 +969,7 @@ static int __init ap_dump_buffer_init(void)
 {
 	int i;
 
-	/* ¹ì¼£¼ÇÂ¼Çø */
+	/* ï¿½ì¼£ï¿½ï¿½Â¼ï¿½ï¿½ */
 	g_rdr_ap_root->hook_buffer_addr[0] =
 	    get_rdr_hisiap_dump_start_addr()
 	    + get_total_regdump_region_size(g_rdr_ap_root->dump_regs_info);
@@ -979,7 +979,7 @@ static int __init ap_dump_buffer_init(void)
 		    g_dump_buffer_size_tbl[i - 1];
 	}
 
-	/* ÈÎÎñ¼ÇÂ¼Çø */
+	/* ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ */
 	if (get_ap_last_task_switch_from_dts()) {
 		last_task_struct_size = sizeof(struct task_struct);
 		last_task_stack_size = THREAD_SIZE;
@@ -995,7 +995,7 @@ static int __init ap_dump_buffer_init(void)
 	}
 
 	g_rdr_ap_root->last_task_stack_dump_addr[0] = (unsigned char *)(uintptr_t)
-	    ALIGN(((uintptr_t)g_rdr_ap_root->last_task_struct_dump_addr[NR_CPUS - 1] + last_task_struct_size), SIZE_1K);	/* °´1K¶ÔÆë */
+	    ALIGN(((uintptr_t)g_rdr_ap_root->last_task_struct_dump_addr[NR_CPUS - 1] + last_task_struct_size), SIZE_1K);	/* ï¿½ï¿½1Kï¿½ï¿½ï¿½ï¿½ */
 	for (i = 1; i < NR_CPUS; i++) {
 		g_rdr_ap_root->last_task_stack_dump_addr[i] =
 		    g_rdr_ap_root->last_task_stack_dump_addr[i - 1] +
@@ -1091,7 +1091,7 @@ void regs_dump(void)
 
 	regs_info = g_rdr_ap_root->dump_regs_info;
 
-	/* NOTE:sctrlÔÚÉÏµçÇø, pctrl, pericrgÔÚÍâÉèÇø,AºË·ÃÎÊ²»Òª×ödomainÓòÅÐ¶Ï */
+	/* NOTE:sctrlï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½, pctrl, pericrgï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,Aï¿½Ë·ï¿½ï¿½Ê²ï¿½Òªï¿½ï¿½domainï¿½ï¿½ï¿½Ð¶ï¿½ */
 	for (i = 0; (unsigned int)i < g_rdr_ap_root->num_reg_regions; i++) {
 		if (IS_ERR_OR_NULL(regs_info[i].reg_map_addr)
 		    || IS_ERR_OR_NULL(regs_info[i].reg_dump_addr)) {
@@ -1155,10 +1155,10 @@ static void get_product_version_work_fn(struct work_struct *work)
 
 /*******************************************************************************
 Function:       register_module_dump_mem_func
-Description:    ÏòAPÎ¬²âÄ£¿é¼°IPÌá¹©µÄÄÚ´ædump×¢²á½Ó¿Ú£»
-Input:          func:×¢²áµÄdumpº¯Êý, module_name:Ä£¿éÃû, modu:Ä£¿éID£¬´ËÎªÍ³Ò»·ÖÅä;
+Description:    ï¿½ï¿½APÎ¬ï¿½ï¿½Ä£ï¿½é¼°IPï¿½á¹©ï¿½ï¿½ï¿½Ú´ï¿½dump×¢ï¿½ï¿½Ó¿Ú£ï¿½
+Input:          func:×¢ï¿½ï¿½ï¿½dumpï¿½ï¿½ï¿½ï¿½, module_name:Ä£ï¿½ï¿½ï¿½ï¿½, modu:Ä£ï¿½ï¿½IDï¿½ï¿½ï¿½ï¿½ÎªÍ³Ò»ï¿½ï¿½ï¿½ï¿½;
 Output:         NA
-Return:         0:×¢²á³É¹¦£¬<0:Ê§°Ü
+Return:         0:×¢ï¿½ï¿½É¹ï¿½ï¿½ï¿½<0:Ê§ï¿½ï¿½
 ********************************************************************************/
 int register_module_dump_mem_func(rdr_hisiap_dump_func_ptr func,
 				  char *module_name,
@@ -1214,10 +1214,10 @@ int register_module_dump_mem_func(rdr_hisiap_dump_func_ptr func,
 
 /*******************************************************************************
 Function:       get_module_dump_mem_addr
-Description:    »ñÈ¡dumpÄ£¿éµÄdumpÆðÊ¼µØÖ·£»
-Input:          modu:Ä£¿éID£¬´ËÎªÍ³Ò»·ÖÅä;
-Output:         dump_addr:ÒÑ·ÖÅä¸øÄ£¿émoduµÄdumpÄÚ´æÆðÊ¼µØÖ·
-Return:         0:»ñÈ¡³É¹¦£¬Ð¡ÓÚ0:»ñÈ¡Ê§°Ü
+Description:    ï¿½ï¿½È¡dumpÄ£ï¿½ï¿½ï¿½dumpï¿½ï¿½Ê¼ï¿½ï¿½Ö·ï¿½ï¿½
+Input:          modu:Ä£ï¿½ï¿½IDï¿½ï¿½ï¿½ï¿½ÎªÍ³Ò»ï¿½ï¿½ï¿½ï¿½;
+Output:         dump_addr:ï¿½Ñ·ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½moduï¿½ï¿½dumpï¿½Ú´ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½Ö·
+Return:         0:ï¿½ï¿½È¡ï¿½É¹ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½0:ï¿½ï¿½È¡Ê§ï¿½ï¿½
 ********************************************************************************/
 int get_module_dump_mem_addr(dump_mem_module modu, unsigned char **dump_addr)
 {
@@ -1250,7 +1250,7 @@ int get_module_dump_mem_addr(dump_mem_module modu, unsigned char **dump_addr)
 
 /*******************************************************************************
 Function:       save_module_dump_mem
-Description:    Òì³£¸´Î»Ç°£¬µ÷ÓÃAPÎ¬²âÄ£¿é¼°IPÌá¹©µÄÄÚ´ædump×¢²áº¯Êý£»
+Description:    ï¿½ì³£ï¿½ï¿½Î»Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½APÎ¬ï¿½ï¿½Ä£ï¿½é¼°IPï¿½á¹©ï¿½ï¿½ï¿½Ú´ï¿½dump×¢ï¿½áº¯ï¿½ï¿½ï¿½ï¿½
 Input:          NA
 Output:         NA
 Return:         NA
@@ -1308,7 +1308,7 @@ int __init rdr_hisiap_dump_init(struct rdr_register_module_result *retinfo)
 	strncpy(g_log_path, g_rdr_ap_root->log_path, LOG_PATH_LEN - 1);
 	g_log_path[LOG_PATH_LEN - 1] = '\0';
 
-	/* ÓÉÓÚpmu¿Û°å»¹Ã»ÓÐ£¬ÔÝÊ±ÓÃapÒì³£ÇøµÄºó8¸ö×Ö½ÚÌæ´ú */
+	/* ï¿½ï¿½ï¿½ï¿½pmuï¿½Û°å»¹Ã»ï¿½Ð£ï¿½ï¿½ï¿½Ê±ï¿½ï¿½apï¿½ì³£ï¿½ï¿½ï¿½Äºï¿½8ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½ï¿½ */
 	memset((void *)(uintptr_t)g_hisiap_addr, 0,
 	       retinfo->log_len - PMU_RESET_RECORD_DDR_AREA_SIZE);
 	g_rdr_ap_root = (AP_EH_ROOT *)(uintptr_t) g_hisiap_addr;
@@ -1363,7 +1363,7 @@ int __init rdr_hisiap_dump_init(struct rdr_register_module_result *retinfo)
 		return ret;
 	}
 
-	if (check_himntn(HIMNTN_KERNEL_DUMP_ENABLE)) {	/* ¹ì¼£ÊÇ·ñÉú³É±£³ÖºÍkernel dumpÒ»ÖÂ */
+	if (check_himntn(HIMNTN_KERNEL_DUMP_ENABLE)) {	/* ï¿½ì¼£ï¿½Ç·ï¿½ï¿½ï¿½ï¿½É±ï¿½ï¿½Öºï¿½kernel dumpÒ»ï¿½ï¿½ */
 		BB_PRINT_PN(
 			"[%s], hisi_trace_hook_install start.\n",
 			__func__);
@@ -1502,13 +1502,13 @@ static void save_kernel_dump(void *arg)
 
 	BB_PRINT_PN("exce_dir is [%s]\n", exce_dir);
 
-	/* Èç¹ûargÎªÕæ£¬±íÊ¾ÊÇÆðÏß³Ì±£´ækerneldump£¬´ËÊ±Òª´ÓÄÚ´æÖÐ»ñÈ¡Òì³£Ê±¼ä´Á */
+	/* ï¿½ï¿½ï¿½argÎªï¿½æ£¬ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ß³Ì±ï¿½ï¿½ï¿½kerneldumpï¿½ï¿½ï¿½ï¿½Ê±Òªï¿½ï¿½ï¿½Ú´ï¿½ï¿½Ð»ï¿½È¡ï¿½ì³£Ê±ï¿½ï¿½ï¿½ */
 	if (arg && (LOG_PATH_LEN - 1 >= strlen(g_log_path))) {
 		len = strlen(g_log_path);
 		memcpy(date, &g_log_path[len - DATATIME_MAXLEN],
 		       DATATIME_MAXLEN - 1);
 	} else {
-		/* Èç¹ûargÎª¿Õ£¬ÔòÈÏÎªÊÇap²àµÄÒì³££¬ÊÇ¸´Î»Ö®ºó±£´æµÄlog£¬Ôò»ñÈ¡µ±Ç°Ê±¼ä¼´¿É */
+		/* ï¿½ï¿½ï¿½argÎªï¿½Õ£ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½apï¿½ï¿½ï¿½ï¿½ì³£ï¿½ï¿½ï¿½Ç¸ï¿½Î»Ö®ï¿½ó±£´ï¿½ï¿½logï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½Ç°Ê±ï¿½ä¼´ï¿½ï¿½ */
 		snprintf(date, DATATIME_MAXLEN, "%s-%08lld",
 			 rdr_get_timestamp(), rdr_get_tick());
 	}
@@ -1744,7 +1744,7 @@ void rdr_hisiap_dump(u32 modid, u32 etype,
 
 	console_loglevel = 7;
 
-	/* Èç¹ûÊÇpanic£¬ÔòÐèÒª½«pcÖ¸Õë¼ÇÂ¼ÏÂÀ´£¬²¢´«µÝµ½fastboot  */
+	/* ï¿½ï¿½ï¿½ï¿½ï¿½panicï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½pcÖ¸ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ýµï¿½fastboot  */
 	if ((etype == AP_S_PANIC || etype == AP_S_VENDOR_PANIC) && g_bbox_ap_record_pc) {
 		get_exception_info(&exception_info,
 				   &exception_info_len);
@@ -2004,8 +2004,8 @@ static void rdr_hisiap_register_exception(void)
 		BB_PRINT_DBG("register exception:%d", einfo[i].e_exce_type);
 		einfo[i].e_callback = hisiap_callback;
 		if (0 == i) {
-			/* ×¢²áAP core¹«¹²callbackº¯Êý£¬ÆäËûcoreÓÐÍ¨Öªap core dump£¬Ôòµ÷ÓÃ´Ëcallbackº¯Êý£¬
-			   RDR_COMMON_CALLBACKÎª¹«¹²callback±ê¼Ç£¬Ã»ÓÐ±ê¼ÇµÄÎªap coreË½ÓÐcallbackº¯Êý */
+			/* ×¢ï¿½ï¿½AP coreï¿½ï¿½ï¿½ï¿½callbackï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½coreï¿½ï¿½Í¨Öªap core dumpï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã´ï¿½callbackï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			   RDR_COMMON_CALLBACKÎªï¿½ï¿½ï¿½ï¿½callbackï¿½ï¿½Ç£ï¿½Ã»ï¿½Ð±ï¿½Çµï¿½Îªap coreË½ï¿½ï¿½callbackï¿½ï¿½ï¿½ï¿½ */
 			einfo[i].e_callback = (rdr_e_callback)(uintptr_t)(
 				(uintptr_t)(einfo[i].e_callback) | BBOX_COMMON_CALLBACK);
 		}
@@ -2163,7 +2163,7 @@ Return:         NA
 ********************************************************************************/
 static void save_pstore_info(const char *dst_dir_str)
 {
-	int i, ret, len, tmp_cnt;
+	int i, ret, tmp_cnt;
 	char *pbuff;
 	char dst_str[NEXT_LOG_PATH_LEN];
 	char fullpath_arr[LOG_PATH_LEN];
@@ -2177,7 +2177,7 @@ static void save_pstore_info(const char *dst_dir_str)
 	tmp_cnt =
 	    MNTN_FILESYS_MAX_CYCLE * MNTN_FILESYS_PURE_DIR_NAME_LEN;
 
-	/* ÉêÇëÒ»¿éÄÚ´æÓÃÓÚ´æ´¢±éÀú/sys/fs/pstore/Ä¿Â¼ÏÂËùÓÐÎÄ¼þµÄÃû×Ö */
+	/* ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½ï¿½Ú´æ´¢ï¿½ï¿½ï¿½ï¿½/sys/fs/pstore/Ä¿Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 	pbuff = kmalloc(tmp_cnt, GFP_KERNEL);
 	if (NULL == pbuff) {
 		BB_PRINT_ERR(
@@ -2186,27 +2186,25 @@ static void save_pstore_info(const char *dst_dir_str)
 		return;
 	}
 
-	/* Çå¿ÕÉêÇëµÄbuff */
+	/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½buff */
 	memset((void *)pbuff, 0, tmp_cnt);
 
-	/* µ÷ÓÃ½Ó¿Ú½«/sys/fs/pstore/Ä¿Â¼ÏÂµÄËùÓÐÎÄ¼þÃû×Ö´æÈëpbuffÖÐ */
+	/* ï¿½ï¿½ï¿½Ã½Ó¿Ú½ï¿½/sys/fs/pstore/Ä¿Â¼ï¿½Âµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½ï¿½pbuffï¿½ï¿½ */
 	tmp_cnt =
 	    mntn_filesys_dir_list(PSTORE_PATH, pbuff, tmp_cnt, DT_REG);
 
-	/* Éú³Élast_kmsgÎÄ¼þ¼°dmesg-ramoops-xÎÄ¼þ */
+	/* ï¿½ï¿½ï¿½ï¿½last_kmsgï¿½Ä¼ï¿½ï¿½ï¿½dmesg-ramoops-xï¿½Ä¼ï¿½ */
 	for (i = 0; i < tmp_cnt; i++) {
-		/* Éú³ÉÔ´ÎÄ¼þ¾ø¶ÔÂ·¾¶ */
+		/* ï¿½ï¿½ï¿½ï¿½Ô´ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½ */
 		memset((void *)fullpath_arr, 0, sizeof(fullpath_arr));
 		strncat(fullpath_arr, PSTORE_PATH, ((LOG_PATH_LEN - 1) - strlen(fullpath_arr)));
-		len =
-		    strlen(pbuff + ((unsigned long)i * MNTN_FILESYS_PURE_DIR_NAME_LEN));/*lint !e571*/
 		BB_PRINT_PN("file is [%s]\n",
 		       (pbuff + ((unsigned long)i * MNTN_FILESYS_PURE_DIR_NAME_LEN)));/*lint !e571*/
 		strncat(fullpath_arr,
 			(const char *)(pbuff + ((unsigned long)i * MNTN_FILESYS_PURE_DIR_NAME_LEN)),/*lint !e571*/
 			((LOG_PATH_LEN - 1) - strlen(fullpath_arr)));
 
-		/* Èç¹û²»ÊÇconsoleÔòÄ¿µÄÎÄ¼þ·Çlast_kmsg£¬Îªdmesg-ramoops-x */
+		/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½consoleï¿½ï¿½Ä¿ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½last_kmsgï¿½ï¿½Îªdmesg-ramoops-x */
 		if (0 != strncmp((const char *)(pbuff + ((unsigned long)i * MNTN_FILESYS_PURE_DIR_NAME_LEN)),/*lint !e571*/
 				"console-ramoops",
 				strlen("console-ramoops"))) {
@@ -2227,7 +2225,7 @@ static void save_pstore_info(const char *dst_dir_str)
 				((NEXT_LOG_PATH_LEN - 1) - strlen(dst_str)));
 		}
 
-		/* ½«Ô´ÎÄ¼þµÄÄÚÈÝ¿½±´µ½Ä¿µÄÎÄ¼þÖÐ */
+		/* ï¿½ï¿½Ô´ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¿ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ */
 		ret = rdr_copy_file_apend(dst_str, fullpath_arr);
 		if (ret) {
 			BB_PRINT_ERR(
@@ -2254,7 +2252,7 @@ static void save_fastboot_log(const char *dst_dir_str)
 	char fastbootlog_path[NEXT_LOG_PATH_LEN];
 	char last_fastbootlog_path[NEXT_LOG_PATH_LEN];
 
-	/* ×éºÏfastbootlogµÄÎÄ¼þµÄ¾ø¶ÔÂ·¾¶ */
+	/* ï¿½ï¿½ï¿½fastbootlogï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ä¾ï¿½ï¿½ï¿½Â·ï¿½ï¿½ */
 	memset(last_fastbootlog_path, 0, NEXT_LOG_PATH_LEN);
 	memset(fastbootlog_path, 0, NEXT_LOG_PATH_LEN);
 	len = strlen(dst_dir_str);
@@ -2265,7 +2263,7 @@ static void save_fastboot_log(const char *dst_dir_str)
 	memcpy(&fastbootlog_path[len], "/fastboot_log",
 	       strlen("/fastboot_log") + 1);
 
-	/* Éú³Élast_fastbootlogÎÄ¼þ */
+	/* ï¿½ï¿½ï¿½ï¿½last_fastbootlogï¿½Ä¼ï¿½ */
 	ret = rdr_copy_file_apend(last_fastbootlog_path,
 				  LAST_FASTBOOT_LOG_FILE);
 	if (ret) {
@@ -2273,7 +2271,7 @@ static void save_fastboot_log(const char *dst_dir_str)
 		       LAST_FASTBOOT_LOG_FILE, ret);
 	}
 
-	/* Éú³Écurr_fastbootlogÎÄ¼þ */
+	/* ï¿½ï¿½ï¿½ï¿½curr_fastbootlogï¿½Ä¼ï¿½ */
 	ret = rdr_copy_file_apend(fastbootlog_path, FASTBOOT_LOG_FILE);
 	if (ret) {
 		BB_PRINT_ERR("rdr_copy_file_apend [%s] fail, ret = [%d]\n",
@@ -2285,8 +2283,8 @@ static void save_fastboot_log(const char *dst_dir_str)
 
 /*******************************************************************************
 Function:       save_exception_info
-Description:    ±£´æÒì³£ÐÅÏ¢
-Input:          void *argÔÝ²»Ê¹ÓÃ
+Description:    ï¿½ï¿½ï¿½ï¿½ï¿½ì³£ï¿½ï¿½Ï¢
+Input:          void *argï¿½Ý²ï¿½Ê¹ï¿½ï¿½
 Output:         NA
 Return:         -1 : error, 0 : ok
 ********************************************************************************/
@@ -2301,7 +2299,7 @@ int save_exception_info(void *arg)
 	BB_PRINT_PN("[%s], start\n", __func__);
 	ret = 0;
 
-	/* ´ÓÈ«¾Ö±äÁ¿ÖÐ»ñÈ¡´Ë´ÎÒì³£µÄlogÄ¿Â¼Â·¾¶ */
+	/* ï¿½ï¿½È«ï¿½Ö±ï¿½ï¿½ï¿½ï¿½Ð»ï¿½È¡ï¿½Ë´ï¿½ï¿½ì³£ï¿½ï¿½logÄ¿Â¼Â·ï¿½ï¿½ */
 	memset(exce_dir, 0, LOG_PATH_LEN);
 	if (LOG_PATH_LEN - 1 < strlen(g_log_path)) {
 		BB_PRINT_ERR("g_log_path's len too large\n");
@@ -2310,7 +2308,7 @@ int save_exception_info(void *arg)
 	memcpy(exce_dir, g_log_path, strlen(g_log_path) + 1);
 	BB_PRINT_PN("exce_dir is [%s]\n", exce_dir);
 
-	/* ´ò¿ªÒì³£Ä¿Â¼£¬Èç¹û²»´æÔÚÔòÒÔµ±Ç°Ê±¼äÎªÄ¿Â¼´´½¨ */
+	/* ï¿½ï¿½ï¿½ì³£Ä¿Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ôµï¿½Ç°Ê±ï¿½ï¿½ÎªÄ¿Â¼ï¿½ï¿½ï¿½ï¿½ */
 	fd = sys_open(exce_dir, O_DIRECTORY, 0);
 	if (fd < 0) {
 		BB_PRINT_ERR(
@@ -2345,7 +2343,7 @@ int save_exception_info(void *arg)
 		       strlen("/ap_log") + 1);
 	}
 
-	/* ´ò¿ªÒì³£Ä¿Â¼ÏÂµÄap_logÄ¿Â¼£¬Èç¹û²»´æÔÚÔò´´½¨ */
+	/* ï¿½ï¿½ï¿½ì³£Ä¿Â¼ï¿½Âµï¿½ap_logÄ¿Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ò´´½ï¿½ */
 	fd = sys_open(dst_dir_str, O_DIRECTORY, 0);
 	if (fd < 0) {
 		fd = sys_mkdir(dst_dir_str, DIR_LIMIT);
@@ -2363,20 +2361,20 @@ int save_exception_info(void *arg)
 	save_fastboot_log(dst_dir_str);
 	save_pstore_info(dst_dir_str);
 
-	/* Èç¹ûº¯ÊýÈë²ÎÊÇnull£¬Ôò±íÊ¾ÊÇÔÚrdr_hisiap_dumpÖÐµ÷ÓÃµÄ£¬ºóÃæ²Ù×÷²»ÐèÒª */
+	/* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½nullï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½rdr_hisiap_dumpï¿½Ðµï¿½ï¿½ÃµÄ£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òª */
 	if (!arg) {
 		goto out;
 	}
 
-	/* ÔÚÒì³£Ä¿Â¼ÏÂÃæÐÂ½¨DONEÎÄ¼þ£¬±êÖ¾´Ë´ÎÒì³£log±£´æÍê±Ï */
+	/* ï¿½ï¿½ï¿½ì³£Ä¿Â¼ï¿½ï¿½ï¿½ï¿½ï¿½Â½ï¿½DONEï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½Ë´ï¿½ï¿½ì³£logï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 	bbox_save_done(g_log_path, BBOX_SAVE_STEP_DONE);
 
-	/* ÎÄ¼þÏµÍ³sync£¬±£Ö¤¶ÁÐ´ÈÎÎñÍê³É */
+	/* ï¿½Ä¼ï¿½ÏµÍ³syncï¿½ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ */
 	if (!in_atomic() && !irqs_disabled() && !in_irq()) {
 		sys_sync();
 	}
 
-	/* ¸ù¾ÝÈ¨ÏÞÒªÇó£¬hisi_logsÄ¿Â¼¼°×ÓÄ¿Â¼Èº×éµ÷ÕûÎªroot-system */
+	/* ï¿½ï¿½ï¿½ï¿½È¨ï¿½ï¿½Òªï¿½ï¿½hisi_logsÄ¿Â¼ï¿½ï¿½ï¿½ï¿½Ä¿Â¼Èºï¿½ï¿½ï¿½ï¿½ï¿½Îªroot-system */
 	ret = (int)bbox_chown((const char __user *)g_log_path, ROOT_UID,
 			      SYSTEM_GID, true);
 	if (ret) {
