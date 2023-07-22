@@ -1,7 +1,7 @@
 /* hi3xxx_irq_affinity.h */
 
 #ifndef HISI_IRQ_AFFINITY_H
-#define HISI_IIRQ_AFFINITY_H
+#define HISI_IRQ_AFFINITY_H
 
 #include <linux/errno.h>
 

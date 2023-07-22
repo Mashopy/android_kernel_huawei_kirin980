@@ -1,5 +1,5 @@
 #ifndef HIVIEW_SELINUX_H
-#define HIVEIW_SELINUX_H
+#define HIVIEW_SELINUX_H
 #include <linux/lsm_audit.h>
 
 #define CONFIG_HUAWEI_HIVIEW_SELINUX
